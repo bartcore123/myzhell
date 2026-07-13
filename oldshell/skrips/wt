@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+OPT=( ${@:/^(\-*)} )
+set ${@:/\-*}
+
+sed -rn $@
+tasklist.exe
+taskkill.exe
+
+case $OPT;
+in
+	)
+		tasklist.exe | grep --color=auto -anPi -- "$*" | awk '{ print $2 }' | read pid
+		pid=( ${(f)pid} )
+	;|
+
+	)
+		tasklist.exe | grep --color=auto -anPi -- "$*"
+	;|
+
+	)
+		while [[ -n $@ ]]
+		do
+			taskkill.exe /PID "$1"
+			shift
+		done
+	;;
+esac

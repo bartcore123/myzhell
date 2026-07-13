@@ -1,0 +1,21 @@
+include /usr/share/nano/sh.nanorc
+include /usr/share/nano/c.nanorc
+include /usr/share/nano/default.nanorc
+
+set mouse
+set autoindent
+
+bind ^w savefile all
+bind M-f verbatim all
+bind M-v paste all
+bind ^s left all
+bind ^d right all
+bind ^a home all
+bind ^e end all
+bind ^c mark all
+bind M-p prevline all
+bind M-n nextline all
+bind M-t prevline all
+bind M-g nextline all
+bind M-b gotoline all
+bind F4 replace all

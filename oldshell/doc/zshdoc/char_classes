@@ -1,0 +1,61 @@
+              [:alnum:]
+                     The character is alphanumeric
+
+              [:alpha:]
+                     The character is alphabetic
+
+              [:ascii:]
+                     The character is 7-bit, i.e. is a single-byte character without the top bit set.
+
+              [:blank:]
+                     The character is a blank character
+
+              [:cntrl:]
+                     The character is a control character
+
+              [:digit:]
+                     The character is a decimal digit
+
+              [:graph:]
+                     The character is a printable character other than whitespace
+
+              [:lower:]
+                     The character is a lowercase letter
+
+              [:print:]
+                     The character is printable
+
+              [:punct:]
+                     The character is printable but neither alphanumeric nor whitespace
+
+              [:space:]
+                     The character is whitespace
+
+              [:upper:]
+                     The character is an uppercase letter
+
+              [:xdigit:]
+                     The character is a hexadecimal digit
+
+              Another set of named classes is handled internally by the shell and is not sensitive to the locale:
+
+              [:IDENT:]
+                     The character is allowed to form part of a shell identifier, such as a parameter name
+
+              [:IFS:]
+                     The character is used as an input field separator, i.e. is contained in the IFS parameter
+
+              [:IFSSPACE:]
+                     The character is an IFS white space character; see the documentation for IFS in the zshparam(1) manual page.
+
+              [:INCOMPLETE:]
+                     Matches a byte that starts an incomplete multibyte character.  Note that there may be a sequence of more than one bytes that taken together form the prefix of a multibyte  character.
+                     To test for a potentially incomplete byte sequence, use the pattern `[[:INCOMPLETE:]]*'.  This will never match a sequence starting with a valid multibyte character.
+
+              [:INVALID:]
+                     Matches  a byte that does not start a valid multibyte character.  Note this may be a continuation byte of an incomplete multibyte character as any part of a multibyte string consist‐
+                     ing of invalid and incomplete multibyte characters is treated as single bytes.
+
+              [:WORD:]
+                     The character is treated as part of a word; this test is sensitive to the value of the WORDCHARS parameter
+

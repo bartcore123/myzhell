@@ -1,0 +1,11 @@
+des_troy () {
+	PAT= 
+	unset PAT
+	if [[ -n $@ ]]
+	then
+		print -r -- "$@[-1]" | sed -E 's/[;][/][/]/\;s\//;s/^[/][/]/s\//' | read PAT
+		shift -p
+	fi
+	sed -Ei --follow-symlinks "$PAT" "${@}"
+}
+

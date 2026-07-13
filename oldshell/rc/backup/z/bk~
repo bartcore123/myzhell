@@ -1,0 +1,13 @@
+bindkey "^[s" backward-char
+bindkey "^[d" forward-char
+bindkey "^[e" end-of-line
+
+bindkey "^[S" backward-word
+bindkey "^[D" forward-word
+bindkey "^[f" quoted-insert
+
+bindkey  backward-delete-word
+bindkey "w" kill-line
+bindkey "W" kill-region
+bindkey "^[q" zle-cl
+bindkey "^[v" yank

@@ -1,0 +1,35 @@
+#!/bin/zsh
+setopt extendedglob
+
+
+if [[ ! -n ${@:/^(\-p|\-\-no\-git(|\=(true|t|1)))} ]]
+then
+	{
+		local olddir=$PWD cd ~/myshell
+	}
+	{
+		git add .
+		git commit -m "${1:-"committing"}"
+		git push
+	}
+#	{
+#		cd $olddir
+#	}
+fi
+{
+	rm -r /mnt/c/Users/barth/Desktop/myshell
+	rm -r /mnt/c/Users/barth/Desktop/myshell.tar
+}
+{
+	cp -rL /root/myshell /mnt/c/Users/barth/Desktop
+}
+{
+	tar cf "/mnt/c/Users/barth/Desktop/myshell.tar" "/mnt/c/Users/barth/Desktop/myshell"
+}
+{
+	rm -r /mnt/c/Users/barth/Desktop/myshell
+	rm -r /mnt/c/Users/barth/Desktop/myshell.tar.xz
+}
+{
+	xz /mnt/c/Users/barth/Desktop/myshell.tar &
+}

@@ -1,0 +1,12 @@
+FILES
+/etc/nanorc
+
+System-wide configuration file.
+
+~/.nanorc or $XDG_CONFIG_HOME/nano/nanorc or ~/.config/nano/nanorc
+
+Per-user configuration file.
+
+/usr/share/nano/*
+
+Syntax definitions for the syntax coloring of common file types (and for less common file types in the extra/ subdirectory) .

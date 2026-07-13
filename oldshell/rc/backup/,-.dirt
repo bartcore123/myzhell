@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+if [[ $PWD != /mnt/c/* ]]
+then
+	cd /mnt/c/Users/barth/Desktop
+fi
+
+WIN_PROC_MATCH=( $(</tmp/WIN_PROC_MATCH) )
+
+if [[ ! -n $@ ]]
+then
+	select X in ${WIN_PROC_MATCH[@]}
+	do
+		${${REPLY:/<->}:+break}
+		taskkill.exe /PID $X
+	done
+elif [[ $@ == "@" ]]
+then
+	set -- ${WIN_PROC_MATCH[@]}
+	WIN_PROC_MATCH=
+fi
+
+while [[ -n $@ ]]
+do
+	taskkill.exe /PID ${${${@:/^(\,[0-9]##)}:+${${@//\,/}:/^([0-9]##)}}:-${WIN_PROC_MATCH[$1]}:-$1}
+	shift
+done
+
+

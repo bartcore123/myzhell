@@ -1,0 +1,2 @@
+#NULLCMD="cat --show-all"
+#READNULLCMD="less --use-color --color=C"

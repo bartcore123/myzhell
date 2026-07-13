@@ -1,0 +1,10 @@
+precmd(){
+    exec 2>&- >&-
+    output=$(tail -1 ~/.command.out) 
+#    sleep 0.1   # TODO: synchronize better
+    exec > /dev/tty 2>&1
+}
+
+preexec(){
+    exec > >(tee ~/.command.out&)
+}

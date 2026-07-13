@@ -1,0 +1,250 @@
+bindkey "^@" globalias
+bindkey "^A" beginning-of-line
+bindkey "^B" backward-char
+bindkey "^D" forward-char
+bindkey "^E" end-of-line
+bindkey "^F" forward-char
+bindkey "^G" send-break
+bindkey "^H" backward-delete-word
+bindkey "^I" expand-or-complete
+bindkey "^J" push-line-or-edit
+bindkey "^K" describe-key-briefly
+bindkey "^L" clear-screen
+bindkey "^M" accept-line
+bindkey "^N" down-line-or-history
+bindkey "^O" accept-line-and-down-history
+bindkey "^P" up-line-or-history
+bindkey "^Q" rm_LBUFFER
+bindkey "^R" rm_RBUFFER
+bindkey "^S" backward-char
+bindkey "^T" transpose-chars
+bindkey "^U" kill-whole-line
+bindkey "^V" quoted-insert
+bindkey "^W" zap-rbuffer
+bindkey "^X^@" globalias
+bindkey "^X^B" vi-match-bracket
+bindkey "^X^E" expand-word
+bindkey "^X^F" edit-last-word-as-file
+bindkey "^X^J" vi-join
+bindkey "^X^K" kill-buffer
+bindkey "^X^N" infer-next-history
+bindkey "^X^O" overwrite-mode
+bindkey "^X^R" _read_comp
+bindkey "^X^S" edit-command-line
+bindkey "^X^U" undo
+bindkey "^X^V" vi-cmd-mode
+bindkey "^X^X" exchange-point-and-mark
+bindkey "^X^[e" expand-word
+bindkey "^X*" expand-word
+bindkey "^X=" what-cursor-position
+bindkey "^X?" _complete_debug
+bindkey "^XC" _correct_filename
+bindkey "^XG" list-expand
+bindkey "^Xa" _expand_alias
+bindkey "^Xc" _correct_word
+bindkey "^Xd" _list_expansions
+bindkey "^Xe" _expand_word
+bindkey "^Xg" list-expand
+bindkey "^Xh" _complete_help
+bindkey "^Xm" _most_recent_file
+bindkey "^Xn" _next_tags
+bindkey "^Xr" history-incremental-search-backward
+bindkey "^Xs" history-incremental-search-forward
+bindkey "^Xt" _complete_tag
+bindkey "^Xu" undo
+bindkey "^X~" _bash_list-choices
+bindkey "^Y" yank
+bindkey "^Z" fancy-ctrl-z
+bindkey "^[^@" magic-space
+bindkey "^[^D" list-choices
+bindkey "^[^E" my-expand
+bindkey "^[^F" zle-ll
+bindkey "^[^G" send-break
+bindkey "^[^H" erase_buffer
+bindkey "^[^I" self-insert-unmeta
+bindkey "^[^J" self-insert-unmeta
+bindkey "^[^L" clear-screen
+bindkey "^[^M" self-insert-unmeta
+bindkey "^[^S" goto-last-dollar
+bindkey "^[^]" command_braces
+bindkey "^[^_" copy-prev-word
+bindkey "^[ " magic-space
+bindkey "^[!" prms
+bindkey "^[\"" double_quote_line
+bindkey "^[#" prm_subscript
+bindkey "^[\$" cmds
+bindkey "^[%" zt
+bindkey "^['" quote
+bindkey "^[(^[)" insert_arith_paren
+bindkey -s "^[," "<"
+bindkey -s "^[,," "<<"
+bindkey -s "^[,." "<>"
+bindkey -s "^[,;" "</tmp/tmp"
+bindkey -s "^[,]" "<&"
+bindkey "^[-" neg-argument
+bindkey -s "^[." ">"
+bindkey -s "^[.." ">>"
+bindkey -s "^[..\\\\" ">>|"
+bindkey -s "^[.;" ">|/tmp/tmp"
+bindkey -s "^[.\\\\" ">|"
+bindkey -s "^[.]" ">&"
+bindkey -s "^[/" "?"
+bindkey -s "^[//" "??"
+bindkey "^[0" digit-argument
+bindkey "^[1" digit-argument
+bindkey "^[2" digit-argument
+bindkey "^[3" digit-argument
+bindkey "^[4" digit-argument
+bindkey "^[5" digit-argument
+bindkey "^[6" digit-argument
+bindkey "^[7" digit-argument
+bindkey "^[8" digit-argument
+bindkey "^[9" digit-argument
+bindkey "^[:" printy
+bindkey "^[;" printy
+bindkey "^[<" rm_LBUFFER
+bindkey "^[=" insert_anon_func
+bindkey -s "^[==" "++"
+bindkey "^[>" rm_RBUFFER
+bindkey -s "^[?" "|"
+bindkey "^[@" arith
+bindkey "^[A" true_home
+bindkey "^[B" backward-word
+bindkey "^[C" zle-cl
+bindkey "^[D" forward-word
+bindkey "^[E" true_end
+bindkey "^[F" zle-l
+bindkey "^[G" zle-gitgo
+bindkey "^[H" run-help
+bindkey "^[K" describe-key-briefly
+bindkey "^[L" zle-l
+bindkey "^[N" history-search-forward
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey "^[OC" forward-char
+bindkey "^[OD" backward-char
+bindkey "^[OF" unspace-end-of-line
+bindkey "^[OH" beginning-of-line
+bindkey "^[OQ" kring
+bindkey "^[OR" kring
+bindkey "^[OS" pling
+bindkey "^[P" history-search-backward
+bindkey "^[Q" backward-delete-word
+bindkey "^[R" delete-word
+bindkey "^[S" backward-word
+bindkey "^[T" transpose-words
+bindkey "^[U" up-case-word
+bindkey "^[V" yank-pop
+bindkey "^[W" kill-region
+bindkey "^[X" quoted-insert
+bindkey "^[Z" redo
+bindkey -s "^[[15~" ""
+bindkey -s "^[[17~" ""
+bindkey "^[[1;3F" true_end
+bindkey "^[[1;3H" true_home
+bindkey "^[[1;4F" zt
+bindkey "^[[1;4H" true_home
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5F" end-of-buffer-or-history
+bindkey "^[[1;5H" beginning-of-buffer-or-history
+bindkey "^[[200~" bracketed-paste
+bindkey "^[[3;3~" true_home
+bindkey "^[[3;4~" erase_buffer
+bindkey "^[[3;5~" kill-word
+bindkey "^[[3~" delete-char
+bindkey "^[[5~" up-line-or-history
+bindkey "^[[6~" down-line-or-history
+bindkey "^[[A" up-line-or-history
+bindkey "^[[B" down-line-or-history
+bindkey "^[[C" forward-char
+bindkey "^[[D" backward-char
+bindkey "^[[Z" reverse-menu-complete
+bindkey -s "^[\\\\" "|"
+bindkey -s "^[\\\," "|\$"
+bindkey -s "^[\\\." "|@"
+bindkey -s "^[\\\/" "|?"
+bindkey -s "^[\\\:" "|::"
+bindkey -s "^[\\\=" "|+"
+bindkey -s "^[]" "&"
+bindkey "^[_" insert-last-word
+bindkey -s "^[\`" "~"
+bindkey -s "^[\`'" "\""
+bindkey -s "^[\`," "<<<"
+bindkey -s "^[\`-" "_"
+bindkey -s "^[\`." "@"
+bindkey -s "^[\`/" "!"
+bindkey -s "^[\`//" "!!"
+bindkey -s "^[\`0" ")"
+bindkey -s "^[\`9" "("
+bindkey -s "^[\`;" ":"
+bindkey -s "^[\`;;" "::"
+bindkey -s "^[\`=" "#"
+bindkey -s "^[\`==" "##"
+bindkey -s "^[\`[" "{"
+bindkey -s "^[\`\\\\" "%"
+bindkey -s "^[\`\\\\\\\\" "%%"
+bindkey -s "^[\`]" "}"
+bindkey "^[a" beginning-of-line
+bindkey "^[b" backward-word
+bindkey "^[c" set-mark-command
+bindkey "^[d" forward-char
+bindkey "^[e" end-of-line
+bindkey "^[f" fluit
+bindkey "^[g" down-line-or-beginning-search
+bindkey "^[h" run-help
+bindkey "^[j" zle-jobs
+bindkey "^[k" describe-key-briefly
+bindkey "^[l" zle-ll
+bindkey "^[m" copy-prev-shell-word
+bindkey "^[n" history-search-forward
+bindkey "^[p" history-search-backward
+bindkey "^[q" backward-delete-char
+bindkey "^[r" delete-char
+bindkey "^[s" backward-char
+bindkey "^[t" up-line-or-beginning-search
+bindkey "^[u" up-case-word
+bindkey "^[v" yank
+bindkey "^[w" nano-kill
+bindkey "^[x" execute-named-cmd
+bindkey "^[y" yank-pop
+bindkey "^[z" undo
+bindkey "^[|" vi-goto-column
+bindkey "^[~" quotes_double
+bindkey "^[^?" backward-delete-word
+bindkey "^_" undo
+bindkey " " expand-macro
+bindkey -R "!"-"_" self-insert
+bindkey "\`" quotes_single
+bindkey "\`^M" quoted-insert
+bindkey "\`^[OF" END
+bindkey "\`^[OH" undo
+bindkey -s "\` " "^I"
+bindkey "\`'" quotes_double
+bindkey -s "\`," "\$"
+bindkey "\`-" neg-argument
+bindkey -s "\`-," "<-"
+bindkey -s "\`-." "->"
+bindkey "\`-;" wrds
+bindkey -s "\`-=" "_"
+bindkey -s "\`-\\\\" "||"
+bindkey -s "\`-]" "&&"
+bindkey -s "\`-\`-" "|_"
+bindkey -s "\`." "*"
+bindkey -s "\`/" "#"
+bindkey "\`90" insert_arith_paren
+bindkey "\`;" insert_paren
+bindkey "\`=" insert_braces
+bindkey -s "\`=," "<="
+bindkey -s "\`=." "=>"
+bindkey "\`[" insert_brackets
+bindkey "\`[]" insert_test_paren
+bindkey -s "\`\\\\" "^["
+bindkey -s "\`\\\;" ":"
+bindkey -s "\`\\\;;" "::"
+bindkey -s "\`]" "\^"
+bindkey "\`\`" describe-key-briefly
+bindkey "\`^?" true_home_erase_buffer
+bindkey -R "a"-"~" self-insert
+bindkey "^?" backward-delete-char
+bindkey -R "\M-^@"-"\M-^?" self-insert

@@ -1,0 +1,48 @@
+#!/bin/zsh
+
+typeset -a macros
+macros=()
+
+macro(){
+	[[ -n $@ ]] && {
+		alias $1
+		macros+=(${1%%\=*}) 
+	} || {
+		alias -L | sed -E 's/^alias \-g/gmacro/' | sed -E 's/alias/macro/' | noglob grep -aE -- "\<(${(j:|:)macros[@]})\="
+		return $?
+	}
+}
+gmacro(){
+	[[ -n $@ ]] && {
+		alias -g $1
+		macros+=(${1%%\=*}) 
+	} || {
+		alias -gL | sed -E 's/alias \-g/gmacro/' | noglob grep -aE -- "\<(${(j:|:)macros[@]})\="
+		return $?
+	}
+}
+
+#function gmacro()
+#{
+#    alias -g $1
+#    macros+=(${1%%\=*})
+#}
+
+
+function expand-macro()
+{
+    if [[ $LBUFFER =~ "\<("${(j:|:)macros[@]//\./\\.}")\$" ]]; then
+        zle _expand_alias
+    fi
+    zle magic-space
+}
+
+zle -N expand-macro
+
+bindkey -M main ' '        expand-macro
+bindkey -M main '^[ '       magic-space     # alt-space to bypass completion
+bindkey -M main '^[^ '       magic-space     # control-alt-space to bypass completion
+bindkey -M isearch " "      magic-space     # normal space during searches
+
+
+#${(j:|:)macros[@]//./\.}

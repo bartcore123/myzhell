@@ -1,0 +1,18 @@
+'#'(){ print -r -- ${@} }
+'#!'(){	print -sr -- ${@:-"$(</dev/stdin)"} }
+'#@'(){	print -zr -- ${@:-"$(</dev/stdin)"} }
+'##'(){ print -- ${@:-"$(</dev/stdin)"} }
+'#%'(){ print -P -- ${@:-"$(</dev/stdin)"} }
+'#:'(){ print -lr -- ${@:-"$(</dev/stdin)"} }
+'#&'(){ print -ur -- 15 ${@:-"$(</dev/stdin)"} }
+'#^'(){ print -Sr -- ${@:-"$(</dev/stdin)"} }
+'#~'(){ PAT="$1"; shift; print -m -- "$PAT" ${@:-"$(</dev/stdin)"} }
+'#?' () {
+	if [[ -n ${@:/^((-u)|(--update))} ]]
+	then
+		sed -rn '/^['"]?[#]['"]? ?\(\)/,/^['"]?[#][~]['"]? ?\(\)/p' ~ZF >| ~Z/printEzelsbrug.txt
+		which -s '#?' >> ~Z/printEzelsbrug.txt
+	else
+		cat /etc/zsh/printEzelsbrug.txt
+	fi
+}

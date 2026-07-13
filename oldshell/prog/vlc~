@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+cmd /C "C:\Program Files (x86)\VideoLAN\VLC\vlc.exe" $@
+/mnt/c/Windows/System32/cmd.exe

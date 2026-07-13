@@ -1,0 +1,5 @@
+',=' () {
+	tasklist.exe | grep --color=auto -anPi -- "$*" | awk '{ print $2 }' | read -r -d ${EOF:-''} PID
+	p=(${(f)PID}) 
+	tasklist.exe | grep --color=auto -anPi -- "$*"
+}

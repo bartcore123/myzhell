@@ -1,0 +1,10 @@
+# Load the completion system if you haven't already
+autoload -Uz compinit && compinit
+
+# Enable the visual menu selection
+zstyle ':completion:*' menu select
+
+# Group options together and show descriptions
+zstyle ':completion:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' ignored-patterns './'

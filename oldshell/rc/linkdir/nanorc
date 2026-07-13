@@ -1,0 +1,107 @@
+include /usr/share/nano/asm.nanorc
+include /usr/share/nano/autoconf.nanorc
+include /usr/share/nano/awk.nanorc
+include /usr/share/nano/changelog.nanorc
+include /usr/share/nano/cmake.nanorc
+include /usr/share/nano/c.nanorc
+include /usr/share/nano/css.nanorc
+#include /usr/share/nano/debian.nanorc
+include /usr/share/nano/default.nanorc
+#include /usr/share/nano/elisp.nanorc
+include /usr/share/nano/fortran.nanorc
+include /usr/share/nano/gentoo.nanorc
+include /usr/share/nano/go.nanorc
+include /usr/share/nano/groff.nanorc
+include /usr/share/nano/guile.nanorc
+include /usr/share/nano/html.nanorc
+include /usr/share/nano/java.nanorc
+include /usr/share/nano/javascript.nanorc
+include /usr/share/nano/json.nanorc
+include /usr/share/nano/lua.nanorc
+include /usr/share/nano/makefile.nanorc
+include /usr/share/nano/man.nanorc
+#include /usr/share/nano/mgp.nanorc
+include /usr/share/nano/mutt.nanorc
+include /usr/share/nano/nanohelp.nanorc
+include /usr/share/nano/nanorc.nanorc
+include /usr/share/nano/nftables.nanorc
+include /usr/share/nano/objc.nanorc
+include /usr/share/nano/ocaml.nanorc
+include /usr/share/nano/patch.nanorc
+include /usr/share/nano/perl.nanorc
+include /usr/share/nano/php.nanorc
+include /usr/share/nano/po.nanorc
+#include /usr/share/nano/postgresql.nanorc
+include /usr/share/nano/pov.nanorc
+include /usr/share/nano/python.nanorc
+include /usr/share/nano/ruby.nanorc
+include /usr/share/nano/rust.nanorc
+include /usr/share/nano/sh.nanorc
+include /usr/share/nano/spec.nanorc
+include /usr/share/nano/tcl.nanorc
+include /usr/share/nano/texinfo.nanorc
+include /usr/share/nano/tex.nanorc
+include /usr/share/nano/xml.nanorc
+
+set mouse
+set autoindent
+set backup
+#set smooth
+set regexp
+set softwrap
+#set suspend
+set linenumbers
+set cutfromcursor
+
+
+bind ^q exit all
+bind ^w savefile all
+bind ^r backspace all
+bind ^s prevword all
+bind ^d nextword all
+bind ^x cut all
+#bind ^h cutwordleft all
+bind ^v paste all
+bind M-z undo all
+bind M-x redo all
+bind M-w cut all
+bind M-s left all
+bind M-d right all
+bind M-a home all
+bind M-e end all
+bind M-c mark all
+bind M-f verbatim all
+ bind ^c mark all
+
+bind M-r delete all
+bind M-q backspace all
+bind ^w savefile all
+bind M-v paste all
+bind ^s prevword all
+bind ^d nextword all
+bind ^a findprevious all
+bind ^e findnext all
+bind M-p prevline all
+bind M-n nextline all
+bind M-t prevline all
+bind M-g nextline all
+bind M-b gotoline all
+bind ^f whereis all
+bind ^r replace all
+bind F2 wherewas all
+bind F3 whereis all
+bind F4 replace all
+
+bind M-n findnext all
+bind M-p findprevious all
+bind M-h findprevious all
+
+# bind M-@ indent all
+bind M-2 indent all
+bind M-1 unindent all
+
+#bind ^q cancel yesno
+bind ^C cancel yesno
+#bind ^w "y" yesno
+#bind ^q asdasdasdasd yesno
+bind ^Q "n" yesno

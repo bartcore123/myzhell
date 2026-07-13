@@ -1,0 +1,101 @@
+       ing commands:
+
+       syntax name ["fileregex" ...]
+              Start the definition of a syntax with this name.  All subsequent
+              color  and  other  such  commands  will be added to this syntax,
+              until a new syntax command is encountered.
+
+              When nano is run, this syntax will be automatically activated if
+              the  current  filename  matches  the extended regular expression
+              fileregex.  Or the syntax can be explicitly activated  by  using
+              the -Y or --syntax command-line option followed by the name.
+
+              The  syntax  default  is  special:  it  takes  no fileregex, and
+              applies to files that don't match  any  syntax's  regexes.   The
+              syntax  none  is  reserved; specifying it on the command line is
+              the same as not having a syntax at all.
+
+       header "regex" ...
+              If from all defined syntaxes no fileregex matched, then  compare
+              this  regex  (or  regexes) against the first line of the current
+              file, to determine whether this syntax should be used for it.
+
+       magic "regex" ...
+              If no fileregex matched and no header regex matched either, then
+              compare  this  regex (or regexes) against the result of querying
+              the magic database about the current file, to determine  whether
+              this  syntax  should  be  used for it.  (This functionality only
+              works when libmagic is installed  on  the  system  and  will  be
+              silently ignored otherwise.)
+
+       formatter program [argument ...]
+              Run  the  given program on the full contents of the current buf-
+              fer.  (The current buffer is written out to  a  temporary  file,
+              the  program  is  run on it, and then the temporary file is read
+              back in, replacing the contents of the buffer.)
+
+       linter program [argument ...]
+              Use the given program to run a syntax check on the current  buf-
+              fer.
+
+       comment "string"
+              Use  the given string for commenting and uncommenting lines.  If
+              the string contains a vertical bar or pipe character  (|),  this
+              designates  bracket-style comments; for example, "/*|*/" for CSS
+              files.  The characters before the pipe are prepended to the line
+              and the characters after the pipe are appended at the end of the
+              line.  If no pipe character  is  present,  the  full  string  is
+              prepended;  for  example, "#" for Python files.  If empty double
+              quotes are specified, the  comment/uncomment  function  is  dis-
+              abled; for example, "" for JSON.  The default value is "#".
+
+       tabgives "string"
+              Make  the  &lt;Tab&gt;  key produce the given string.  Useful for lan-
+              guages like Python that want to see only spaces for indentation.
+              This overrides the setting of the tabstospaces option.
+
+       color [bold,][italic,]fgcolor,bgcolor "regex" ...
+              Paint all pieces of text that match the extended regular expres-
+              sion regex with the given foreground and background  colors,  at
+              least  one  of  which must be specified.  Valid color names are:
+              red, green, blue, magenta, yellow, cyan, white, and black.  Each
+              of  these eight names may be prefixed with the word light to get
+              a brighter version of that color.  On  terminal  emulators  that
+              can do at least 256 colors, other valid (but unprefixable) color
+              names are: pink,  purple,  mauve,  lagoon,  mint,  lime,  peach,
+              orange,  latte,  and  normal  --  where normal means the default
+              foreground or background color.  The color pair may be  preceded
+              by bold and/or italic (separated by commas) to get a bold and/or
+              slanting typeface, if your terminal can do those.
+
+              All coloring commands are applied in the order in which they are
+              specified,  which  means  that  later commands can recolor stuff
+              that was colored earlier.
+
+       icolor [bold,][italic,]fgcolor,bgcolor "regex" ...
+              Same as above, except that the matching is case insensitive.
+
+       color [bold,][italic,]fgcolor,bgcolor start="fromrx" end="torx"
+              Paint all pieces of text whose start  matches  extended  regular
+              expression fromrx and whose end matches extended regular expres-
+              sion torx with the given foreground and  background  colors,  at
+              least one of which must be specified.  This means that, after an
+              initial instance of fromrx, all text until the first instance of
+              torx  will  be colored.  This allows syntax highlighting to span
+              multiple lines.
+
+       icolor [bold,][italic,]fgcolor,bgcolor start="fromrx" end="torx"
+              Same as above, except that the matching is case insensitive.
+
+       include "syntaxfile"
+              Read in self-contained color  syntaxes  from  syntaxfile.   Note
+              that syntaxfile may contain only the above commands, from syntax
+              to icolor.
+
+       extendsyntax name command argument ...
+              Extend the syntax previously defined as name with  another  com-
+              mand.   This  allows  adding a new color, icolor, header, magic,
+              formatter, linter, comment, or tabgives command  to  an  already
+              defined  syntax  --  useful  when you want to slightly improve a
+              syntax defined in one of the system-installed files (which  nor-
+              mally are not writable).

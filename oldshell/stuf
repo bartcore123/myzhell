@@ -1,0 +1,2 @@
+'./'(){ [[ -n $@ ]] && source $@ || pwd -P }
+'.'(){ ls --color=auto --quoting-style=shell -QAF $@ }

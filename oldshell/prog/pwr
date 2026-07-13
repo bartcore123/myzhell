@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+lock(){
+    setopt ignoreeof;
+
+    clear;
+
+    echo $'==============================================\nThis TTY is locked. Enter password to continue\n==============================================\n '
+
+    trap "echo ' Nice try, buddy!'" SIGTSTP;
+    trap "echo ' Nice try, buddy!'" SIGINT;
+    trap "echo ' Nice try, buddy!'" SIGSTOP;
+
+    until [[ $REPLY = $@ ]];do read -s; done;
+}
+
+lock(){  }
+
+defpass=qwe123;
+
+CMD=;
+
+[[ ${1:l} =~ '(o|off|d|down|shutdown)' ]] && CMD=poweroff;
+[[ ${1:l} =~ '(s|suspend|sleep)' ]] && CMD=suspend;
+[[ ${1:l} =~ '(h|hibernate)' ]] && CMD=hibernate;
+[[ ${1:l} =~ '(r|reboot|restart)' ]] && CMD=reboot;
+[[ ${1:l} =~ '(l|lock|lock-screen)' ]] && { lock ${2:-${defpass}} } || { [[ $1 ]] && systemctl $CMD || acpi; }
+

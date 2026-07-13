@@ -1,0 +1,43 @@
+#!/bin/zsh
+
+setopt extendedglob
+OPTS=( ${${@:/^((\-|\/)*)}//\-/\/} )
+# OPTS=( ${OPTS//\-/\/} )
+set -- ${@:/(\/|\-)*}
+
+if [[ $PWD != /mnt/c/* ]]
+then
+	cd /mnt/c/Users/barth/Desktop
+fi
+
+WIN_PROC_MATCH=( $(</tmp/WIN_PROC_MATCH) )
+
+if [[ ! $@ ]]
+then
+	select KILL in $WIN_PROC_MATCH
+	do
+		if [[ $REPLY == (@|..) ]]
+		then
+			for X in $WIN_PROC_MATCH[@]
+			do
+				taskkill.exe /PID "$X"
+			done
+			break
+		elif [[ $REPLY == " " ]]
+		then
+			break
+		else
+			taskkill.exe ${OPTS} /PID "$KILL"
+		fi
+	done
+elif [[ ${@:/^(@|..)} ]]
+then
+	set -- {1..$#WIN_PROC_MATCH}
+fi
+
+while [[ -n $@ ]]
+do
+print --	taskkill.exe ${OPTS} /PID ${${WIN_PROC_MATCH:+${WIN_PROC_MATCH[$1]}}:-$1}
+	shift
+done
+

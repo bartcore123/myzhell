@@ -1,0 +1,12 @@
+#!zsh -23569BCGJNRXg
+
+print -r -- $@ | sed -E 's/^.*\b([0-9]+)\b.*$/\1/p;d' | read NPAG
+set -- ${@:/(|[+])<->/}
+
+print -r -- $@ | sed -E 's/^.*[,](\S+).*$/\1/p;d' | read NSYN
+if [[ ${@:/^([,][,])} ]]
+then
+	NSYN=
+fi
+set -- ${@:/[,]*/}
+\nano -myBiz ${NSYN:+--syntax=${NSYN}} ${NPAG:+"+$NPAG"} ${@:-"-"}

@@ -1,0 +1,57 @@
+include /usr/share/nano/sh.nanorc
+include /usr/share/nano/c.nanorc
+include /usr/share/nano/default.nanorc
+
+set mouse
+set autoindent
+set backup
+set smooth
+set regexp
+set softwrap
+set suspend
+set linenumbers
+set cutfromcursor
+
+bind ^Q exit all
+bind ^W savefile all
+bind ^R backspace all
+bind ^S prevword all
+bind ^D nextword all
+bind ^X cut all
+bind ^H cutwordleft all
+bind ^V paste all
+bind M-Z undo all
+bind M-x redo all
+bind M-Q exit all
+bind M-W cut all
+bind M-s left all
+bind M-d right all
+bind M-a home all
+bind M-e end all
+bind M-c mark all
+bind M-f verbatim all
+ bind ^c mark all
+bind ^C copy all
+bind M-r delete all
+bind M-q backspace all
+bind ^w savefile all
+bind M-v paste all
+bind ^s prevword all
+bind ^d nextword all
+bind ^a findprevious all
+bind ^e findnext all
+bind M-p prevline all
+bind M-n nextline all
+bind M-t prevline all
+bind M-g nextline all
+bind M-b gotoline all
+bind ^f whereis all
+bind ^r replace all
+bind F2 wherewas all
+bind F3 whereis all
+bind F4 replace all
+
+bind M-n findnext all
+bind M-p findprevious all
+
+bind M-@ indent all

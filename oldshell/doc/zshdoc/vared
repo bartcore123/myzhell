@@ -1,0 +1,24 @@
+       vared [ -Aacghe ] [ -p prompt ] [ -r rprompt ]
+             [ -M main-keymap ] [ -m vicmd-keymap ]
+             [ -i init-widget ] [ -f finish-widget ]
+             [ -t tty ] name
+              The  value of the parameter name is loaded into the edit buffer, and the line editor is invoked.  When the editor exits, name is set to the string value returned by the editor.  When the -c
+              flag is given, the parameter is created if it doesn't already exist.  The -a flag may be given with -c to create an array parameter, or the -A flag to create an associative array.   If  the
+              type  of  an  existing  parameter does not match the type to be created, the parameter is unset and recreated.  The -g flag may be given to suppress warnings from the WARN_CREATE_GLOBAL and
+              WARN_NESTED_VAR options.
+
+              If an array or array slice is being edited, separator characters as defined in $IFS will be shown quoted with a backslash, as will backslashes themselves.  Conversely, when the edited  text
+              is split into an array, a backslash quotes an immediately following separator character or backslash; no other special handling of backslashes, or any handling of quotes, is performed.
+
+              Individual elements of existing array or associative array parameters may be edited by using subscript syntax on name.  New elements are created automatically, even without -c.
+
+              If  the  -p  flag is given, the following string will be taken as the prompt to display at the left.  If the -r flag is given, the following string gives the prompt to display at the right.
+              If the -h flag is specified, the history can be accessed from ZLE. If the -e flag is given, typing ^D (Control-D) on an empty line causes vared to exit immediately with  a  non-zero  return
+              value.
+
+              The  -M  option  gives  a keymap to link to the main keymap during editing, and the -m option gives a keymap to link to the vicmd keymap during editing.  For vi-style editing, this allows a
+              pair of keymaps to override viins and vicmd.  For emacs-style editing, only -M is normally needed but the -m option may still be used.  On exit, the previous keymaps will be restored.
+
+              Vared calls the usual `zle-line-init' and `zle-line-finish' hooks before and after it takes control. Using the -i and -f options, it is possible to replace these with other custom widgets.
+
+              If `-t tty' is given, tty is the name of a terminal device to be used instead of the default /dev/tty.  If tty does not refer to a terminal an error is reported.

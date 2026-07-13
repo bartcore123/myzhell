@@ -1,0 +1,11 @@
+
+(global-set-key "" (quote backward-word))
+(global-set-key "" (quote forward-word))
+(global-set-key "" (quote forward-line))
+(global-set-key "" (quote previous-line))
+(global-set-key "a" (quote backward-char))
+(global-set-key "s" (quote forward-line))
+(global-set-key "w" (quote previous-line))
+(global-set-key "d" (quote forward-char))
+(global-set-key "z" (quote kill-region))
+(global-set-key "" (quote ))

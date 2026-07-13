@@ -1,0 +1,313 @@
+nW(){
+	nano -myBiz --syntax=sh +${@:-1} ~/myshell/rc/linkdir/.winrc
+}
+\#W(){
+	print $@ >> ~/myshell/rc/linkdir/.winrc
+}
+
+moveBooks(){ M /mnt/c/Users/barth/Desktop/*.(mobi|epub|pdf|djvu|chm) /mnt/c/Users/barth/Books/ }
+moveMusic(){ M /mnt/c/Users/barth/Desktop/*.(mp3|wav|m4a|cue) /mnt/c/Users/barth/Music/ }
+moveTorrents(){ M /mnt/c/Users/barth/Desktop/*.(torrent|Torrent) /mnt/c/Users/barth/Documents/torrents/ }
+movePics(){ M /mnt/c/Users/barth/Desktop/*.(png|jpg|jpeg|gif) /mnt/c/Users/barth/Pictures/ }
+moveAll(){ moveBooks; moveMusic; moveTorrents; movePics }
+
+hash -d D=/mnt/c/Users/barth/Desktop
+hash -d W=/mnt/c/Users/barth
+hash -d C=/mnt/c
+hash -d PF86="/Program Files (x86)"
+hash -d x86="/Program Files (x86)"
+hash -d p86="/Program Files (x86)"
+hash -d P86="/Program Files (x86)"
+hash -d PF="/mnt/c/Program Files"
+##pwr(){ powercfg.exe $@ }
+
+#shutdown(){
+#	/mnt/c/Windows/System32/shutdown.exe $*;
+#}
+
+shutdown(){
+	cd /mnt/c/Users/barth/Desktop
+	local arguments
+	{
+		for X
+		do
+			print -- $X
+		done
+	} | sed -E 's/\b([a-zA-Z]+)\b/\/\1/' | read arguments
+	set -- ${arguments:-"/a"}
+	local shutdown_time
+	local shut
+	{
+		for X
+		do
+			print -- $X
+		done
+	} | grep --color=auto -aE -- '[0-9]+' | read shutdown_time
+	if [[ -n $shutdown_time ]]
+	then
+		shut=" /t $shutdown_time"
+	else
+		shut=""
+	fi
+	set -- ${@//<->/}
+	if [[ -n $@ ]]
+	then
+		set -- ${@//\-/\/}
+	else
+		set -- "/s"
+	fi
+	/mnt/c/Windows/System32/cmd.exe "/C" "shutdown ${*}$shut"
+}
+
+macro tl=tasklist.exe
+macro tk=taskkill.exe
+macro th=taskhostw.exe
+
+kp(){ taskkill.exe "/PID" "$*" }
+pk(){ taskkill.exe "/PID" "$*" }
+wk(){ taskkill.exe "/PID" "$*" }
+
+##pl(){ tl |grep --color=auto -aE -- "^${*}" >&2 |= '//^.*\s+([0-9]+) \w+.*$/\1/' |$ }
+'=.'()mntdrv $@
+'-.'(){
+	mountpoint . &&{ UMOUNTDIR=$PWD cd .. }
+	umount ${UMOUNTDIR:-${@:-/mnt/d}}
+}
+
+#	'-.'(){
+#		[[ $PWD == /mnt/d ]]&& cd ..
+#		umount ${@:-/mnt/d}
+#	}
+# cling(){ print -r -- $CUTBUFFER |/mnt/c/Windows/System32/clip.exe }
+zle -N cling
+bindkey '^[OR' cling
+hash -d x86=/mnt/c/Program\ Files\ \(x86\)
+hash -d WMP=/mnt/c/Program\ Files\ \(x86\)/Windows\ Media\ Player
+wmp(){ /mnt/c/Program\ Files\ \(x86\)/Windows\ Media\ Player/wmplayer.exe $@ }
+alias bup="cp -irL /mnt/c/Users/barth/Desktop/myshell.tar.xz /mnt/d/Storage/"
+macro mup=myshup
+hash -d startup=/mnt/c/Users/barth/AppData/Roaming/Microsoft/Windows/Start\ Menu/Programs/Startup
+macro mnt=mntdrv
+macro by=bupy
+macro bp=bupy
+alias bupy="cp -rL /mnt/c/Users/barth/Desktop/myshell.tar.xz /mnt/d/Storage/ &"
+macro mp="myshup -p"
+
+myshup(){
+	if [[ ! -n ${@:/^(\-p|\-\-no\-git(|\=(true|t|1)))} ]]
+	then
+		{
+			local olddir=$PWD cd ~G 
+		}
+		{
+			git add .;
+			git commit -m "${1:-"committing"}";
+			git push;
+		}
+		{
+			cd $olddir
+		}
+	fi
+	{
+		rm -r /mnt/c/Users/barth/Desktop/myshell
+		rm -r /mnt/c/Users/barth/Desktop/myshell.tar
+	}
+	{
+		cp -rL /root/myshell /mnt/c/Users/barth/Desktop
+	}
+	{
+		tar cf "/mnt/c/Users/barth/Desktop/myshell.tar" "/mnt/c/Users/barth/Desktop/myshell"
+	}
+	{
+		rm -r /mnt/c/Users/barth/Desktop/myshell
+		rm -r /mnt/c/Users/barth/Desktop/myshell.tar.xz
+	}
+	{
+		xz /mnt/c/Users/barth/Desktop/myshell.tar &
+	}
+}
+hash -d acro=/mnt/c/Program\ Files/Adobe/Acrobat\ DC/Acrobat
+Acrobat(){ /mnt/c/Program\ Files/Adobe/Acrobat\ DC/Acrobat/Acrobat.exe $@ }
+acrobat(){ /mnt/c/Program\ Files/Adobe/Acrobat\ DC/Acrobat/Acrobat.exe $@ }
+alias -s pdf=acrobat
+hash -d LVP=/mnt/c/Users/barth/Links/vids/vidFav
+'&'()cd /mnt/c/Users/barth/Desktop
+hash -d LVD=/mnt/c/Users/barth/Links/vids/daddy
+hash -d LV=/mnt/c/Users/barth/Links/vids
+hash -d LVC=/mnt/c/Users/barth/Links/vids/chix
+hash -d LVV=/mnt/c/Users/barth/Links/vids/vidz
+
+'#$'()/root/myshell/skrips/clipwrap $@
+'#!'()/root/myshell/skrips/pastewrap $@
+'=^' () {
+	git add .
+	git commit -m "${1:-"committing"}"
+}
+'^^' () {
+	git add .
+	git commit -m "${1:-"committing"}"
+}
+\&\&()myshup -p
+
+hash -d sm="/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs"
+hash -d SM="/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs"
+hash -d wsm="/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs"
+hash -d WSM="/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs"
+hash -d start="/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs"
+hash -d stup="/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs/Startup"
+hash -d startup="/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs/Startup"
+hash -d HearthstoneDeckTracker=/mnt/c/Users/barth/AppData/Local/HearthstoneDeckTracker
+
+',/=' () {
+	: >| /tmp/WIN_PROC_MATCH
+}
+hdt(){ /mnt/c/Users/barth/AppData/Local/HearthstoneDeckTracker/HearthstoneDeckTracker.exe $@ &! }
+cling(){
+	(
+		if [[ $PWD != /mnt/c/* ]]
+		then
+			cd /mnt/c/Users/barth/Desktop
+		fi
+		print -r -- $CUTBUFFER | /mnt/c/Windows/System32/clip.exe
+	)
+}
+zf(){
+	print -r -- $killring[@]
+}
+hs(){
+	/mnt/c/Users/barth/AppData/Local/HearthstoneDeckTracker/HearthstoneDeckTracker.exe 2>&1 >/dev/null &|
+	/mnt/c/Users/barth/Documents/AHK/scripts/hHearthstone.exe 2>&1 >/dev/null &|
+	"/mnt/c/Program Files (x86)/Hearthstone/Hearthstone Beta Launcher.exe" $@ 2>&1 >/dev/null &|
+}
+hash -d WPM=/tmp/WIN_PROC_MATCH
+hash -d PM=/tmp/WIN_PROC_MATCH
+hash -d Xmog=/mnt/c/Users/barth/Links/pics/X/Xmog
+
+# wowstuff
+battlenet(){
+	"/mnt/c/Program Files (x86)/Battle.net/Battle.net Launcher.exe" $@
+}
+wow(){
+	"/mnt/c/Program Files (x86)/World of Warcraft/World of Warcraft Launcher.exe" $@ &!
+}
+hash -d retail="/mnt/c/Program Files (x86)/World of Warcraft/_retail_"
+hash -d WTF=/mnt/c/Program\ Files\ \(x86\)/World\ of\ Warcraft/_retail_/WTF
+hash -d wtf=/mnt/c/Program\ Files\ \(x86\)/World\ of\ Warcraft/_retail_/WTF
+hash -d wowbk=/mnt/c/Users/barth/Documents/wowbackup/wtf/Account/71214912\#1
+hash -d schopslabk=/mnt/c/Users/barth/Documents/wowbackup/wtf/Account/71214912\#1/Defias\ Brotherhood/Schopsla
+hash -d schopsla=/mnt/c/Program\ Files\ \(x86\)/World\ of\ Warcraft/_retail_/WTF/Account/71214912\#1/Defias\ Brotherhood/Schopsla
+hash -d wowbksv=/mnt/c/Users/barth/Documents/wowbackup/wtf/Account/71214912\#1/SavedVariables
+hash -d wow=/mnt/c/Program\ Files\ \(x86\)/World\ of\ Warcraft/_retail_/WTF/Account/71214912\#1
+hash -d wowsv=/mnt/c/Program\ Files\ \(x86\)/World\ of\ Warcraft/_retail_/WTF/Account/71214912\#1/SavedVariables
+hash -d wowsc=/mnt/c/Program\ Files\ \(x86\)/World\ of\ Warcraft/_retail_/Screenshots
+# hash -d screenshots=/mnt/c/Users/barth/OneDrive/Afbeeldingen/Screenshots
+hash -d screenshots=/mnt/c/Users/barth/Pictures/screenshots
+
+hash -d TEMP=/mnt/c/Users/barth/AppData/Local/Temp
+hash -d temp=/mnt/c/Users/barth/AppData/Local/Temp
+hash -d .opera=/mnt/c/Users/barth/AppData/Local/Temp/.opera
+hash -d skyrim=/mnt/c/Program\ Files\ \(x86\)/Mr\ DJ/The\ Elder\ Scrolls\ V\ Skyrim\ Legendary\ Edition
+macro wowKeys=/mnt/c/Users/barth/Documents/AHK/scripts/wowKeys.exe
+macro wowkeys=/mnt/c/Users/barth/Documents/AHK/scripts/wowKeys.exe
+ky(){ /mnt/c/Users/barth/Documents/AHK/scripts/wowKeys.exe & }
+kky(){ tasklist.exe |grep --color=auto -anP -- wowKeys |awk '{ print $2 }' |read; taskkill.exe ${@:+"/F"} '/PID' $REPLY }
+iky () {
+	tasklist.exe | grep --color=auto -anP -- wowKeys | awk '{ print $2 }'
+}
+hash -d formulieren=/mnt/c/Users/barth/Documents/formulieren
+hash -d ingevuld=/mnt/c/Users/barth/Documents/formulieren/ingevuld
+kqweb () {
+	tasklist.exe | grep --color=auto -anP -- qweb | awk '{ print $2 }' | read
+	taskkill.exe ${@:+"/F"} '/PID' $REPLY
+}
+macro qwe=qweb
+macro kqwe=kqweb
+macro wq=ky
+
+END () {
+	if [[ $BUFFER == \%#\ #wq# ]]
+	then
+		kky
+		BUFFER= 
+	elif [[ ${BUFFER//[ -]/} == "" ]]
+	then
+		BUFFER=${BUFFER// /} 
+		LBUFFER=${LBUFFER//[-]/\- } 
+		LBUFFER+="%" 
+	elif [[ $CURSOR != 0 && $CURSOR != $#BUFFER ]]
+	then
+		zle pass-bracket
+	else
+		zle unspace-end-of-line
+	fi
+}
+hh () {
+	/mnt/c/Users/barth/Documents/AHK/scripts/hHearthstone.exe &
+}
+hhy () {
+	tasklist.exe | grep --color=auto -anP -- '[hH][hH]earthstone' | awk '{ print $2 }' | read
+	taskkill.exe ${@:+"/F"} '/PID' $REPLY
+}
+macro hy=hhy
+hash -d PT=/mnt/c/Users/barth/Downloads/PopcornTime
+hash -d popcorn=/mnt/c/Users/barth/Downloads/PopcornTime
+eas () {
+	tasklist.exe | grep --color=auto -anPi -- 'easywindowdrag' | awk '{ print $2 }' | read
+	taskkill.exe ${@:+"/F"} '/PID' $REPLY
+}
+
+hash -d wa=/mnt/c/Program\ Files\ \(x86\)/World\ of\ Warcraft/_retail_/Interface/AddOns
+hash -d addons=/mnt/c/Program\ Files\ \(x86\)/World\ of\ Warcraft/_retail_/Interface/AddOns
+
+picdir () {
+	date '+%d-%m-%Y' | read D
+	mkdir -p ~pix/$D
+}
+
+hash -d HLmods=/mnt/c/Program\ Files\ \(x86\)/Steam/steamapps/common/Hogwarts\ Legacy/Phoenix/Binaries/Win64/Mods
+hash -d hlmods=/mnt/c/Program\ Files\ \(x86\)/Steam/steamapps/common/Hogwarts\ Legacy/Phoenix/Binaries/Win64/Mods
+hash -d hlmod=/mnt/c/Program\ Files\ \(x86\)/Steam/steamapps/common/Hogwarts\ Legacy/Phoenix/Binaries/Win64/Mods
+hash -d HLmod=/mnt/c/Program\ Files\ \(x86\)/Steam/steamapps/common/Hogwarts\ Legacy/Phoenix/Binaries/Win64/Mods
+
+hash -d HL=/mnt/c/Program\ Files\ \(x86\)/Steam/steamapps/common/Hogwarts\ Legacy
+hash -d hl=/mnt/c/Program\ Files\ \(x86\)/Steam/steamapps/common/Hogwarts\ Legacy
+
+hash -d hlpaksmod=/mnt/c/Program\ Files\ \(x86\)/Steam/steamapps/common/Hogwarts\ Legacy/Phoenix/Content/Paks/\~mod
+
+stashpix () {
+	date '+%d-%m-%Y' | read dir
+	mkdir -p ~pix/$dir
+	mv -i ~D/*.(png|jpg|webp|jpeg|avif|jfif|gif) ~pix/$dir
+}
+
+macro ttt='clear && shutdown h'
+macro mop=mvpix
+mvpix () {
+	date '+%d-%m-%Y' | read dir
+	mkdir -p ~pix/$dir
+	mv -i ~D/*.(png|jpg|webp|jpeg|avif|jfif|gif) ~pix/$dir
+}
+
+mvsims () {
+	mv -i ~D/*raidbots* /mnt/c/Users/barth/Desktop/wowsims/
+}
+nd wowsims=/mnt/c/Users/barth/Desktop/wowsims
+nd LC=/mnt/c/Users/barth/Links/comic
+hash -d LVF=/mnt/c/Users/barth/Links/vids/femdom
+
+hash -d wp=/mnt/c/Users/barth/Desktop/wowPlayers
+rmdup () {
+	rm *\(<->\).[^.]##
+}
+hash -d WVC=/mnt/c/Users/barth/Videos/Captures
+hash -d captures=/mnt/c/Users/barth/Videos/Captures
+hash -d st=/mnt/d/storage
+hash -d stv=/mnt/d/storage/videos
+alias AutoHotkey='"/mnt/c/Program Files/AutoHotkey/AutoHotkey.exe"'
+macro ahk=AutoHotkey
+hash -d pf='/mnt/c/Program Files'
+yt(){ { /root/myshell/skrips/pastewrap |// 's/youtube/&pp/' } |/root/myshell/skrips/clipwrap }
+hash -d sc=/mnt/c/Users/barth/Pictures/screenshots
+hash -d jckf=/mnt/d/Storage/jckf
+hash -d jk=/mnt/d/Storage/jckf
+macro mnd=mntdrv

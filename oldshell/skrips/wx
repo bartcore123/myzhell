@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+if [[ $PWD != /mnt/[cdf]/* && ! -n $@ ]]
+then
+	cd /mnt/c/Users/barth/Desktop
+fi
+
+/mnt/c/Windows/explorer.exe "$(wslpath -w ${@:-"$PWD"})"
+

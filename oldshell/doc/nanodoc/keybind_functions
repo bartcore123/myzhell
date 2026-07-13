@@ -1,0 +1,433 @@
+       Valid function names to be bound are:
+
+          help
+            Invokes the help viewer.
+
+          cancel
+            Cancels the current command.
+
+          exit
+            Exits from the program (or from the help viewer or file browser).
+
+          writeout
+            Writes the current buffer to disk, asking for a name.
+
+          savefile
+            Writes the current file to disk without prompting.
+
+          insert
+            Inserts  a  file  into  the  current buffer (at the current cursor
+            position), or into a new buffer when option multibuffer is set.
+
+          whereis
+            Starts a forward search for text in the current buffer --  or  for
+            filenames  matching  a  string  in  the  current  list in the file
+            browser.
+
+          wherewas
+            Starts a backward search for text in the current buffer -- or  for
+            filenames  matching  a  string  in  the  current  list in the file
+            browser.
+
+          findprevious
+            Searches the next occurrence in the backward direction.
+
+          findnext
+            Searches the next occurrence in the forward direction.
+
+          replace
+            Interactively replaces text within the current buffer.
+
+          cut
+            Cuts and stores the current line (or the marked region).
+
+          copy
+            Copies the current line (or the marked  region)  without  deleting
+            it.
+
+          paste
+            Pastes  the  currently  stored text into the current buffer at the
+            current cursor position.
+
+          zap
+            Throws away the current line (or the marked region).  (This  func-
+            tion is bound by default to &lt;Meta+Delete&gt;.)
+
+          chopwordleft
+            Deletes from the cursor position to the beginning of the preceding
+            word.  (This function is bound by default to  &lt;Shift+Ctrl+Delete&gt;.
+            If  your  terminal  produces ^H for &lt;Ctrl+Backspace&gt;, you can make
+            &lt;Ctrl+Backspace&gt; delete the word to the  left  of  the  cursor  by
+            rebinding ^H to this function.)
+
+          chopwordright
+            Deletes  from  the  cursor  position  to the beginning of the next
+            word.  (This function is bound by default to &lt;Ctrl+Delete&gt;.)
+
+          cutrestoffile
+            Cuts all text from the cursor position till the end of the buffer.
+
+          mark
+            Sets the mark at the current position, to  start  selecting  text.
+            Or, when it is set, unsets the mark.
+
+          location
+            Reports  the  current  position  of  the cursor in the buffer: the
+            line, column, and character positions.   (The  old  name  of  this
+            function, 'curpos', is deprecated.)
+
+          wordcount
+            Counts  and  reports on the status bar the number of lines, words,
+            and characters in the current buffer (or in the marked region).
+
+          execute
+            Prompts for a program to execute.  The program's  output  will  be
+            inserted into the current buffer (or into a new buffer when M-F is
+            toggled).
+
+          speller
+            Invokes a spell-checking program, either the  default  hunspell(1)
+            or GNU spell(1), or the one defined by --speller or set speller.
+
+          formatter
+            Invokes  a  full-buffer-processing  program  (if the active syntax
+            defines one).
+
+          linter
+            Invokes a syntax-checking program (if the  active  syntax  defines
+            one).
+
+          justify
+            Justifies  the  current paragraph (or the marked region).  A para-
+            graph is a group of contiguous lines that, apart from possibly the
+            first  line,  all  have  the same indentation.  The beginning of a
+            paragraph is detected by either this lone line  with  a  differing
+            indentation or by a preceding blank line.
+
+          fulljustify
+            Justifies the entire current buffer (or the marked region).
+
+          indent
+            Indents  (shifts  to  the  right)  the  current line or the marked
+            lines.
+
+          unindent
+            Unindents (shifts to the left) the  current  line  or  the  marked
+            lines.
+
+          comment
+            Comments or uncomments the current line or the marked lines, using
+            the comment style specified in the active syntax.
+
+          complete
+            Completes (when possible) the fragment before the cursor to a full
+            word found elsewhere in the current buffer.
+
+          left
+            Goes left one position (in the editor or browser).
+
+          right
+            Goes right one position (in the editor or browser).
+
+          up
+            Goes one line up (in the editor or browser).
+
+          down
+            Goes one line down (in the editor or browser).
+
+          scrollup
+            Scrolls  the  viewport  up  one  row (meaning that the text slides
+            down) while keeping the cursor in the same text position, if  pos-
+            sible.   (This  function  is  bound  by  default  to &lt;Alt+Up&gt;.  If
+            &lt;Alt+Up&gt;  does  nothing  on  your  Linux  console,  see  the  FAQ:
+            &lt;https://nano-editor.org/dist/latest/faq.html#4.1&gt;.)
+
+          scrolldown
+            Scrolls  the  viewport  down one row (meaning that the text slides
+            up) while keeping the cursor in the same text position, if  possi-
+            ble.  (This function is bound by default to &lt;Alt+Down&gt;.)
+
+          center
+            Scrolls the line with the cursor to the middle of the screen.
+
+          prevword
+            Moves the cursor to the beginning of the previous word.
+
+          nextword
+            Moves the cursor to the beginning of the next word.
+
+          home
+            Moves the cursor to the beginning of the current line.
+
+          end
+            Moves the cursor to the end of the current line.
+
+          beginpara
+            Moves the cursor to the beginning of the current paragraph.
+
+          endpara
+            Moves the cursor to the end of the current paragraph.
+
+          prevblock
+            Moves  the  cursor  to  the  beginning of the current or preceding
+            block of text.  (Blocks are separated by one or more blank lines.)
+
+          nextblock
+            Moves the cursor to the beginning of the next block of text.
+
+          pageup
+            Goes up one screenful.
+
+          pagedown
+            Goes down one screenful.
+
+          firstline
+            Goes to the first line of the file.
+
+          lastline
+            Goes to the last line of the file.
+
+          gotoline
+            Goes to a specific line (and column if specified).  Negative  num-
+            bers count from the end of the file (and end of the line).
+
+          findbracket
+            Moves  the  cursor  to the bracket (or brace or parenthesis, etc.)
+            that matches (pairs) with the  one  under  the  cursor.   See  set
+            matchbrackets.
+
+          anchor
+            Places  an  anchor at the current line, or removes it when already
+            present.  (An anchor is visible when line numbers are activated.)
+
+          prevanchor
+            Goes to the first anchor before the current line.
+
+          nextanchor
+            Goes to the first anchor after the current line.
+
+          prevbuf
+            Switches to editing/viewing the previous buffer when multiple buf-
+            fers are open.
+
+          nextbuf
+            Switches  to editing/viewing the next buffer when multiple buffers
+            are open.
+
+          verbatim
+            Inserts the next keystroke verbatim into the file.
+
+          tab
+            Inserts a tab at the current cursor location.
+
+          enter
+            Inserts a new line below the current one.
+
+          delete
+            Deletes the character under the cursor.
+
+          backspace
+            Deletes the character before the cursor.
+
+          recordmacro
+            Starts the recording of keystrokes -- the keystrokes are stored as
+            a macro.  When already recording, the recording is stopped.
+
+          runmacro
+            Replays the keystrokes of the last recorded macro.
+
+          undo
+            Undoes  the  last  performed  text  action (add text, delete text,
+            etc).
+
+          redo
+            Redoes the last undone action (i.e., it undoes an undo).
+
+          refresh
+            Refreshes the screen.
+
+          suspend
+            Suspends the editor (if the suspending function  is  enabled,  see
+            the suspendable toggle item below).
+
+          casesens
+            Toggles  whether  searching/replacing ignores or respects the case
+            of the given characters.
+
+          regexp
+            Toggles whether searching/replacing uses literal strings or  regu-
+            lar expressions.
+
+          backwards
+            Toggles whether searching/replacing goes forward or backward.
+
+          older
+            Retrieves the previous (earlier) entry at a prompt.
+
+          newer
+            Retrieves the next (later) entry at a prompt.
+
+          flipreplace
+            Toggles between searching for something and replacing something.
+
+          flipgoto
+            Toggles between searching for text and targeting a line number.
+
+          flipexecute
+            Toggles between inserting a file and executing a command.
+
+          flippipe
+            When  executing  a command, toggles whether the current buffer (or
+            marked region) is piped to the command.
+
+          flipnewbuffer
+            Toggles between inserting into the current buffer and into  a  new
+            empty buffer.
+
+          flipconvert
+            When  reading  in  a file, toggles between converting and not con-
+            verting it from DOS/Mac format.  Converting is the default.
+
+          dosformat
+            When writing a file, switches to writing a DOS format (CR/LF).
+
+          macformat
+            When writing a file, switches to writing a Mac format.
+
+          append
+            When writing a file, appends to the end instead of overwriting.
+
+          prepend
+            When writing a file, 'prepends' (writes at the beginning)  instead
+            of overwriting.
+
+          backup
+            When writing a file, creates a backup of the current file.
+
+          discardbuffer
+            When  about  to  write  a file, discard the current buffer without
+            saving.  (This function is  bound  by  default  only  when  option
+            --saveonexit is in effect.)
+
+          browser
+            Starts  the  file  browser (in the Read File and Write Out menus),
+            allowing to select a file from a list.
+
+          gotodir
+            Goes to a directory to be specified, allowing to  browse  anywhere
+            in the filesystem.
+
+          firstfile
+            Goes to the first file in the list when using the file browser.
+
+          lastfile
+            Goes to the last file in the list when using the file browser.
+
+          nohelp
+            Toggles  the  presence of the two-line list of key bindings at the
+            bottom of the screen.  (This toggle is special: it is available in
+            all menus except the help viewer and the linter.  All further tog-
+            gles are available in the main menu only.)
+
+          constantshow
+            Toggles the constant display of  the  current  line,  column,  and
+            character positions.
+
+          softwrap
+            Toggles the displaying of overlong lines on multiple screen lines.
+
+          linenumbers
+            Toggles the display of line numbers in front of the text.
+
+          whitespacedisplay
+            Toggles the showing of whitespace.
+
+          nosyntax
+            Toggles syntax highlighting.
+
+          smarthome
+            Toggles the smartness of the Home key.
+
+          autoindent
+            Toggles  whether a newly created line will contain the same amount
+            of leading whitespace as the preceding line -- or as the next line
+            if the preceding line is the beginning of a paragraph.
+
+          cutfromcursor
+            Toggles  whether cutting text will cut the whole line or just from
+            the current cursor position to the end of the line.
+
+          breaklonglines
+            Toggles whether long lines will be hard-wrapped to the next  line.
+            (The old name of this function, 'nowrap', is deprecated.)
+
+          tabstospaces
+            Toggles whether typed tabs will be converted to spaces.
+
+          mouse
+            Toggles mouse support.
+
+          suspendable
+            Toggles  whether  the suspend keystroke (^Z by default) will actu-
+            ally suspend the editor.  (The old name of  this  function,  'sus-
+            pendenable', is deprecated.)
+
+
+       Valid menu sections are:
+
+          main
+            The main editor window where text is entered and edited.
+
+          help
+            The help-viewer menu.
+
+          search
+            The search menu (AKA whereis).
+
+          replace
+            The 'search to replace' menu.
+
+          replacewith
+            The 'replace with' menu, which comes up after 'search to replace'.
+
+          yesno
+            The 'yesno' menu, where the Yes/No/All/Cancel question is asked.
+
+          gotoline
+            The 'goto line (and column)' menu.
+
+          writeout
+            The 'write file' menu.
+
+          insert
+            The 'insert file' menu.
+
+          browser
+            The  'file  browser'  menu,  for  selecting a file to be opened or
+            inserted or written to.
+
+          whereisfile
+            The 'search for a file' menu in the file browser.
+
+          gotodir
+            The 'go to directory' menu in the file browser.
+
+          execute
+            The menu for inserting the output from an external command, or for
+            filtering  the  buffer  (or the marked region) through an external
+            command, or for executing one of several tools.  (The old form  of
+            this menu name, 'extcmd', is deprecated.)
+
+          spell
+            The menu of the integrated spell checker where the user can edit a
+            misspelled word.
+
+          linter
+            The linter menu, which allows jumping  through  the  linting  mes-
+            sages.
+
+          all
+            A  special name that encompasses all menus.  For bind it means all
+            menus where the specified function exists; for unbind it means all
+            menus where the specified key exists.
+

@@ -1,0 +1,15 @@
+mydoc(){
+	select F in ~doc/**$~@*
+	do
+	if [[ -d $F ]]
+	then
+		select F in $F
+		do
+			less -rK "$F"
+			break
+		done
+	fi
+		less -rK "$F"
+		break
+	done
+}

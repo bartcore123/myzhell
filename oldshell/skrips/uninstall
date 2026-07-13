@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+rm /etc/zsh(@);
+rm ~/.zshrc(@);
+
+[[ $* =~ '(h|a)' ]]&&rm ~/.zsh_history;
+[[ $* =~ '(e|a)' ]]&&rm ~/.emacs;
+[[ $* =~ '(s|a)' ]]&&rm ~/.spacemacs;
+[[ $* =~ '(w|a)' ]]&&rm -r ~/workspace(@);
+
+for X in /root/myshell/prog/*(:t);rm /bin/$X;
+return 1;

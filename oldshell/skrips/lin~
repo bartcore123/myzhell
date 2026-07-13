@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+lin () {
+	file="$@[-1]" 
+	argv[-1]=() 
+	while [[ -n $@ ]]
+	do
+		cat $file | head -$1 | tail -1
+		shift
+	done
+}

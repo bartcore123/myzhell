@@ -1,0 +1,636 @@
+setopt noaliases
+
+##'@'(){ perl6 $@ }
+##\@@(){ perl6 $@ }
+##'?'(){ perl $@ }
+##'??'(){ perl $@ }
+##\**(){ setopt glob; ls -Ad $~@; setopt noglob }
+##\*(){ setopt glob; ls -bAFd --color=auto $~@; setopt noglob }
+'GL'()grep -P $@
+##'^'(){ setopt glob; I=0; [[ $~@ ]]&& print -z "for X in $@;{ " || print -z "for X in "; setopt noglob }
+
+'.'(){ [[ $@ ]] && source $@ || pwd -P }
+## './'(){ [[ $@ ]]&& ls -bAd $@ || ls -AF --color=auto }
+'€'(){ I=0; [[ $@ ]]&& print -z "for X in $@;{ " || print -z "for X in " }
+MYSED(){  }
+
+\#A(){ print -r $@ >> /etc/zsh/alias }
+\#D(){ print -r $@ >> /etc/zsh/nd }
+\#Z(){ print -r $@ >> /etc/zsh/zshrc }
+\#E(){ print -r $@ >> /etc/zsh/zshenv }
+\#F(){ print -r $@ >> /etc/zsh/fnc }
+\#O(){ print -r $@ >> /etc/zsh/opt }
+\#T(){ print -r $@ >> /etc/zsh/tmp }
+\#R(){ print -r export $@ >> /etc/zsh/zshenv }
+\#B(){ print -r $@ >> /etc/zsh/bk }
+\#L(){ print -r $@ >> /etc/zsh/zlogin }
+\#M(){ print -r $@ >> /etc/zsh/macro }
+\#C(){ print -r $@ >> /etc/zsh/macro }
+
+B(){ setopt glob; mount --bind $~@; setopt noglob }
+C(){ setopt glob; cp -rb $~@; setopt noglob }
+cl(){ clear; $@ }
+ed(){ n $@ }
+euroks(){ bindkey -s '^[\$' € }
+##g()grep $@
+gitgo(){ git add --all; git commit -a -m ":"; git push;  }
+gropt(){ $@ --help | grep -P '(^|){1}s?[^-a-zA-Z[:punct:]][-]w{1}[,s]' }
+i()ifconfig $@
+j()jobs -dl
+K()kill -9 $@
+k(){ skill ${@:--L} }
+la()ls -QlaShFL --color=always --quoting-style=shell
+L(){ ls -qFLAhd --color=auto $~@ --quoting-style=shell }
+LL(){ ls -qFLAhdl --color=auto $~@ --quoting-style=shell }
+ll(){ ls -QalhF --color=auto $@ --quoting-style=shell }
+l(){ ls -QAF --color=auto $@ --quoting-style=shell }
+mksc(){ echo "#!/bin/${2:-zsh}"$'\n' > $1; chmod +x $1; }
+##mkx()chmod +x $@
+m()micro $@
+mi()micro $@
+#M(){ setopt glob; mv -b $~@; setopt noglob }
+mT(){ micro /etc/zsh/opt }
+nd()hash -d ${@:-'-L'};
+
+
+nA(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/alias }
+nD(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/nd }
+nL(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/le }
+nF(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/fnc }
+nO(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/opt }
+nT(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/tmp }
+nR(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/zshenv }
+nE(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/zshenv }
+nB(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/bk }
+nZ(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/zshrc }
+nL(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/zlogin }
+nM(){ nano -myBiz --syntax=sh +${@:-1} /etc/zsh/macro }
+nN(){ nano -myBiz --syntax=sh +${@:-1} /root/myshell/rc/linkdir/.nanorc }
+
+mA(){ micro /etc/zsh/alias }
+mD(){ micro /etc/zsh/nd }
+mE(){ micro /etc/zsh/le }
+mF(){ micro /etc/zsh/fnc }
+mO(){ micro /etc/zsh/opt }
+mT(){ micro /etc/zsh/tmp }
+mR(){ micro /etc/zsh/zshenv }
+mB(){ micro /etc/zsh/bk }
+mZ(){ micro /etc/zsh/zshrc }
+mL(){ micro /etc/zsh/zlogin }
+mM(){ micro /etc/zsh/zlogin }
+
+#n(){
+#	print -r -- $@ | sed -E 's/[,]([a-zA-Z0-9]*)/\1/p;d' | read NSYN
+#	set -- "${@//[,][0-9a-zA-Z]/}"
+#	\nano -mi --syntax=${NSYN:-"sh"} $@
+#}
+
+nodmesg(){ dmesg --console-off }
+p()ps -aft $@
+
+#'#!'(){ print -sr -- "$(</dev/stdin)" }
+#'#$'(){ print -zr -- $(</dev/stdin) }
+#'#'(){ print -r -- ${@:-"$(</dev/stdin)"} }
+'#:'(){ print -ur -- 12 ${@:-"$(</dev/stdin)"} }
+
+'#'(){ print -r -- ${@} }
+'#!'(){	print -sr -- ${@:-"$(</dev/stdin)"} }
+'#@'(){	print -zr -- ${@:-"$(</dev/stdin)"} }
+'##'(){ print -- ${@:-"$(</dev/stdin)"} }
+'#%'(){ print -P -- ${@:-"$(</dev/stdin)"} }
+'#:'(){ print -lr -- ${@:-"$(</dev/stdin)"} }
+'#&'(){ print -ur -- 15 ${@:-"$(</dev/stdin)"} }
+'#^'(){ print -Sr -- ${@:-"$(</dev/stdin)"} }
+'#~'(){ PAT="$1"; shift; print -m -- "$PAT" ${@:-"$(</dev/stdin)"} }
+'#?'(){
+	if [[ ${@:/^((-u)|(--update))} ]]
+	then
+		sed -rn '/^[''"]?[#][''"]? ?\(\)/,/^[''"]?[#][~][''"]? ?\(\)/p' ~ZF >| ~Z/printEzelsbrug.txt
+		which -s '#?' >> ~Z/printEzelsbrug.txt
+	else
+		cat /etc/zsh/printEzelsbrug.txt
+	fi
+}
+
+q()googler $@
+redd()redshift -O 6500
+redn()redshift -O 4500
+R(){ setopt glob; rm -r $~@; setopt noglob; }
+s2e(){ setkeycodes e05b 1;[[ $1 =~ m ]]&& setkeycodes e05d 1 }
+s(){ setopt glob; du -hc $@; setopt noglob }
+sl()ln -sb $@
+ua()unalias $@;
+#wh()which -s $@
+#z()jobs -dl $@
+ff()firefox $@
+fln(){ firefox $(< $* | sed -En 's/^URL=(.+?)$/\1/p') }
+disp(){ [[ $@ ]]&&export DISPLAY=:$@||echo $DISPLAY; }
+L(){ setopt glob; less -r $@; setopt noglob }
+LL(){ ls -balhF --show-control-chars --color=always $@ |less -r $@ }
+unw()unworkable $@
+xfce()startxfce4
+fds()fdisk ${@:--l}
+CPROJ(){ cd ~C; alias I='${@:-${ed}} ~C/proj.c'; alias A='~C/a.out' ; alias O='cc ~C/proj.c' }
+em()emacs $@
+'//-'(){ sed -En -f/tmp/sedfile $@ | tee /tmp/output }
+hotspot()nmcli device wifi hotspot ssid heetplekje password qwer1234
+fdl(){ fdisk -l }
+mate()xinit mate-session -- :0
+temp()acpi -t
+chrome()google-chrome --no-sandbox
+mhd()mount /dev/sda1 /mnt
+jupy(){ jupyter notebook --allow-root & }
+cstm(){ source $HOME/myshell/rc/custom }
+unfunction em
+winrc(){ source ~/myshell/rc/linkdir/.winrc }
+xx(){ exit $@ }
+msam(){ mv ~sa/*(m4a|mp3|wav|flac|wma) ~sa/musiek }
+
+c()clear
+rl()readlink $@
+line(){ cat $2 |head -$1 |tail -1 }
+mvpix(){ setopt glob; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* /mnt/c/Users/barth/Desktop; setopt noglob; }
+zh(){ <~/.zsh_history|tail -2|head -1 }
+
+\#D(){ print -r $@ |sed 's/nd/hash \-d/' >> /etc/zsh/nd }
+mvhsc(){ setopt glob; mv -b /mnt/c/Users/barth/Desktop/*Hearthstone* /mnt/c/Users/barth/Desktop/HS\ scrsht\ Unsorted/; setopt noglob }
+
+CMD(){ /mnt/c/Windows/System32/cmd.exe $* }
+cmd(){
+	[[ $* ]]&& ARG="/c $*";
+	/mnt/c/Windows/System32/cmd.exe "$ARG";
+}
+
+# mvpix(){ [[ $# = 0 ]]&& hsFolder=/mnt/c/Users/barth/Desktop/HS scrsht Unsorted || hsFolder=/mnt/c/Users/barth/Desktop; setopt glob; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* $hsFolder; setopt noglob; }
+
+mvpix () { [[ $# = 0 ]] && hsFolder='/mnt/c/Users/barth/Desktop/HS scrsht Unsorted' || hsFolder='/mnt/c/Users/barth/Desktop'; setopt glob; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* $hsFolder; setopt noglob }
+lspix(){ * ./*.(png|jpg|webp|jpeg|avif) }
+
+# \;(){ setopt extendedglob }
+# \;\;(){ unsetopt extendedglob }
+#,.(){ setopt extendedglob }
+#,,.(){ unsetopt extendedglob }
+
+#########################################################################################################################################################################
+
+\**(){ ; ls -Ad $~@;  }
+\*(){ ; ls -bAFd --color=auto $~@;  }
+'^'(){ ; I=0; [[ $~@ ]]&& print -z "for X in $@;{ " || print -z "for X in ";  }
+B(){ ; mount --bind $~@;  }
+C(){ ; cp -rb $~@;  }
+L(){ ; ls -qFLAhd --color=auto $~@;  }
+LL(){ ; ls -qFLAhdl --color=auto $~@;  }
+M(){ ; mv -b $~@;  }
+R(){ ; rm -r $~@; ; }
+s(){ ; du -hc $@;  }
+L(){ ; less -r $@;  }
+mvpix(){ ; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b '' /mnt/c/Users/barth/Desktop/pix/*Hearthstone* /mnt/c/Users/barth/Desktop; ; }
+mvpgn(){ ; [[ -e /mnt/c/Users/barth/Desktop/*.pgn ]]&& mv -b /mnt/c/Users/barth/Desktop/*.pgn /mnt/c/Users/barth/Documents/pgn;  }
+mvhsc(){ ; mv -b /mnt/c/Users/barth/Desktop/*Hearthstone* /mnt/c/Users/barth/Desktop/HS\ scrsht\ Unsorted/;  }
+# mvpix(){ [[ $# = 0 ]]&& hsFolder=/mnt/c/Users/barth/Desktop/HS scrsht Unsorted || hsFolder=/mnt/c/Users/barth/Desktop; ; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* $hsFolder; ; }
+mvpix () { [[ $# = 0 ]] && hsFolder='/mnt/c/Users/barth/Desktop/HS scrsht Unsorted' || hsFolder='/mnt/c/Users/barth/Desktop'; ; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* $hsFolder;  }
+
+bod(){ which $@ |tail +2 |head -n -1 |sed 's/^[[:space:]]//g' }
+mvbooks(){ mv -b /mnt/c/Users/barth/Desktop/*.(pdf|epub) /mnt/c/Users/barth/Desktop/books }
+
+
+\* () {	noglob ls -bAFd --color=auto $~@ }
+\** () {	setopt glob
+	ls -Ad $~@
+	setopt noglob }
+
+folsize(){ (){ sort -hr =(for X in $@;do du -h $X;done) } ./*(/) }
+
+folsize(){ (){ sort -hr =(for X in $@;do du -h $X;done) } ${*:-"."}/*(/) }
+
+
+setopt aliases
+sbk()source /etc/zsh/bk
+##\#R(){ [[ $@ ]]&& print -r export $@ >> /etc/zsh/zshenv }
+unfunction M C R L sl k K B
+
+
+\@A(){ print $@ >> /etc/zsh/alias }
+\@D(){ print $@ >> /etc/zsh/nd }
+\@E(){ print $@ >> /etc/zsh/le }
+\@F(){ print $@ >> /etc/zsh/fnc }
+\@O(){ print $@ >> /etc/zsh/opt }
+\@T(){ print $@ >> /etc/zsh/tmp }
+\@R(){ print $@ >> /etc/zsh/zshenv }
+\@RE(){ print export $@ >> /etc/zsh/zshenv }
+\@B(){ print $@ >> /etc/zsh/bk }
+\@L(){ print $@ >> /etc/zsh/zlogin }
+\@Z(){ print $@ >> /etc/zsh/zshrc }
+\@M(){ print $@ >> /etc/zsh/macro }
+\@C(){ print $@ >> /etc/zsh/macro }
+'@$'(){ print -z $(</dev/stdin) }
+## '#@'(){ print -f $@ }
+'@%'(){ print -P $@ }
+'@:'(){ print -u 12 $@ }
+'@&'(){ print -u 15 $@ }
+'@^'(){ print -z $@ }
+'@?'(){ cat /etc/zsh/printEzelsbrug.txt }
+
+mvpix(){ [[ $# = 0 ]]&& hsFolder='/mnt/c/Users/barth/Desktop/HS scrsht Unsorted' || hsFolder='/mnt/c/Users/barth/Desktop'; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif|gif|jfif) /mnt/c/Users/barth/Desktop/pix; (){ [[ $@ ]]&& mv -b $@ $hsFolder } /mnt/c/Users/barth/Desktop/pix/*Hearthstone* }
+rls(){ (){ for X in $@;do print $'
+'$X; readlink $X;done } *(@) }
+rls(){ (){ for X in $@;do print -n $X': '; readlink $X;done } *(@) }
+
+unfunction nd
+
+#clPix(){ (){ noglob zmv -v '(*)opdownload' '$1' } ; (){ noglob zmv -v '(*)_large' '$1' } }
+clpix(){ (){ noglob zmv -v '(*)(opdownload|_large|\~)' '$1' } }
+explorer()/mnt/c/Windows/explorer.exe $@
+\@W(){ wslpath $@ }
+\@S(){ wslpath -w $@ }
+
+
+nRC(){ nano -myBiz --syntax=sh +${@:-1} ~/.nanorc }
+zmp(){
+	[[ -n $zml_parameter ]] || zml_parameter=(${$(zmodload -lF zsh/parameter)[@]/'+p:'/}) 
+}
+
+##\#Z(){ print -r export $@ >> /etc/zsh/zshenv }
+pot(){ (){ "/mnt/c/Program Files/DAUM/PotPlayer/PotPlayerMini64.exe" "/insert" $@ & } $([[ $@ ]]&& wslpath -w $@;) 2>&1 >/dev/null }
+function acp() {
+  git add .
+  git commit -m "${1:-"committing"}"
+  git push
+}
+
+#G(){ noglob grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox -En $@ }
+'--'(){ print -- $@ }
+
+notepad(){ /mnt/c/Windows/System32/notepad.exe ${@//\-/\/} & }
+
+listmacros(){ alias | G "<(${(j:|:)macros[@]})=" }
+
+scanz(){ G=$@; scanf /etc/zsh/alias /etc/zsh/bk /etc/zsh/dotzrc /etc/zsh/fnc /etc/zsh/le /etc/zsh/nd /etc/zsh/opt /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshrc }
+
+function  rln Rln rmln sn sln  { noglob sed -E 's/^[0-9]*\:(.*)/\1/g' < ${@:-/dev/stdin}; }
+
+tidyhist();{ print -r -- ${(F)${(f)"$(</root/.zsh_history G '\|\:')"[@]}//*[;]/} }
+mvvids(){
+mv ${@:-~D}/(|.)*.(mp4|mkv|m4a|wmv|avi) ~D/mp4
+}
+
+#\- () {
+#	if [[ -n $1 ]]
+#	then
+#		dirs "$@"
+#	else
+#		dirs -v | head -n 10
+#	fi
+#}
+
+'+'()awk $@
+compdef -- '+'=awk
+
+#function bkchar bkc bkchars () { print -r -- ${@:-$(</dev/stdin)} | noglob sed -En 's/\$['']\\033['']/\^\[/gp' }
+
+"~" () {
+	if [[ -n $1 ]]
+	then
+		dirs "$@"
+	else
+		dirs -v | head -n 10
+	fi
+}
+
+dirz(){
+	if [[ -n $1 ]]
+	then
+		dirs "$@"
+	else
+		dirs -v | head -n 10
+	fi
+}
+#'-'(){
+#	if [[ -n $1 ]]
+#	then
+#		dirs "$@"
+#	else
+#		dirs -v | head -n 10
+#	fi
+#}
+zt()bindkey '^[OP' $@
+zt(){
+	K='^[OP'
+	[[ $NUMERIC == 1 ]]&& K='^[OP'
+	[[ $NUMERIC == 2 ]]&& K='^[OQ'
+	[[ $NUMERIC == 3 ]]&& K='^[OR'
+	[[ $NUMERIC == 4 ]]&& K='^[OS'
+	[[ $NUMERIC == 5 ]]&& K='^[[15~'
+	[[ $NUMERIC == 6 ]]&& K='^[[17~'
+	[[ $NUMERIC == 7 ]]&& K='^[[18~'
+	[[ $NUMERIC == 8 ]]&& K='^[[19~'
+	[[ $NUMERIC == 9 ]]&& K='^[[20~'
+	[[ $NUMERIC == 10 ]]&& K='^[[21~'
+	[[ $NUMERIC == 11 ]]&& K=''
+	[[ $NUMERIC == 12 ]]&& K='^[[24~'
+	bindkey "$K" $@
+}
+f(){
+	[[ $@ ]]&& printf $@ || fg;
+}
+compdef f=printf
+
+argv-to-pospar () {
+	for X in {1..$#}
+	do
+		# "$X=$@[$X]" >> ./pospar
+	done
+}
+load () {
+	argv=($(</root/myshell/rc/etc/zsh/pospar))
+}
+
+\ ()clear $@
+\;()jobs -${@:-"dl"}
+
+'#*'(){ (){ print -- $# } (|.)* }
+'#.'(){ (){ print -- $# } (|.)* }
+potname () {
+	noglob sed -E '/[cC]omplete [nN]ame/!d;s/^.*\: (C\:.*)$/\1/' < /tmp/tmp | $
+}
+tarc()tar cf "$*.tar" "$*"
+
+##'$'(){ read -r -d ${EOF:-''} ${@:-R}; [[ $@ ]] || V=( ${(qq)=R} ) }
+'$'(){ read -r -d ${EOF:-''} ${@:-V}; [[ $@ ]] || v=( $=V ) }
+'_'(){
+	print -zr -- ${@:-"$(</dev/stdin)"}
+}
+
+powershell()/mnt/c/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell.exe $@
+ise(){
+	/mnt/c/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell_ise.exe $@
+}
+READ () {
+	read -d ${EOF:-''} $@
+}
+READ_RAW () {
+	read -r -d ${EOF:-''} $@
+}
+','(){ [[ $@ ]] && ls -QbAd --color=auto --quoting-style=shell $@; [[ $@ ]] || ls -QAF --color=auto --quoting-style=shell }
+',,' () {
+	[[ -n $@ ]] && ls -QbAdhl --color=auto --quoting-style=shell $@; [[ $@ ]] || ls -QalhF --color=auto --quoting-style=shell
+}
+
+-/ () {
+	sed -E 's/^.*\/(.*)/\1/g'
+}
+/-/ () {
+	sed -E 's/^[^/]?+(\/.*\/)[^/]++/\1/g'
+}
+
+
+
+'/=/' () {
+	local ANS
+	local -a ans
+	sed -E 's/^([^:]++)[:](([0-9]++)[:])?+.*$/\3 \1/' | read -d ${EOF:-''} ANS
+	ans=($=ANS)
+	L="$ans[1]"
+	F="$ans[2]"
+	print -- $ANS
+}
+k () {
+	[[ -n $@ ]] && kill $@ || clear
+}
+compdef k=kill
+ahk(){
+/mnt/c/Program\ Files/AutoHotkey/AutoHotkey.exe "${@//\-/\/}"
+}
+potnm () {
+	sed -E 's/[cC]omplete [nN]ame[^:]*\:\s*(.*)/\1/p;d'
+}
+
+umount(){
+	V="$*"
+	if [[ $V == '.' ]]
+	then
+		{
+			UMOUNT_DIR="$PWD"
+			cd ..
+			/bin/umount "$UMOUNT_DIR"
+		}
+	else
+		{
+			/bin/umount $@
+		}
+	fi
+}
+
+
+
+
+',/'(){ sed -rn $@ }
+compdef ',/'=sed
+',//'(){ sed -rni --follow-symlinks $@ }
+compdef ',//'=sed
+
+weirdfunc(){
+	PAT= 
+	unset PAT
+	if [[ -n $@ ]]
+	then
+		print -r -- "$@[-1]" | sed -E 's/[;][/][/]/\;s\//;s/^[/][/]/s\//' | read PAT
+		shift -p
+	fi
+	sed -Ei --follow-symlinks "$PAT" "${@}"
+}
+'.=' () {
+	PAT= 
+	unset PAT
+	if [[ -n $@ ]]
+	then
+		print -r -- "$@[-1]" | sed -E 's/[;][/][/]/\;s\//;s/^[/][/]/s\//' | read PAT
+		shift -p
+	fi
+	sed -Ei --follow-symlinks "$PAT" "${@}"
+}
+'des' () {
+	PAT= 
+	unset PAT
+	if [[ -n $@ ]]
+	then
+		print -r -- "$@[-1]" | sed -E 's/[;][/][/]/\;s\//;s/^[/][/]/s\//' | read -r PAT
+		shift -p
+		if [[ -s /dev/stdin ]]
+		then
+			sed -E "$PAT" ${@:-/dev/stdin}
+		fi
+	else
+		whoami
+	fi
+}
+'//='(){
+	sed -ri --follow-symlinks $@
+}
+'=//'(){
+	sed -ri --follow-symlinks $@
+}
+#'=' () {
+#	print -m -- $@
+#}
+
+'-' () {
+	if [[ -n $@ ]]
+	then
+		print -rl -- $@ | sed -r 's/^[-]?([0-9]+)$/\-\1/p;d' | read -r SIG
+		set -- ${@:/(|[-])[0-9]/}
+		kill ${SIG:--9} $@
+	else
+		dirs -v | head -n 10
+	fi
+}
+
+'\'(){
+	if [[ ! $@ ]]
+	then
+		clear
+	else
+		sed -rn $@
+	fi
+}
+compdef \\=sed
+ac () {
+	git add .
+	git commit -m "${1:-"committing"}"
+}
+
+zip () {
+	if [[ ! -n $2 ]]
+	then
+		=zip "$1.zip" "$1"
+	else
+		=zip $@
+	fi
+}
+commit(){ git commit -m "${1:-"committing"}" }
+'**' () {
+	ls -QbAdFhl --color=auto --quoting-style=shell $@
+}
+
+:_ () {
+	sed -E 's/^([0-9]+)\:.*$/\1/' $@
+}
+'-=' () {
+	if [[ -n ${@//^(-[a-zA-Z0-9]##)} ]]
+	then
+		jobs $@
+	else
+		jobs -dl $@
+	fi
+}
+fdupes () {
+	/usr/bin/fdupes ${@:-"./"}
+}
+
+,. () {
+	clear
+}
+
+compdef n=nano
+
+'!' () {
+	cd /root/myshell/workspace
+}
+'^' () {
+	cd ~G
+}
+ompil () {
+	OPT=(${@:/^(\-*)}) 
+	set -- "${*:/\-*}"
+	gcc $OPT "$*" -o "${*%\.*}"
+}
+',.'(){
+	if [[ ! $@ ]]
+	then
+		clear
+	else
+		PAT="$1" 
+		shift
+		print -m -- "$PAT" ${@:-"$(</dev/stdin)"}
+	fi
+}
+#	'=' () {
+#		if [[ ! -n $@ ]]
+#		then
+#			clear
+#		else
+#			perl $@
+#		fi
+#	}
+'='(){
+	if ! [[ $@ ]]
+	then
+		clear
+	else
+		OPTS=(${@:/^(\-?##)})
+		set ${@:/\-?##}
+		column ${${OPTS[@]}:--c} ${@:-1}
+	fi
+}
+'::' () {
+	if [[ ! -n $@ ]]
+	then
+		clear
+	else
+		awk $@
+	fi
+}
+compdef -- ::=awk
+@ () {
+	perl $@
+}
+compdef @=perl
+'@?' () {
+	perldoc $@
+}
+compdef ,=ls
+compdef ,,=ls
+nt(){ nano -myBiz --syntax=sh +${@:-1} /tmp/tmp }
+
+0-0 () {
+	print -r -- $@ | sed -E 's/^.*\b([0-9]+)\b.*$/\1/p;d' | read NPAG
+	set -- ${@:/(|[+])<->/}
+	print -r -- $@ | sed -E 's/^.*[,](\S+).*$/\1/p;d' | read NSYN
+	set -- ${@:/[,]*/}
+	\nano -myBiz -v ${NSYN:+--syntax=${NSYN}} ${NPAG:+"+$NPAG"} $@
+}
+unalias 'z'
+z(){
+	if [[ -n $@ ]]
+	then
+		zip $@
+	else
+		jobs -dl
+	fi
+}
+compdef z=zip
+
+'+~' () {
+	fdupes ${${@:/^(\-*)}:-"-f"} ${${@:/\-*}:-"./"}
+}
+gC(){ git commit -m "${1:-"committing"}" }
+gA(){ git add ${@:-"."} }
+\?(){ cd ~SF }
+\;\;(){ cd ~SK }
+gS () {
+	git status $@
+}
+:- () {
+	print "haha, piemel"
+}
+n () {
+	print -r -- $@ | sed -E 's/^.*\b([0-9]+)\b.*$/\1/p;d' | read NPAG
+	set -- ${@:/(|[+])<->/}
+	print -r -- $@ | sed -E 's/^.*[,](\S+).*$/\1/p;d' | read NSYN
+	if [[ -n ${@:/^([,][,])} ]]
+	then
+		NSYN= 
+	fi
+	set -- ${@:/[,]*/}
+	\nano -myBiz ${NSYN:+"--syntax=${NSYN}"} ${NPAG:+"+$NPAG"} ${@:-"-"}
+}

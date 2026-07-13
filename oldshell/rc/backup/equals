@@ -1,0 +1,10 @@
+'='(){
+	if [[ ! $@ ]]
+	then
+		clear
+	else
+		PAT="$1" 
+		shift
+		print -m -- "$PAT" ${@:-"$(</dev/stdin)"}
+	fi
+}

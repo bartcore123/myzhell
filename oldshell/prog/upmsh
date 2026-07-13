@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+MYSH=${MSYH:-$HOME/myshell};
+
+cd $MYSH/rc/etc/zsh
+cp $(ls -A) $MYSH/rc/backup/etczsh;
+
+cp $HOME/.zsh_history $MYSH/rc/linkdir;
+
+cd $MYSH/rc/linkdir;
+cp $(ls -A) ../backup/lndir;
+git add --all; git commit -a -m ":"; git push;

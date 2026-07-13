@@ -1,0 +1,11 @@
+insert_test_paren () {
+	if (( NUMERIC < 0 ))
+	then
+		BUFFER="{ ${BUFFER%% ##} }" 
+		CURSOR=$[CURSOR+2] 
+	else
+		LBUFFER+='[[  ]]' 
+		CURSOR=$[CURSOR-3] 
+	fi
+	zle zle-line-init
+}

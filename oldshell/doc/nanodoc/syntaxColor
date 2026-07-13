@@ -1,0 +1,10 @@
+	       Valid color names are:
+              red, green, blue, magenta, yellow, cyan, white, and black.  Each
+              of  these eight names may be prefixed with the word light to get
+              a brighter version of that color.  On  terminal  emulators  that
+              can do at least 256 colors, other valid (but unprefixable) color
+              names are: pink,  purple,  mauve,  lagoon,  mint,  lime,  peach,
+              orange,  latte,  and  normal  --  where normal means the default
+              foreground or background color.  The color pair may be  preceded
+              by bold and/or italic (separated by commas) to get a bold and/or
+              slanting typeface, if your terminal can do those.

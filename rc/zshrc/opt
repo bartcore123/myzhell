@@ -1,0 +1,5 @@
+set -569JLNORXZghims
+setopt nointeractivecomments
+setopt noclobber
+setopt rcquotes
+setopt extendedglob

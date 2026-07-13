@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+if [[ $PWD != /mnt/c/* ]]
+then
+	cd /mnt/c/Users/barth/Desktop
+fi
+
+tasklist.exe | grep --color=auto -anPi -- "$*" | awk '{ print $2 }' | read -r -d ${EOF:-''} PID
+WIN_PROC_MATCH=(${(f)PID}) 
+export WIN_PROC_MATCH
+tasklist.exe | grep --color=auto -anPi -- "$*"

@@ -1,0 +1,17 @@
+export 1=./alias
+export 2=./bk
+export 3=./fnc
+export 4=./le
+export 5=./le_template
+export 6=./macro
+export 7=./nd
+export 8=./newuser.zshrc.recommended
+export 9=./opt
+export 10=./pospar
+export 11=./PS1
+export 12=./tmp
+export 13=./zlogin
+export 14=./zlogout
+export 15=./zprofile
+export 16=./zshenv
+export 17=./zshrc

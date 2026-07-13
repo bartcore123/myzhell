@@ -1,0 +1,12 @@
+Conditional Expressions
+
+-a file true if file exists.
+-b file true if file exists and is a block special file.
+-c file true if file exists and is a character special file.
+-d file true if file exists and is a directory.
+-e file true if file exists.
+-f file true if file exists and is a regular file.
+-g file true if file exists and has its setgid bit set.
+-h file true if file exists and is a symbolic link.
+-k file true if file exists and has its sticky bit set.
+-n string true if length of string is non-zero.

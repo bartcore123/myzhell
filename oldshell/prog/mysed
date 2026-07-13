@@ -1,0 +1,24 @@
+#!/usr/bin/zsh
+
+
+if [[ $@ ]]
+then
+	print ${(q)@} >| /tmp/sedfile
+else
+
+	: >| /tmp/sedfile
+	i=0 
+	REPLY= 
+	while read -u8 -r
+	do
+		if [[ $REPLY ]]
+		then
+			print ${(q)REPLY} >>| /tmp/sedfile
+		else
+			break
+		fi
+	done
+
+fi
+	
+sed -En -f /tmp/sedfile -- /dev/stdin

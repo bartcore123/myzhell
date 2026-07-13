@@ -1,0 +1,7 @@
+mvpix () {
+	[[ $# = 0 ]] && hsFolder='/mnt/c/Users/barth/Desktop/HS scrsht Unsorted'  || hsFolder='/mnt/c/Users/barth/Desktop' 
+	mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif|gif|jfif) /mnt/c/Users/barth/Desktop/pix
+	() {
+		[[ -n $@ ]] && mv -b $@ $hsFolder
+	} /mnt/c/Users/barth/Desktop/pix/*Hearthstone*
+}

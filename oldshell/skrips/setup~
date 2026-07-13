@@ -1,0 +1,43 @@
+#!/bin/zsh -23569BCGJNRXgs
+
+if [[ $PWD != */myshell/# ]]
+then
+	cd $HOME/myshell
+fi
+
+#	for X in ./rc/etc/zsh/(*~(*.*|*\~))
+#	do
+#		source $X
+#	done
+
+hash -d GZ=./rc/etc/zsh
+
+# source <( cat ~GZ/.#(*~(*.*|*\~))(^/) |sed -E 's/\/root/\~/g' )
+
+source ~GZ/newuser.zshrc.recommended
+source <( cat ~GZ/.#(*~(*.*|*\~))(^/) |sed -E 's/\/root/\~/g;s/\/etc\/zsh/\~GZ/g' )
+
+if [[ ! -e /etc/zsh ]]
+then
+	mkdir -p /etc/zsh
+fi
+
+cd /etc/zsh
+
+for X in ~GZ/(*~(*.*|*\~))(^/)
+do
+	ln -s $X
+done
+
+cd $HOME
+
+ln -s ~/myshell/doc/
+ln -s ~/myshell/rc/etc/zsh/macro
+ln -s ~/myshell/rc/linkdir/.nanorc
+ln -s ~/myshell/rc/linkdir/.oh-my-zsh/
+ln -s ~/myshell/skrips/
+ln -s ~/myshell/rc/linkdir/.zshrc
+
+ln -s ~/myshell/rc/linkdir/.nanorc /etc/nanorc
+
+

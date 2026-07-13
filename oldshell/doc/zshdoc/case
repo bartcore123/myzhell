@@ -1,0 +1,14 @@
+       case word in [ [(] pattern [ | pattern ] ... ) list (;;|;&|;|) ] ... esac
+              Execute the list associated with the first pattern that matches word, if any.  The form of the patterns is the same as that used for filename generation.  See the section `Filename  Genera‐
+              tion'.
+
+              Note  further  that,  unless  the  SH_GLOB option is set, the whole pattern with alternatives is treated by the shell as equivalent to a group of patterns within parentheses, although white
+              space may appear about the parentheses and the vertical bar and will be stripped from the pattern at those points.  White space may appear elsewhere in the pattern; this  is  not  stripped.
+              If  the  SH_GLOB option is set, so that an opening parenthesis can be unambiguously treated as part of the case syntax, the expression is parsed into separate words and these are treated as
+              strict alternatives (as in other shells).
+
+              If the list that is executed is terminated with ;& rather than ;;, the following list is also executed.  The rule for the terminator of the following list ;;, ;& or ;| is applied unless the
+              esac is reached.
+
+              If  the list that is executed is terminated with ;| the shell continues to scan the patterns looking for the next match, executing the corresponding list, and applying the rule for the cor‐
+              responding terminator ;;, ;& or ;|.  Note that word is not re-expanded; all applicable patterns are tested with the same word.

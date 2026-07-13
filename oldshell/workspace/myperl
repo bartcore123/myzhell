@@ -1,0 +1,24 @@
+#!/usr/bin/zsh
+
+
+if [[ $@ ]]
+then
+	print ${(q)@} >| /tmp/perlfile
+else
+
+	: >| /tmp/perlfile
+	i=0 
+	REPLY= 
+	while read -u8 -r
+	do
+		if [[ $REPLY ]]
+		then
+			print ${(q)REPLY} >>| /tmp/perlfile
+		else
+			break
+		fi
+	done
+
+fi
+
+perl -n -- /tmp/perlfile -

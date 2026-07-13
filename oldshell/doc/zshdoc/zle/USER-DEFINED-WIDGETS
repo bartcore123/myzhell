@@ -1,0 +1,253 @@
+USER-DEFINED WIDGETS
+       User-defined widgets, being implemented as shell functions, can execute any normal shell command.  They can also run other widgets (whether built-in or user-defined) using the zle builtin command.
+       The standard input of the function is redirected from /dev/null to prevent external commands from unintentionally blocking ZLE by reading from the terminal, but read -k or read -q can be  used  to
+       read characters.  Finally, they can examine and edit the ZLE buffer being edited by reading and setting the special parameters described below.
+
+       These  special parameters are always available in widget functions, but are not in any way special outside ZLE.  If they have some normal value outside ZLE, that value is temporarily inaccessible,
+       but will return when the widget function exits.  These special parameters in fact have local scope, like parameters created in a function using local.
+
+       Inside completion widgets and traps called while ZLE is active, these parameters are available read-only.
+
+       Note that the parameters appear as local to any ZLE widget in which they appear.  Hence if it is desired to override them this needs to be done within a nested function:
+
+              widget-function() {
+                # $WIDGET here refers to the special variable
+                # that is local inside widget-function
+                () {
+                   # This anonymous nested function allows WIDGET
+                   # to be used as a local variable.  The -h
+                   # removes the special status of the variable.
+                   local -h WIDGET
+                }
+              }
+
+       BUFFER (scalar)
+              The entire contents of the edit buffer.  If it is written to, the cursor remains at the same offset, unless that would put it outside the buffer.
+
+       BUFFERLINES (integer)
+              The number of screen lines needed for the edit buffer currently displayed on screen (i.e. without any changes to the preceding parameters done after the last redisplay); read-only.
+
+       CONTEXT (scalar)
+              The context in which zle was called to read a line; read-only.  One of the values:
+
+              start  The start of a command line (at prompt PS1).
+
+              cont   A continuation to a command line (at prompt PS2).
+
+              select In a select loop (at prompt PS3).
+
+              vared  Editing a variable in vared.
+
+       CURSOR (integer)
+              The offset of the cursor, within the edit buffer.  This is in the range 0 to $#BUFFER, and is by definition equal to $#LBUFFER.  Attempts to move the cursor outside the buffer  will  result
+              in the cursor being moved to the appropriate end of the buffer.
+
+       CUTBUFFER (scalar)
+              The  last item cut using one of the `kill-' commands; the string which the next yank would insert in the line.  Later entries in the kill ring are in the array killring.  Note that the com‐
+              mand `zle copy-region-as-kill string' can be used to set the text of the cut buffer from a shell function and cycle the kill ring in the same way as interactively killing text.
+
+       HISTNO (integer)
+              The current history number.  Setting this has the same effect as moving up or down in the history to the corresponding history line.  An attempt to set it is ignored  if  the  line  is  not
+              stored  in the history.  Note this is not the same as the parameter HISTCMD, which always gives the number of the history line being added to the main shell's history.  HISTNO refers to the
+              line being retrieved within zle.
+
+       ISEARCHMATCH_ACTIVE (integer)
+       ISEARCHMATCH_START (integer)
+       ISEARCHMATCH_END (integer)
+              ISEARCHMATCH_ACTIVE indicates whether a part of the BUFFER is currently matched by an incremental search pattern. ISEARCHMATCH_START and ISEARCHMATCH_END give the location  of  the  matched
+              part and are in the same units as CURSOR. They are only valid for reading when ISEARCHMATCH_ACTIVE is non-zero.
+
+              All parameters are read-only.
+
+       KEYMAP (scalar)
+              The name of the currently selected keymap; read-only.
+
+       KEYS (scalar)
+              The keys typed to invoke this widget, as a literal string; read-only.
+
+       KEYS_QUEUED_COUNT (integer)
+              The number of bytes pushed back to the input queue and therefore available for reading immediately before any I/O is done; read-only.  See also PENDING; the two values are distinct.
+
+       killring (array)
+              The  array  of previously killed items, with the most recently killed first.  This gives the items that would be retrieved by a yank-pop in the same order.  Note, however, that the most re‐
+              cently killed item is in $CUTBUFFER; $killring shows the array of previous entries.
+
+              The default size for the kill ring is eight, however the length may be changed by normal array operations.  Any empty string in the kill ring is ignored by the yank-pop command,  hence  the
+              size of the array effectively sets the maximum length of the kill ring, while the number of non-zero strings gives the current length, both as seen by the user at the command line.
+
+       LASTABORTEDSEARCH (scalar)
+              The last search string used by an interactive search that was aborted by the user (status 3 returned by the search widget).
+
+       LASTSEARCH (scalar)
+              The  last  search  string used by an interactive search; read-only.  This is set even if the search failed (status 0, 1 or 2 returned by the search widget), but not if it was aborted by the
+              user.
+
+       LASTWIDGET (scalar)
+              The name of the last widget that was executed; read-only.
+
+       LBUFFER (scalar)
+              The part of the buffer that lies to the left of the cursor position.  If it is assigned to, only that part of the buffer is replaced, and the cursor remains between the new $LBUFFER and the
+              old $RBUFFER.
+
+       MARK (integer)
+              Like  CURSOR,  but  for the mark. With vi-mode operators that wait for a movement command to select a region of text, setting MARK allows the selection to extend in both directions from the
+              initial cursor position.
+
+       NUMERIC (integer)
+              The numeric argument. If no numeric argument was given, this parameter is unset. When this is set inside a widget function, builtin widgets called with the zle builtin command will use  the
+              value assigned. If it is unset inside a widget function, builtin widgets called behave as if no numeric argument was given.
+
+       PENDING (integer)
+              The  number  of  bytes pending for input, i.e. the number of bytes which have already been typed and can immediately be read. On systems where the shell is not able to get this information,
+              this parameter will always have a value of zero.  Read-only.  See also KEYS_QUEUED_COUNT; the two values are distinct.
+
+       PREBUFFER (scalar)
+              In a multi-line input at the secondary prompt, this read-only parameter contains the contents of the lines before the one the cursor is currently in.
+
+       PREDISPLAY (scalar)
+              Text to be displayed before the start of the editable text buffer.  This does not have to be a complete line; to display a complete line, a newline must be appended explicitly.  The text is
+              reset on each new invocation (but not recursive invocation) of zle.
+
+       POSTDISPLAY (scalar)
+              Text  to  be displayed after the end of the editable text buffer.  This does not have to be a complete line; to display a complete line, a newline must be prepended explicitly.  The text is
+              reset on each new invocation (but not recursive invocation) of zle.
+
+       RBUFFER (scalar)
+              The part of the buffer that lies to the right of the cursor position.  If it is assigned to, only that part of the buffer is replaced, and the cursor remains between the  old  $LBUFFER  and
+              the new $RBUFFER.
+
+       REGION_ACTIVE (integer)
+              Indicates  if  the  region  is  currently active.  It can be assigned 0 or 1 to deactivate and activate the region respectively. A value of 2 activates the region in line-wise mode with the
+              highlighted text extending for whole lines only; see Character Highlighting below.
+
+       region_highlight (array)
+              Each element of this array may be set to a string that describes highlighting for an arbitrary region of the command line that will take effect the next time  the  command  line  is  redis‐
+              played.   Highlighting of the non-editable parts of the command line in PREDISPLAY and POSTDISPLAY are possible, but note that the P flag is needed for character indexing to include PREDIS‐
+              PLAY.
+
+              Each string consists of the following parts:
+
+              •      Optionally, a `P' to signify that the start and end offset that follow include any string set by the PREDISPLAY special parameter; this is needed if the predisplay string  itself  is
+                     to be highlighted.  Whitespace may follow the `P'.
+
+              •      A start offset in the same units as CURSOR, terminated by whitespace.
+
+              •      An end offset in the same units as CURSOR, terminated by whitespace.
+
+              •      A highlight specification in the same format as used for contexts in the parameter zle_highlight, see the section `Character Highlighting' below; for example, standout or fg=red,bold
+
+              For example,
+
+                     region_highlight=("P0 20 bold")
+
+              specifies that the first twenty characters of the text including any predisplay string should be highlighted in bold.
+
+              Note that the effect of region_highlight is not saved and disappears as soon as the line is accepted.
+
+              The final highlighting on the command line depends on both region_highlight and zle_highlight; see the section CHARACTER HIGHLIGHTING below for details.
+
+       registers (associative array)
+              The contents of each of the vi register buffers. These are typically set using vi-set-buffer followed by a delete, change or yank command.
+
+       SUFFIX_ACTIVE (integer)
+       SUFFIX_START (integer)
+       SUFFIX_END (integer)
+              SUFFIX_ACTIVE  indicates  whether  an  auto-removable completion suffix is currently active. SUFFIX_START and SUFFIX_END give the location of the suffix and are in the same units as CURSOR.
+              They are only valid for reading when SUFFIX_ACTIVE is non-zero.
+
+              All parameters are read-only.
+
+       UNDO_CHANGE_NO (integer)
+              A number representing the state of the undo history.  The only use of this is passing as an argument to the undo widget in order to undo back to the recorded point.  Read-only.
+
+       UNDO_LIMIT_NO (integer)
+              A number corresponding to an existing change in the undo history; compare UNDO_CHANGE_NO.  If this is set to a value greater than zero, the undo command will not allow the line to be undone
+              beyond  the  given  change  number.   It  is  still  possible  to  use  `zle  undo  change' in a widget to undo beyond that point; in that case, it will not be possible to undo at all until
+              UNDO_LIMIT_NO is reduced.  Set to 0 to disable the limit.
+
+              A typical use of this variable in a widget function is as follows (note the additional function scope is required):
+
+                     () {
+                       local UNDO_LIMIT_NO=$UNDO_CHANGE_NO
+                       # Perform some form of recursive edit.
+                     }
+
+       WIDGET (scalar)
+              The name of the widget currently being executed; read-only.
+
+       WIDGETFUNC (scalar)
+              The name of the shell function that implements a widget defined with either zle -N or zle -C.  In the former case, this is the second argument to the zle -N command that defined the widget,
+              or the first argument if there was no second argument.  In the latter case this is the third argument to the zle -C command that defined the widget.  Read-only.
+
+       WIDGETSTYLE (scalar)
+              Describes the implementation behind the completion widget currently being executed; the second argument that followed zle -C when the widget was defined.  This is the name of a builtin com‐
+              pletion widget.  For widgets defined with zle -N this is set to the empty string.  Read-only.
+
+       YANK_ACTIVE (integer)
+       YANK_START (integer)
+       YANK_END (integer)
+              YANK_ACTIVE indicates whether text has just been yanked (pasted) into the buffer.  YANK_START and YANK_END give the location of the pasted text and are in the same units  as  CURSOR.   They
+              are  only  valid  for reading when YANK_ACTIVE is non-zero.  They can also be assigned by widgets that insert text in a yank-like fashion, for example wrappers of bracketed-paste.  See also
+              zle -f.
+
+              YANK_ACTIVE is read-only.
+
+       ZLE_RECURSIVE (integer)
+              Usually zero, but incremented inside any instance of recursive-edit.  Hence indicates the current recursion level.
+
+              ZLE_RECURSIVE is read-only.
+
+       ZLE_STATE (scalar)
+              Contains a set of space-separated words that describe the current zle state.
+
+              Currently, the states shown are the insert mode as set by the overwrite-mode or vi-replace widgets and whether history commands will visit imported entries  as  controlled  by  the  set-lo‐
+              cal-history  widget.   The  string contains `insert' if characters to be inserted on the command line move existing characters to the right or `overwrite' if characters to be inserted over‐
+              write existing characters. It contains `localhistory' if only local history commands will be visited or `globalhistory' if imported history commands will also be visited.
+
+              The substrings are sorted in alphabetical order so that if you want to test for two specific substrings in a future-proof way, you can do match by doing:
+
+                     if [[ $ZLE_STATE == *globalhistory*insert* ]]; then ...; fi
+
+   Special Widgets
+       There are a few user-defined widgets which are special to the shell.  If they do not exist, no special action is taken.  The environment provided is identical to that for any other editing widget.
+
+       zle-isearch-exit
+              Executed at the end of incremental search at the point where the isearch prompt is removed from the display.  See zle-isearch-update for an example.
+
+       zle-isearch-update
+              Executed within incremental search when the display is about to be redrawn.  Additional output below the incremental search prompt can be generated by using `zle -M' within the widget.  For
+              example,
+
+                     zle-isearch-update() { zle -M "Line $HISTNO"; }
+                     zle -N zle-isearch-update
+
+              Note the line output by `zle -M' is not deleted on exit from incremental search.  This can be done from a zle-isearch-exit widget:
+
+                     zle-isearch-exit() { zle -M ""; }
+                     zle -N zle-isearch-exit
+
+       zle-line-pre-redraw
+              Executed whenever the input line is about to be redrawn, providing an opportunity to update the region_highlight array.
+
+       zle-line-init
+              Executed every time the line editor is started to read a new line of input.  The following example puts the line editor into vi command mode when it starts up.
+
+                     zle-line-init() { zle -K vicmd; }
+                     zle -N zle-line-init
+
+              (The command inside the function sets the keymap directly; it is equivalent to zle vi-cmd-mode.)
+
+       zle-line-finish
+              This is similar to zle-line-init but is executed every time the line editor has finished reading a line of input.
+
+       zle-history-line-set
+              Executed when the history line changes.
+
+       zle-keymap-select
+              Executed  every time the keymap changes, i.e. the special parameter KEYMAP is set to a different value, while the line editor is active.  Initialising the keymap when the line editor starts
+              does not cause the widget to be called.
+
+              The value $KEYMAP within the function reflects the new keymap.  The old keymap is passed as the sole argument.
+
+              This can be used for detecting switches between the vi command (vicmd) and insert (usually main) keymaps.
+

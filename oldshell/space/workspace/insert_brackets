@@ -1,0 +1,7 @@
+insert_brackets(){
+	(( NUMERIC < 0 )) && LBUFFER+='$'
+	LBUFFER+='[]' 
+	(( CURSOR-=1 ))
+	zle zle-line-init
+}
+zle -N insert-brackets

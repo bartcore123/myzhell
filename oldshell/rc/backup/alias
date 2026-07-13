@@ -1,0 +1,231 @@
+unalias l ll ls la grep &>/dev/null
+
+alias 'a'="alias"
+# alias a="apropos"
+alias 'ga'="alias -g"
+alias bk=bindkey
+alias bkl="bindkey -L"
+alias cfd=cfdisk
+alias ex=exec
+alias e=eval
+#alias x=exec
+alias X=xargs
+#alias g="grep -o"
+#unalias g
+#alias sl="ln -sb"
+
+#alias x=export
+
+alias ag="apt-get"
+# alias Z="jobs -dl"
+# alias z="jobs -dl"
+# alias z="bg"
+alias Q='kill -9'
+alias s="du -hc"
+
+
+alias ag=apt-get
+alias apt='noglob apt'
+alias apt-cache='noglob apt-cache'
+alias apt-cdrom='noglob apt-cdrom'
+alias apt-config='noglob apt-config'
+alias apt-extracttemplates='noglob apt-extracttemplates'
+alias apt-ftparchive='noglob apt-ftparchive'
+alias apt-get='noglob apt-get'
+alias apt-key='noglob apt-key'
+alias apt-mark='noglob apt-mark'
+alias apt-sortpkgs='noglob apt-sortpkgs'
+alias rl=readlink
+#alias grep="noglob grep "
+#alias G="noglob grep -En "
+#alias G="noglob egrep -n"
+#alias T="typeset"
+#alias C="cp -rb"
+#alias M="mv -b"
+#alias R="rm -r"
+alias B="bindkey"
+alias L="less"
+alias K="kill -9"
+alias ass=/usr/bin/as
+alias P='ps -aft'
+alias p='print --'
+alias -s txt=nano
+alias -s zsh=zsh
+alias ua=unalias
+alias uf=unfunction
+alias sc=scanf
+
+
+alias '*'="noglob zmv -nvW"
+alias v="noglob zmv -nv"
+alias '**'="noglob zmv -vW"
+alias V="noglob zmv -v"
+alias nd="hash -d"
+zshshl="$PWD"
+zshshl="/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+alias ts="typeset"
+
+
+
+
+alias cc=clipcopy
+alias cv=clippaste
+
+alias "*1"="ls -bAd1 --color=auto --quoting-style=shell"
+alias "**1"="ls -bAFd1 --color=auto --quoting-style=shell"
+alias ex="explorer"
+alias ws="wslpath"
+#alias W="wslpath"
+#alias WW="wslpath -w"
+alias wsw="wslpath -w"
+# alias '/:'="wslpath -w"
+alias ':/'="mkdir -p"
+alias w="which -s "
+alias kl="clear"
+alias zml=zmodload
+#alias g=grep
+#alias g=egrep
+alias ev=eval
+alias e=echo
+alias P="ps -aft"
+#alias fd="cd ~fd"
+for X in {1..10};do alias t$X=/dev/tty$X;done
+alias tt="/dev/tty"
+## alias x="explorer"
+alias gz=gzip
+alias p7=p7zip
+alias mkx="chmod +x"
+#alias S="noglob sed "
+alias hl="highlight "
+alias c=cat
+#alias A="typeset -A "
+alias -s sh=zsh
+alias wh="which -s "
+alias so=setopt
+alias ",,."="setopt extendedglob"
+alias -- ",,.-"="unsetopt extendedglob"
+alias -- "-,,."="unsetopt extendedglob"
+
+#youpieye
+alias ec=exec
+alias xc=exec
+alias {o,O}="grep -o"
+alias cs=clear
+#alias ',..'="setopt globdots"
+#alias ',,..'="setopt noglobdots"
+alias s="du -hs"
+#alias srt="sort -rh"
+alias wp=wslpath
+#alias '*&'="ls -bAd1 --color=auto"
+alias '*$'="ls -bAd1 --color=auto"
+alias plug="n +67 /root/.zshrc"
+
+alias G="grep --color=auto -aEn --"
+alias g="grep --color=auto -aE --"
+alias Gx="grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox -En"
+alias gx="grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox -E"
+
+#alias //='des'
+alias //='sed -E'
+#alias "///"="sed -Ei --follow-symlinks"
+
+#alias S='noglob sed -En'
+#alias SA='noglob sed -E'
+#alias '#'='#'
+#alias Z="_z 2>&1"
+#alias Z=zle
+#alias ZZ="zle -N"
+#alias -g ,tor="./*.torrent"
+alias rr="read -r"
+#alias -g '$$'='$R'
+alias -g '~@'='/dev/stdout'
+alias -g '~$'='/dev/stdout'
+alias -g '$~'='$(</dev/stdin)'
+alias -g '$.'='$PWD'
+
+alias -g '<@'='<&p'
+alias -g '>@'='>&p'
+#alias df='\diff --color -a'
+alias O="noglob grep -aEno --"
+alias o="noglob grep -aEo --"
+alias "?"="noglob perl"
+alias "??"="perldoc"
+unalias -- \-  2>/dev/null
+alias __l__="ls -AF --color=auto"
+
+alias bkc='noglob sed -En '\''s/\$['\'''\'']\\033['\'''\'']/\^\[/gp'\'''
+alias "#@1"="ls -bAd1 --color=auto"
+alias "?="="noglob grep --color=auto -aF -- "
+
+##alias -g "~"="/dev/stdin"
+alias red='read -d ${EOF:-'\'''\''}'
+alias "?/"="grep --color=auto -HaPn --"
+alias "??/"="grep --color=auto -HaP --"
+alias "#@@"="ls -bAdFhl --color=auto"
+alias "##@"="ls -bAdFhl --color=auto"
+alias -g '^^'="| regexp-replace "
+alias -g '|^'="regexp-replace "
+alias -g '|?'="|regexp-replace "
+#alias rxr="regexp-replace"
+alias rx="regexp-replace"
+alias pop="shift -p"
+unalias \f 2>/dev/null
+alias -- '-,..'="unsetopt globdots"
+alias -- ',..-'="unsetopt globdots"
+alias -s z=zsh
+alias -g '/.'='(|.)*'
+alias zzZ='/mnt/c/Windows/System32/shutdown.exe /h'
+alias web=curl
+alias -g -- '-?'='--help'
+
+alias '??'="grep --color=auto -aP --"
+alias '?'="grep --color=auto -anP --"
+alias -g './@'='(|.)*'
+alias wsl='/mnt/c/Windows/System32/wsl.exe'
+alias '?:'="grep --color=auto -aPo --"
+alias '??:'="grep --color=auto -aPno --"
+#alias "_"='{ set -- ${(z)"$(</dev/stdin)"} }'
+alias '@$'='{ set -- ${="$(</dev/stdin)"} }'
+#alias '-='='{ set -- ${="$(</dev/stdin)"} }'
+#alias '=='='{ set -- ${="$(</dev/stdin)"} }'
+alias -- "--"="set -- "
+alias -- '/-'='noglob sed -En ''s/^\/[^ :]++[:]//g;s/[0-9]+\://gp'''
+alias -g '~~'='/dev/stdin'
+
+alias '@@'="argv=($R)"
+alias clip=/mnt/c/Windows/System32/clip.exe
+#alias '#$'="/mnt/c/Windows/System32/clip.exe"
+#alias -- '+'='{ set -- ${(z)"$(</dev/stdin)"} }'
+alias -- '+'="less -rK"
+alias 'AutoHotkey'='/mnt/c/Program Files/AutoHotkey/AutoHotkey.exe'
+alias -g "rc,"="/etc/zsh/alias /etc/zsh/fnc /etc/zsh/hl /etc/zsh/le /etc/zsh/macro /etc/zsh/nd /etc/zsh/opt /etc/zsh/tmp /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshenv /etc/zsh/zshrc /root/.zshrc /root/myshell/rc/linkdir/.winrc"
+alias nano="nano -i"
+alias -- ",.-"="unsetopt extendedglob"
+alias -- "-,."="unsetopt extendedglob"
+alias -g "grc,"="/root/myshell/rc/etc/zsh/alias /root/myshell/rc/etc/zsh/fnc /root/myshell/rc/etc/zsh/hl /root/myshell/rc/etc/zsh/le /root/myshell/rc/etc/zsh/macro /root/myshell/rc/etc/zsh/nd /root/myshell/rc/etc/zsh/opt /root/myshell/rc/etc/zsh/tmp /root/myshell/rc/etc/zsh/zlogin /root/myshell/rc/etc/zsh/zlogout /root/myshell/rc/etc/zsh/zshenv /root/myshell/rc/etc/zsh/zshrc /root/myshell/rc/linkdir/.winrc /root/myshell/rc/linkdir/.zshrc"
+alias -g "GRC,"="/root/myshell/rc/etc/zsh/alias /root/myshell/rc/etc/zsh/fnc /root/myshell/rc/etc/zsh/hl /root/myshell/rc/etc/zsh/le /root/myshell/rc/etc/zsh/macro /root/myshell/rc/etc/zsh/nd /root/myshell/rc/etc/zsh/opt /root/myshell/rc/etc/zsh/tmp /root/myshell/rc/etc/zsh/zlogin /root/myshell/rc/etc/zsh/zlogout /root/myshell/rc/etc/zsh/zshenv /root/myshell/rc/etc/zsh/zshrc /root/myshell/rc/linkdir/.winrc /root/myshell/rc/linkdir/.zshrc"
+alias "#@"='print -r -- $@'
+alias ty=/mnt/c/Users/barth/typertask.exe
+alias "///"="sed -rn"
+alias '.*'='ls -bAd --color=auto --quoting-style=shell'
+alias ',*'='ls -bAdFhl --color=auto --quoting-style=shell'
+#alias '@$'="/mnt/c/Windows/System32/clip.exe"
+alias "?y"="grep --color=auto -aEny --"
+alias "?Y"="grep --color=auto -aEny --"
+alias ms="cd /root/myshell"
+alias em=emacs
+alias mc=emacs
+alias -- "++"="less -rKN"
+alias "?~"="grep --color=auto -aPi --"
+alias "??~"="grep --color=auto -anPi --"
+alias ",./"="print -m --"
+alias aju=exit
+alias vw="noglob zmv -nvw"
+alias VW="noglob zmv -vw"
+alias '?!'="grep --color=auto -anPv --"
+alias '??!'="grep --color=auto -aPv --"
+alias '?!~'="grep --color=auto -aPiv --"
+alias '??!~'="grep --color=auto -aPniv --"
+alias '??#'="grep --color=auto -aPno --"
+alias '?#'="grep --color=auto -aPo --"
+alias "::"="awk"

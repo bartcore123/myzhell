@@ -1,0 +1,1 @@
+wx(){ /mnt/c/Windows/explorer.exe "$(wslpath -w ${@:-"$PWD"})"  }

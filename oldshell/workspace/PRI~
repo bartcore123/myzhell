@@ -1,0 +1,13 @@
+OPT=(${${@:/^(\-?##)}:--r}) 
+PRSTDIN=${@:/^(\-)} 
+PRE= 
+POST= 
+set -- ${@:/\-?##}
+if [[ -n $PRSTDIN ]]
+then
+	PRE="${*%% \- *}" 
+	POST="${*##* \-}" 
+fi
+print -rl -- "OPT=$OPT" "PRSTDIN=$PRSTDIN" "PRE=$PRE" "POST=$POST"
+print $OPT[@] -- ${PRE:-$*} "${PRSTDIN:+$(</dev/stdin)}" ${POST:-}
+123569BCGJNRXZgilms

@@ -1,0 +1,4 @@
+doc () {
+	
+	ls -QbAd --color=auto --quoting-style=shell ~doc/**$~@*
+}

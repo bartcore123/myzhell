@@ -1,0 +1,51 @@
+
+
+#F=/run/media/barth/Windows-SSDUsers/barth/Desktop/temporary/New\ folder
+#W=/run/media/barth/Windows-SSDUsers/barth/Links/pics/webp
+alias zp='$zml_parameter'
+zmlp(){ [[ $zml_parameter ]]|| zml_parameter=(${$(zmodload -lF zsh/parameter)[@]/'+p:'/}) }
+zp=($zml_parameter)
+vf=( Camera iets mp4 opruimen pix Spirit\ Science temporary tiktok vitz )
+hash -d cam=/run/media/barth/Windows-SSDUsers/barth/Desktop/Camera CAM=/run/media/barth/Windows-SSDUsers/barth/Desktop/Camera
+ASB='^[^H'
+asb='^[^H'
+ash='^[[1;4'
+#T=/tmp/zsh2hWVC9
+
+
+
+testc () {
+	print -n -- $NUMERIC >&2
+}
+zle -N testc
+bindkey '\e ' testc
+
+fluit () {
+	zle push-line
+}
+zle -N fluit
+bindkey '^[OQ' fluit
+hash -d sksh=/run/media/barth/Windows-SSDUsers/barth/Links/pics/skimpyShota
+
+# lines of code in nano src: 57792
+
+hash -d nsyn=/root/doc/nanodoc/syntaxHighlighting
+hash -d ncol=/root/doc/nanodoc/syntaxColor
+.,()cd ~/myshell/workspace/myLISP
+asci()cat ~/myshell/doc/ascii/tbl_cmpct
+
+mydoc(){ select F in ~doc/**$~@*;do less -rK "$F";break;done }
+macro dc=mydoc
+# export HASHBANG='#!zsh -23569BCGJNRXgls'
+',=-' () {
+	print -- 'I'm a revolver!!  ,=-'
+}
+',=-'\''<--'(){ print -- "poof\!" }
+gb=Duskhaven\ Boots
+gb=( 'Duskhaven Boots' 'Savior''s Slippers' )
+
+ADB=('/ADB' '/ADB/enUS' '/ADB/enUS/ConversationLine12060.tmp' '/ADB/enUS/ConversationLine18804.tmp' '/ADB/enUS/ConversationLine20384.tmp' '/ADB/enUS/ConversationLine20740.tmp' '/ADB/enUS/ConversationLine24564.tmp' '/ADB/enUS/ConversationLine27180.tmp' '/ADB/enUS/ConversationLine43444.tmp' '/ADB/enUS/DBCache.bin' '/ADB/enUS/DBCache.bin12060.tmp' '/ADB/enUS/DBCache.bin18804.tmp' '/ADB/enUS/DBCache.bin20384.tmp' '/ADB/enUS/DBCache.bin24564.tmp' '/ADB/enUS/DBCache.bin27180.tmp' '/ADB/enUS/DBCache.bin43444.tmp' '/ADB/enUS/ItemSparse12060.tmp' '/ADB/enUS/ItemSparse18804.tmp' '/ADB/enUS/ItemSparse20384.tmp' '/ADB/enUS/ItemSparse20740.tmp' '/ADB/enUS/ItemSparse24564.tmp' '/ADB/enUS/ItemSparse27180.tmp' '/ADB/enUS/ItemSparse43444.tmp' '/ADB/enUS/SceneScriptText12060.tmp' '/ADB/enUS/SceneScriptText18804.tmp' '/ADB/enUS/SceneScriptText20384.tmp' '/ADB/enUS/SceneScriptText20740.tmp' '/ADB/enUS/SceneScriptText24564.tmp' '/ADB/enUS/SceneScriptText27180.tmp' '/ADB/enUS/SceneScriptText43444.tmp' '/ADB/enUS/Spell12060.tmp' '/ADB/enUS/Spell18804.tmp' '/ADB/enUS/Spell20384.tmp' '/ADB/enUS/Spell20740.tmp' '/ADB/enUS/Spell24564.tmp' '/ADB/enUS/Spell27180.tmp' '/ADB/enUS/Spell43444.tmp')
+
+WDB=('/WDB' '/WDB/enUS' '/WDB/enUS/creaturecache.wdb' '/WDB/enUS/gameobjectcache.wdb' '/WDB/enUS/npccache.wdb' '/WDB/enUS/pagetextcache.wdb' '/WDB/enUS/petitioncache.wdb' '/WDB/enUS/questcache.wdb')
+# euwe="https://archive.org/details/logicalapproacht0000euwe/page/n5/mode/2up"
+macro ttt='clear && shutdown h'

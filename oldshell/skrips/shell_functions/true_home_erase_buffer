@@ -1,0 +1,8 @@
+true_home_erase_buffer(){
+	if (( NUMERIC < 0 ))
+	then
+		BUFFER= 
+	else
+		CURSOR=0
+	fi
+}

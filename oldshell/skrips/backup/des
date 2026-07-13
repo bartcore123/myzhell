@@ -1,0 +1,10 @@
+des () {
+	PAT= 
+	unset PAT
+	if [[ -n $@ ]]
+	then
+		print -r -- "$@[-1]" | sed -E 's/[;][/][/]/\;s\//;s/^[/][/]/s\//' | read -r PAT
+		shift -p
+	fi
+	sed -E "$PAT" ${@:-/dev/stdin}
+}

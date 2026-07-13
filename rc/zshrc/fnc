@@ -1,0 +1,22 @@
+unalias _
+unalias -- \-
+#unalias -- \+
+
+'='()ls -a
+'-'()clear
+'+'()less -R $@
+showcolors () {
+	for i in {0..255}
+	do
+		print -Pn "%K{$i} %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'
+'}
+	done
+}
+'#' () {
+	print -r $@
+}
+_ () {
+	read
+	print -z $REPLY
+}
+gogogadget_highlighting(){ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh }

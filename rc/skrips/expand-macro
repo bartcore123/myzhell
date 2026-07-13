@@ -1,0 +1,13 @@
+expand-macro(){
+	if (( NUMERIC < 0 ))
+	then
+		zle dual_spaces
+	fi
+
+	if [[ $LBUFFER =~ "\<("${(j:|:)macros[@]//\./\\.}")\$" ]]
+	then
+		zle _expand_alias
+	fi
+	zle magic-space
+}
+zle -N expand-macro

@@ -1,0 +1,61 @@
+# pass-as-is
+#
+# introduce '$' to zsh command line, which make rest of buffer as a single argument "as-is"
+#
+# ex.)
+#   $ python -c $ print "I'm fine!"
+#   I'm fine!
+#
+# NOTE: real command line will remain in command history until you execute other command
+# 
+_REAL_BUFFER=""
+function pass-as-is_accept-line() {
+    emulate -L zsh
+
+    # reset _REAL_BUFFER
+    _REAL_BUFFER=""
+
+    local -a argv new_argv
+    argv=( "${(z)BUFFER}" )
+    new_argv=()
+
+    local a
+    while (( $#argv )) {
+        a="${argv[1]}"
+        shift argv
+
+        if [[ "${a}" == '$' ]]; then
+            new_argv+=( "${(qq)argv}" )
+
+            _REAL_BUFFER="${BUFFER}"
+            # FIXME: it convert newline and spaces with single space,
+            #        which may cause some issue
+            BUFFER="${new_argv}"
+            zle accept-line
+            return
+        else
+            new_argv+=( "${a}" )
+        fi
+    }
+
+    # '$' not found
+    zle accept-line
+}
+zle -N pass-as-is_accept-line
+
+function pass-as-is_record-real-buffer() {
+    emulate -L zsh
+
+    if [[ -n "${_REAL_BUFFER}" ]]; then
+        print -sr -- "${_REAL_BUFFER}"
+        return 1
+    fi
+}
+
+bindkey '^M' pass-as-is_accept-line
+
+autoload add-zsh-hook
+
+add-zsh-hook zshaddhistory pass-as-is_record-real-buffer
+
+return 0

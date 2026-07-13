@@ -1,0 +1,8 @@
+#!/bin/perl -w
+
+while(<>){
+	if(m/^.*?URL\=(.+?)$/){print "$1\n";}
+	elsif(m/^.*?href\=(http[s]?\:\/\/\S+?)$/){print "$1\n";}
+	elsif(m/^.*?(http[s]?[^\s]+?)$/){print "$1\n";}
+}
+exit(0);

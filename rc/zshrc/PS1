@@ -1,0 +1,4 @@
+PS1='
+%{$fg_bold[grey]%}[%{$reset_color%}$return_status %%%j%{$reset_color%} %{$fg_bold[green]%}%T%{$reset_color%}%{$fg_bold[grey]%}]%{$reset_color%} %{$fg_bold[blue]%}%10c%{$reset_color%} $(git_prompt_info) $(git_remote_status)
+%{$fg_bold[cyan]%}❯%{$reset_color%} '
+return_status=%{$''[31m%}%(!.#.$)%{$''[00m%}

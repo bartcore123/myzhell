@@ -1,0 +1,8 @@
+n(){
+	print -r -- $@ | sed -r 's/^.*\b([0-9]+)\b.*$/\1/p;d' | read NPAG
+	set -- ${@:/(|[+])<->/}
+	print -r -- $@ | sed -r 's/^.*[,](\S+).*$/\1/p;d' | read NSYN
+	set -- ${@:/[,]*/}
+	print -lr -- $@ | sed -r 's/^.*[.]([^.]++)/\1/p;d' | read SUF
+	\nano -mi --syntax=${NSYN:-${SUF:-${NDEFSYN:-"sh"}}} ${NPAG:+"+$NPAG"} $@
+}
