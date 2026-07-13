@@ -1,0 +1,60 @@
+set mouse
+set autoindent
+set backup
+# set smooth
+set regexp
+set softwrap
+# set suspend
+set linenumbers
+set cutfromcursor
+
+
+bind ^q exit all
+bind ^w savefile all
+bind ^r backspace all
+bind ^s prevword all
+bind ^d nextword all
+bind ^x cut all
+# bind ^h cutwordleft all
+bind ^v paste all
+bind M-z undo all
+bind M-x redo all
+bind M-w cut all
+bind M-s left all
+bind M-d right all
+bind M-a home all
+bind M-e end all
+bind M-c mark all
+bind M-f verbatim all
+
+bind M-r delete all
+bind M-q backspace all
+bind ^w savefile all
+bind M-v paste all
+bind ^s prevword all
+bind ^d nextword all
+bind ^a findprevious all
+bind ^e findnext all
+bind M-p prevline all
+bind M-n nextline all
+bind M-t prevline all
+bind M-g nextline all
+bind M-b gotoline all
+bind ^f whereis all
+bind ^r replace all
+bind F2 wherewas all
+bind F3 whereis all
+bind F4 replace all
+
+bind M-n findnext all
+bind M-p findprevious all
+bind M-h findprevious all
+
+# bind M-@ indent all
+bind M-2 indent all
+bind M-1 unindent all
+
+
+# bind ^c Cancel yesno
+# bind ^w y yesno
+# bind ^e n yesno

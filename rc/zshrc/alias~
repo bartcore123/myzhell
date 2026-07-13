@@ -109,6 +109,7 @@ alias fl=float
 alias fn=function
 alias fnc=function
 alias fs=functions
+alias g="git"
 alias ga='git add'
 alias gaa='git add --all'
 alias gam='git am'
