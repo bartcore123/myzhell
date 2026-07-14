@@ -10,8 +10,3 @@ cmds () {
 }
 zle -N cmds
 
-prms(){
-	BUFFER="\${$BUFFER}"
-	CURSOR=$[$#BUFFER-1]
-}
-zle -N prms

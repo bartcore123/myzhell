@@ -344,7 +344,6 @@ alias mn=man
 alias mt=mount
 alias mv='nocorrect mv'
 alias mx='chmod +x '
-alias n=nano
 alias nd='hash -d'
 alias ndl='hash -dL'
 alias ninja='ninja -j12'
