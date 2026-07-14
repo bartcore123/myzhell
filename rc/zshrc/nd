@@ -1,3 +1,4 @@
+hash -d CPU=/sys/devices/system/cpu/cpufreq/policy0
 hash -d G=/home/barth/git
 hash -d GZ=/home/barth/kubuntu/myshell/rc/etc/zsh
 hash -d K=/home/barth/kate
