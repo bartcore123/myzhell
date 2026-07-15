@@ -20,3 +20,6 @@ _ () {
 	print -z $REPLY
 }
 gogogadget_highlighting(){ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh }
+neo () {
+	wl-copy <<< "ayaneo air plus 6800U"
+}
