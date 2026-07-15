@@ -36,7 +36,6 @@ alias CC='cp -r'
 alias CD='cp -r'
 alias D='mkdir -p'
 alias F='for X'
-alias G='grep -Enia'
 alias H='head -n'
 alias K='kill -9'
 alias L=less
