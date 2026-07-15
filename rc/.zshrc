@@ -104,8 +104,18 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+for X in ~/myshell/rc/skrips/* ~/myshell/rc/src/* ~/myshell/rc/zshrc/*;
+do
+	if [[ $X[-1] != \~ ]];
+	then
+		source $X
+	else
+		print KANKERHOERKANKER
+	fi
+done
 
-for X in ~/myshell/rc/skrips/* ~/myshell/rc/src/* ~/myshell/rc/zshrc/*; source $X
+# for X in ~/myshell/rc/skrips/* ~/myshell/rc/src/* ~/myshell/rc/zshrc/*;source $X
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 zstyle ':completion:*:(cd|*:files|*:directories)' ignored-patterns '.(|.)'
