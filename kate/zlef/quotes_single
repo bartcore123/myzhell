@@ -1,0 +1,2 @@
+quotes_single(){ LBUFFER+="''" ; CURSOR=$[CURSOR-1] }
+zle -N quotes_single

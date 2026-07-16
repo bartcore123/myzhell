@@ -1,0 +1,3 @@
+THING="()"
+insert_paren(){ LBUFFER+="()" ; CURSOR=$[CURSOR-1] }
+zle -N insert_paren

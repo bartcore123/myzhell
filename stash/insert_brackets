@@ -1,0 +1,3 @@
+THING="[]"
+insert_brackets(){ LBUFFER+="[]" ; CURSOR=$[CURSOR-1] }
+zle -N insert_brackets

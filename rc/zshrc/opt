@@ -3,4 +3,4 @@ setopt nointeractivecomments
 setopt noclobber
 setopt rcquotes
 setopt extendedglob
-setopt markdirs
+setopt nochaselinks
