@@ -116,7 +116,40 @@ done
 
 # for X in ~/myshell/rc/skrips/* ~/myshell/rc/src/* ~/myshell/rc/zshrc/*;source $X
 
+
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 zstyle ':completion:*:(cd|*:files|*:directories)' ignored-patterns '.(|.)'
 zstyle ':completion:*:commands' ignored-patterns './'
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# 1. Define a custom strategy that only suggests closing brackets and quotes
+_zsh_autosuggest_strategy_bracket_pair() {
+    # Get the last character typed in the current buffer
+    local last_char="${BUFFER[-1]}"
+    
+    case "$last_char" in
+        "(") suggestion=")" ;;
+        "{") suggestion="}" ;;
+        "[") suggestion="]" ;;
+        '"') suggestion='"' ;;
+        "'") suggestion="'" ;;
+        *)   suggestion=""  ;; # Do nothing for any other character
+    esac
+
+    # Return the suggestion to the plugin
+    REPLY="$suggestion"
+}
+
+# 2. Tell the plugin to exclusively use your new custom strategy
+# Change from: export ZSH_AUTOSUGGEST_STRATEGY=bracket_pair
+# Change to:
+ZSH_AUTOSUGGEST_STRATEGY=(bracket_pair)
+
+
+# 3. Optional: Customize the look (defaults to gray, but you can force it)
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+# Load the autosuggestions plugin directly from your system packages
+
