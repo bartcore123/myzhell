@@ -110,9 +110,9 @@ bindkey "^[L" zle-l
 bindkey "^[N" history-search-forward
 bindkey "^[OA" up-line-or-beginning-search
 bindkey "^[OB" down-line-or-beginning-search
-bindkey "^[OC" forward-char
+bindkey "^[OC" bracket-suggest-forward-char
 bindkey "^[OD" backward-char
-bindkey "^[OF" end-of-line
+bindkey "^[OF" bracket-suggest-end-of-line
 bindkey "^[OH" beginning-of-line
 bindkey "^[OR" slap
 bindkey "^[OS" pair_quotes
@@ -144,13 +144,14 @@ bindkey "^[[3;3~" true_home
 bindkey "^[[3;4~" erase_buffer
 bindkey "^[[3;5~" kill-word
 bindkey "^[[3~" delete-char
-bindkey "^[[4~" end-of-line
+bindkey "^[[4~" bracket-suggest-end-of-line
 bindkey "^[[5~" up-line-or-history
 bindkey "^[[6~" down-line-or-history
 bindkey "^[[A" up-line-or-history
 bindkey "^[[B" down-line-or-history
-bindkey "^[[C" forward-char
+bindkey "^[[C" bracket-suggest-forward-char
 bindkey "^[[D" backward-char
+bindkey "^[[F" bracket-suggest-end-of-line
 bindkey "^[[Z" reverse-menu-complete
 bindkey "^[\\\\" quoted-insert
 bindkey -s "^[]" "&"
@@ -160,7 +161,7 @@ bindkey "^[a" beginning-of-line
 bindkey "^[b" backward-word
 bindkey "^[c" set-mark-command
 bindkey "^[d" forward-char
-bindkey "^[e" end-of-line
+bindkey "^[e" bracket-suggest-end-of-line
 bindkey "^[f" forward-char
 bindkey "^[g" get-line
 bindkey "^[h" run-help
