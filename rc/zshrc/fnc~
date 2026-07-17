@@ -2,7 +2,7 @@ unalias _
 unalias -- \-
 #unalias -- \+
 
-'='()ls -A
+'='()ls -a
 '-'()clear
 '+'()less -R $@
 showcolors () {
