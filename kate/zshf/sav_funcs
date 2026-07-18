@@ -1,0 +1,33 @@
+#this sourcefile is unfinished
+
+#to save parameters to ~Z/var
+savparam(){
+
+}
+
+#to save macros to ~Z/macros
+savmcr(){
+    macro >|~Z/macros
+}
+
+#to save keybinds to ~Z/bk
+savbk(){
+    bindkey -L >| ~Z/bk
+}
+
+#to save aliases to ~Z/alias
+savalias(){
+    alias -L >| ~Z/alias
+}
+
+#to save named directories to ~Z/nd
+savnd(){
+    hash -dL |sed -r 's/[/]home[/]barth/\~/' >|~Z/nd
+}
+
+
+#and to save all to ~Z/
+sav(){
+        hash -dL |sed -r 's/[/]home[/]barth/\~/' >|~Z/nd
+
+}
