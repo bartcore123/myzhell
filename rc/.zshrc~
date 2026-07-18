@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-for X in  ~/myshell/rc/src/l1/*  ~/myshell/rc/src/l2/*  ~/myshell/rc/src/l3/* ~/myshell/rc/zshrc/*;
+for X in  ~/myshell/rc/src/l1/*  ~/myshell/rc/src/l2/*  ~/myshell/rc/src/l3/*;
 do
 	if [[ $X[-1] != \~ ]];
 	then

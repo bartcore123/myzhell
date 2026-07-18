@@ -76,10 +76,10 @@ _bracket_suggest_stack_string() {
           ;;
         '"') stack+=('"') ;;
         "'") stack+=("'") ;;
-        '#')
-          # only a comment at the start of a word
-          (( prev_ws )) && in_comment=1
-          ;;
+        # '#')
+        #   # only a comment at the start of a word
+        #   (( prev_ws )) && in_comment=1
+        #   ;;
       esac
     fi
 
@@ -157,7 +157,7 @@ bracket-suggest-end-of-line() {
   suggestion=$(_bracket_suggest_stack_string "$BUFFER")
   if [[ -n $suggestion ]]; then
     BUFFER+=$suggestion
-    CURSOR=$#BUFFER
+    CURSOR=$[CURSOR+$#suggestion]
   fi
 }
 zle -N bracket-suggest-end-of-line

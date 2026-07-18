@@ -1,2 +1,3 @@
 neo="ayaneo air plus 6800u"
 export READNULLCMD='less'
+READNULLCMD=rless
