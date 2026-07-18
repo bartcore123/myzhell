@@ -23,3 +23,12 @@ gogogadget_highlighting(){ source /usr/share/zsh/plugins/zsh-syntax-highlighting
 neo () {
 	wl-copy <<< "ayaneo air plus 6800U"
 }
+gc(){ git commit -am$GITVER; GITVER=$[GITVER+1] }
+_ () {
+	read -d ''
+	print -z "$REPLY"
+}
+gc () {
+	git commit -am${GITVER:-1}
+	GITVER=$[GITVER+1] 
+}
