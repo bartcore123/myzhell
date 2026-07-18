@@ -1,6 +1,7 @@
-unalias _
-unalias -- \-
-#unalias -- \+
+unalias _  2>/dev/null
+unalias -- \-   2>/dev/null
+#unalias -- \+   2>/dev/null
+
 
 '='()ls -A
 '-'()clear
@@ -28,4 +29,7 @@ gc(){ git commit -am"Version: ${GITVER_BIG:-x}.${GITVER_MID:-x}.${GITVER:-1}"; G
 _ () {
 	read -d ''
 	print -z "$REPLY"
+}
+bak () {
+	cp -b $@ ~bak
 }
