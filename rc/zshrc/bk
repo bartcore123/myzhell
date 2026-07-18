@@ -160,7 +160,7 @@ bindkey -s "^[\`" "~"
 bindkey "^[a" beginning-of-line
 bindkey "^[b" backward-word
 bindkey "^[c" set-mark-command
-bindkey "^[d" forward-char
+bindkey "^[d" bracket-suggest-forward-char
 bindkey "^[e" bracket-suggest-end-of-line
 bindkey "^[f" forward-char
 bindkey "^[g" get-line
