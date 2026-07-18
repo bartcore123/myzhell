@@ -13,13 +13,11 @@ showcolors () {
 '}
 	done
 }
+
 '#' () {
 	print -r $@
 }
-_ () {
-	read
-	print -z $REPLY
-}
+
 gogogadget_highlighting(){ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh }
 neo () {
 	wl-copy <<< "ayaneo air plus 6800U"
@@ -39,3 +37,7 @@ gc () {
 	print "GITVER_BIG=$GITVER_BIG"$'n'"GITVER_MID=$GITVER_MID"$'n'"GITVER=$GITVER" >| ~M/version
 	git commit -am"Version: ${GITVER_BIG:-x}.${GITVER_MID:-x}.${GITVER:-1}"
 }
+savnd(){ hash -dL |sed -r 's/[/]home[/]barth/\~/' >|~Z/nd }
+
+'$'(){ read -d '' ${@:-R}; r=(${(f)R}) }
+

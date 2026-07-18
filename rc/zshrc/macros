@@ -182,6 +182,7 @@ macro ww=wslpath
 macro www='wslpath -w'
 macro x=export
 macro xc=exec
+macro z=7z
 macro zc=zcompile
 macro zml=zmodload
 macro zn='zle -N'
