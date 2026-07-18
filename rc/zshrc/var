@@ -1,2 +1,4 @@
 neo="ayaneo air plus 6800u"
 export READNULLCMD='less'
+export GITVER_BIG=4
+export GITVER_MID=3
