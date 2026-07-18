@@ -22,7 +22,7 @@ gogogadget_highlighting(){ source /usr/share/zsh/plugins/zsh-syntax-highlighting
 neo () {
 	wl-copy <<< "ayaneo air plus 6800U"
 }
-gc(){ git commit -am"Version: ${GITVER_BIG:-x}.${GITVER_MID:-x}.${GITVER:-1}"; GITVER=$[GITVER+1] }
+# gc(){ git commit -am"Version: ${GITVER_BIG:-x}.${GITVER_MID:-x}.${GITVER:-1}"; GITVER=$[GITVER+1] }
 
 _ () {
 	read -d ''
@@ -34,7 +34,10 @@ bak () {
 gc () {
 	[[ -r ~M/version ]] && source ~M/version
 	GITVER=$[GITVER+1] 
-	print "GITVER_BIG=$GITVER_BIG"$'n'"GITVER_MID=$GITVER_MID"$'n'"GITVER=$GITVER" >| ~M/version
+	print "(( GITVER_BIG=$GITVER_BIG ))" >| ~M/version
+	print "(( GITVER_MID=$GITVER_MID ))" >> ~M/version
+	print "(( GITVER=$GITVER ))" >> ~M/version
+	
 	git commit -am"Version: ${GITVER_BIG:-x}.${GITVER_MID:-x}.${GITVER:-1}"
 }
 savnd(){ hash -dL |sed -r 's/[/]home[/]barth/\~/' >|~Z/nd }
