@@ -124,3 +124,4 @@ zstyle ':completion:*:(cd|*:files|*:directories)' ignored-patterns '.(|.)'
 zstyle ':completion:*:commands' ignored-patterns './'
 
 #source ~M/rc/bracket-suggest.zsh
+#naks
