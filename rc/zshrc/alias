@@ -441,6 +441,7 @@ alias www='wslpath -w'
 alias x=export
 alias xc=exec
 alias xx=exit
+alias z=7z
 alias zc=zcompile
 alias zml=zmodload
 alias zn='zle -N'

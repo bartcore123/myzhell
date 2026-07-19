@@ -8,3 +8,13 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:descriptions' format '%F{green}-- %d --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' ignored-patterns './'
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle ':completion:*' max-errors 1 numeric
+zstyle :compinstall filename '/home/barth/myshell/rc/src/l2/Z_completion_system'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
