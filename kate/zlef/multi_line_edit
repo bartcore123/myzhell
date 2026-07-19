@@ -1,0 +1,14 @@
+# Define a custom wrapper for the enter key
+custom-accept-line() {
+    # Check if the current buffer is syntactically complete
+    if zsh -n -c "$BUFFER" 2>/dev/null; then
+        # Buffer is complete; execute it normally
+        zle .accept-line
+    else
+        # Buffer is incomplete; insert a literal newline
+        BUFFER+=$'\n'
+    fi
+}
+
+# Register the function as a ZLE widget
+zle -N custom-accept-line

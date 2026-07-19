@@ -1,0 +1,1380 @@
+     [1mzle[0m
+     [1mzle -l [22m[ [1m-L [22m| [1m-a [22m] [ [4mstring[24m ... ]
+     [1mzle -D [4m[22mwidget[24m ...
+     [1mzle -A [4m[22mold-widget[24m [4mnew-widget[0m
+     [1mzle -N [4m[22mwidget[24m [ [4mfunction[24m ]
+     [1mzle -f [4m[22mflag[24m [ [4mflag[24m... ]
+     [1mzle -C [4m[22mwidget[24m [4mcompletion-widget[24m [4mfunction[0m
+     [1mzle -R [22m[ [1m-c [22m] [ [4mdisplay-string[24m ] [ [4mstring[24m ... ]
+     [1mzle -M [4m[22mstring[0m
+     [1mzle -U [4m[22mstring[0m
+     [1mzle -K [4m[22mkeymap[0m
+     [1mzle -F [22m[ [1m-L [22m| [1m-w [22m] [ [4mfd[24m [ [4mhandler[24m ] ]
+     [1mzle -I[0m
+     [1mzle -T [22m[ [1mtc [4m[22mfunction[24m | [1m-r tc [22m| [1m-L [22m]
+     [1mzle [4m[22mwidget[24m [ [1m-n [4m[22mnum[24m ] [ [1m-f [4m[22mflag[24m ] [ [1m-Nw [22m] [ [1m-K [4m[22mkeymap[24m ] [4margs[24m ...
+            The [1mzle [22mbuiltin performs a number of different actions concerning ZLE.
+
+            With no options and no arguments, only the return status will be set.  It is zero if ZLE is currently active and widgets could be invoked using this builtin command and non-zero otherwise.  Note that even if non-zero status
+            is returned, zle may still be active as part of the completion system; this does not allow direct calls to ZLE widgets.
+
+            Otherwise, which operation it performs depends on its options:
+
+            [1m-l [22m[ [1m-L [22m| [1m-a [22m] [ [4mstring[24m ]
+                   List all existing user-defined widgets.  If the [1m-L [22moption is used, list in the form of [1mzle [22mcommands to create the widgets.
+
+                   When combined with the [1m-a [22moption, all widget names are listed, including the builtin ones. In this case the [1m-L [22moption is ignored.
+
+                   If at least one [4mstring[24m is given, and [1m-a [22mis present or [1m-L [22mis not used, nothing will be printed.  The return status will be zero if all [4mstring[24ms are names of existing widgets and non-zero if at least one [4mstring[24m is not a
+                   name of a defined widget.  If [1m-a [22mis also present, all widget names are used for the comparison including builtin widgets, else only user-defined widgets are used.
+
+                   If at least one [4mstring[24m is present and the [1m-L [22moption is used, user-defined widgets matching any [4mstring[24m are listed in the form of [1mzle [22mcommands to create the widgets.
+
+            [1m-D [4m[22mwidget[24m ...
+                   Delete the named [4mwidget[24ms.
+
+            [1m-A [4m[22mold-widget[24m [4mnew-widget[0m
+                   Make  the [4mnew-widget[24m name an alias for [4mold-widget[24m, so that both names refer to the same widget.  The names have equal standing; if either is deleted, the other remains.  If there is already a widget with the [4mnew-wid‐[0m
+                   [4mget[24m name, it is deleted.
+
+            [1m-N [4m[22mwidget[24m [ [4mfunction[24m ]
+                   Create a user-defined widget.  If there is already a widget with the specified name, it is overwritten.  When the new widget is invoked from within the editor, the specified shell [4mfunction[24m is called.  If no  function
+                   name is specified, it defaults to the same name as the widget.  For further information, see the section ‘Widgets' below.
+
+            [1m-f [4m[22mflag[24m [ [4mflag[24m... ]
+                   Set various flags on the running widget.  Possible values for [4mflag[24m are:
+
+                   [1myank  [22mfor  indicating  that the widget has yanked text into the buffer.  If the widget is wrapping an existing internal widget, no further action is necessary, but if it has inserted the text manually, then it should
+                   also take care to set [1mYANK_START [22mand [1mYANK_END [22mcorrectly.  [1myankbefore [22mdoes the same but is used when the yanked text appears after the cursor.
+
+                   [1mkill [22mfor indicating that text has been killed into the cutbuffer.  When repeatedly invoking a kill widget, text is appended to the cutbuffer instead of replacing it, but when wrapping such widgets, it is necessary to
+                   call ‘[1mzle -f kill[22m' to retain this effect.
+
+                   [1mvichange [22mfor indicating that the widget represents a vi change that can be repeated as a whole with ‘[1mvi-repeat-change[22m'. The flag should be set early in the function before inspecting the value of [1mNUMERIC [22mor  invoking
+                   other widgets. This has no effect for a widget invoked from insert mode. If insert mode is active when the widget finishes, the change extends until next returning to command mode.
+
+            [1m-C [4m[22mwidget[24m [4mcompletion-widget[24m [4mfunction[0m
+                   Create  a  user-defined  completion widget named [4mwidget[24m. The completion widget will behave like the built-in completion-widget whose name is given as [4mcompletion-widget[24m. To generate the completions, the shell function
+                   [4mfunction[24m will be called.  For further information, see [4mzshcompwid[24m(1).
+
+            [1m-R [22m[ [1m-c [22m] [ [4mdisplay-string[24m ] [ [4mstring[24m ... ]
+                   Redisplay the command line.  If a [4mdisplay-string[24m is given and not empty, this is shown in the status line (immediately below the line being edited).
+
+                   If the optional [4mstring[24ms are given they are listed below the prompt in the same way as completion lists are printed. If no [4mstring[24ms are given but the [1m-c [22moption is used such a list is cleared.
+
+                   Note that immediately after returning from running widgets, the command line will be redisplayed and the strings displayed will be erased.  Therefore, this option is only useful for widgets that do not  exit  immedi‐
+                   ately after using it.
+
+                   This command can safely be called outside user defined widgets; if zle is active, the display will be refreshed, while if zle is not active, the command has no effect.  In this case there will usually be no other ar‐
+                   guments.
+
+                   The status is zero if zle was active, else one.
+
+            [1m-M [4m[22mstring[0m
+                   As  with  the  [1m-R  [22moption, the [4mstring[24m will be displayed below the command line; unlike the [1m-R [22moption, the string will not be put into the status line but will instead be printed normally below the prompt.  This means
+                   that the [4mstring[24m will still be displayed after the widget returns (until it is overwritten by subsequent commands).
+
+            [1m-U [4m[22mstring[0m
+                   This pushes the characters in the [4mstring[24m onto the input stack of ZLE.  After the widget currently executed finishes ZLE will behave as if the characters in the [4mstring[24m were typed by the user.
+
+                   As ZLE uses a stack, if this option is used repeatedly the last string pushed onto the stack will be processed first.  However, the characters in each [4mstring[24m will be processed in the order in which they appear in the
+                   string.
+
+            [1m-K [4m[22mkeymap[0m
+                   Selects the keymap named [4mkeymap[24m.  An error message will be displayed if there is no such keymap.
+
+                   This keymap selection affects the interpretation of following keystrokes within this invocation of ZLE.  Any following invocation (e.g., the next command line) will start as usual with the ‘[1mmain[22m' keymap selected.
+
+            [1m-F [22m[ [1m-L [22m| [1m-w [22m] [ [4mfd[24m [ [4mhandler[24m ] ]
+                   Only available if your system supports one of the ‘poll' or ‘select' system calls; most modern systems do.
+
+                   Installs [4mhandler[24m (the name of a shell function) to handle input from file descriptor [4mfd[24m.  Installing a handler for an [4mfd[24m which is already handled causes the existing handler to be replaced.  Any  number  of  handlers
+                   for  any number of readable file descriptors may be installed.  Note that zle makes no attempt to check whether this [4mfd[24m is actually readable when installing the handler.  The user must make their own arrangements for
+                   handling the file descriptor when zle is not active.
+
+                   When zle is attempting to read data, it will examine both the terminal and the list of handled [4mfd[24m's.  If data becomes available on a handled [4mfd[24m, zle calls [4mhandler[24m with the fd which is ready for reading as  the  first
+                   argument.  Under normal circumstances this is the only argument, but if an error was detected, a second argument provides details: ‘[1mhup[22m' for a disconnect, ‘[1mnval[22m' for a closed or otherwise invalid descriptor, or ‘[1merr[22m'
+                   for any other condition.  Systems that support only the ‘select' system call always use ‘[1merr[22m'.
+
+                   If the option [1m-w [22mis also given, the [4mhandler[24m is instead a line editor widget, typically a shell function made into a widget using ‘[1mzle -N[22m'.  In that case [4mhandler[24m can use all the facilities of zle to update the current
+                   editing  line.  Note, however, that as handling [4mfd[24m takes place at a low level changes to the display will not automatically appear; the widget should call ‘[1mzle -R[22m' to force redisplay.  As of this writing, widget han‐
+                   dlers only support a single argument and thus are never passed a string for error state, so widgets must be prepared to test the descriptor themselves.
+
+                   If either type of handler produces output to the terminal, it should call ‘[1mzle -I[22m' before doing so (see below).  Handlers should not attempt to read from the terminal.
+
+                   If no [4mhandler[24m is given, but an [4mfd[24m is present, any handler for that [4mfd[24m is removed.  If there is none, an error message is printed and status 1 is returned.
+
+                   If no arguments are given, or the [1m-L [22moption is supplied, a list of handlers is printed in a form which can be stored for later execution.
+
+                   An [4mfd[24m (but not a [4mhandler[24m) may optionally be given with the [1m-L [22moption; in this case, the function will list the handler if any, else silently return status 1.
+
+                   Note that this feature should be used with care.  Activity on one of the [4mfd[24m's which is not properly handled can cause the terminal to become unusable.  Removing an [4mfd[24m handler from within a signal trap may  cause  un‐
+                   predictable behavior.
+
+                   Here is a simple example of using this feature.  A connection to a remote TCP port is created using the ztcp command; see the description of the [1mzsh/net/tcp [22mmodule in [4mzshmodules[24m(1).  Then a handler is installed which
+                   simply  prints  out  any  data which arrives on this connection.  Note that ‘select' will indicate that the file descriptor needs handling if the remote side has closed the connection; we handle that by testing for a
+                   failed read.
+
+                          [1mif ztcp pwspc 2811; then[0m
+                            [1mtcpfd=$REPLY[0m
+                            [1mhandler() {[0m
+                              [1mzle -I[0m
+                              [1mlocal line[0m
+                              [1mif ! read -r line <&$1; then[0m
+                                [1m# select marks this fd if we reach EOF,[0m
+                                [1m# so handle this specially.[0m
+                                [1mprint "[Read on fd $1 failed, removing.]" >&2[0m
+                                [1mzle -F $1[0m
+                                [1mreturn 1[0m
+                              [1mfi[0m
+                              [1mprint -r - $line[0m
+                            [1m}[0m
+                            [1mzle -F $tcpfd handler[0m
+                          [1mfi[0m
+
+            [1m-I     [22mUnusually, this option is most useful outside ordinary widget functions, though it may be used within if normal output to the terminal is required.  It invalidates the current zle display in preparation  for  output;
+                   typically  this will be from a trap function.  It has no effect if zle is not active.  When a trap exits, the shell checks to see if the display needs restoring, hence the following will print output in such a way as
+                   not to disturb the line being edited:
+
+                          [1mTRAPUSR1() {[0m
+                            [1m# Invalidate zle display[0m
+                            [1m[[ -o zle ]] && zle -I[0m
+                            [1m# Show output[0m
+                            [1mprint Hello[0m
+                          [1m}[0m
+
+                   In general, the trap function may need to test whether zle is active before using this method (as shown in the example), since the [1mzsh/zle [22mmodule may not even be loaded; if it is not, the command can be skipped.
+
+                   It is possible to call ‘[1mzle -I[22m' several times before control is returned to the editor; the display will only be invalidated the first time to minimise disruption.
+
+                   Note that there are normally better ways of manipulating the display from within zle widgets; see, for example, ‘[1mzle -R[22m' above.
+
+                   The returned status is zero if zle was invalidated, even though this may have been by a previous call to ‘[1mzle -I[22m' or by a system notification.  To test if a zle widget may be called at this point, execute [1mzle [22mwith no
+                   arguments and examine the return status.
+
+            [1m-T     [22mThis is used to add, list or remove internal transformations on the processing performed by the line editor.  It is typically used only for debugging or testing and is therefore of  little  interest  to  the  general
+                   user.
+
+                   ‘[1mzle -T [4m[22mtransformation[24m [4mfunc[24m' specifies that the given [4mtransformation[24m (see below) is effected by shell function [4mfunc[24m.
+
+                   ‘[1mzle -Tr [4m[22mtransformation[24m' removes the given [4mtransformation[24m if it was present (it is not an error if none was).
+
+                   ‘[1mzle -TL[22m' can be used to list all transformations currently in operation.
+
+                   Currently  the only transformation is [1mtc[22m.  This is used instead of outputting termcap codes to the terminal.  When the transformation is in operation the shell function is passed the termcap code that would be output
+                   as its first argument; if the operation required a numeric argument, that is passed as a second argument.  The function should set the shell variable [1mREPLY [22mto the transformed termcap code.  Typically this is used  to
+                   produce some simply formatted version of the code and optional argument for debugging or testing.  Note that this transformation is not applied to other non-printing characters such as carriage returns and newlines.
+
+            [4mwidget[24m [ [1m-n [4m[22mnum[24m ] [ [1m-f [4m[22mflag[24m ] [ [1m-Nw [22m] [ [1m-K [4m[22mkeymap[24m ] [4margs[24m ...
+                   Invoke the specified [4mwidget[24m.  This can only be done when ZLE is active; normally this will be within a user-defined widget.
+
+                   With  the options [1m-n [22mand [1m-N[22m, the current numeric argument will be saved and then restored after the call to [4mwidget[24m; ‘[1m-n [4m[22mnum[24m' sets the numeric argument temporarily to [4mnum[24m, while ‘[1m-N[22m' sets it to the default, i.e. as if
+                   there were none.
+
+                   With the option [1m-K[22m, [4mkeymap[24m will be used as the current keymap during the execution of the widget.  The previous keymap will be restored when the widget exits.
+
+                   Normally, calling a widget in this way does not set the special parameter [1mWIDGET [22mand related parameters, so that the environment appears as if the top-level widget called by the user were still active.  With the  op‐
+                   tion [1m-w[22m, [1mWIDGET [22mand related parameters are set to reflect the widget being executed by the [1mzle [22mcall.
+
+                   Normally, when [4mwidget[24m returns the special parameter [1mLASTWIDGET [22mwill point to it.  This can be inhibited by passing the option [1m-f nolast[22m.
+
+                   Any further arguments will be passed to the widget; note that as standard argument handling is performed, any general argument list should be preceded by [1m--[22m.  If it is a shell function, these are passed down as posi‐
+                   tional parameters; for builtin widgets it is up to the widget in question what it does with them.  Currently arguments are only handled by the incremental-search commands, the [1mhistory-search-forward [22mand [1m-backward [22mand
+                   the corresponding functions prefixed by [1mvi-[22m, and by [1muniversal-argument[22m.  No error is flagged if the command does not use the arguments, or only uses some of them.
+
+                   The return status reflects the success or failure of the operation carried out by the widget, or if it is a user-defined widget the return status of the shell function.
+
+                   A  non-zero  return status causes the shell to beep when the widget exits, unless the [1mBEEP [22moptions was unset or the widget was called via the [1mzle [22mcommand.  Thus if a user defined widget requires an immediate beep, it
+                   should call the [1mbeep [22mwidget directly.
+
+[1mZLE WIDGETS[0m
+     All actions in the editor are performed by ‘widgets'.  A widget's job is simply to perform some small action.  The ZLE commands that key sequences in keymaps are bound to are in fact widgets.  Widgets can be user-defined or  built
+     in.
+
+     The  standard  widgets built into ZLE are listed in the section ‘Standard Widgets' below.  Other built-in widgets can be defined by other modules (see [4mzshmodules[24m(1)).  Each built-in widget has two names: its normal canonical name,
+     and the same name preceded by a ‘[1m.[22m'.  The ‘[1m.[22m' name is special: it can't be rebound to a different widget.  This makes the widget available even when its usual name has been redefined.
+
+     User-defined widgets are defined using ‘[1mzle -N[22m', and implemented as shell functions.  When the widget is executed, the corresponding shell function is executed, and can perform editing (or other) actions.  It is  recommended  that
+     user-defined widgets should not have names starting with ‘[1m.[22m'.
+
+[1mUSER-DEFINED WIDGETS[0m
+     User-defined  widgets,  being implemented as shell functions, can execute any normal shell command.  They can also run other widgets (whether built-in or user-defined) using the [1mzle [22mbuiltin command. The standard input of the func‐
+     tion is redirected from /dev/null to prevent external commands from unintentionally blocking ZLE by reading from the terminal, but [1mread -k [22mor [1mread -q [22mcan be used to read characters.  Finally, they can  examine  and  edit  the  ZLE
+     buffer being edited by reading and setting the special parameters described below.
+
+     These  special  parameters  are always available in widget functions, but are not in any way special outside ZLE.  If they have some normal value outside ZLE, that value is temporarily inaccessible, but will return when the widget
+     function exits.  These special parameters in fact have local scope, like parameters created in a function using [1mlocal[22m.
+
+     Inside completion widgets and traps called while ZLE is active, these parameters are available read-only.
+
+     Note that the parameters appear as local to any ZLE widget in which they appear.  Hence if it is desired to override them this needs to be done within a nested function:
+
+            [1mwidget-function() {[0m
+              [1m# $WIDGET here refers to the special variable[0m
+              [1m# that is local inside widget-function[0m
+              [1m() {[0m
+                 [1m# This anonymous nested function allows WIDGET[0m
+                 [1m# to be used as a local variable.  The -h[0m
+                 [1m# removes the special status of the variable.[0m
+                 [1mlocal -h WIDGET[0m
+              [1m}[0m
+            [1m}[0m
+
+     [1mBUFFER [22m(scalar)
+            The entire contents of the edit buffer.  If it is written to, the cursor remains at the same offset, unless that would put it outside the buffer.
+
+     [1mBUFFERLINES [22m(integer)
+            The number of screen lines needed for the edit buffer currently displayed on screen (i.e. without any changes to the preceding parameters done after the last redisplay); read-only.
+
+     [1mCONTEXT [22m(scalar)
+            The context in which zle was called to read a line; read-only.  One of the values:
+
+            [1mstart  [22mThe start of a command line (at prompt [1mPS1[22m).
+
+            [1mcont   [22mA continuation to a command line (at prompt [1mPS2[22m).
+
+            [1mselect[0m
+                   In a [1mselect [22mloop (at prompt [1mPS3[22m).
+
+            [1mvared  [22mEditing a variable in [1mvared[22m.
+
+     [1mCURSOR [22m(integer)
+            The offset of the cursor, within the edit buffer.  This is in the range 0 to [1m$#BUFFER[22m, and is by definition equal to [1m$#LBUFFER[22m.  Attempts to move the cursor outside the buffer will result in the cursor being  moved  to  the
+            appropriate end of the buffer.
+
+     [1mCUTBUFFER [22m(scalar)
+            The  last  item  cut  using  one  of  the ‘[1mkill-[22m' commands; the string which the next yank would insert in the line.  Later entries in the kill ring are in the array [1mkillring[22m.  Note that the command ‘[1mzle copy-region-as-kill[0m
+            [4mstring[24m' can be used to set the text of the cut buffer from a shell function and cycle the kill ring in the same way as interactively killing text.
+
+     [1mHISTNO [22m(integer)
+            The current history number.  Setting this has the same effect as moving up or down in the history to the corresponding history line.  An attempt to set it is ignored if the line is not stored in the history.  Note  this  is
+            not the same as the parameter [1mHISTCMD[22m, which always gives the number of the history line being added to the main shell's history.  [1mHISTNO [22mrefers to the line being retrieved within zle.
+
+     [1mISEARCHMATCH_ACTIVE [22m(integer)
+     [1mISEARCHMATCH_START [22m(integer)
+     [1mISEARCHMATCH_END [22m(integer)
+            [1mISEARCHMATCH_ACTIVE  [22mindicates  whether  a part of the [1mBUFFER [22mis currently matched by an incremental search pattern. [1mISEARCHMATCH_START [22mand [1mISEARCHMATCH_END [22mgive the location of the matched part and are in the same units as
+            [1mCURSOR[22m. They are only valid for reading when [1mISEARCHMATCH_ACTIVE [22mis non-zero.
+
+            All parameters are read-only.
+
+     [1mKEYMAP [22m(scalar)
+            The name of the currently selected keymap; read-only.
+
+     [1mKEYS [22m(scalar)
+            The keys typed to invoke this widget, as a literal string; read-only.
+
+     [1mKEYS_QUEUED_COUNT [22m(integer)
+            The number of bytes pushed back to the input queue and therefore available for reading immediately before any I/O is done; read-only.  See also [1mPENDING[22m; the two values are distinct.
+
+     [1mkillring [22m(array)
+            The array of previously killed items, with the most recently killed first.  This gives the items that would be retrieved by a [1myank-pop [22min the same order.  Note, however, that the most recently killed item is in  [1m$CUTBUFFER[22m;
+            [1m$killring [22mshows the array of previous entries.
+
+            The  default size for the kill ring is eight, however the length may be changed by normal array operations.  Any empty string in the kill ring is ignored by the [1myank-pop [22mcommand, hence the size of the array effectively sets
+            the maximum length of the kill ring, while the number of non-zero strings gives the current length, both as seen by the user at the command line.
+
+     [1mLASTABORTEDSEARCH [22m(scalar)
+            The last search string used by an interactive search that was aborted by the user (status 3 returned by the search widget).
+
+     [1mLASTSEARCH [22m(scalar)
+            The last search string used by an interactive search; read-only.  This is set even if the search failed (status 0, 1 or 2 returned by the search widget), but not if it was aborted by the user.
+
+     [1mLASTWIDGET [22m(scalar)
+            The name of the last widget that was executed; read-only.
+
+     [1mLBUFFER [22m(scalar)
+            The part of the buffer that lies to the left of the cursor position.  If it is assigned to, only that part of the buffer is replaced, and the cursor remains between the new [1m$LBUFFER [22mand the old [1m$RBUFFER[22m.
+
+     [1mMARK [22m(integer)
+            Like [1mCURSOR[22m, but for the mark. With vi-mode operators that wait for a movement command to select a region of text, setting [1mMARK [22mallows the selection to extend in both directions from the initial cursor position.
+
+     [1mNUMERIC [22m(integer)
+            The numeric argument. If no numeric argument was given, this parameter is unset. When this is set inside a widget function, builtin widgets called with the [1mzle [22mbuiltin command will use the value assigned. If it is unset in‐
+            side a widget function, builtin widgets called behave as if no numeric argument was given.
+
+     [1mPENDING [22m(integer)
+            The number of bytes pending for input, i.e. the number of bytes which have already been typed and can immediately be read. On systems where the shell is not able to get this information, this parameter will  always  have  a
+            value of zero.  Read-only.  See also [1mKEYS_QUEUED_COUNT[22m; the two values are distinct.
+
+     [1mPREBUFFER [22m(scalar)
+            In a multi-line input at the secondary prompt, this read-only parameter contains the contents of the lines before the one the cursor is currently in.
+
+     [1mPREDISPLAY [22m(scalar)
+            Text to be displayed before the start of the editable text buffer.  This does not have to be a complete line; to display a complete line, a newline must be appended explicitly.  The text is reset on each new invocation (but
+            not recursive invocation) of zle.
+
+     [1mPOSTDISPLAY [22m(scalar)
+            Text  to  be displayed after the end of the editable text buffer.  This does not have to be a complete line; to display a complete line, a newline must be prepended explicitly.  The text is reset on each new invocation (but
+            not recursive invocation) of zle.
+
+     [1mRBUFFER [22m(scalar)
+            The part of the buffer that lies to the right of the cursor position.  If it is assigned to, only that part of the buffer is replaced, and the cursor remains between the old [1m$LBUFFER [22mand the new [1m$RBUFFER[22m.
+
+     [1mREGION_ACTIVE [22m(integer)
+            Indicates if the region is currently active.  It can be assigned 0 or 1 to deactivate and activate the region respectively. A value of 2 activates the region in line-wise mode with the highlighted text extending  for  whole
+            lines only; see [4mCharacter[24m [4mHighlighting[24m below.
+
+     [1mregion_highlight [22m(array)
+            Each  element  of  this  array may be set to a string that describes highlighting for an arbitrary region of the command line that will take effect the next time the command line is redisplayed.  Highlighting of the non-ed‐
+            itable parts of the command line in [1mPREDISPLAY [22mand [1mPOSTDISPLAY [22mare possible, but note that the [1mP [22mflag is needed for character indexing to include [1mPREDISPLAY[22m.
+
+            Each string consists of the following whitespace-separated parts:
+
+            •      Optionally, a ‘[1mP[22m' to signify that the start and end offset that follow include any string set by the [1mPREDISPLAY [22mspecial parameter; this is needed if the predisplay string itself is to be highlighted.  Whitespace  be‐
+                   tween the ‘[1mP[22m' and the start offset is optional.
+
+            •      A start offset in the same units as [1mCURSOR[22m.
+
+            •      An end offset in the same units as [1mCURSOR[22m.
+
+            •      A highlight specification in the same format as used for contexts in the parameter [1mzle_highlight[22m, see the section ‘Character Highlighting' below; for example, [1mstandout [22mor [1mfg=red,bold[22m.
+
+            •      Optionally,  a  string of the form ‘[1mmemo=[4m[22mtoken[24m'.  The [4mtoken[24m consists of everything between the ‘[1m=[22m' and the next whitespace, comma, NUL, or the end of the string.  The [4mtoken[24m is preserved verbatim but not parsed in any
+                   way.
+
+                   Plugins may use this to identify array elements they have added: for example, a plugin might set [4mtoken[24m to its (the plugin's) name and then use ‘[1mregion_highlight=( ${region_highlight:#*memo=[4m[22mtoken[24m[1m} )[22m' in order  to  re‐
+                   move array elements it have added.
+
+                   (This example uses the ‘[1m${[4m[22mname[24m[1m:#[4m[22mpattern[24m[1m}[22m' array-grepping syntax described in the section ‘Parameter Expansion' in [4mzshexpn[24m(1).)
+
+            For example,
+
+                   [1mregion_highlight=("P0 20 bold memo=foobar")[0m
+
+            specifies that the first twenty characters of the text including any predisplay string should be highlighted in bold.
+
+            Note that the effect of [1mregion_highlight [22mis not saved and disappears as soon as the line is accepted.
+
+            Note that zsh 5.8 and older do not support the ‘[1mmemo=[4m[22mtoken[24m' field and may misparse the third (highlight specification) field when a memo is given.
+
+            The final highlighting on the command line depends on both [1mregion_highlight [22mand [1mzle_highlight[22m; see the section CHARACTER HIGHLIGHTING below for details.
+
+     [1mregisters [22m(associative array)
+            The contents of each of the vi register buffers. These are typically set using [1mvi-set-buffer [22mfollowed by a delete, change or yank command.
+
+     [1mSUFFIX_ACTIVE [22m(integer)
+     [1mSUFFIX_START [22m(integer)
+     [1mSUFFIX_END [22m(integer)
+            [1mSUFFIX_ACTIVE  [22mindicates whether an auto-removable completion suffix is currently active. [1mSUFFIX_START [22mand [1mSUFFIX_END [22mgive the location of the suffix and are in the same units as [1mCURSOR[22m. They are only valid for reading when
+            [1mSUFFIX_ACTIVE [22mis non-zero.
+
+            All parameters are read-only.
+
+     [1mUNDO_CHANGE_NO [22m(integer)
+            A number representing the state of the undo history.  The only use of this is passing as an argument to the [1mundo [22mwidget in order to undo back to the recorded point.  Read-only.
+
+     [1mUNDO_LIMIT_NO [22m(integer)
+            A number corresponding to an existing change in the undo history; compare [1mUNDO_CHANGE_NO[22m.  If this is set to a value greater than zero, the [1mundo [22mcommand will not allow the line to be undone beyond the given  change  number.
+            It is still possible to use ‘[1mzle undo [4m[22mchange[24m' in a widget to undo beyond that point; in that case, it will not be possible to undo at all until [1mUNDO_LIMIT_NO [22mis reduced.  Set to 0 to disable the limit.
+
+            A typical use of this variable in a widget function is as follows (note the additional function scope is required):
+
+                   [1m() {[0m
+                     [1mlocal UNDO_LIMIT_NO=$UNDO_CHANGE_NO[0m
+                     [1m# Perform some form of recursive edit.[0m
+                   [1m}[0m
+
+     [1mWIDGET [22m(scalar)
+            The name of the widget currently being executed; read-only.
+
+     [1mWIDGETFUNC [22m(scalar)
+            The  name  of  the shell function that implements a widget defined with either [1mzle -N [22mor [1mzle -C[22m.  In the former case, this is the second argument to the [1mzle -N [22mcommand that defined the widget, or the first argument if there
+            was no second argument.  In the latter case this is the third argument to the [1mzle -C [22mcommand that defined the widget.  Read-only.
+
+     [1mWIDGETSTYLE [22m(scalar)
+            Describes the implementation behind the completion widget currently being executed; the second argument that followed [1mzle -C [22mwhen the widget was defined.  This is the name of a builtin completion widget.   For  widgets  de‐
+            fined with [1mzle -N [22mthis is set to the empty string.  Read-only.
+
+     [1mYANK_ACTIVE [22m(integer)
+     [1mYANK_START [22m(integer)
+     [1mYANK_END [22m(integer)
+            [1mYANK_ACTIVE  [22mindicates  whether  text  has  just been yanked (pasted) into the buffer.  [1mYANK_START [22mand [1mYANK_END [22mgive the location of the pasted text and are in the same units as [1mCURSOR[22m.  They are only valid for reading when
+            [1mYANK_ACTIVE [22mis non-zero.  They can also be assigned by widgets that insert text in a yank-like fashion, for example wrappers of [1mbracketed-paste[22m.  See also [1mzle -f[22m.
+
+            [1mYANK_ACTIVE [22mis read-only.
+
+     [1mZLE_RECURSIVE [22m(integer)
+            Usually zero, but incremented inside any instance of [1mrecursive-edit[22m.  Hence indicates the current recursion level.
+
+            [1mZLE_RECURSIVE [22mis read-only.
+
+     [1mZLE_STATE [22m(scalar)
+            Contains a set of space-separated words that describe the current [1mzle [22mstate.
+
+            Currently, the states shown are the insert mode as set by the [1moverwrite-mode [22mor [1mvi-replace [22mwidgets and whether history commands will visit imported entries as controlled by the set-local-history widget.  The string contains
+            ‘[1minsert[22m' if characters to be inserted on the command line move existing characters to the right or ‘[1moverwrite[22m' if characters to be inserted overwrite existing characters. It contains ‘[1mlocalhistory[22m'  if  only  local  history
+            commands will be visited or ‘[1mglobalhistory[22m' if imported history commands will also be visited.
+
+            The substrings are sorted in alphabetical order so that if you want to test for two specific substrings in a future-proof way, you can do match by doing:
+
+                   [1mif [[ $ZLE_STATE == *globalhistory*insert* ]]; then ...; fi[0m
+
+   [1mSpecial Widgets[0m
+     There are a few user-defined widgets which are special to the shell.  If they do not exist, no special action is taken.  The environment provided is identical to that for any other editing widget.
+
+     [1mzle-isearch-exit[0m
+            Executed at the end of incremental search at the point where the isearch prompt is removed from the display.  See [1mzle-isearch-update [22mfor an example.
+
+     [1mzle-isearch-update[0m
+            Executed within incremental search when the display is about to be redrawn.  Additional output below the incremental search prompt can be generated by using ‘[1mzle -M[22m' within the widget.  For example,
+
+                   [1mzle-isearch-update() { zle -M "Line $HISTNO"; }[0m
+                   [1mzle -N zle-isearch-update[0m
+
+            Note the line output by ‘[1mzle -M[22m' is not deleted on exit from incremental search.  This can be done from a [1mzle-isearch-exit [22mwidget:
+
+                   [1mzle-isearch-exit() { zle -M ""; }[0m
+                   [1mzle -N zle-isearch-exit[0m
+
+     [1mzle-line-pre-redraw[0m
+            Executed whenever the input line is about to be redrawn, providing an opportunity to update the region_highlight array.
+
+     [1mzle-line-init[0m
+            Executed every time the line editor is started to read a new line of input.  The following example puts the line editor into vi command mode when it starts up.
+
+                   [1mzle-line-init() { zle -K vicmd; }[0m
+                   [1mzle -N zle-line-init[0m
+
+            (The command inside the function sets the keymap directly; it is equivalent to [1mzle vi-cmd-mode[22m.)
+
+     [1mzle-line-finish[0m
+            This is similar to [1mzle-line-init [22mbut is executed every time the line editor has finished reading a line of input.
+
+     [1mzle-history-line-set[0m
+            Executed when the history line changes.
+
+     [1mzle-keymap-select[0m
+            Executed  every  time  the keymap changes, i.e. the special parameter [1mKEYMAP [22mis set to a different value, while the line editor is active.  Initialising the keymap when the line editor starts does not cause the widget to be
+            called.
+
+            The value [1m$KEYMAP [22mwithin the function reflects the new keymap.  The old keymap is passed as the sole argument.
+
+            This can be used for detecting switches between the vi command ([1mvicmd[22m) and insert (usually [1mmain[22m) keymaps.
+
+[1mSTANDARD WIDGETS[0m
+     The following is a list of all the standard widgets, and their default bindings in emacs mode, vi command mode and vi insert mode (the ‘[1memacs[22m', ‘[1mvicmd[22m' and ‘[1mviins[22m' keymaps, respectively).
+
+     Note that cursor keys are bound to movement keys in all three keymaps; the shell assumes that the cursor keys send the key sequences reported by the terminal-handling library (termcap or terminfo).  The key sequences shown in  the
+     list  are  those  based on the VT100, common on many modern terminals, but in fact these are not necessarily bound.  In the case of the [1mviins [22mkeymap, the initial escape character of the sequences serves also to return to the [1mvicmd[0m
+     keymap: whether this happens is determined by the [1mKEYTIMEOUT [22mparameter, see [4mzshparam[24m(1).
+
+   [1mMovement[0m
+     [1mvi-backward-blank-word [22m(unbound) ([1mB[22m) (unbound)
+            Move backward one word, where a word is defined as a series of non-blank characters.
+
+     [1mvi-backward-blank-word-end [22m(unbound) ([1mgE[22m) (unbound)
+            Move to the end of the previous word, where a word is defined as a series of non-blank characters.
+
+     [1mbackward-char [22m([1m^B ESC-[D[22m) (unbound) (unbound)
+            Move backward one character.
+
+     [1mvi-backward-char [22m(unbound) ([1m^H h ^?[22m) ([1mESC-[D[22m)
+            Move backward one character, without changing lines.
+
+     [1mbackward-word [22m([1mESC-B ESC-b[22m) (unbound) (unbound)
+            Move to the beginning of the previous word.
+
+     [1memacs-backward-word[0m
+            Move to the beginning of the previous word.
+
+     [1mvi-backward-word [22m(unbound) ([1mb[22m) (unbound)
+            Move to the beginning of the previous word, vi-style.
+
+     [1mvi-backward-word-end [22m(unbound) ([1mge[22m) (unbound)
+            Move to the end of the previous word, vi-style.
+
+     [1mbeginning-of-line [22m([1m^A[22m) (unbound) (unbound)
+            Move to the beginning of the line.  If already at the beginning of the line, move to the beginning of the previous line, if any.
+
+     [1mvi-beginning-of-line[0m
+            Move to the beginning of the line, without changing lines.
+
+     [1mdown-line [22m(unbound) (unbound) (unbound)
+            Move down a line in the buffer.
+
+     [1mend-of-line [22m([1m^E[22m) (unbound) (unbound)
+            Move to the end of the line.  If already at the end of the line, move to the end of the next line, if any.
+
+     [1mvi-end-of-line [22m(unbound) ([1m$[22m) (unbound)
+            Move to the end of the line.  If an argument is given to this command, the cursor will be moved to the end of the line (argument - 1) lines down.
+
+     [1mvi-forward-blank-word [22m(unbound) ([1mW[22m) (unbound)
+            Move forward one word, where a word is defined as a series of non-blank characters.
+
+     [1mvi-forward-blank-word-end [22m(unbound) ([1mE[22m) (unbound)
+            Move to the end of the current word, or, if at the end of the current word, to the end of the next word, where a word is defined as a series of non-blank characters.
+
+     [1mforward-char [22m([1m^F ESC-[C[22m) (unbound) (unbound)
+            Move forward one character.
+
+     [1mvi-forward-char [22m(unbound) ([1mspace l[22m) ([1mESC-[C[22m)
+            Move forward one character.
+
+     [1mvi-find-next-char [22m([1m^X^F[22m) ([1mf[22m) (unbound)
+            Read a character from the keyboard, and move to the next occurrence of it in the line.
+
+     [1mvi-find-next-char-skip [22m(unbound) ([1mt[22m) (unbound)
+            Read a character from the keyboard, and move to the position just before the next occurrence of it in the line.
+
+     [1mvi-find-prev-char [22m(unbound) ([1mF[22m) (unbound)
+            Read a character from the keyboard, and move to the previous occurrence of it in the line.
+
+     [1mvi-find-prev-char-skip [22m(unbound) ([1mT[22m) (unbound)
+            Read a character from the keyboard, and move to the position just after the previous occurrence of it in the line.
+
+     [1mvi-first-non-blank [22m(unbound) ([1m^[22m) (unbound)
+            Move to the first non-blank character in the line.
+
+     [1mvi-forward-word [22m(unbound) ([1mw[22m) (unbound)
+            Move forward one word, vi-style.
+
+     [1mforward-word [22m([1mESC-F ESC-f[22m) (unbound) (unbound)
+            Move to the beginning of the next word.  The editor's idea of a word is specified with the [1mWORDCHARS [22mparameter.
+
+     [1memacs-forward-word[0m
+            Move to the end of the next word.
+
+     [1mvi-forward-word-end [22m(unbound) ([1me[22m) (unbound)
+            Move to the end of the next word.
+
+     [1mvi-goto-column [22m([1mESC-|[22m) ([1m|[22m) (unbound)
+            Move to the column specified by the numeric argument.
+
+     [1mvi-goto-mark [22m(unbound) ([1m‘[22m) (unbound)
+            Move to the specified mark.
+
+     [1mvi-goto-mark-line [22m(unbound) ([1m'[22m) (unbound)
+            Move to beginning of the line containing the specified mark.
+
+     [1mvi-repeat-find [22m(unbound) ([1m;[22m) (unbound)
+            Repeat the last [1mvi-find [22mcommand.
+
+     [1mvi-rev-repeat-find [22m(unbound) ([1m,[22m) (unbound)
+            Repeat the last [1mvi-find [22mcommand in the opposite direction.
+
+     [1mup-line [22m(unbound) (unbound) (unbound)
+            Move up a line in the buffer.
+
+   [1mHistory Control[0m
+     [1mbeginning-of-buffer-or-history [22m([1mESC-<[22m) ([1mgg[22m) (unbound)
+            Move to the beginning of the buffer, or if already there, move to the first event in the history list.
+
+     [1mbeginning-of-line-hist[0m
+            Move to the beginning of the line.  If already at the beginning of the buffer, move to the previous history line.
+
+     [1mbeginning-of-history[0m
+            Move to the first event in the history list.
+
+     [1mdown-line-or-history [22m([1m^N ESC-[B[22m) ([1mj[22m) ([1mESC-[B[22m)
+            Move down a line in the buffer, or if already at the bottom line, move to the next event in the history list.
+
+     [1mvi-down-line-or-history [22m(unbound) ([1m+[22m) (unbound)
+            Move down a line in the buffer, or if already at the bottom line, move to the next event in the history list.  Then move to the first non-blank character on the line.
+
+     [1mdown-line-or-search[0m
+            Move down a line in the buffer, or if already at the bottom line, search forward in the history for a line beginning with the first word in the buffer.
+
+            If called from a function by the [1mzle [22mcommand with arguments, the first argument is taken as the string for which to search, rather than the first word in the buffer.
+
+     [1mdown-history [22m(unbound) ([1m^N[22m) (unbound)
+            Move to the next event in the history list.
+
+     [1mhistory-beginning-search-backward[0m
+            Search backward in the history for a line beginning with the current line up to the cursor.  This leaves the cursor in its original position.
+
+     [1mend-of-buffer-or-history [22m([1mESC->[22m) (unbound) (unbound)
+            Move to the end of the buffer, or if already there, move to the last event in the history list.
+
+     [1mend-of-line-hist[0m
+            Move to the end of the line.  If already at the end of the buffer, move to the next history line.
+
+     [1mend-of-history[0m
+            Move to the last event in the history list.
+
+     [1mvi-fetch-history [22m(unbound) ([1mG[22m) (unbound)
+            Fetch the history line specified by the numeric argument.  This defaults to the current history line (i.e. the one that isn't history yet).
+
+     [1mhistory-incremental-search-backward [22m([1m^R ^Xr[22m) (unbound) (unbound)
+            Search backward incrementally for a specified string.  The search is case-insensitive if the search string does not have uppercase letters and no numeric argument was given.  The string may begin  with  ‘[1m^[22m'  to  anchor  the
+            search  to  the beginning of the line.  When called from a user-defined function returns the following statuses: 0, if the search succeeded; 1, if the search failed; 2, if the search term was a bad pattern; 3, if the search
+            was aborted by the [1msend-break [22mcommand.
+
+            A restricted set of editing functions is available in the mini-buffer.  Keys are looked up in the special [1misearch [22mkeymap, and if not found there in the main keymap (note that by default the [1misearch [22mkeymap is empty).  An in‐
+            terrupt signal, as defined by the stty setting, will stop the search and go back to the original line.  An undefined key will have the same effect.  Note that the following always perform the same  task  within  incremental
+            searches and cannot be replaced by user defined widgets, nor can the set of functions be extended.  The supported functions are:
+
+            [1maccept-and-hold[0m
+            [1maccept-and-infer-next-history[0m
+            [1maccept-line[0m
+            [1maccept-line-and-down-history[0m
+                   Perform the usual function after exiting incremental search.  The command line displayed is executed.
+
+            [1mbackward-delete-char[0m
+            [1mvi-backward-delete-char[0m
+                   Back up one place in the search history.  If the search has been repeated this does not immediately erase a character in the minibuffer.
+
+            [1maccept-search[0m
+                   Exit incremental search, retaining the command line but performing no further action.  Note that this function is not bound by default and has no effect outside incremental search.
+
+            [1mbackward-delete-word[0m
+            [1mbackward-kill-word[0m
+            [1mvi-backward-kill-word[0m
+                   Back up one character in the minibuffer; if multiple searches have been performed since the character was inserted the search history is rewound to the point just before the character was entered.  Hence this has the
+                   effect of repeating [1mbackward-delete-char[22m.
+
+            [1mclear-screen[0m
+                   Clear the screen, remaining in incremental search mode.
+
+            [1mhistory-incremental-search-backward[0m
+                   Find the next occurrence of the contents of the mini-buffer. If the mini-buffer is empty, the most recent previously used search string is reinstated.
+
+            [1mhistory-incremental-search-forward[0m
+                   Invert the sense of the search.
+
+            [1mmagic-space[0m
+                   Inserts a non-magical space.
+
+            [1mquoted-insert[0m
+            [1mvi-quoted-insert[0m
+                   Quote the character to insert into the minibuffer.
+
+            [1mredisplay[0m
+                   Redisplay the command line, remaining in incremental search mode.
+
+            [1mvi-cmd-mode[0m
+                   Select the ‘[1mvicmd[22m' keymap; the ‘[1mmain[22m' keymap (insert mode) will be selected initially.
+
+                   In addition, the modifications that were made while in vi insert mode are merged to form a single undo event.
+
+            [1mvi-repeat-search[0m
+            [1mvi-rev-repeat-search[0m
+                   Repeat the search.  The direction of the search is indicated in the mini-buffer.
+
+            Any character that is not bound to one of the above functions, or [1mself-insert [22mor [1mself-insert-unmeta[22m, will cause the mode to be exited.  The character is then looked up and executed in the keymap in effect at that point.
+
+            When  called from a widget function by the [1mzle [22mcommand, the incremental search commands can take a string argument.  This will be treated as a string of keys, as for arguments to the [1mbindkey [22mcommand, and used as initial in‐
+            put for the command.  Any characters in the string which are unused by the incremental search will be silently ignored.  For example,
+
+                   [1mzle history-incremental-search-backward forceps[0m
+
+            will search backwards for [1mforceps[22m, leaving the minibuffer containing the string ‘[1mforceps[22m'.
+
+     [1mhistory-incremental-search-forward [22m([1m^S ^Xs[22m) (unbound) (unbound)
+            Search forward incrementally for a specified string.  The search is case-insensitive if the search string does not have uppercase letters and no numeric argument was given.  The string may  begin  with  ‘[1m^[22m'  to  anchor  the
+            search to the beginning of the line.  The functions available in the mini-buffer are the same as for [1mhistory-incremental-search-backward[22m.
+
+     [1mhistory-incremental-pattern-search-backward[0m
+     [1mhistory-incremental-pattern-search-forward[0m
+            These  widgets behave similarly to the corresponding widgets with no [1m-pattern[22m, but the search string typed by the user is treated as a pattern, respecting the current settings of the various options affecting pattern match‐
+            ing.  See FILENAME GENERATION in [4mzshexpn[24m(1) for a description of patterns.  If no numeric argument was given lowercase letters in the search string may match uppercase letters in the history.  The string may begin with  ‘[1m^[22m'
+            to anchor the search to the beginning of the line.
+
+            The prompt changes to indicate an invalid pattern; this may simply indicate the pattern is not yet complete.
+
+            Note that only non-overlapping matches are reported, so an expression with wildcards may return fewer matches on a line than are visible by inspection.
+
+     [1mhistory-search-backward [22m([1mESC-P ESC-p[22m) (unbound) (unbound)
+            Search backward in the history for a line beginning with the first word in the buffer.
+
+            If called from a function by the [1mzle [22mcommand with arguments, the first argument is taken as the string for which to search, rather than the first word in the buffer.
+
+     [1mvi-history-search-backward [22m(unbound) ([1m/[22m) (unbound)
+            Search backward in the history for a specified string.  The string may begin with ‘[1m^[22m' to anchor the search to the beginning of the line.
+
+            A  restricted  set  of  editing  functions  is  available  in the mini-buffer.  An interrupt signal, as defined by the stty setting,  will stop the search.  The functions available in the mini-buffer are: [1maccept-line[22m, [1mback‐[0m
+            [1mward-delete-char[22m, [1mvi-backward-delete-char[22m, [1mbackward-kill-word[22m, [1mvi-backward-kill-word[22m, [1mclear-screen[22m, [1mredisplay[22m, [1mquoted-insert [22mand [1mvi-quoted-insert[22m.
+
+            [1mvi-cmd-mode [22mis treated the same as accept-line, and [1mmagic-space [22mis treated as a space.  Any other character that is not bound to self-insert or self-insert-unmeta will beep and be ignored. If the function is called from  vi
+            command mode, the bindings of the current insert mode will be used.
+
+            If called from a function by the [1mzle [22mcommand with arguments, the first argument is taken as the string for which to search, rather than the first word in the buffer.
+
+     [1mhistory-search-forward [22m([1mESC-N ESC-n[22m) (unbound) (unbound)
+            Search forward in the history for a line beginning with the first word in the buffer.
+
+            If called from a function by the [1mzle [22mcommand with arguments, the first argument is taken as the string for which to search, rather than the first word in the buffer.
+
+     [1mvi-history-search-forward [22m(unbound) ([1m?[22m) (unbound)
+            Search  forward in the history for a specified string.  The string may begin with ‘[1m^[22m' to anchor the search to the beginning of the line. The functions available in the mini-buffer are the same as for [1mvi-history-search-back‐[0m
+            [1mward[22m.  Argument handling is also the same as for that command.
+
+     [1minfer-next-history [22m([1m^X^N[22m) (unbound) (unbound)
+            Search in the history list for a line matching the current one and fetch the event following it.
+
+     [1minsert-last-word [22m([1mESC-_ ESC-.[22m) (unbound) (unbound)
+            Insert the last word from the previous history event at the cursor position.  If a positive numeric argument is given, insert that word from the end of the previous history event.  If the argument is zero or negative insert
+            that word from the left (zero inserts the previous command word).  Repeating this command replaces the word just inserted with the last word from the history event prior to the one just used; numeric arguments can  be  used
+            in the same way to pick a word from that event.
+
+            When  called  from  a shell function invoked from a user-defined widget, the command can take one to three arguments.  The first argument specifies a history offset which applies to successive calls to this widget: if it is
+            -1, the default behaviour is used, while if it is 1, successive calls will move forwards through the history.  The value 0 can be used to indicate that the history line examined by the previous execution of the command will
+            be reexamined.  Note that negative numbers should be preceded by a ‘[1m--[22m' argument to avoid confusing them with options.
+
+            If two arguments are given, the second specifies the word on the command line in normal array index notation (as a more natural alternative to the numeric argument).  Hence 1 is the first word, and -1 (the default)  is  the
+            last word.
+
+            If  a  third  argument  is  given,  its  value  is  ignored,  but  it  is used to signify that the history offset is relative to the current history line, rather than the one remembered after the previous invocations of [1min‐[0m
+            [1msert-last-word[22m.
+
+            For example, the default behaviour of the command corresponds to
+
+                   [1mzle insert-last-word -- -1 -1[0m
+
+            while the command
+
+                   [1mzle insert-last-word -- -1 1 -[0m
+
+            always copies the first word of the line in the history immediately before the line being edited.  This has the side effect that later invocations of the widget will be relative to that line.
+
+     [1mvi-repeat-search [22m(unbound) ([1mn[22m) (unbound)
+            Repeat the last vi history search.
+
+     [1mvi-rev-repeat-search [22m(unbound) ([1mN[22m) (unbound)
+            Repeat the last vi history search, but in reverse.
+
+     [1mup-line-or-history [22m([1m^P ESC-[A[22m) ([1mk[22m) ([1mESC-[A[22m)
+            Move up a line in the buffer, or if already at the top line, move to the previous event in the history list.
+
+     [1mvi-up-line-or-history [22m(unbound) ([1m-[22m) (unbound)
+            Move up a line in the buffer, or if already at the top line, move to the previous event in the history list.  Then move to the first non-blank character on the line.
+
+     [1mup-line-or-search[0m
+            Move up a line in the buffer, or if already at the top line, search backward in the history for a line beginning with the first word in the buffer.
+
+            If called from a function by the [1mzle [22mcommand with arguments, the first argument is taken as the string for which to search, rather than the first word in the buffer.
+
+     [1mup-history [22m(unbound) ([1m^P[22m) (unbound)
+            Move to the previous event in the history list.
+
+     [1mhistory-beginning-search-forward[0m
+            Search forward in the history for a line beginning with the current line up to the cursor.  This leaves the cursor in its original position.
+
+     [1mset-local-history[0m
+            By default, history movement commands visit the imported lines as well as the local lines. This widget lets you toggle this on and off, or set it with the numeric argument. Zero for both local and imported lines and nonzero
+            for only local lines.
+
+   [1mModifying Text[0m
+     [1mvi-add-eol [22m(unbound) ([1mA[22m) (unbound)
+            Move to the end of the line and enter insert mode.
+
+     [1mvi-add-next [22m(unbound) ([1ma[22m) (unbound)
+            Enter insert mode after the current cursor position, without changing lines.
+
+     [1mbackward-delete-char [22m([1m^H ^?[22m) (unbound) (unbound)
+            Delete the character behind the cursor.
+
+     [1mvi-backward-delete-char [22m(unbound) ([1mX[22m) ([1m^H[22m)
+            Delete the character behind the cursor, without changing lines.  If in insert mode, this won't delete past the point where insert mode was last entered.
+
+     [1mbackward-delete-word[0m
+            Delete the word behind the cursor.
+
+     [1mbackward-kill-line[0m
+            Kill from the beginning of the line to the cursor position.
+
+     [1mbackward-kill-word [22m([1m^W ESC-^H ESC-^?[22m) (unbound) (unbound)
+            Kill the word behind the cursor.
+
+     [1mvi-backward-kill-word [22m(unbound) (unbound) ([1m^W[22m)
+            Kill the word behind the cursor, without going past the point where insert mode was last entered.
+
+     [1mcapitalize-word [22m([1mESC-C ESC-c[22m) (unbound) (unbound)
+            Capitalize the current word and move past it.
+
+     [1mvi-change [22m(unbound) ([1mc[22m) (unbound)
+            Read a movement command from the keyboard, and kill from the cursor position to the endpoint of the movement.  Then enter insert mode.  If the command is [1mvi-change[22m, change the current line.
+
+            For compatibility with vi, if the command is [1mvi-forward-word [22mor [1mvi-forward-blank-word[22m, the whitespace after the word is not included. If you prefer the more consistent behaviour with the whitespace included use the  follow‐
+            ing key binding:
+
+                   [1mbindkey -a -s cw dwi[0m
+
+     [1mvi-change-eol [22m(unbound) ([1mC[22m) (unbound)
+            Kill to the end of the line and enter insert mode.
+
+     [1mvi-change-whole-line [22m(unbound) ([1mS[22m) (unbound)
+            Kill the current line and enter insert mode.
+
+     [1mcopy-region-as-kill [22m([1mESC-W ESC-w[22m) (unbound) (unbound)
+            Copy the area from the cursor to the mark to the kill buffer.
+
+            If called from a ZLE widget function in the form ‘[1mzle copy-region-as-kill [4m[22mstring[24m' then [4mstring[24m will be taken as the text to copy to the kill buffer.  The cursor, the mark and the text on the command line are not used in this
+            case.
+
+     [1mcopy-prev-word [22m([1mESC-^_[22m) (unbound) (unbound)
+            Duplicate the word to the left of the cursor.
+
+     [1mcopy-prev-shell-word[0m
+            Like [1mcopy-prev-word[22m, but the word is found by using shell parsing, whereas [1mcopy-prev-word [22mlooks for blanks. This makes a difference when the word is quoted and contains spaces.
+
+     [1mvi-delete [22m(unbound) ([1md[22m) (unbound)
+            Read a movement command from the keyboard, and kill from the cursor position to the endpoint of the movement.  If the command is [1mvi-delete[22m, kill the current line.
+
+     [1mdelete-char[0m
+            Delete the character under the cursor.
+
+     [1mvi-delete-char [22m(unbound) ([1mx[22m) (unbound)
+            Delete the character under the cursor, without going past the end of the line.
+
+     [1mdelete-word[0m
+            Delete the current word.
+
+     [1mdown-case-word [22m([1mESC-L ESC-l[22m) (unbound) (unbound)
+            Convert the current word to all lowercase and move past it.
+
+     [1mvi-down-case [22m(unbound) ([1mgu[22m) (unbound)
+            Read  a  movement command from the keyboard, and convert all characters from the cursor position to the endpoint of the movement to lowercase.  If the movement command is [1mvi-down-case[22m, swap the case of all characters on the
+            current line.
+
+     [1mkill-word [22m([1mESC-D ESC-d[22m) (unbound) (unbound)
+            Kill the current word.
+
+     [1mgosmacs-transpose-chars[0m
+            Exchange the two characters behind the cursor.
+
+     [1mvi-indent [22m(unbound) ([1m>[22m) (unbound)
+            Indent a number of lines.
+
+     [1mvi-insert [22m(unbound) ([1mi[22m) (unbound)
+            Enter insert mode.
+
+     [1mvi-insert-bol [22m(unbound) ([1mI[22m) (unbound)
+            Move to the first non-blank character on the line and enter insert mode.
+
+     [1mvi-join [22m([1m^X^J[22m) ([1mJ[22m) (unbound)
+            Join the current line with the next one.
+
+     [1mkill-line [22m([1m^K[22m) (unbound) (unbound)
+            Kill from the cursor to the end of the line.  If already on the end of the line, kill the newline character.
+
+     [1mvi-kill-line [22m(unbound) (unbound) ([1m^U[22m)
+            Kill from the cursor back to wherever insert mode was last entered.
+
+     [1mvi-kill-eol [22m(unbound) ([1mD[22m) (unbound)
+            Kill from the cursor to the end of the line.
+
+     [1mkill-region[0m
+            Kill from the cursor to the mark.
+
+     [1mkill-buffer [22m([1m^X^K[22m) (unbound) (unbound)
+            Kill the entire buffer.
+
+     [1mkill-whole-line [22m([1m^U[22m) (unbound) (unbound)
+            Kill the current line.
+
+     [1mvi-match-bracket [22m([1m^X^B[22m) ([1m%[22m) (unbound)
+            Move to the bracket character (one of [1m{}[22m, [1m() [22mor [1m[][22m) that matches the one under the cursor.  If the cursor is not on a bracket character, move forward without going past the end of the line to find one, and then  go  to  the
+            matching bracket.
+
+     [1mvi-open-line-above [22m(unbound) ([1mO[22m) (unbound)
+            Open a line above the cursor and enter insert mode.
+
+     [1mvi-open-line-below [22m(unbound) ([1mo[22m) (unbound)
+            Open a line below the cursor and enter insert mode.
+
+     [1mvi-oper-swap-case [22m(unbound) ([1mg~[22m) (unbound)
+            Read  a movement command from the keyboard, and swap the case of all characters from the cursor position to the endpoint of the movement.  If the movement command is [1mvi-oper-swap-case[22m, swap the case of all characters on the
+            current line.
+
+     [1moverwrite-mode [22m([1m^X^O[22m) (unbound) (unbound)
+            Toggle between overwrite mode and insert mode.
+
+     [1mvi-put-before [22m(unbound) ([1mP[22m) (unbound)
+            Insert the contents of the kill buffer before the cursor.  If the kill buffer contains a sequence of lines (as opposed to characters), paste it above the current line.
+
+     [1mvi-put-after [22m(unbound) ([1mp[22m) (unbound)
+            Insert the contents of the kill buffer after the cursor.  If the kill buffer contains a sequence of lines (as opposed to characters), paste it below the current line.
+
+     [1mput-replace-selection [22m(unbound) (unbound) (unbound)
+            Replace the contents of the current region or selection with the contents of the kill buffer. If the kill buffer contains a sequence of lines (as opposed to characters), the current line will be split by the pasted lines.
+
+     [1mquoted-insert [22m([1m^V[22m) (unbound) (unbound)
+            Insert the next character typed into the buffer literally.  An interrupt character will not be inserted.
+
+     [1mvi-quoted-insert [22m(unbound) (unbound) ([1m^Q ^V[22m)
+            Display a ‘[1m^[22m' at the cursor position, and insert the next character typed into the buffer literally.  An interrupt character will not be inserted.
+
+     [1mquote-line [22m([1mESC-'[22m) (unbound) (unbound)
+            Quote the current line; that is, put a ‘[1m'[22m' character at the beginning and the end, and convert all ‘[1m'[22m' characters to ‘[1m'\''[22m'.
+
+     [1mquote-region [22m([1mESC-"[22m) (unbound) (unbound)
+            Quote the region from the cursor to the mark.
+
+     [1mvi-replace [22m(unbound) ([1mR[22m) (unbound)
+            Enter overwrite mode.
+
+     [1mvi-repeat-change [22m(unbound) ([1m.[22m) (unbound)
+            Repeat the last vi mode text modification.  If a count was used with the modification, it is remembered.  If a count is given to this command, it overrides the remembered count, and is remembered for  future  uses  of  this
+            command.  The cut buffer specification is similarly remembered.
+
+     [1mvi-replace-chars [22m(unbound) ([1mr[22m) (unbound)
+            Replace the character under the cursor with a character read from the keyboard.
+
+     [1mself-insert [22m(printable characters) (unbound) (printable characters and some control characters)
+            Insert a character into the buffer at the cursor position.
+
+     [1mself-insert-unmeta [22m([1mESC-^I ESC-^J ESC-^M[22m) (unbound) (unbound)
+            Insert a character into the buffer after stripping the meta bit and converting ^M to ^J.
+
+     [1mvi-substitute [22m(unbound) ([1ms[22m) (unbound)
+            Substitute the next character(s).
+
+     [1mvi-swap-case [22m(unbound) ([1m~[22m) (unbound)
+            Swap the case of the character under the cursor and move past it.
+
+     [1mtranspose-chars [22m([1m^T[22m) (unbound) (unbound)
+            Exchange the two characters to the left of the cursor if at end of line, else exchange the character under the cursor with the character to the left.
+
+     [1mtranspose-words [22m([1mESC-T ESC-t[22m) (unbound) (unbound)
+            Exchange the current word with the one before it.
+
+            With a positive numeric argument [4mN[24m, the word around the cursor, or following it if the cursor is between words, is transposed with the preceding [4mN[24m words.  The cursor is put at the end of the resulting group of words.
+
+            With a negative numeric argument [4m-N[24m, the effect is the same as using a positive argument [4mN[24m except that the original cursor position is retained, regardless of how the words are rearranged.
+
+     [1mvi-unindent [22m(unbound) ([1m<[22m) (unbound)
+            Unindent a number of lines.
+
+     [1mvi-up-case [22m(unbound) ([1mgU[22m) (unbound)
+            Read  a  movement  command  from the keyboard, and convert all characters from the cursor position to the endpoint of the movement to lowercase.  If the movement command is [1mvi-up-case[22m, swap the case of all characters on the
+            current line.
+
+     [1mup-case-word [22m([1mESC-U ESC-u[22m) (unbound) (unbound)
+            Convert the current word to all caps and move past it.
+
+     [1myank [22m([1m^Y[22m) (unbound) (unbound)
+            Insert the contents of the kill buffer at the cursor position.
+
+     [1myank-pop [22m([1mESC-y[22m) (unbound) (unbound)
+            Remove the text just yanked, rotate the kill-ring (the history of previously killed text) and yank the new top.  Only works following [1myank[22m, [1mvi-put-before[22m, [1mvi-put-after [22mor [1myank-pop[22m.
+
+     [1mvi-yank [22m(unbound) ([1my[22m) (unbound)
+            Read a movement command from the keyboard, and copy the region from the cursor position to the endpoint of the movement into the kill buffer.  If the command is [1mvi-yank[22m, copy the current line.
+
+     [1mvi-yank-whole-line [22m(unbound) ([1mY[22m) (unbound)
+            Copy the current line into the kill buffer.
+
+     [1mvi-yank-eol[0m
+            Copy the region from the cursor position to the end of the line into the kill buffer.  Arguably, this is what Y should do in vi, but it isn't what it actually does.
+
+   [1mArguments[0m
+     [1mdigit-argument [22m([1mESC-0[22m..[1mESC-9[22m) ([1m1[22m-[1m9[22m) (unbound)
+            Start a new numeric argument, or add to the current one.  See also [1mvi-digit-or-beginning-of-line[22m.  This only works if bound to a key sequence ending in a decimal digit.
+
+            Inside a widget function, a call to this function treats the last key of the key sequence which called the widget as the digit.
+
+     [1mneg-argument [22m([1mESC--[22m) (unbound) (unbound)
+            Changes the sign of the following argument.
+
+     [1muniversal-argument[0m
+            Multiply the argument of the next command by 4.  Alternatively, if this command is followed by an integer (positive or negative), use that as the argument for the next command.  Thus digits cannot  be  repeated  using  this
+            command.  For example, if this command occurs twice, followed immediately by [1mforward-char[22m, move forward sixteen spaces; if instead it is followed by [1m-2[22m, then [1mforward-char[22m, move backward two spaces.
+
+            Inside a widget function, if passed an argument, i.e. ‘[1mzle universal-argument [4m[22mnum[24m', the numeric argument will be set to [4mnum[24m; this is equivalent to ‘[1mNUMERIC=[4m[22mnum[24m'.
+
+     [1margument-base[0m
+            Use  the  existing  numeric  argument as a numeric base, which must be in the range 2 to 36 inclusive.  Subsequent use of [1mdigit-argument [22mand [1muniversal-argument [22mwill input a new numeric argument in the given base.  The usual
+            hexadecimal convention is used: the letter [1ma [22mor [1mA [22mcorresponds to 10, and so on.  Arguments in bases requiring digits from 10 upwards are more conveniently input with [1muniversal-argument[22m, since  [1mESC-a  [22metc.  are  not  usually
+            bound to [1mdigit-argument[22m.
+
+            The function can be used with a command argument inside a user-defined widget.  The following code sets the base to 16 and lets the user input a hexadecimal argument until a key out of the digit range is typed:
+
+                   [1mzle argument-base 16[0m
+                   [1mzle universal-argument[0m
+
+   [1mCompletion[0m
+     [1maccept-and-menu-complete[0m
+            In a menu completion, insert the current completion into the buffer, and advance to the next possible completion.
+
+     [1mcomplete-word[0m
+            Attempt completion on the current word.
+
+     [1mdelete-char-or-list [22m([1m^D[22m) (unbound) (unbound)
+            Delete the character under the cursor.  If the cursor is at the end of the line, list possible completions for the current word.
+
+     [1mexpand-cmd-path[0m
+            Expand the current command to its full pathname.
+
+     [1mexpand-or-complete [22m([1mTAB[22m) (unbound) ([1mTAB[22m)
+            Attempt shell expansion on the current word.  If that fails, attempt completion.
+
+     [1mexpand-or-complete-prefix[0m
+            Attempt shell expansion on the current word up to cursor.
+
+     [1mexpand-history [22m([1mESC-space ESC-![22m) (unbound) (unbound)
+            Perform history expansion on the edit buffer.
+
+     [1mexpand-word [22m([1m^X*[22m) (unbound) (unbound)
+            Attempt shell expansion on the current word.
+
+     [1mlist-choices [22m([1mESC-^D[22m) ([1m^D =[22m) ([1m^D[22m)
+            List possible completions for the current word.
+
+     [1mlist-expand [22m([1m^Xg ^XG[22m) ([1m^G[22m) ([1m^G[22m)
+            List the expansion of the current word.
+
+     [1mmagic-space[0m
+            Perform history expansion and insert a space into the buffer.  This is intended to be bound to space.
+
+     [1mmenu-complete[0m
+            Like [1mcomplete-word[22m, except that menu completion is used.  See the [1mMENU_COMPLETE [22moption.
+
+     [1mmenu-expand-or-complete[0m
+            Like [1mexpand-or-complete[22m, except that menu completion is used.
+
+     [1mreverse-menu-complete[0m
+            Perform menu completion, like [1mmenu-complete[22m, except that if a menu completion is already in progress, move to the [4mprevious[24m completion rather than the next.
+
+     [1mend-of-list[0m
+            When a previous completion displayed a list below the prompt, this widget can be used to move the prompt below the list.
+
+   [1mMiscellaneous[0m
+     [1maccept-and-hold [22m([1mESC-A ESC-a[22m) (unbound) (unbound)
+            Push the contents of the buffer on the buffer stack and execute it.
+
+     [1maccept-and-infer-next-history[0m
+            Execute the contents of the buffer.  Then search the history list for a line matching the current one and push the event following onto the buffer stack.
+
+     [1maccept-line [22m([1m^J ^M[22m) ([1m^J ^M[22m) ([1m^J ^M[22m)
+            Finish editing the buffer.  Normally this causes the buffer to be executed as a shell command.
+
+     [1maccept-line-and-down-history [22m([1m^O[22m) (unbound) (unbound)
+            Execute the current line, and push the next history event on the buffer stack.
+
+     [1mauto-suffix-remove[0m
+            If the previous action added a suffix (space, slash, etc.) to the word on the command line, remove it.  Otherwise do nothing.  Removing the suffix ends any active menu completion or menu selection.
+
+            This widget is intended to be called from user-defined widgets to enforce a desired suffix-removal behavior.
+
+     [1mauto-suffix-retain[0m
+            If the previous action added a suffix (space, slash, etc.) to the word on the command line, force it to be preserved.  Otherwise do nothing.  Retaining the suffix ends any active menu completion or menu selection.
+
+            This widget is intended to be called from user-defined widgets to enforce a desired suffix-preservation behavior.
+
+     [1mbeep   [22mBeep, unless the [1mBEEP [22moption is unset.
+
+     [1mbracketed-paste [22m([1m^[[200~[22m) ([1m^[[200~[22m) ([1m^[[200~[22m)
+            This widget is invoked when text is pasted to the terminal emulator. It is not intended to be bound to actual keys but instead to the special sequence generated by the terminal emulator when text is pasted.
+
+            When invoked interactively, the pasted text is inserted to the buffer and placed in the cutbuffer.  If a numeric argument is given, shell quoting will be applied to the pasted text before it is inserted.
+
+            When a named buffer is specified with [1mvi-set-buffer [22m([1m"x[22m), the pasted text is stored in that named buffer but not inserted.
+
+            When called from a widget function as ‘[1mbracketed-paste [4m[22mname[24m‘, the pasted text is assigned to the variable [4mname[24m and no other processing is done.
+
+            See also the [1mzle_bracketed_paste [22mparameter.
+
+     [1mvi-cmd-mode [22m([1m^X^V[22m) (unbound) ([1m^[[22m)
+            Enter command mode; that is, select the ‘[1mvicmd[22m' keymap.  Yes, this is bound by default in emacs mode.
+
+     [1mvi-caps-lock-panic[0m
+            Hang until any lowercase key is pressed.  This is for vi users without the mental capacity to keep track of their caps lock key (like the author).
+
+     [1mclear-screen [22m([1m^L ESC-^L[22m) ([1m^L[22m) ([1m^L[22m)
+            Clear the screen and redraw the prompt.
+
+     [1mdeactivate-region[0m
+            Make the current region inactive. This disables vim-style visual selection mode if it is active.
+
+     [1mdescribe-key-briefly[0m
+            Reads a key sequence, then prints the function bound to that sequence.
+
+     [1mexchange-point-and-mark [22m([1m^X^X[22m) (unbound) (unbound)
+            Exchange  the cursor position (point) with the position of the mark.  Unless a negative numeric argument is given, the region between point and mark is activated so that it can be highlighted.  If a zero numeric argument is
+            given, the region is activated but point and mark are not swapped.
+
+     [1mexecute-named-cmd [22m([1mESC-x[22m) ([1m:[22m) (unbound)
+            Read the name of an editor command and execute it.  Aliasing this widget with ‘[1mzle -A[22m' or replacing it with ‘[1mzle -N[22m' has no effect when interpreting key bindings, but ‘[1mzle execute-named-cmd[22m' will invoke such an alias or re‐
+            placement.
+
+            A restricted set of editing functions is available in the mini-buffer.  Keys are looked up in the special [1mcommand [22mkeymap, and if not found there in the main keymap.  An interrupt signal, as defined by the stty setting, will
+            abort the function.  Note that the following always perform the same task within the [1mexecuted-named-cmd [22menvironment and cannot be replaced by user defined widgets, nor can the set of  functions  be  extended.   The  allowed
+            functions  are:  [1mbackward-delete-char[22m,  [1mvi-backward-delete-char[22m,  [1mclear-screen[22m,  [1mredisplay[22m,  [1mquoted-insert[22m,  [1mvi-quoted-insert[22m,  [1mbackward-kill-word[22m,  [1mvi-backward-kill-word[22m,  [1mkill-whole-line[22m, [1mvi-kill-line[22m, [1mbackward-kill-line[22m,
+            [1mlist-choices[22m, [1mdelete-char-or-list[22m, [1mcomplete-word[22m, [1maccept-line[22m, [1mexpand-or-complete [22mand [1mexpand-or-complete-prefix[22m.
+
+            [1mkill-region [22mkills the last word, and vi-cmd-mode is treated the same as accept-line.  The space and tab characters, if not bound to one of these functions, will complete the name and  then  list  the  possibilities  if  the
+            [1mAUTO_LIST [22moption is set.  Any other character that is not bound to [1mself-insert [22mor [1mself-insert-unmeta [22mwill beep and be ignored.  The bindings of the current insert mode will be used.
+
+            Currently this command may not be redefined or called by name.
+
+     [1mexecute-last-named-cmd [22m([1mESC-z[22m) (unbound) (unbound)
+            Redo the last function executed with [1mexecute-named-cmd[22m.
+
+            Like [1mexecute-named-cmd[22m, this command may not be redefined, but it may be called by name.
+
+     [1mget-line [22m([1mESC-G ESC-g[22m) (unbound) (unbound)
+            Pop the top line off the buffer stack and insert it at the cursor position.
+
+     [1mpound-insert [22m(unbound) ([1m#[22m) (unbound)
+            If there is no # character at the beginning of the buffer, add one to the beginning of each line.  If there is one, remove a # from each line that has one.  In either case, accept the current line.  The [1mINTERACTIVE_COMMENTS[0m
+            option must be set for this to have any usefulness.
+
+     [1mvi-pound-insert[0m
+            If there is no # character at the beginning of the current line, add one.  If there is one, remove it.  The [1mINTERACTIVE_COMMENTS [22moption must be set for this to have any usefulness.
+
+     [1mpush-input[0m
+            Push  the  entire  current  multiline  construct  onto the buffer stack and return to the top-level ([1mPS1[22m) prompt.  If the current parser construct is only a single line, this is exactly like [1mpush-line[22m.  Next time the editor
+            starts up or is popped with [1mget-line[22m, the construct will be popped off the top of the buffer stack and loaded into the editing buffer.
+
+     [1mpush-line [22m([1m^Q ESC-Q ESC-q[22m) (unbound) (unbound)
+            Push the current buffer onto the buffer stack and clear the buffer.  Next time the editor starts up, the buffer will be popped off the top of the buffer stack and loaded into the editing buffer.
+
+     [1mpush-line-or-edit[0m
+            At the top-level ([1mPS1[22m) prompt, equivalent to [1mpush-line[22m.  At a secondary ([1mPS2[22m) prompt, move the entire current multiline construct into the editor buffer.  The latter is equivalent to [1mpush-input [22mfollowed by [1mget-line[22m.
+
+     [1mread-command[0m
+            Only useful from a user-defined widget.  A keystroke is read just as in normal operation, but instead of the command being executed the name of the command that would be executed is stored  in  the  shell  parameter  [1mREPLY[22m.
+            This can be used as the argument of a future [1mzle [22mcommand.  If the key sequence is not bound, status 1 is returned; typically, however, [1mREPLY [22mis set to [1mundefined-key [22mto indicate a useless key sequence.
+
+     [1mrecursive-edit[0m
+            Only useful from a user-defined widget.  At this point in the function, the editor regains control until one of the standard widgets which would normally cause zle to exit (typically an [1maccept-line [22mcaused by hitting the re‐
+            turn  key)  is  executed.   Instead, control returns to the user-defined widget.  The status returned is non-zero if the return was caused by an error, but the function still continues executing and hence may tidy up.  This
+            makes it safe for the user-defined widget to alter the command line or key bindings temporarily.
+
+            The following widget, [1mcaps-lock[22m, serves as an example.
+
+                   [1mself-insert-ucase() {[0m
+                     [1mLBUFFER+=${(U)KEYS[-1]}[0m
+                   [1m}[0m
+
+                   [1minteger stat[0m
+
+                   [1mzle -N self-insert self-insert-ucase[0m
+                   [1mzle -A caps-lock save-caps-lock[0m
+                   [1mzle -A accept-line caps-lock[0m
+
+                   [1mzle recursive-edit[0m
+                   [1mstat=$?[0m
+
+                   [1mzle -A .self-insert self-insert[0m
+                   [1mzle -A save-caps-lock caps-lock[0m
+                   [1mzle -D save-caps-lock[0m
+
+                   [1m(( stat )) && zle send-break[0m
+
+                   [1mreturn $stat[0m
+
+            This causes typed letters to be inserted capitalised until either [1maccept-line [22m(i.e. typically the return key) is typed or the [1mcaps-lock [22mwidget is invoked again; the later is handled by saving the old definition of [1mcaps-lock[0m
+            as [1msave-caps-lock [22mand then rebinding it to invoke [1maccept-line[22m.  Note that an error from the recursive edit is detected as a non-zero return status and propagated by using the [1msend-break [22mwidget.
+
+     [1mredisplay [22m(unbound) ([1m^R[22m) ([1m^R[22m)
+            Redisplays the edit buffer.
+
+     [1mreset-prompt [22m(unbound) (unbound) (unbound)
+            Force the prompts on both the left and right of the screen to be re-expanded, then redisplay the edit buffer.  This reflects changes both to the prompt variables themselves and changes in the expansion of  the  values  (for
+            example, changes in time or directory, or changes to the value of variables referred to by the prompt).
+
+            Otherwise, the prompt is only expanded each time zle starts, and when the display has been interrupted by output from another part of the shell (such as a job notification) which causes the command line to be reprinted.
+
+            [1mreset-prompt [22mdoesn't alter the special parameter [1mLASTWIDGET[22m.
+
+     [1msend-break [22m([1m^G ESC-^G[22m) (unbound) (unbound)
+            Abort  the  current editor function, e.g. [1mexecute-named-command[22m, or the editor itself, e.g. if you are in [1mvared[22m. Otherwise abort the parsing of the current line; in this case the aborted line is available in the shell vari‐
+            able [1mZLE_LINE_ABORTED[22m.  If the editor is aborted from within [1mvared[22m, the variable [1mZLE_VARED_ABORTED [22mis set.
+
+     [1mrun-help [22m([1mESC-H ESC-h[22m) (unbound) (unbound)
+            Push the buffer onto the buffer stack, and execute the command ‘[1mrun-help [4m[22mcmd[24m', where [4mcmd[24m is the current command.  [1mrun-help [22mis normally aliased to [1mman[22m.
+
+     [1mvi-set-buffer [22m(unbound) ([1m"[22m) (unbound)
+            Specify a buffer to be used in the following command.  There are 37 buffers that can be specified: the 26 ‘named' buffers [1m"a [22mto [1m"z[22m, the ‘yank' buffer [1m"0[22m, the nine ‘queued' buffers [1m"1 [22mto [1m"9 [22mand the ‘black  hole'  buffer  [1m"_[22m.
+            The named buffers can also be specified as [1m"A [22mto [1m"Z[22m.
+
+            When  a buffer is specified for a cut, change or yank command, the text concerned replaces the previous contents of the specified buffer. If a named buffer is specified using a capital, the newly cut text is appended to the
+            buffer instead of overwriting it. When using the [1m"_ [22mbuffer, nothing happens. This can be useful for deleting text without affecting any buffers.
+
+            If no buffer is specified for a cut or change command, [1m"1 [22mis used, and the contents of [1m"1 [22mto [1m"8 [22mare each shifted along one buffer; the contents of [1m"9 [22mis lost. If no buffer is specified for a yank command, [1m"0  [22mis  used.  Fi‐
+            nally, a paste command without a specified buffer will paste the text from the most recent command regardless of any buffer that might have been used with that command.
+
+            When called from a widget function by the [1mzle [22mcommand, the buffer can optionally be specified with an argument. For example,
+
+                   [1mzle vi-set-buffer A[0m
+
+     [1mvi-set-mark [22m(unbound) ([1mm[22m) (unbound)
+            Set the specified mark at the cursor position.
+
+     [1mset-mark-command [22m([1m^@[22m) (unbound) (unbound)
+            Set the mark at the cursor position.  If called with a negative numeric argument, do not set the mark but deactivate the region so that it is no longer highlighted (it is still usable for other purposes).  Otherwise the re‐
+            gion is marked as active.
+
+     [1mspell-word [22m([1mESC-$ ESC-S ESC-s[22m) (unbound) (unbound)
+            Attempt spelling correction on the current word.
+
+     [1msplit-undo[0m
+            Breaks  the  undo  sequence  at  the  current  change.  This is useful in vi mode as changes made in insert mode are coalesced on entering command mode.  Similarly, [1mundo [22mwill normally revert as one all the changes made by a
+            user-defined widget.
+
+     [1mundefined-key[0m
+            This command is executed when a key sequence that is not bound to any command is typed.  By default it beeps.
+
+     [1mundo [22m([1m^_ ^Xu ^X^U[22m) ([1mu[22m) (unbound)
+            Incrementally undo the last text modification.  When called from a user-defined widget, takes an optional argument indicating a previous state of the undo history as returned by the  [1mUNDO_CHANGE_NO  [22mvariable;  modifications
+            are undone until that state is reached, subject to any limit imposed by the [1mUNDO_LIMIT_NO [22mvariable.
+
+            Note that when invoked from vi command mode, the full prior change made in insert mode is reverted, the changes having been merged when command mode was selected.
+
+     [1mredo [22m(unbound) ([1m^R[22m) (unbound)
+            Incrementally redo undone text modifications.
+
+     [1mvi-undo-change [22m(unbound) (unbound) (unbound)
+            Undo the last text modification.  If repeated, redo the modification.
+
+     [1mvisual-mode [22m(unbound) ([1mv[22m) (unbound)
+            Toggle  vim-style  visual selection mode. If line-wise visual mode is currently enabled then it is changed to being character-wise. If used following an operator, it forces the subsequent movement command to be treated as a
+            character-wise movement.
+
+     [1mvisual-line-mode [22m(unbound) ([1mV[22m) (unbound)
+            Toggle vim-style line-wise visual selection mode. If character-wise visual mode is currently enabled then it is changed to being line-wise. If used following an operator, it forces the  subsequent  movement  command  to  be
+            treated as a line-wise movement.
+
+     [1mwhat-cursor-position [22m([1m^X=[22m) ([1mga[22m) (unbound)
+            Print the character under the cursor, its code as an octal, decimal and hexadecimal number, the current cursor position within the buffer and the column of the cursor in the current line.
+
+     [1mwhere-is[0m
+            Read the name of an editor command and print the listing of key sequences that invoke the specified command.  A restricted set of editing functions is available in the mini-buffer.  Keys are looked up in the special [1mcommand[0m
+            keymap, and if not found there in the main keymap.
+
+     [1mwhich-command [22m([1mESC-?[22m) (unbound) (unbound)
+            Push the buffer onto the buffer stack, and execute the command ‘[1mwhich-command [4m[22mcmd[24m'. where [4mcmd[24m is the current command.  [1mwhich-command [22mis normally aliased to [1mwhence[22m.
+
+     [1mvi-digit-or-beginning-of-line [22m(unbound) ([1m0[22m) (unbound)
+            If the last command executed was a digit as part of an argument, continue the argument.  Otherwise, execute vi-beginning-of-line.
+
+   [1mText Objects[0m
+     Text objects are commands that can be used to select a block of text according to some criteria. They are a feature of the vim text editor and so are primarily intended for use with vi operators or from visual selection mode. How‐
+     ever, they can also be used from vi-insert or emacs mode. Key bindings listed below apply to the [1mviopp [22mand [1mvisual [22mkeymaps.
+
+     [1mselect-a-blank-word [22m([1maW[22m)
+            Select a word including adjacent blanks, where a word is defined as a series of non-blank characters. With a numeric argument, multiple words will be selected.
+
+     [1mselect-a-shell-word [22m([1maa[22m)
+            Select the current command argument applying the normal rules for quoting.
+
+     [1mselect-a-word [22m([1maw[22m)
+            Select a word including adjacent blanks, using the normal vi-style word definition. With a numeric argument, multiple words will be selected.
+
+     [1mselect-in-blank-word [22m([1miW[22m)
+            Select a word, where a word is defined as a series of non-blank characters. With a numeric argument, multiple words will be selected.
+
+     [1mselect-in-shell-word [22m([1mia[22m)
+            Select the current command argument applying the normal rules for quoting. If the argument begins and ends with matching quote characters, these are not included in the selection.
+
+     [1mselect-in-word [22m([1miw[22m)
+            Select a word, using the normal vi-style word definition. With a numeric argument, multiple words will be selected.
+
+[1mCHARACTER HIGHLIGHTING[0m
+     The line editor has the ability to highlight characters or regions of the line that have a particular significance.  This is controlled by the array parameter [1mzle_highlight[22m, if it has been set by the user.
+
+     If the parameter contains the single entry [1mnone [22mall highlighting is turned off.  Note the parameter is still expected to be an array.
+
+     Otherwise each entry of the array should consist of a word indicating a context for highlighting, then a colon, then a comma-separated list of the types of highlighting to apply in that context.
+
+     The contexts available for highlighting are the following:
+
+     [1mdefault[0m
+            Any text within the command line not affected by any other highlighting.  Text outside the editable area of the command line is not affected.
+
+     [1misearch[0m
+            When one of the incremental history search widgets is active, the area of the command line matched by the search string or pattern.
+
+     [1mregion[0m
+            The  currently  selected  text.  In emacs terminology, this is referred to as the region and is bounded by the cursor (point) and the mark. The region is only highlighted if it is active, which is the case after the mark is
+            modified with [1mset-mark-command [22mor [1mexchange-point-and-mark[22m.  Note that whether or not the region is active has no effect on its use within emacs style widgets, it simply determines whether it is highlighted. In vi mode,  the
+            region corresponds to selected text in visual mode.
+
+     [1mspecial[0m
+            Individual characters that have no direct printable representation but are shown in a special manner by the line editor.  These characters are described below.
+
+     [1msuffix[0m
+            This  context  is used in completion for characters that are marked as suffixes that will be removed if the completion ends at that point, the most obvious example being a slash ([1m/[22m) after a directory name.  Note that suffix
+            removal is configurable; the circumstances under which the suffix will be removed may differ for different completions.
+
+     [1mpaste  [22mFollowing a command to paste text, the characters that were inserted.
+
+     When [1mregion_highlight [22mis set, the contexts that describe a region -- [1misearch[22m, [1mregion[22m, [1msuffix[22m, and [1mpaste [22m-- are applied first, then [1mregion_highlight [22mis applied, then the remaining [1mzle_highlight [22mcontexts are applied.  If a  particu‐
+     lar character is affected by multiple specifications, the last specification wins.
+
+     [1mzle_highlight  [22mmay  contain  additional fields for controlling how terminal sequences to change colours are output.  Each of the following is followed by a colon and a string in the same form as for key bindings.  This will not be
+     necessary for the vast majority of terminals as the defaults shown in parentheses are widely used.
+
+     [1mfg_start_code [22m([1m\e[3[22m)
+            The start of the escape sequence for the foreground colour.  This is followed by one to three ASCII digits representing the colour.  Only used for palette colors, i.e. not 24-bit colors specified via a color triplet.
+
+     [1mfg_default_code [22m([1m9[22m)
+            The number to use instead of the colour to reset the default foreground colour.
+
+     [1mfg_end_code [22m([1mm[22m)
+            The end of the escape sequence for the foreground colour.
+
+     [1mbg_start_code [22m([1m\e[4[22m)
+            The start of the escape sequence for the background colour.  See [1mfg_start_code [22mabove.
+
+     [1mbg_default_code [22m([1m9[22m)
+            The number to use instead of the colour to reset the default background colour.
+
+     [1mbg_end_code [22m([1mm[22m)
+            The end of the escape sequence for the background colour.
+
+     The available types of highlighting are the following.  Note that not all types of highlighting are available on all terminals:
+
+     [1mnone   [22mNo highlighting is applied to the given context.  It is not useful for this to appear with other types of highlighting; it is used to override a default.
+
+     [1mfg=[4m[22mcolour[0m
+            The foreground colour should be set to [4mcolour[24m, a decimal integer, the name of one of the eight most widely-supported colours or as a ‘[1m#[22m' followed by an RGB triplet in hexadecimal format.
+
+            Not all terminals support this and, of those that do, not all provide facilities to test the support, hence the user should decide based on the terminal type.  Most terminals support the colours [1mblack[22m, [1mred[22m,  [1mgreen[22m,  [1myellow[22m,
+            [1mblue[22m, [1mmagenta[22m, [1mcyan [22mand [1mwhite[22m, which can be set by name.  In addition. [1mdefault [22mmay be used to set the terminal's default foreground colour.  Abbreviations are allowed; [1mb [22mor [1mbl [22mselects black.  Some terminals may generate ad‐
+            ditional colours if the [1mbold [22mattribute is also present.
+
+            On recent terminals and on systems with an up-to-date terminal database the number of colours supported may be tested by the command ‘[1mechotc Co[22m'; if this succeeds, it indicates a limit on the number of colours which will be
+            enforced by the line editor.  The number of colours is in any case limited to 256 (i.e. the range 0 to 255).
+
+            Some  modern  terminal  emulators have support for 24-bit true colour (16 million colours). In this case, the hex triplet format can be used. This consists of a ‘[1m#[22m' followed by either a three or six digit hexadecimal number
+            describing the red, green and blue components of the colour. Hex triplets can also be used with 88 and 256 colour terminals via the [1mzsh/nearcolor [22mmodule (see [4mzshmodules[24m(1)).
+
+            Colour is also known as color.
+
+     [1mbg=[4m[22mcolour[0m
+            The background colour should be set to [4mcolour[24m.  This works similarly to the foreground colour, except the background is not usually affected by the bold attribute.
+
+     [1mbold   [22mThe characters in the given context are shown in a bold font.  Not all terminals distinguish bold fonts.
+
+     [1mstandout[0m
+            The characters in the given context are shown in the terminal's standout mode.  The actual effect is specific to the terminal; on many terminals it is inverse video.  On some such terminals, where the cursor does not  blink
+            it appears with standout mode negated, making it less than clear where the cursor actually is.  On such terminals one of the other effects may be preferable for highlighting the region and matched search string.
+
+     [1munderline[0m
+            The characters in the given context are shown underlined.  Some terminals show the foreground in a different colour instead; in this case whitespace will not be highlighted.
+
+     The characters described above as ‘special' are as follows.  The formatting described here is used irrespective of whether the characters are highlighted:
+
+     ASCII control characters
+            Control characters in the ASCII range are shown as ‘[1m^[22m' followed by the base character.
+
+     Unprintable multibyte characters
+            This  item  applies to control characters not in the ASCII range, plus other characters as follows.  If the [1mMULTIBYTE [22moption is in effect, multibyte characters not in the ASCII character set that are reported as having zero
+            width are treated as combining characters when the option [1mCOMBINING_CHARS [22mis on.  If the option is off, or if a character appears where a combining character is not valid, the character is treated as unprintable.
+
+            Unprintable multibyte characters are shown as a hexadecimal number between angle brackets.  The number is the code point of the character in the wide character set; this may or may not be Unicode, depending on the operating
+            system.
+
+     Invalid multibyte characters
+            If the [1mMULTIBYTE [22moption is in effect, any sequence of one or more bytes that does not form a valid character in the current character set is treated as a series of bytes each shown as a special character.  This case can  be
+            distinguished  from  other  unprintable  characters  as the bytes are represented as two hexadecimal digits between angle brackets, as distinct from the four or eight digits that are used for unprintable characters that are
+            nonetheless valid in the current character set.
+
+            Not all systems support this: for it to work, the system's representation of wide characters must be code values from the Universal Character Set, as defined by IS0 10646 (also known as Unicode).
+
+     Wrapped double-width characters
+            When a double-width character appears in the final column of a line, it is instead shown on the next line. The empty space left in the original position is highlighted as a special character.
+
+     If [1mzle_highlight [22mis not set or no value applies to a particular context, the defaults applied are equivalent to
+
+            [1mzle_highlight=(region:standout special:standout[0m
+            [1msuffix:bold isearch:underline paste:standout)[0m
+
+     i.e. both the region and special characters are shown in standout mode.
+
+     Within widgets, arbitrary regions may be highlighted by setting the special array parameter [1mregion_highlight[22m; see above.
+
+zsh 5.9.2                                                                                                      July 12, 2026                                                                                                      [4mZSHZLE[24m(1)
