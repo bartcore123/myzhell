@@ -1,0 +1,26 @@
+[ids]
+*
+
+[main]
+
+capslock=kpenter
+`=delete
+rightalt=`
+
+rightshift=overload(shift, end)
+rightcontrol=overload(control, home)
+
+space=overload(orbit, space)
+
+[orbit:C]
+w=up
+s=down
+a=left
+d=right
+q=home
+e=end
+capslock=f6
+`=backspace
+
+[shift:S]
+`=~
