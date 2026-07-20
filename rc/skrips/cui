@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-CUI=$(hash -d CUI)
+## CUI=$(hash -d CUI)
 
 cd ${CUI:-~/ComfyUI}
 

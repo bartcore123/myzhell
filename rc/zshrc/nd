@@ -1,4 +1,5 @@
 hash -d CPU=/sys/devices/system/cpu/cpufreq/policy0
+hash -d CUI=~/ComfyUI
 hash -d D=~/Downloads
 hash -d G=~/git
 hash -d GZ=~/kubuntu/myshell/rc/etc/zsh

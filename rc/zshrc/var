@@ -1,3 +1,4 @@
 neo="ayaneo air plus 6800u"
 export READNULLCMD='rless'
 export PATH=/opt/skrips:$PATH
+CUI=/home/barth/ComfyUI
