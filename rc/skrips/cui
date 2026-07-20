@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+CUI=$(hash -d CUI)
+
+cd ${CUI:-~/ComfyUI}
+
+./venv/bin/python main.py 2>~/cui.log &
+
+sleep 9
+
+firefox -new-tab http://127.0.0.1:8188

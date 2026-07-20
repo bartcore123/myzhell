@@ -87,6 +87,7 @@ macro ga='git add'
 gmacro gaa=gmacro
 macro gl=global
 gmacro gm=gmacro
+macro gs='git status '
 macro gz=gzip
 gmacro h,=ZSH_HIGHLIGHT_STYLES
 macro hl='highlight '
