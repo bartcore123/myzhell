@@ -187,7 +187,7 @@ bindkey "^[^?" backward-kill-word
 bindkey "^_" undo
 bindkey " " expand-macro
 bindkey -R "!"-"_" self-insert
-bindkey "\`" quotes_single
+bindkey "\`" quoted-insert
 bindkey "\`^M" quoted-insert
 bindkey "\`^[OF" pass-bracket
 bindkey "\`^[OH" undo
