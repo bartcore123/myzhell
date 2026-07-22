@@ -15,3 +15,21 @@ prms(){
 	CURSOR=$[$#BUFFER-1]
 }
 zle -N prms
+
+slap () {
+	LBUFFER+=$(wl-paste) 
+}
+zle -N slap
+
+insert_arith_paren () {
+	LBUFFER+='$[  ]' 
+	CURSOR=$[CURSOR-2] 
+}
+zle -N insert_arith_paren
+
+insert_test_paren () {
+	LBUFFER+='[[  ]]' 
+	CURSOR=$[CURSOR-3] 
+}
+zle -N insert_test_paren
+

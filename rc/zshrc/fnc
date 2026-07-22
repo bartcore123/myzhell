@@ -44,3 +44,10 @@ savnd(){ hash -dL |sed -r 's/[/]home[/]barth/\~/' >|~Z/nd }
 
 '$'(){ read -d '' ${@:-R}; r=(${(f)R}) }
 
+bod () {
+	for X in $@
+	do
+		which -s $X | sed -r 's/^\t(.*+)$/\1/p;d'
+		echo ''
+	done
+}
