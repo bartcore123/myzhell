@@ -1,0 +1,17 @@
+[ids]
+*
+
+[main]
+
+include orbit
+
+capslock=kpenter
+`=delete
+rightalt=`
+
+rightshift=overload(shift, end)
+rightcontrol=overload(control,home)
+
+
+[shift:S]
+`=~

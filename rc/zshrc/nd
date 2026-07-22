@@ -33,6 +33,7 @@ hash -d l1=~/myshell/rc/src/l1
 hash -d l2=~/myshell/rc/src/l2
 hash -d l3=~/myshell/rc/src/l3
 hash -d mail=/var/spool/mail
+hash -d naga=~/git/Naga_KeypadMapper
 hash -d named=/
 hash -d nm-openvpn=/var/lib/openvpn/chroot
 hash -d nobody=/
