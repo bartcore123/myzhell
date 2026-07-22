@@ -33,3 +33,9 @@ insert_test_paren () {
 }
 zle -N insert_test_paren
 
+insert_mathy_paren () {
+	LBUFFER+='((  ))' 
+	CURSOR=$[ CURSOR-3 ] 
+}
+zle -N insert_mathy_paren
+
