@@ -125,7 +125,6 @@ macro pr='print -r -- '
 macro psh=powershell
 macro pw=powershell
 macro py=python
-macro r=read
 gmacro r,='$reply'
 macro rh=run-help
 macro rl=readlink

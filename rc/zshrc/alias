@@ -374,7 +374,6 @@ alias psh=powershell
 alias pw=powershell
 alias py=python
 alias q=ddgr
-alias r=read
 alias -g r,='$reply'
 alias rd=rmdir
 alias rh=run-help

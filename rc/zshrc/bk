@@ -79,7 +79,7 @@ bindkey "^[(^[)" insert_arith_paren
 bindkey "^[," menu-complete
 bindkey "^[-" neg-argument
 bindkey -s "^[." "%"
-bindkey "^[/" reverse-menu-complete
+bindkey -s "^[/" "@"
 bindkey "^[0" digit-argument
 bindkey "^[1" digit-argument
 bindkey "^[2" digit-argument
@@ -126,6 +126,7 @@ bindkey "^[V" yank-pop
 bindkey "^[W" kill-region
 bindkey "^[X" quoted-insert
 bindkey "^[Z" undo
+bindkey -s "^[[" "\^"
 bindkey "^[[15~" qm_p
 bindkey "^[[17~" qm_g
 bindkey "^[[1;3F" pass-bracket
@@ -153,10 +154,11 @@ bindkey "^[[C" bracket-suggest-forward-char
 bindkey "^[[D" backward-char
 bindkey "^[[F" bracket-suggest-end-of-line
 bindkey "^[[Z" reverse-menu-complete
-bindkey "^[\\\\" quoted-insert
+bindkey -s "^[\\\\" "|"
 bindkey -s "^[]" "&"
 bindkey "^[_" insert-last-word
 bindkey -s "^[\`" "~"
+bindkey -s "^[\`/" "!"
 bindkey "^[a" beginning-of-line
 bindkey "^[b" backward-word
 bindkey "^[c" set-mark-command
@@ -192,15 +194,16 @@ bindkey "\`^M" quoted-insert
 bindkey "\`^[OF" pass-bracket
 bindkey "\`^[OH" undo
 bindkey "\` " dual_spaces
-bindkey "\`'" quotes_double
-bindkey "\`," quotes_style
+bindkey -s "\`'" "+"
+bindkey -s "\`," "\$"
 bindkey "\`-" neg-argument
 bindkey -s "\`." "*"
-bindkey "\`/" backward-char
+bindkey -s "\`/" "#"
 bindkey "\`90" insert_arith_paren
-bindkey "\`;" insert_paren
+bindkey -s "\`;" "("
 bindkey "\`=" insert_braces
-bindkey "\`[" insert_brackets
+bindkey -s "\`[" "%"
+bindkey "\`[;" insert_mathy_paren
 bindkey "\`[]" insert_test_paren
 bindkey -s "\`\\\\" "^["
 bindkey -s "\`]" "\^"
