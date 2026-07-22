@@ -51,3 +51,6 @@ bod () {
 		echo ''
 	done
 }
+xx () {
+	[[ -n $@ ]] && kill -9 $@ || exit
+}
