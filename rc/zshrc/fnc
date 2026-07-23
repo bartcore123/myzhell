@@ -58,3 +58,6 @@ _ () {
 	read -d ''
 	print -z -- "$REPLY"
 }
+'-' () {
+	[[ -n $@ ]] && set $@ || clear
+}
