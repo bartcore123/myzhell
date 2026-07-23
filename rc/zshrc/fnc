@@ -3,7 +3,7 @@ unalias -- \-   2>/dev/null
 #unalias -- \+   2>/dev/null
 
 
-'='()ls -A
+## '='()ls -A
 '-'()clear
 '+'()less -R $@
 showcolors () {
@@ -53,4 +53,7 @@ bod () {
 }
 xx () {
 	[[ -n $@ ]] && kill -9 $@ || exit
+}
+'=' () {
+	[[ -n $@ ]] && coproc $@ || ls --color=tty --color=tty -A
 }
