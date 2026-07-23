@@ -1,1 +1,2 @@
 compdef xx="jobs"
+compdef -- '-'=set
