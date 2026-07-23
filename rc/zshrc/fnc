@@ -24,10 +24,7 @@ neo () {
 }
 # gc(){ git commit -am"Version: ${GITVER_BIG:-x}.${GITVER_MID:-x}.${GITVER:-1}"; GITVER=$[GITVER+1] }
 
-_ () {
-	read -d ''
-	print -z "$REPLY"
-}
+
 bak () {
 	cp -b $@ ~bak
 }
@@ -56,4 +53,8 @@ xx () {
 }
 '=' () {
 	[[ -n $@ ]] && coproc $@ || ls --color=tty --color=tty -A
+}
+_ () {
+	read -d ''
+	print -z -- "$REPLY"
 }
