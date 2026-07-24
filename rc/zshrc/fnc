@@ -70,3 +70,6 @@ pc () {
 rmdup () {
 	rm $(fdupes -f ${@:-\.})
 }
+dup () {
+	fdupes -f ${@:-\.}
+}
