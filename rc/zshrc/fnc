@@ -67,3 +67,6 @@ wx () {
 pc () {
 	powerprofilesctl $@
 }
+rmdup () {
+	rm $(fdupes -f ${@:-\.})
+}

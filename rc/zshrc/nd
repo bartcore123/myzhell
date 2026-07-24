@@ -1,13 +1,15 @@
 hash -d CPU=/sys/devices/system/cpu/cpufreq/policy0
 hash -d CUI=~/ComfyUI
-hash -d D=~/Downloads
+hash -d D=~/Documents
 hash -d G=~/git
 hash -d GZ=~/kubuntu/myshell/rc/etc/zsh
 hash -d K=~/myshell/kate
 hash -d M=~/myshell
 hash -d OGZ=~/kubuntu/myshell/rc/etc/zsh
 hash -d OZ=~/myshell/oldshell/rc/etc/zsh
+hash -d S=~/Desktop
 hash -d SRC=~/myshell/rc/src
+hash -d W=~/Downloads
 hash -d Z=~/myshell/rc/zshrc
 hash -d _talkd=/
 hash -d alpm=/
