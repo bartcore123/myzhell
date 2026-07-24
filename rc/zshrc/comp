@@ -1,2 +1,3 @@
 compdef xx="jobs"
 compdef -- '-'=set
+compdef wx=dolphin
