@@ -10,7 +10,7 @@ capslock=kpenter
 rightalt=`
 
 rightshift=overload(shift, end)
-rightcontrol=overload(control,home)
+rightcontrol=overload(control, home)
 
 
 [shift:S]
