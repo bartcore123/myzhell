@@ -64,3 +64,6 @@ _ () {
 wx () {
 	dolphin $@
 }
+pc () {
+	powerprofilesctl $@
+}
