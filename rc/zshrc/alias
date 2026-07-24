@@ -366,7 +366,7 @@ alias -g p,='(|.)*.(png|jpg|webp|jpeg|avif|jfif)'
 alias p7=p7zip
 alias pac='sudo pacman'
 alias paste=wl-paste
-alias pc=powerprofilesctl
+
 alias pe=perl
 alias pf=printf
 alias -g pix,='*.(png|jpg|webp|jpeg|avif|jfif)'
