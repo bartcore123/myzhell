@@ -64,12 +64,13 @@ _ () {
 wx () {
 	dolphin $@
 }
-pc () {
-	powerprofilesctl $@
-}
 rmdup () {
 	rm $(fdupes -f ${@:-\.})
 }
 dup () {
 	fdupes -f ${@:-\.}
+}
+savmacro () {
+	print -- 'macros=()\n' >| ~/myshell/rc/zshrc/macros
+	macro >> ~/myshell/rc/zshrc/macros 2> /dev/null
 }

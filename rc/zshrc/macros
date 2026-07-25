@@ -1,3 +1,5 @@
+macros=()
+
 gmacro 1,=/root/myshell/rc/slapf/SLAP1
 gmacro 2,=/root/myshell/rc/slapf/SLAP2
 gmacro 3,=/root/myshell/rc/slapf/SLAP3
