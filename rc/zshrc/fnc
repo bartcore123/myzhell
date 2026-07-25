@@ -74,3 +74,7 @@ savmacro () {
 	print -- 'macros=()\n' >| ~/myshell/rc/zshrc/macros
 	macro >> ~/myshell/rc/zshrc/macros 2> /dev/null
 }
+umacro () {
+	macros=(${macros//${(j:|:)~@}}) 
+	unalias $@
+}

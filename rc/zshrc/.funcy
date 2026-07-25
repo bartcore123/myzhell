@@ -2,3 +2,10 @@ alias '#'='\#'
 ./ () {
 	[[ -n $@ ]] && zmv -n $@ || pwd
 }
+#umacro () {
+#	macros=(${macros//${(j:|:)~@}}) 
+#}
+umacro () {
+	macros=(${macros//${(j:|:)~@}}) 
+	unalias $@
+}
