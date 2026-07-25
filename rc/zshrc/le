@@ -1,3 +1,5 @@
+autoload zmv
+
 myWordExpand () {
 	zle _expand_alias
 	zle _expand_word
