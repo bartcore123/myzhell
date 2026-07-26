@@ -98,6 +98,7 @@ gmacro h,=ZSH_HIGHLIGHT_STYLES
 macro hl='highlight '
 macro int=integer
 macro j=jobs
+macro k=clear
 macro k9='kill -9'
 macro kd='sudo keyd'
 macro kk=clear
