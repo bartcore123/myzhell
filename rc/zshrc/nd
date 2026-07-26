@@ -9,6 +9,7 @@ hash -d OGZ=~/kubuntu/myshell/rc/etc/zsh
 hash -d OZ=~/myshell/oldshell/rc/etc/zsh
 hash -d S=~/Desktop
 hash -d SRC=~/myshell/rc/src
+hash -d V=~/Videos
 hash -d W=~/Downloads
 hash -d Z=~/myshell/rc/zshrc
 hash -d _talkd=/

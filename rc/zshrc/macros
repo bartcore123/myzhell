@@ -49,6 +49,7 @@ gmacro aG,='[^a-zA-Z]='
 macro aa=macro
 macro af='ls -AF --color=auto'
 macro ag=apt-get
+macro al='alias -L'
 gmacro alt,='^['
 macro as='alias -s'
 macro at=apt
