@@ -78,3 +78,6 @@ umacro () {
 	macros=(${macros//${(j:|:)~@}}) 
 	unalias $@
 }
+- () {
+	[[ -n $@ ]] && kill "${${(M)@//[-][[:alnum:]]+}:--9}" $@ || clear
+}
