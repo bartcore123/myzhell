@@ -62,7 +62,7 @@ _ () {
 	[[ -n $@ ]] && set $@ || clear
 }
 wx () {
-	dolphin $@
+	dolphin $@ &
 }
 rmdup () {
 	rm $(fdupes -f ${@:-\.})
