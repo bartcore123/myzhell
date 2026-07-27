@@ -41,3 +41,7 @@ insert_mathy_paren () {
 }
 zle -N insert_mathy_paren
 
+kill-region-or-rbuffer () {
+	[[ $MARK == 0 ]] && zle kill-line || zle kill-region
+}
+zle -N kill-region-or-rbuffer

@@ -179,7 +179,7 @@ bindkey "^[s" backward-char
 bindkey "^[t" transpose-words
 bindkey "^[u" up-case-word
 bindkey "^[v" yank
-bindkey "^[w" kill-line
+bindkey "^[w" kill-region-or-rbuffer
 bindkey "^[x" execute-named-cmd
 bindkey "^[y" yank-pop
 bindkey "^[z" undo
