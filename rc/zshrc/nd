@@ -4,6 +4,7 @@ hash -d D=~/Documents
 hash -d G=~/git
 hash -d GZ=~/kubuntu/myshell/rc/etc/zsh
 hash -d K=~/myshell/kate
+hash -d L=~/.logs
 hash -d M=~/myshell
 hash -d OGZ=~/kubuntu/myshell/rc/etc/zsh
 hash -d OZ=~/myshell/oldshell/rc/etc/zsh

@@ -61,9 +61,7 @@ _ () {
 '-' () {
 	[[ -n $@ ]] && set $@ || clear
 }
-wx () {
-	dolphin $@ &
-}
+
 rmdup () {
 	rm $(fdupes -f ${@:-\.})
 }
@@ -81,3 +79,15 @@ umacro () {
 #- () {
 #	[[ -n $@ ]] && kill "${${(M)@//[-][[:alnum:]]+}:--9}" $@ || clear
 #}
+
+
+#wx () {
+#	LOGFILE=~/.logs/Dolphin_$RANDOM
+#	:>$LOGFILE
+#	dolphin $@ 2>$LOGFILE &
+#}
+
+
+wx () {
+	dolphin $@ 2>|~/.logs/Dolphin_$RANDOM &
+}
