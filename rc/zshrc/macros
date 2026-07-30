@@ -74,6 +74,7 @@ macro ctl=systemctl
 macro cv=clippaste
 macro cy=wl-copy
 macro d=bod
+gmacro d,='${(%)${:-"%D{%d-%m-%y}"}}'
 macro da=disable
 macro dc=declare
 macro df='diff -a'
