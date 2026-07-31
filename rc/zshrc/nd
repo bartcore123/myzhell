@@ -42,6 +42,7 @@ hash -d l1=~/myshell/rc/src/l1
 hash -d l2=~/myshell/rc/src/l2
 hash -d l3=~/myshell/rc/src/l3
 hash -d lightdm=/var/lib/lightdm
+hash -d ln=~/myshell/rc/ln
 hash -d lxdm=/var/lib/lxdm
 hash -d m=~/myshell
 hash -d mail=/var/spool/mail
