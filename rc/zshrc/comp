@@ -6,3 +6,6 @@ compdef pc=powerprofilesctl
 zstyle ':completion:*:*:-redirect-,2>,*:*' file-patterns '/dev/null'
 zstyle ':completion:*:*:-redirect-,&>,*:*' file-patterns '/dev/null'
 #compdef -- -=kill
+zstyle ':completion:*:(cd|*:files|*:directories)' ignored-patterns '.(|.)'
+zstyle ':completion:*:commands' ignored-patterns './'
+zstyle ':completion:*:commands' ignored-patterns '%'

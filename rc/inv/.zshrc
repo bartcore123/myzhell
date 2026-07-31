@@ -123,7 +123,9 @@ done
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+zstyle ':completion:*:(cd|*:files|*:directories)' ignored-patterns '.(|.)'
+zstyle ':completion:*:commands' ignored-patterns './'
+zstyle ':completion:*:commands' ignored-patterns '%'
 
 #source ~M/rc/bracket-suggest.zsh
 #naks
-
