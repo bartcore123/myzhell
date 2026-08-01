@@ -19,8 +19,13 @@ a=left
 d=right
 q=home
 e=end
+r=backspace
+f=delete
 capslock=f6
-`=backspace
+
+[shift+orbit]
+r=macro(C-backspace)
+f=macro(C-delete)
 
 [shift:S]
 `=~

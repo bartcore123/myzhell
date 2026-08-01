@@ -46,6 +46,7 @@ hash -d ln=~/myshell/rc/ln
 hash -d lxdm=/var/lib/lxdm
 hash -d m=~/myshell
 hash -d mail=/var/spool/mail
+hash -d myky=~/myshell/rc/ln/keyd
 hash -d naga=~/git/Naga_KeypadMapper
 hash -d named=/
 hash -d nm-openvpn=/var/lib/openvpn/chroot
