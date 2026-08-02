@@ -19,8 +19,8 @@ a=left
 d=right
 q=home
 e=end
-r=backspace
-f=delete
+r=delete
+f=backspace
 capslock=f6
 
 [shift+orbit]
