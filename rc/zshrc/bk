@@ -195,10 +195,10 @@ bindkey "\`^[OF" pass-bracket
 bindkey "\`^[OH" undo
 bindkey "\` " dual_spaces
 bindkey -s "\`'" "+"
-bindkey -s "\`," "\$"
+bindkey -s "\`," "\#"
 bindkey "\`-" neg-argument
 bindkey -s "\`." "*"
-bindkey -s "\`/" "#"
+bindkey -s "\`/" "\$"
 bindkey "\`90" insert_arith_paren
 bindkey -s "\`;" "("
 bindkey "\`=" insert_braces

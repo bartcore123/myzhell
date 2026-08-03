@@ -1,0 +1,1 @@
+/home/barth/myshell/rc/.claude/bracket-suggest_2.0.zsh
