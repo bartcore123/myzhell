@@ -1,7 +1,0 @@
-,- () {
-	while [[ -n $@ ]]
-	do
-		taskkill.exe /PID ${${p:+${p[$1]}}:-$1}
-		shift
-	done
-}

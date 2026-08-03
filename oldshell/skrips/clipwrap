@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-cd /mnt/c/Users/barth/Desktop
-/mnt/c/Windows/System32/clip.exe $@

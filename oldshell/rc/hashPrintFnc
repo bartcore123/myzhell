@@ -1,8 +1,0 @@
-'#'(){ print $@ }
-'#$'(){ print -z $(</dev/stdin) }
-'#@'(){ print -f $@ }
-'#%'(){ print -P $@ }
-'#:'(){ print -u 12 $@ }
-'#&'(){ print -u 15 $@ }
-'#^'(){ print -z $@ }
-'#?'(){ cat /etc/zsh/printEzelsbrug.txt }

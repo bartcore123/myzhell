@@ -1,3 +1,0 @@
-',=' () {
-	tasklist.exe | grep --color=auto -anPi -- "$*"
-}

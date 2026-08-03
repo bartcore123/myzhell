@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-cd /mnt/c/Users/barth/Desktop
-/mnt/c/Program\ Files/paste.exe $@
