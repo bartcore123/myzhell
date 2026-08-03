@@ -2,9 +2,9 @@ compdef xx="jobs"
 compdef -- '-'=set
 compdef wx=dolphin
 compdef pc=powerprofilesctl
-#zstyle ':completion:*:*:-redirect-,2>,*:*' file-patterns '*.log'
-zstyle ':completion:*:*:-redirect-,2>,*:*' file-patterns '/dev/null'
-zstyle ':completion:*:*:-redirect-,&>,*:*' file-patterns '/dev/null'
+## zstyle ':completion:*:*:-redirect-,2>,*:*' file-patterns '*.log'
+zstyle ':completion:*:*:-redirect-,2>,*:*' file-patterns '*.log /dev/null'
+zstyle ':completion:*:*:-redirect-,&>,*:*' file-patterns '*.log /dev/null'
 #compdef -- -=kill
 zstyle ':completion:*:(cd|*:files|*:directories)' ignored-patterns '.(|.)'
 zstyle ':completion:*:commands' ignored-patterns './'
