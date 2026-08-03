@@ -1,6 +1,8 @@
+hash -d C=~/.wine/drive_c
 hash -d CPU=/sys/devices/system/cpu/cpufreq/policy0
 hash -d CUI=~/ComfyUI
 hash -d D=~/Documents
+hash -d F=/run/user/1000/kio-fuse-mzncHE/ftp/Foon@192.168.178.13:2221
 hash -d G=~/git
 hash -d GZ=~/kubuntu/myshell/rc/etc/zsh
 hash -d K=~/myshell/kate

@@ -51,6 +51,7 @@ macro af='ls -AF --color=auto'
 macro ag=apt-get
 macro al='alias -L'
 gmacro alt,='^['
+macro ar=aria2c
 macro as='alias -s'
 macro at=apt
 macro b=bindkey

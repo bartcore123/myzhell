@@ -1,7 +1,7 @@
 alias '#'='\#'
 alias %=jobs
 alias ,='ls -AF'
-alias ,,='ls -AlF'
+alias ,,='ls -AlFh'
 alias ,.='dirs -v'
 alias ,/=pwd
 alias .='ls -A'
