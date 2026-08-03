@@ -61,3 +61,5 @@ bind M-1 unindent all
 # bind ^c Cancel yesno
 # bind ^w y yesno
 # bind ^e n yesno
+
+bind ^z suspend all

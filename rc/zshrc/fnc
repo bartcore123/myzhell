@@ -95,3 +95,6 @@ wx () {
 cldt () {
 	print -r -- ${(%)${:-"%D{%d-%m-%y}"}}$@ | wl-copy
 }
+f () {
+	dolphin $@ 2>| ~/.logs/Dolphin_$RANDOM &
+}
