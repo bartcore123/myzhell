@@ -91,7 +91,7 @@ bindkey "^[7" digit-argument
 bindkey "^[8" digit-argument
 bindkey "^[9" digit-argument
 bindkey "^[:" printy
-bindkey "^[;" printy
+bindkey -s "^[;" ")"
 bindkey "^[<" rm_LBUFFER
 bindkey "^[=" insert_anon_func
 bindkey "^[>" rm_RBUFFER
@@ -195,7 +195,7 @@ bindkey "\`^[OF" pass-bracket
 bindkey "\`^[OH" undo
 bindkey "\` " dual_spaces
 bindkey -s "\`'" "+"
-bindkey -s "\`," "\#"
+bindkey -s "\`," "#"
 bindkey "\`-" neg-argument
 bindkey -s "\`." "*"
 bindkey -s "\`/" "\$"
