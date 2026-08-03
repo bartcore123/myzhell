@@ -1,0 +1,35 @@
+[ids]
+*
+
+[main]
+
+f24=macro(C-tab)
+f23=macro(C-S-tab)
+f22=macro(M-tab)
+
+capslock=kpenter
+`=delete
+rightalt=`
+
+rightshift=overload(shift, end)
+rightcontrol=overload(control, home)
+
+space=overload(orbit, space)
+
+[orbit:C]
+w=up
+s=down
+a=left
+d=right
+q=home
+e=end
+r=delete
+f=backspace
+capslock=f6
+
+[shift+orbit]
+r=macro(C-backspace)
+f=macro(C-delete)
+
+[shift:S]
+`=~
