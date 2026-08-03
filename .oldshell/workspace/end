@@ -1,0 +1,9 @@
+
+typeset -A brackmatch
+macro x=brackmatch
+openbrack="[{("
+closebrack="]})"
+zle -N ',=-'
+bindkey '^[[15~' ',=-'
+bindkey '^[[17~' ',=-'
+# ${${BUFFER//(\\(\[|\{|\())}//^(\[|\{|\()}

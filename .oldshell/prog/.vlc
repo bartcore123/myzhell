@@ -1,0 +1,4 @@
+vlc(){
+	/mnt/c/Windows/System32/cmd.exe /C "C:\Program Files (x86)\VideoLAN\VLC\vlc.exe" $@
+}
+

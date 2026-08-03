@@ -1,0 +1,14 @@
+#!/usr/bin/zsh
+
+
+if [[ $1 = 2 || ${(L)1} = k || ${(L)1} = kde ]];then
+	prfl="kde-client"
+elif [[ ${(L)1} = d || ${(L)1} = default ]];then
+	prfl="xinitrc-backup"
+else;
+	prfl="xterm-client"
+
+ln /etc/X11/xinit/xinitrc $HOME/xinitprofiles/xinitrc-backup
+ln -si $HOME/xinitprofiles/$prfl /etc/X11/xinit/xinitrc
+ln -s /etc/X11/xinit/xinitrc $HOME/.xinitrc
+echo xinit will now use $prfl

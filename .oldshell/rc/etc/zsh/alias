@@ -1,0 +1,202 @@
+'##@'='ls -bAdFhl --color=auto'
+'#@'='print -r -- $@'
+'#@1'='ls -bAd1 --color=auto'
+'#@@'='ls -bAdFhl --color=auto'
+'$.'='$PWD'
+'$~'='$(</dev/stdin)'
+'*'='noglob zmv -nvW'
+'*$'='ls -bAd1 --color=auto'
+'**'='noglob zmv -vW'
+'**1'='ls -bAFd1 --color=auto --quoting-style=shell'
+'*1'='ls -bAd1 --color=auto --quoting-style=shell'
+'+'='less -rK'
+'++'='less -rKN'
+',*'='ls -bAdFhl --color=auto --quoting-style=shell'
+',,.'='setopt extendedglob'
+',,.-'='unsetopt extendedglob'
+',.-'='unsetopt extendedglob'
+',..-'='unsetopt globdots'
+',./'='print -m --'
+'-,,.'='unsetopt extendedglob'
+'-,.'='unsetopt extendedglob'
+'-,..'='unsetopt globdots'
+'--'='set -- '
+'-?'=--help
+'.*'='ls -bAd --color=auto --quoting-style=shell'
+...=../..
+....=../../..
+.....=../../../..
+......=../../../../..
+/-='noglob sed -En ''s/^\/[^ :]++[:]//g;s/[0-9]+\://gp'''
+//='sed -E'
+///='sed -rn'
+1='cd -1'
+2='cd -2'
+3='cd -3'
+4='cd -4'
+5='cd -5'
+6='cd -6'
+7='cd -7'
+8='cd -8'
+9='cd -9'
+:/='mkdir -p'
+::=awk
+'<@'='<&p'
+'>@'='>&p'
+'?'='grep --color=auto -anP --'
+'?!'='grep --color=auto -anPv --'
+'?!~'='grep --color=auto -aPiv --'
+'?#'='grep --color=auto -aPo --'
+'?/'='grep --color=auto -HaPn --'
+'?:'='grep --color=auto -aPo --'
+'??'='grep --color=auto -aP --'
+'??!'='grep --color=auto -aPv --'
+'??!~'='grep --color=auto -aPniv --'
+'??#'='grep --color=auto -aPno --'
+'??/'='grep --color=auto -HaP --'
+'??:'='grep --color=auto -aPno --'
+'??~'='grep --color=auto -anPi --'
+'?Y'='grep --color=auto -aEny --'
+'?y'='grep --color=auto -aEny --'
+'?~'='grep --color=auto -aPi --'
+'@$'='{ set -- ${="$(</dev/stdin)"} }'
+@@='argv=()'
+AutoHotkey='/run/media/barth/Windows-SSDProgram Files/AutoHotkey/AutoHotkey.exe'
+B=bindkey
+G='grep --color=auto -aEn --'
+GRC,='~/myshell/rc/etc/zsh/alias ~/myshell/rc/etc/zsh/fnc ~/myshell/rc/etc/zsh/hl ~/myshell/rc/etc/zsh/le ~/myshell/rc/etc/zsh/macro ~/myshell/rc/etc/zsh/nd ~/myshell/rc/etc/zsh/opt ~/myshell/rc/etc/zsh/tmp ~/myshell/rc/etc/zsh/zlogin ~/myshell/rc/etc/zsh/zlogout ~/myshell/rc/etc/zsh/zshenv ~/myshell/rc/etc/zsh/zshrc ~/myshell/rc/linkdir/.winrc ~/myshell/rc/linkdir/.zshrc'
+Gx='grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox -En'
+K='kill -9'
+L=less
+O='noglob grep -aEno --'
+P='ps -aft'
+Q='kill -9'
+V='noglob zmv -v'
+VW='noglob zmv -vw'
+X=xargs
+'^^'='| regexp-replace '
+__l__='ls -AF --color=auto'
+a=alias
+ag=apt-get
+aju=exit
+apt='noglob sudo apt'
+apt-cache='noglob apt-cache'
+apt-cdrom='noglob apt-cdrom'
+apt-config='noglob apt-config'
+apt-extracttemplates='noglob apt-extracttemplates'
+apt-ftparchive='noglob apt-ftparchive'
+apt-get='noglob apt-get'
+apt-key='noglob apt-key'
+apt-mark='noglob apt-mark'
+apt-sortpkgs='noglob apt-sortpkgs'
+archive='web_search archive'
+ask='web_search ask'
+ass=/usr/bin/as
+baidu='web_search baidu'
+bing='web_search bing'
+bk=bindkey
+bkc='noglob sed -En ''s/\$['''']\\033['''']/\^\[/gp'''
+bkl='bindkey -L'
+brs='web_search brave'
+c=cat
+cc=clipcopy
+cfd=cfdisk
+clip=/run/media/barth/Windows-SSDWindows/System32/clip.exe
+cs=clear
+cv=clippaste
+ddg='web_search duckduckgo'
+diff='diff --color'
+ducky='web_search duckduckgo \!'
+dup='fdupes -f .'
+e=echo
+ec=exec
+ecosia='web_search ecosia'
+egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+em=emacs
+ev=eval
+ex=explorer
+fgrep='grep -F --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+g='grep --color=auto -aE --'
+ga='alias -g'
+github='web_search github'
+givero='web_search givero'
+globurl='noglob urlglobber '
+goodreads='web_search goodreads'
+google='web_search google'
+grc,='~/myshell/rc/etc/zsh/alias ~/myshell/rc/etc/zsh/fnc ~/myshell/rc/etc/zsh/hl ~/myshell/rc/etc/zsh/le ~/myshell/rc/etc/zsh/macro ~/myshell/rc/etc/zsh/nd ~/myshell/rc/etc/zsh/opt ~/myshell/rc/etc/zsh/tmp ~/myshell/rc/etc/zsh/zlogin ~/myshell/rc/etc/zsh/zlogout ~/myshell/rc/etc/zsh/zshenv ~/myshell/rc/etc/zsh/zshrc ~/myshell/rc/linkdir/.winrc ~/myshell/rc/linkdir/.zshrc'
+gx='grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox -E'
+gz=gzip
+history=omz_history
+hl='highlight '
+image='web_search duckduckgo \!i'
+kl=clear
+l='ls --color=auto --quoting-style=shell -QAF'
+ll='ls --color=auto --quoting-style=shell -QalhF'
+lsa='ls -lah'
+map='web_search duckduckgo \!m'
+mc=emacs
+md='mkdir -p'
+mkx='chmod +x'
+ms='cd ~/myshell'
+nano='nano -i'
+nd='hash -d'
+news='web_search duckduckgo \!n'
+nu='date ''+%d-%m-%Y'''
+o='noglob grep -aEo --'
+p='print --'
+p7=p7zip
+plug='n +67 /root/.zshrc'
+pop='shift -p'
+qwant='web_search qwant'
+rc,='/etc/zsh/alias /etc/zsh/fnc /etc/zsh/hl /etc/zsh/le /etc/zsh/macro /etc/zsh/nd /etc/zsh/opt /etc/zsh/tmp /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshenv /etc/zsh/zshrc /root/.zshrc ~/myshell/rc/linkdir/.winrc'
+rd=rmdir
+red='read -d ${EOF:-''''}'
+rl=readlink
+rr='read -r'
+run-help=man
+rx=regexp-replace
+s=sudo
+sc=scanf
+scholar='web_search scholar'
+sd=systemctl
+so=setopt
+sp='web_search startpage'
+stackoverflow='web_search stackoverflow'
+t1=/dev/tty1
+t10=/dev/tty10
+t2=/dev/tty2
+t3=/dev/tty3
+t4=/dev/tty4
+t5=/dev/tty5
+t6=/dev/tty6
+t7=/dev/tty7
+t8=/dev/tty8
+t9=/dev/tty9
+ts=typeset
+tt=/dev/tty
+ty=/run/media/barth/Windows-SSDUsers/barth/typertask.exe
+ua=unalias
+uf=unfunction
+v='noglob zmv -nv'
+vw='noglob zmv -nvw'
+w='which -s '
+web=curl
+wh='which -s '
+which-command=whence
+wiki='web_search duckduckgo \!w'
+wolframalpha='web_search wolframalpha'
+wp=wslpath
+ws=wslpath
+wsl=/run/media/barth/Windows-SSDWindows/System32/wsl.exe
+wsw='wslpath -w'
+xc=exec
+yahoo='web_search yahoo'
+yandex='web_search yandex'
+youtube='web_search duckduckgo \!yt'
+zml=zmodload
+zzZ='/run/media/barth/Windows-SSDWindows/System32/shutdown.exe /h'
+'|?'='|regexp-replace '
+'|^'='regexp-replace '
+'~$'=/dev/stdout
+'~@'=/dev/stdout
+'~~'=/dev/stdin

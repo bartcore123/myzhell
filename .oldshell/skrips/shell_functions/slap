@@ -1,0 +1,44 @@
+sf_content () {
+	c=0
+	print -- '\n'
+	for X in ~sf/*(^@)
+	do
+		i=0
+		for Y in $(<$X)
+		do
+			(( i++ ))
+		done
+		(( c++ ))
+		print -- "$c:" $i
+		#zle redisplay
+		#zle reset-prompt
+	done
+	zle-line-init
+	#CURSOR=0
+}
+
+slap-update () {
+	for X in {1..9}
+	do
+		read -r "SLAP$X" < /root/myshell/rc/slapf/SLAP$X
+	done
+}
+
+slap () {
+	local SLAP=;
+	local slap=();
+	for X in {1..9};do slap[$X]=("$(</root/myshell/rc/slapf/SLAP$X)");done
+	SLAP=$slap[${NUMERIC:-1}];
+	[[ $NUMERIC == 0 ]]&& { slap-update; SLAP=''; }
+	[[ $NUMERIC == 1 ]]&& { sf_content; SLAP=''; }
+	LBUFFER+="$SLAP"
+	CURSOR+="$#SLAP"
+}
+
+zle -N slap-update
+zle -N slap
+zle -N sf_content
+
+bindkey '^[OQ' slap
+bindkey '^[OR' slap
+bindkey '^[OS' sf_content

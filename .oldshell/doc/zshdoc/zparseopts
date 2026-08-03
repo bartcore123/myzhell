@@ -1,0 +1,88 @@
+       zparseopts [ -D -K -M -E ] [ -a array ] [ -A assoc ] [ - ] spec ...
+              This builtin simplifies the parsing of options in positional parameters, i.e. the set of arguments given by $*.  Each spec describes one option and must be of the form `opt[=array]'.  If an
+              option described by opt is found in the positional parameters it is copied into the array specified with the -a option; if the optional `=array' is given, it is instead copied into that ar‐
+              ray, which should be declared as a normal array and never as an associative array.
+
+              Note that it is an error to give any spec without an `=array' unless one of the -a or -A options is used.
+
+              Unless the -E option is given, parsing stops at the first string that isn't described by one of the specs.  Even with -E, parsing always stops at a positional  parameter  equal  to  `-'  or
+              `--'.
+
+              The opt description must be one of the following.  Any of the special characters can appear in the option name provided it is preceded by a backslash.
+
+              name
+              name+  The  name  is  the name of the option without the leading `-'.  To specify a GNU-style long option, one of the usual two leading `-' must be included in name; for example, a `--file'
+                     option is represented by a name of `-file'.
+
+                     If a `+' appears after name, the option is appended to array each time it is found in the positional parameters; without the `+' only the last occurrence of the option is preserved.
+
+                     If one of these forms is used, the option takes no argument, so parsing stops if the next positional parameter does not also begin with `-' (unless the -E option is used).
+
+              name:
+              name:-
+              name:: If one or two colons are given, the option takes an argument; with one colon, the argument is mandatory and with two colons it is optional.  The argument is appended to the array af‐
+                     ter the option itself.
+
+                     An  optional  argument  is put into the same array element as the option name (note that this makes empty strings as arguments indistinguishable).  A mandatory argument is added as a
+                     separate element unless the `:-' form is used, in which case the argument is put into the same element.
+
+                     A `+' as described above may appear between the name and the first colon.
+
+              The options of zparseopts itself cannot be stacked because, for example, the stack `-DEK' is indistinguishable from a spec for the GNU-style long option `--DEK'.  The options of  zparseopts
+              itself are:
+
+              -a array
+                     As described above, this names the default array in which to store the recognised options.
+
+              -A assoc
+                     If this is given, the options and their values are also put into an associative array with the option names as keys and the arguments (if any) as the values.
+
+              -D     If  this option is given, all options found are removed from the positional parameters of the calling shell or shell function, up to but not including any not described by the specs.
+                     This is similar to using the shift builtin.
+
+              -K     With this option, the arrays specified with the -a option and with the `=array' forms are kept unchanged when none of the specs for them is used.  Otherwise the entire array  is  re‐
+                     placed when any of the specs is used.  Individual elements of associative arrays specified with the -A option are preserved by -K.  This allows assignment of default values to arrays
+                     before calling zparseopts.
+
+              -M     This changes the assignment rules to implement a map among equivalent option names.  If any spec uses the `=array' form, the string array is interpreted as the name of another  spec,
+                     which  is  used  to  choose where to store the values.  If no other spec is found, the values are stored as usual.  This changes only the way the values are stored, not the way $* is
+                     parsed, so results may be unpredictable if the `name+' specifier is used inconsistently.
+
+              -E     This changes the parsing rules to not stop at the first string that isn't described by one of the specs.  It can be used to test for or (if used together with -D) extract options and
+                     their arguments, ignoring all other options and arguments that may be in the positional parameters.
+
+              For example,
+
+                     set -- -a -bx -c y -cz baz -cend
+                     zparseopts a=foo b:=bar c+:=bar
+
+              will have the effect of
+
+                     foo=(-a)
+                     bar=(-b x -c y -c z)
+
+              The arguments from `baz' on will not be used.
+
+              As an example for the -E option, consider:
+
+                     set -- -a x -b y -c z arg1 arg2
+                     zparseopts -E -D b:=bar
+
+              will have the effect of
+
+                     bar=(-b y)
+                     set -- -a x -c z arg1 arg2
+
+              I.e., the option -b and its arguments are taken from the positional parameters and put into the array bar.
+
+              The -M option can be used like this:
+
+                     set -- -a -bx -c y -cz baz -cend
+                     zparseopts -A bar -M a=foo b+: c:=b
+
+              to have the effect of
+
+                     foo=(-a)
+                     bar=(-a '' -b xyz)
+
+zsh 5.7.1                                                                                     February 3, 2019                                                                                ZSHMODULES(1)

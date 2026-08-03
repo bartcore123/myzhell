@@ -1,0 +1,1 @@
+function '/-' flb fnb () { noglob sed -En 's/^([^:]*)\:([^:]*)\:(.*)$/\2/gp' }

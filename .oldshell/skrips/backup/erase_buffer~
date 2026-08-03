@@ -1,0 +1,3 @@
+erase_buffer () {
+	BUFFER= 
+}

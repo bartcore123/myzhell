@@ -1,0 +1,10 @@
+n(){
+	if [[ $@[-1] == *.* ]]
+	then
+	
+	print -r -- $@ | sed -E 's/^.*\b([0-9]+)\b.*$/\1/p;d' | read NPAG
+	set -- ${@:/(|[+])<->/}
+	print -r -- $@ | sed -E 's/^.*[,](\S+).*$/\1/p;d' | read NSYN
+	set -- ${@:/[,]*/}
+	\nano -myBiz ${NSYN:+"--syntax=${NSYN}"} ${NPAG:+"+$NPAG"} $@
+}

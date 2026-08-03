@@ -1,0 +1,9 @@
+insert_arith_paren () {
+	(( NUMERIC < 0 ))&&{
+		BUFFER="(){ $BUFFER }";
+		(( CURSOR+=4 ));
+	}||{
+		LBUFFER+='((  ))';
+		CURSOR=$[CURSOR-3];
+	}
+}

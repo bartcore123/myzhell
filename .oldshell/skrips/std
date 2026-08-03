@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+cd /mnt/c/Users/barth/Desktop
+
+local arguments
+{
+	for X 
+	do
+		print -- $X
+	done
+}|sed -E 's/\b([a-zA-Z]+)\b/\/\1/' |read arguments
+set -- $arguments
+	
+local shutdown_time
+local shut
+{
+	for X
+	do
+		print -- $X
+	done
+} | grep --color=auto -aE -- '[0-9]+' | read shutdown_time
+if [[ -n $shutdown_time ]]
+then
+	shut=" /t $shutdown_time" 
+else
+	shut="" 
+fi
+set -- ${@//<->/}
+if [[ -n $@ ]]
+then
+	set -- ${@//\-/\/}
+else
+	set -- "/s"
+fi
+/mnt/c/Windows/System32/cmd.exe "/C" "shutdown ${*}$shut"
+

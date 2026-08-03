@@ -1,0 +1,10 @@
+insert_braces () {
+	if (( NUMERIC < 0 ))
+	then
+		LBUFFER+='${}'
+		(( CURSOR-=1 ))
+	else
+		LBUFFER+='{}'
+		(( CURSOR-=1 ))
+	fi
+}

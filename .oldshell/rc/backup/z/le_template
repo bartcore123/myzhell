@@ -1,0 +1,40 @@
+zle-cl(){ clear; zle reset-prompt }
+zle-l(){ echo; ls -bAF --show-control-chars --color=always; echo;echo; zle .reset-prompt }
+zle-ll(){ echo; ls -blAF --show-control-chars --color=always; echo;echo; zle .reset-prompt }
+zle-gitgo(){ git add --all && git commit -a -m ":" && git push; zle .reset-prompt }
+zle-jobs(){ echo; jobs -ld; echo;echo; zle .reset-prompt }
+my-expand() BUFFER=${(e)BUFFER} CURSOR=$#BUFFER
+
+zle -N edit-last-word-as-file
+zle -N zle-cl
+zle -N zle-l
+zle -N zle-ll
+zle -N zle-gitgo
+zle -N zle-jobs
+zle -N my-expand
+
+bindkey '' edit-command-line
+bindkey '' expand-word
+bindkey '' expand-word
+bindkey '' globalias
+bindkey '' edit-last-word-as-file
+bindkey '' zle-jobs
+bindkey '' zle-cl
+bindkey '' zle-cl
+bindkey '' zle-l
+bindkey '' zle-ll
+bindkey '' zle-gitgo
+bindkey '' zle-l
+bindkey '' zle-ll
+bindkey '' zle-jobs
+bindkey '' .accept-line
+bindkey '' backward-char
+bindkey '' backward-word
+bindkey '' forward-char
+bindkey '' forward-word
+bindkey '' backward-delete-char
+bindkey '' backward-delete-word
+bindkey '' delete-char
+bindkey '' delete-word
+bindkey '' my-expand
+bindkey '' backward-delete-word

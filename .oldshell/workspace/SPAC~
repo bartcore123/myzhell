@@ -1,0 +1,8 @@
+SPAC () {
+	if (( NUMERIC < 0 ))
+	then
+		zle dual_spaces
+	else
+		zle expand-macro
+	fi
+}

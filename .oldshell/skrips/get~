@@ -1,0 +1,9 @@
+#!/bin/zsh -23569BCGJNRXg
+
+# file="${@:+}"
+file="$1"
+
+shift;
+
+<$file grep --color=auto -aiPA1 -- "${*}" | sed -E '1d;s/^\t//'
+

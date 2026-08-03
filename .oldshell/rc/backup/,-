@@ -1,0 +1,7 @@
+,- () {
+	while [[ -n $@ ]]
+	do
+		taskkill.exe /PID "$1"
+		shift
+	done
+}

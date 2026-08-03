@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+pwr s && pwr l $@;
+return 0;

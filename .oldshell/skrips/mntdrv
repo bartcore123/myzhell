@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+lttr="${1:-D}";
+[[ $@ ]]&& shift;
+
+[[ -d /mnt/${lttr:l} ]]|| mkdir -p /mnt/${lttr:l}
+
+sudo mount -t drvfs "${lttr}:" ${@:-"/mnt/$lttr:l"}
+
+

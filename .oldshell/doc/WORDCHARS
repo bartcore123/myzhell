@@ -1,0 +1,2248 @@
+unalias l ll ls la grep &>/dev/null
+
+alias 'a'="alias"
+# alias a="apropos"
+alias 'ga'="alias -g"
+alias bk=bindkey
+alias bkl="bindkey -L"
+alias cfd=cfdisk
+alias ex=exec
+alias e=eval
+#alias x=exec
+alias X=xargs
+#alias g="grep -o"
+#unalias g
+#alias sl="ln -sb"
+
+#alias x=export
+
+alias ag="apt-get"
+#alias Z="jobs -dl"
+alias z="jobs -dl"
+#alias z="bg"
+alias Q='kill -9'
+alias s="du -hc"
+
+
+alias ag=apt-get
+alias apt='noglob apt'
+alias apt-cache='noglob apt-cache'
+alias apt-cdrom='noglob apt-cdrom'
+alias apt-config='noglob apt-config'
+alias apt-extracttemplates='noglob apt-extracttemplates'
+alias apt-ftparchive='noglob apt-ftparchive'
+alias apt-get='noglob apt-get'
+alias apt-key='noglob apt-key'
+alias apt-mark='noglob apt-mark'
+alias apt-sortpkgs='noglob apt-sortpkgs'
+alias rl=readlink
+#alias grep="noglob grep "
+#alias G="noglob grep -En "
+#alias G="noglob egrep -n"
+#alias t="typeset"
+#alias T="typeset"
+#alias C="cp -rb"
+#alias M="mv -b"
+#alias R="rm -r"
+alias B="bindkey"
+alias L="less"
+alias K="kill -9"
+alias ass=/usr/bin/as
+alias P='ps -aft'
+alias p='print --'
+alias -s txt=nano
+alias -s zsh=zsh
+alias ua=unalias
+alias uf=unfunction
+alias sc=scanf
+
+
+alias v="noglob zmv -nv"
+alias V="noglob zmv -v"
+alias nd="hash -d"
+zshshl="$PWD"
+zshshl="/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+alias ts="typeset"
+
+alias h="head -n"
+alias t="tail -n"
+
+alias '*'="ls -bAd --color=auto --quoting-style=shell"
+alias '**'='ls -bAdFhl --color=auto --quoting-style=shell'
+
+
+alias cc=clipcopy
+alias cv=clippaste
+
+alias "*1"="ls -bAd1 --color=auto --quoting-style=shell"
+alias "**1"="ls -bAFd1 --color=auto --quoting-style=shell"
+alias ex="explorer"
+alias ws="wslpath"
+#alias W="wslpath"
+#alias WW="wslpath -w"
+alias wsw="wslpath -w"
+alias '/:'="wslpath -w"
+alias ':/'="wslpath"
+alias w="which -s "
+alias kl="clear"
+alias zml=zmodload
+#alias g=grep
+#alias g=egrep
+alias ev=eval
+alias e=echo
+alias P="ps -aft"
+#alias fd="cd ~fd"
+for X in {1..10};do alias t$X=/dev/tty$X;done
+alias tt="/dev/tty"
+## alias x="explorer"
+alias gz=gzip
+alias p7=p7zip
+alias mkx="chmod +x"
+#alias S="noglob sed "
+alias hl="highlight "
+alias c=cat
+#alias A="typeset -A "
+alias -s sh=zsh
+alias wh="which -s "
+alias so=setopt
+alias ",,."="setopt extendedglob"
+alias -- ",,.-"="unsetopt extendedglob"
+alias -- "-,,."="unsetopt extendedglob"
+alias ",."="noglob"
+#youpieye
+alias ec=exec
+alias xc=exec
+alias {o,O}="grep -o"
+alias cs=clear
+#alias ',..'="setopt globdots"
+#alias ',,..'="setopt noglobdots"
+alias s="du -hs"
+#alias srt="sort -rh"
+alias wp=wslpath
+#alias '*&'="ls -bAd1 --color=auto"
+alias '*$'="ls -bAd1 --color=auto"
+alias plug="n +67 /root/.zshrc"
+
+alias G="grep --color=auto -aEn --"
+alias g="grep --color=auto -aE --"
+alias Gx="grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox -En"
+alias gx="grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox -E"
+
+#alias //='des'
+alias //='sed -E'
+alias "///"="sed -Ei --follow-symlinks"
+
+#alias S='noglob sed -En'
+#alias SA='noglob sed -E'
+#alias '#'='#'
+#alias Z="_z 2>&1"
+#alias Z=zle
+#alias ZZ="zle -N"
+alias ww=wslpath
+#alias -g ,tor="./*.torrent"
+alias rr="read -r"
+#alias -g '$$'='$R'
+alias -g '~~'='$(</dev/stdin)'
+alias -g '~@'='/dev/stdout'
+alias -g '~$'='/dev/stdout'
+alias -g '$~'='$(</dev/stdin)'
+alias -g '$.'='$PWD'
+alias "##"="printf --"
+
+alias "#~"="ls -bAd --color=auto"
+alias -g '<@'='<&p'
+alias -g '>@'='>&p'
+alias '::'="builtin :"
+#alias df='\diff --color -a'
+alias O="noglob grep -aEno --"
+alias o="noglob grep -aEo --"
+alias '?'="grep --color=auto -aEn --"
+alias "?"="noglob perl"
+alias "??"="perldoc"
+unalias -- \-  2>/dev/null
+alias __l__="ls -AF --color=auto"
+
+alias bkc='noglob sed -En '\''s/\$['\'''\'']\\033['\'''\'']/\^\[/gp'\'''
+alias "#@1"="ls -bAd1 --color=auto"
+alias "?="="noglob grep --color=auto -aF -- "
+
+##alias -g "~"="/dev/stdin"
+alias red='read -d ${EOF:-'\'''\''}'
+alias "?/"="grep --color=auto -HaEn --"
+alias "??/"="grep --color=auto -HaE --"
+alias "#@@"="ls -bAdFhl --color=auto"
+alias "##@"="ls -bAdFhl --color=auto"
+alias -g '^^'="| regexp-replace "
+alias -g '|^'="regexp-replace "
+alias -g '|?'="|regexp-replace "
+#alias rxr="regexp-replace"
+alias rx="regexp-replace"
+alias pop="shift -p"
+unalias \f 2>/dev/null
+alias -- '-,..'="unsetopt globdots"
+alias -- ',..-'="unsetopt globdots"
+alias -s z=zsh
+alias -g '/.'='(|.)*'
+alias zzZ='/mnt/c/Windows/System32/shutdown.exe /h'
+alias web=curl
+alias -g -- '-?'='--help'
+
+alias '??'="grep --color=auto -aE --"
+alias '?'="grep --color=auto -aEn --"
+alias -g './@'='(|.)*'
+alias wsl='/mnt/c/Windows/System32/wsl.exe'
+alias '?:'="grep --color=auto -aEno --"
+alias '??:'="grep --color=auto -aEo --"
+#alias "_"='{ set -- ${(z)"$(</dev/stdin)"} }'
+alias '_'='{ set -- ${="$(</dev/stdin)"} }'
+alias -- "--"="set -- "
+alias -- '/-'='noglob sed -En ''s/^\/[^ :]++[:]//g;s/[0-9]+\://gp'''
+alias -g '~'='/dev/stdin'
+alias -- '-'="dirs -v | head -n 10"
+
+alias '@@'="argv=($R)"
+alias clip=/mnt/c/Windows/System32/clip.exe
+alias '#!'="/mnt/c/Program\ Files/paste.exe"
+alias '#$'="/mnt/c/Windows/System32/clip.exe"
+alias '#~'='dirs -v | head -n 10'
+# alias -- '+'='{ set -- ${(z)"$(</dev/stdin)"} }'
+alias -- '+'="less -rK"
+alias 'AutoHotkey'='/mnt/c/Program Files/AutoHotkey/AutoHotkey.exe'
+alias -g "rc,"="/etc/zsh/alias /etc/zsh/fnc /etc/zsh/hl /etc/zsh/le /etc/zsh/macro /etc/zsh/nd /etc/zsh/opt /etc/zsh/tmp /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshenv /etc/zsh/zshrc /root/.zshrc /root/myshell/rc/linkdir/.winrc"
+alias nano="nano -i"
+alias -- ",.-"="unsetopt extendedglob"
+alias -- "-,."="unsetopt extendedglob"
+alias -g "grc,"="/root/myshell/rc/etc/zsh/alias /root/myshell/rc/etc/zsh/fnc /root/myshell/rc/etc/zsh/hl /root/myshell/rc/etc/zsh/le /root/myshell/rc/etc/zsh/macro /root/myshell/rc/etc/zsh/nd /root/myshell/rc/etc/zsh/opt /root/myshell/rc/etc/zsh/tmp /root/myshell/rc/etc/zsh/zlogin /root/myshell/rc/etc/zsh/zlogout /root/myshell/rc/etc/zsh/zshenv /root/myshell/rc/etc/zsh/zshrc /root/myshell/rc/linkdir/.winrc /root/myshell/rc/linkdir/.zshrc"
+alias -g "GRC,"="/root/myshell/rc/etc/zsh/alias /root/myshell/rc/etc/zsh/fnc /root/myshell/rc/etc/zsh/hl /root/myshell/rc/etc/zsh/le /root/myshell/rc/etc/zsh/macro /root/myshell/rc/etc/zsh/nd /root/myshell/rc/etc/zsh/opt /root/myshell/rc/etc/zsh/tmp /root/myshell/rc/etc/zsh/zlogin /root/myshell/rc/etc/zsh/zlogout /root/myshell/rc/etc/zsh/zshenv /root/myshell/rc/etc/zsh/zshrc /root/myshell/rc/linkdir/.winrc /root/myshell/rc/linkdir/.zshrc"
+alias "#@"='print -r -- $@'
+setopt noaliases
+
+##'@'(){ perl6 $@ }
+##\@@(){ perl6 $@ }
+##'?'(){ perl $@ }
+##'??'(){ perl $@ }
+##\**(){ setopt glob; ls -Ad $~@; setopt noglob }
+##\*(){ setopt glob; ls -bAFd --color=auto $~@; setopt noglob }
+'GL'()grep -P $@
+##'^'(){ setopt glob; I=0; [[ $~@ ]]&& print -z "for X in $@;{ " || print -z "for X in "; setopt noglob }
+
+'.'(){ [[ $@ ]] && source $@ || pwd -P }
+## './'(){ [[ $@ ]]&& ls -bAd $@ || ls -AF --color=auto }
+'€'(){ I=0; [[ $@ ]]&& print -z "for X in $@;{ " || print -z "for X in " }
+MYSED(){  }
+
+\#A(){ print -r $@ >> /etc/zsh/alias }
+\#D(){ print -r $@ >> /etc/zsh/nd }
+\#Z(){ print -r $@ >> /etc/zsh/zshrc }
+\#E(){ print -r $@ >> /etc/zsh/zshenv }
+\#F(){ print -r $@ >> /etc/zsh/fnc }
+\#O(){ print -r $@ >> /etc/zsh/opt }
+\#T(){ print -r $@ >> /etc/zsh/tmp }
+\#R(){ print -r export $@ >> /etc/zsh/zshenv }
+\#B(){ print -r $@ >> /etc/zsh/bk }
+\#L(){ print -r $@ >> /etc/zsh/zlogin }
+\#M(){ print -r $@ >> /etc/zsh/macro }
+\#C(){ print -r $@ >> /etc/zsh/macro }
+
+B(){ setopt glob; mount --bind $~@; setopt noglob }
+C(){ setopt glob; cp -rb $~@; setopt noglob }
+cl(){ clear; $@ }
+ed()emacs $@
+euroks(){ bindkey -s '^[\$' € }
+##g()grep $@
+gitgo(){ git add --all; git commit -a -m ":"; git push;  }
+gropt(){ $@ --help | grep -P '(^|){1}s?[^-a-zA-Z[:punct:]][-]w{1}[,s]' }
+i()ifconfig $@
+j()jobs -dl
+K()kill -9 $@
+k(){ skill ${@:--L} }
+la()ls -QlaShFL --color=always --quoting-style=shell
+L(){ ls -qFLAhd --color=auto $~@ --quoting-style=shell }
+LL(){ ls -qFLAhdl --color=auto $~@ --quoting-style=shell }
+ll(){ ls -QalhF --color=auto $@ --quoting-style=shell }
+l(){ ls -QAF --color=auto $@ --quoting-style=shell }
+mksc(){ echo "#!/bin/${2:-zsh}"$'\n' > $1; chmod +x $1; }
+##mkx()chmod +x $@
+m()micro $@
+mi()micro $@
+#M(){ setopt glob; mv -b $~@; setopt noglob }
+mT(){ micro /etc/zsh/opt }
+nd()hash -d ${@:-'-L'};
+
+
+nA(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/alias }
+nD(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/nd }
+nL(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/le }
+nF(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/fnc }
+nO(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/opt }
+nT(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/tmp }
+nR(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/zshenv }
+nE(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/zshenv }
+nB(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/bk }
+nZ(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/zshrc }
+nL(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/zlogin }
+nM(){ nano -mi --syntax=sh +${@:-1} /etc/zsh/macro }
+
+mA(){ micro /etc/zsh/alias }
+mD(){ micro /etc/zsh/nd }
+mE(){ micro /etc/zsh/le }
+mF(){ micro /etc/zsh/fnc }
+mO(){ micro /etc/zsh/opt }
+mT(){ micro /etc/zsh/tmp }
+mR(){ micro /etc/zsh/zshenv }
+mB(){ micro /etc/zsh/bk }
+mZ(){ micro /etc/zsh/zshrc }
+mL(){ micro /etc/zsh/zlogin }
+mM(){ micro /etc/zsh/zlogin }
+
+n(){
+	print -r -- $@ | sed -E 's/[,]([a-zA-Z0-9]*)/\1/p;d' | read NSYN
+	set -- "${@//[,][0-9a-zA-Z]/}"
+	\nano -mi --syntax=${NSYN:-"sh"} $@
+}
+nodmesg(){ dmesg --console-off }
+p()ps -aft $@
+
+#'#!'(){ print -sr -- "$(</dev/stdin)" }
+#'#$'(){ print -zr -- $(</dev/stdin) }
+#'#'(){ print -r -- ${@:-"$(</dev/stdin)"} }
+
+'#'(){ print -r -- ${@} }
+'#!'(){	print -sr -- ${@:-"$(</dev/stdin)"} }
+'#@'(){	print -zr -- ${@:-"$(</dev/stdin)"} }
+'##'(){ print -f -- ${@:-"$(</dev/stdin)"} }
+'#%'(){ print -P -- ${@:-"$(</dev/stdin)"} }
+'#:'(){ print -ur -- 12 ${@:-"$(</dev/stdin)"} }
+'#&'(){ print -ur -- 15 ${@:-"$(</dev/stdin)"} }
+'#^'(){ print -Sr -- ${@:-"$(</dev/stdin)"} }
+'#?'(){ cat /etc/zsh/printEzelsbrug.txt }
+
+q()googler $@
+redd()redshift -O 6500
+redn()redshift -O 4500
+R(){ setopt glob; rm -r $~@; setopt noglob; }
+s2e(){ setkeycodes e05b 1;[[ $1 =~ m ]]&& setkeycodes e05d 1 }
+s(){ setopt glob; du -hc $@; setopt noglob }
+sl()ln -sb $@
+ua()unalias $@;
+#wh()which -s $@
+#z()jobs -dl $@
+ff()firefox $@
+fln(){ firefox $(< $* | sed -En 's/^URL=(.+?)$/\1/p') }
+disp(){ [[ $@ ]]&&export DISPLAY=:$@||echo $DISPLAY; }
+L(){ setopt glob; less -r $@; setopt noglob }
+LL(){ ls -balhF --show-control-chars --color=always $@ |less -r $@ }
+unw()unworkable $@
+xfce()startxfce4
+fds()fdisk ${@:--l}
+CPROJ(){ cd ~C; alias I='${@:-${ed}} ~C/proj.c'; alias A='~C/a.out' ; alias O='cc ~C/proj.c' }
+em()emacs $@
+'//-'(){ sed -En -f/tmp/sedfile $@ | tee /tmp/output }
+hotspot()nmcli device wifi hotspot ssid heetplekje password qwer1234
+fdl(){ fdisk -l }
+mate()xinit mate-session -- :0
+temp()acpi -t
+chrome()google-chrome --no-sandbox
+mhd()mount /dev/sda1 /mnt
+jupy(){ jupyter notebook --allow-root & }
+cstm(){ source $HOME/myshell/rc/custom }
+unfunction em
+winrc(){ source ~/myshell/rc/linkdir/.winrc }
+xx(){ exit $@ }
+msam(){ mv ~sa/*(m4a|mp3|wav|flac|wma) ~sa/musiek }
+
+c()clear
+rl()readlink $@
+line(){ cat $2 |head -$1 |tail -1 }
+lin(){ cat $2 |head -$1 |tail -1 }
+mvpix(){ setopt glob; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* /mnt/c/Users/barth/Desktop; setopt noglob; }
+zh(){ <~/.zsh_history|tail -2|head -1 }
+
+\#D(){ print -r $@ |sed 's/nd/hash \-d/' >> /etc/zsh/nd }
+mvhsc(){ setopt glob; mv -b /mnt/c/Users/barth/Desktop/*Hearthstone* /mnt/c/Users/barth/Desktop/HS\ scrsht\ Unsorted/; setopt noglob }
+
+CMD(){ /mnt/c/Windows/System32/cmd.exe $* }
+cmd(){
+	[[ $* ]]&& ARG="/c $*";
+	/mnt/c/Windows/System32/cmd.exe "$ARG";
+}
+
+# mvpix(){ [[ $# = 0 ]]&& hsFolder=/mnt/c/Users/barth/Desktop/HS scrsht Unsorted || hsFolder=/mnt/c/Users/barth/Desktop; setopt glob; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* $hsFolder; setopt noglob; }
+
+mvpix () { [[ $# = 0 ]] && hsFolder='/mnt/c/Users/barth/Desktop/HS scrsht Unsorted' || hsFolder='/mnt/c/Users/barth/Desktop'; setopt glob; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* $hsFolder; setopt noglob }
+lspix(){ * ./*.(png|jpg|webp|jpeg|avif) }
+
+# \;(){ setopt extendedglob }
+# \;\;(){ unsetopt extendedglob }
+#,.(){ setopt extendedglob }
+#,,.(){ unsetopt extendedglob }
+
+#########################################################################################################################################################################
+
+\**(){ ; ls -Ad $~@;  }
+\*(){ ; ls -bAFd --color=auto $~@;  }
+'^'(){ ; I=0; [[ $~@ ]]&& print -z "for X in $@;{ " || print -z "for X in ";  }
+B(){ ; mount --bind $~@;  }
+C(){ ; cp -rb $~@;  }
+L(){ ; ls -qFLAhd --color=auto $~@;  }
+LL(){ ; ls -qFLAhdl --color=auto $~@;  }
+M(){ ; mv -b $~@;  }
+R(){ ; rm -r $~@; ; }
+s(){ ; du -hc $@;  }
+L(){ ; less -r $@;  }
+mvpix(){ ; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b '' /mnt/c/Users/barth/Desktop/pix/*Hearthstone* /mnt/c/Users/barth/Desktop; ; }
+mvpgn(){ ; [[ -e /mnt/c/Users/barth/Desktop/*.pgn ]]&& mv -b /mnt/c/Users/barth/Desktop/*.pgn /mnt/c/Users/barth/Documents/pgn;  }
+mvhsc(){ ; mv -b /mnt/c/Users/barth/Desktop/*Hearthstone* /mnt/c/Users/barth/Desktop/HS\ scrsht\ Unsorted/;  }
+# mvpix(){ [[ $# = 0 ]]&& hsFolder=/mnt/c/Users/barth/Desktop/HS scrsht Unsorted || hsFolder=/mnt/c/Users/barth/Desktop; ; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* $hsFolder; ; }
+mvpix () { [[ $# = 0 ]] && hsFolder='/mnt/c/Users/barth/Desktop/HS scrsht Unsorted' || hsFolder='/mnt/c/Users/barth/Desktop'; ; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif) /mnt/c/Users/barth/Desktop/pix; mv -b /mnt/c/Users/barth/Desktop/pix/*Hearthstone* $hsFolder;  }
+
+bod(){ which $@ |tail +2 |head -n -1 |sed 's/^[[:space:]]//g' }
+mvbooks(){ mv -b /mnt/c/Users/barth/Desktop/*.(pdf|epub) /mnt/c/Users/barth/Desktop/books }
+
+
+\* () {	noglob ls -bAFd --color=auto $~@ }
+\** () {	setopt glob
+	ls -Ad $~@
+	setopt noglob }
+
+folsize(){ (){ sort -hr =(for X in $@;do du -h $X;done) } ./*(/) }
+
+folsize(){ (){ sort -hr =(for X in $@;do du -h $X;done) } ${*:-"."}/*(/) }
+
+
+setopt aliases
+sbk()source /etc/zsh/bk
+##\#R(){ [[ $@ ]]&& print -r export $@ >> /etc/zsh/zshenv }
+unfunction M C R L sl k K B
+
+
+\@A(){ print $@ >> /etc/zsh/alias }
+\@D(){ print $@ >> /etc/zsh/nd }
+\@E(){ print $@ >> /etc/zsh/le }
+\@F(){ print $@ >> /etc/zsh/fnc }
+\@O(){ print $@ >> /etc/zsh/opt }
+\@T(){ print $@ >> /etc/zsh/tmp }
+\@R(){ print $@ >> /etc/zsh/zshenv }
+\@RE(){ print export $@ >> /etc/zsh/zshenv }
+\@B(){ print $@ >> /etc/zsh/bk }
+\@L(){ print $@ >> /etc/zsh/zlogin }
+\@Z(){ print $@ >> /etc/zsh/zshrc }
+\@M(){ print $@ >> /etc/zsh/macro }
+\@C(){ print $@ >> /etc/zsh/macro }
+'@'(){ print $@ }
+'@$'(){ print -z $(</dev/stdin) }
+## '#@'(){ print -f $@ }
+'@%'(){ print -P $@ }
+'@:'(){ print -u 12 $@ }
+'@&'(){ print -u 15 $@ }
+'@^'(){ print -z $@ }
+'@?'(){ cat /etc/zsh/printEzelsbrug.txt }
+
+mvpix(){ [[ $# = 0 ]]&& hsFolder='/mnt/c/Users/barth/Desktop/HS scrsht Unsorted' || hsFolder='/mnt/c/Users/barth/Desktop'; mv -b /mnt/c/Users/barth/Desktop/*.(png|jpg|webp|jpeg|avif|gif|jfif) /mnt/c/Users/barth/Desktop/pix; (){ [[ $@ ]]&& mv -b $@ $hsFolder } /mnt/c/Users/barth/Desktop/pix/*Hearthstone* }
+rls(){ (){ for X in $@;do print $'
+'$X; readlink $X;done } *(@) }
+rls(){ (){ for X in $@;do print -n $X': '; readlink $X;done } *(@) }
+
+
+
+scanf(){ for X in $@;{ @ $'                ''============='$X'============='; @ ${${$(noglob grep  --binary-files=text -En ${G:-''} <$X)}:-'             -'} } }
+
+
+
+unfunction nd
+
+#clPix(){ (){ noglob zmv -v '(*)opdownload' '$1' } ; (){ noglob zmv -v '(*)_large' '$1' } }
+clpix(){ (){ noglob zmv -v '(*)(opdownload|_large)' '$1' } }
+explorer()/mnt/c/Windows/explorer.exe $@
+\@W(){ wslpath $@ }
+\@S(){ wslpath -w $@ }
+wx(){ /mnt/c/Windows/explorer.exe "$(wslpath -w ${@:-"$PWD"})"  }
+
+zmp(){
+	[[ -n $zml_parameter ]] || zml_parameter=(${$(zmodload -lF zsh/parameter)[@]/'+p:'/})
+}
+
+nRC(){ nano -mi --syntax=sh +${@:-1} ~/.nanorc }
+
+
+##\#Z(){ print -r export $@ >> /etc/zsh/zshenv }
+pot(){ (){ "/mnt/c/Program Files/DAUM/PotPlayer/PotPlayerMini64.exe" "/insert" $@ & } $([[ $@ ]]&& wslpath -w $@;) 2>&1 >/dev/null }
+function acp() {
+  git add .
+  git commit -m "${1:-"committing"}"
+  git push
+}
+lin(){ file="$@[-1]"; argv[-1]=(); while [[ $@ ]];do cat $file | head -$1 | tail -1;shift;done }
+
+#G(){ noglob grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox -En $@ }
+'--'(){ print -- $@ }
+
+notepad(){ /mnt/c/Windows/System32/notepad.exe ${@//\-/\/} & }
+
+listmacros(){ alias | G "<(${(j:|:)macros[@]})=" }
+
+scanz(){ G=$@; scanf /etc/zsh/alias /etc/zsh/bk /etc/zsh/dotzrc /etc/zsh/fnc /etc/zsh/le /etc/zsh/nd /etc/zsh/opt /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshrc }
+
+function  rln Rln rmln sn sln  { noglob sed -E 's/^[0-9]*\:(.*)/\1/g' < ${@:-/dev/stdin}; }
+
+tidyhist();{ print -r -- ${(F)${(f)"$(</root/.zsh_history G '\|\:')"[@]}//*[;]/} }
+mvvids(){
+mv ${@:-~D}/(|.)*.(mp4|mkv|m4a|wmv|avi) ~D/mp4
+}
+
+#\- () {
+#	if [[ -n $1 ]]
+#	then
+#		dirs "$@"
+#	else
+#		dirs -v | head -n 10
+#	fi
+#}
+
+'+'()awk $@
+compdef -- '+'=awk
+
+#function bkchar bkc bkchars () { print -r -- ${@:-$(</dev/stdin)} | noglob sed -En 's/\$['']\\033['']/\^\[/gp' }
+
+"~" () {
+	if [[ -n $1 ]]
+	then
+		dirs "$@"
+	else
+		dirs -v | head -n 10
+	fi
+}
+
+dirz(){
+	if [[ -n $1 ]]
+	then
+		dirs "$@"
+	else
+		dirs -v | head -n 10
+	fi
+}
+#'-'(){
+#	if [[ -n $1 ]]
+#	then
+#		dirs "$@"
+#	else
+#		dirs -v | head -n 10
+#	fi
+#}
+zt()bindkey '^[OP' $@
+zt(){
+	K='^[OP'
+	[[ $NUMERIC == 1 ]]&& K='^[OP'
+	[[ $NUMERIC == 2 ]]&& K='^[OQ'
+	[[ $NUMERIC == 3 ]]&& K='^[OR'
+	[[ $NUMERIC == 4 ]]&& K='^[OS'
+	[[ $NUMERIC == 5 ]]&& K='^[[15~'
+	[[ $NUMERIC == 6 ]]&& K='^[[17~'
+	[[ $NUMERIC == 7 ]]&& K='^[[18~'
+	[[ $NUMERIC == 8 ]]&& K='^[[19~'
+	[[ $NUMERIC == 9 ]]&& K='^[[20~'
+	[[ $NUMERIC == 10 ]]&& K='^[[21~'
+	[[ $NUMERIC == 11 ]]&& K=''
+	[[ $NUMERIC == 12 ]]&& K='^[[24~'
+	bindkey "$K" $@
+}
+f(){
+	[[ $@ ]]&& printf $@ || fg;
+}
+compdef f=printf
+
+argv-to-pospar () {
+	for X in {1..$#}
+	do
+		# "$X=$@[$X]" >> ./pospar
+	done
+}
+load () {
+	argv=($(</root/myshell/rc/etc/zsh/pospar))
+}
+
+\ ()clear $@
+\;()clear $@
+
+'#*'(){ (){ print -- $# } (|.)* }
+'#.'(){ (){ print -- $# } (|.)* }
+potname () {
+	noglob sed -E '/[cC]omplete [nN]ame/!d;s/^.*\: (C\:.*)$/\1/' < /tmp/tmp | $
+}
+tarc()tar cf "$*.tar" "$*"
+
+##'$'(){ read -r -d ${EOF:-''} ${@:-R}; [[ $@ ]] || V=( ${(qq)=R} ) }
+'$'(){ read -r -d ${EOF:-''} ${@:-R}; [[ $@ ]] || V=( $=R ) }
+@(){
+	print -zr -- ${@:-"$(</dev/stdin)"}
+}
+
+powershell()/mnt/c/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell.exe $@
+ise(){
+	/mnt/c/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell_ise.exe $@
+}
+READ () {
+	read -d ${EOF:-''} $@
+}
+READ_RAW () {
+	read -r -d ${EOF:-''} $@
+}
+','(){ [[ $@ ]] && ls -QbAd --color=auto --quoting-style=shell $@; [[ $@ ]] || ls -QAF --color=auto --quoting-style=shell }
+',,' () {
+	[[ -n $@ ]] && ls -QbAdFhl --color=auto --quoting-style=shell $@; [[ $@ ]] || ls -QalhF --color=auto --quoting-style=shell
+}
+
+-/ () {
+	sed -E 's/^.*\/(.*)/\1/g'
+}
+/-/ () {
+	sed -E 's/^[^/]?+(\/.*\/)[^/]++/\1/g'
+}
+
+
+
+'/=/' () {
+	local ANS
+	local -a ans
+	sed -E 's/^([^:]++)[:](([0-9]++)[:])?+.*$/\3 \1/' | read -d ${EOF:-''} ANS
+	ans=($=ANS)
+	L="$ans[1]"
+	F="$ans[2]"
+	print -- $ANS
+}
+k () {
+	[[ -n $@ ]] && kill $@ || clear
+}
+compdef k=kill
+ahk(){
+/mnt/c/Program\ Files/AutoHotkey/AutoHotkey.exe "${@//\-/\/}"
+}
+potnm () {
+	sed -E 's/[cC]omplete [nN]ame[^:]*\:\s*(.*)/\1/p;d'
+}
+
+umount(){
+	V="$*"
+	if [[ $V == '.' ]]
+	then
+		{
+			UMOUNT_DIR="$PWD"
+			cd ..
+			/bin/umount "$UMOUNT_DIR"
+		}
+	else
+		{
+			/bin/umount $@
+		}
+	fi
+}
+
+des () {
+	PAT= 
+	unset PAT
+	if [[ -n $@ ]]
+	then
+		print -r -- "$@[-1]" | sed -E 's/[;][/][/]/\;s\//;s/^[/][/]/s\//' | read -r PAT
+		shift -p
+	fi
+	sed -E "$PAT" ${@:-/dev/stdin}
+}
+compdef des=sed
+
+
+myshup () {
+	{
+		local olddir=$PWD 
+		cd ~G
+	}
+	{
+		git add .
+		git commit -m "${1:-"committing"}"
+		git push
+	}
+	{
+		cd $olddir
+	}
+	{
+		rm -r /mnt/c/Users/barth/Desktop/myshell
+		rm -r /mnt/c/Users/barth/Desktop/myshell.tar
+	}
+	{
+		cp -rL /root/myshell /mnt/c/Users/barth/Desktop
+	}
+	{
+		tar cf "/mnt/c/Users/barth/Desktop/myshell.tar" "/mnt/c/Users/barth/Desktop/myshell"
+	}
+	{
+		rm -r /mnt/c/Users/barth/Desktop/myshell
+		rm -r /mnt/c/Users/barth/Desktop/myshell.tar.xz
+	}
+	{
+		xz /mnt/c/Users/barth/Desktop/myshell.tar &
+	}
+}
+
+',/'(){ sed -r $@ }
+compdef ',/'=sed
+',//'(){ sed -ri --follow-symlinks $@ }
+compdef ',//'=sed
+
+'=' () {
+	PAT= 
+	unset PAT
+	if [[ -n $@ ]]
+	then
+		print -r -- "$@[-1]" | sed -E 's/[;][/][/]/\;s\//;s/^[/][/]/s\//' | read -r PAT
+		shift -p
+	fi
+	sed -E "$PAT" ${@:-/dev/stdin}
+}
+
+',=' () {
+	PAT= 
+	unset PAT
+	if [[ -n $@ ]]
+	then
+		print -r -- "$@[-1]" | sed -E 's/[;][/][/]/\;s\//;s/^[/][/]/s\//' | read PAT
+		shift -p
+	fi
+	sed -Ei --follow-symlinks "$PAT" "${@}"
+}
+'.=' () {
+	PAT= 
+	unset PAT
+	if [[ -n $@ ]]
+	then
+		print -r -- "$@[-1]" | sed -E 's/[;][/][/]/\;s\//;s/^[/][/]/s\//' | read PAT
+		shift -p
+	fi
+	sed -Ei --follow-symlinks "$PAT" "${@}"
+}
+ZSH_HIGHLIGHT_STYLES[commandseparator]=fg=magenta
+ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=yellow,bold
+##source /etc/zsh/le_old
+
+insert_anon_func(){
+	if (( NUMERIC < 0 ))
+	then
+		BUFFER="(){ $BUFFER }"
+		(( CURSOR+=4 ))
+	else
+		LBUFFER+='+'
+	fi
+}
+insert_braces(){
+	if (( NUMERIC < 0 ))
+	then
+		LBUFFER+='${}' 
+		(( CURSOR-=1 ))
+	else
+		LBUFFER+='{}' 
+		(( CURSOR-=1 ))
+	fi
+}
+zt(){
+	K='^[OP'
+	[[ $NUMERIC == 1 ]]&& K='^[OP'
+	[[ $NUMERIC == 2 ]]&& K='^[OQ'
+	[[ $NUMERIC == 3 ]]&& K='^[OR'
+	[[ $NUMERIC == 4 ]]&& K='^[OS'
+	[[ $NUMERIC == 5 ]]&& K='^[[15~'
+	[[ $NUMERIC == 6 ]]&& K='^[[17~'
+	[[ $NUMERIC == 7 ]]&& K='^[[18~'
+	[[ $NUMERIC == 8 ]]&& K='^[[19~'
+	[[ $NUMERIC == 9 ]]&& K='^[[20~'
+	[[ $NUMERIC == 10 ]]&& K='^[[21~'
+	[[ $NUMERIC == 11 ]]&& K=''
+	[[ $NUMERIC == 12 ]]&& K='^[[24~'
+	bindkey "$K" ${${(z)LBUFFER[@]}[-1]}
+}
+
+quotes_single(){
+	if (( NUMERIC < 0 ))
+	then
+		zle quotes_double
+	else
+		LBUFFER+=$'\'\''
+		(( CURSOR-=1 ))
+	fi
+}
+quotes_double(){
+	if (( NUMERIC < 0 ))
+	then
+		zle double_quote_line
+	else
+		LBUFFER+='""'
+		(( CURSOR-=1 ))
+	fi
+}
+
+double-quote-line(){ BUFFER="\"${BUFFER//\"/\\\"}\""; CURSOR=$#BUFFER }
+double_quote_line(){ BUFFER="\"${BUFFER//\"/\\\"}\""; CURSOR=$#BUFFER }
+zle -N double_quote_line
+
+pair_quotes(){
+	bindkey '"' quotes_double;
+	bindkey \' quotes_single;
+}
+lone_quotes(){
+	bindkey '"' self-insert;
+	bindkey \' self-insert;
+}
+
+true_home(){
+	CURSOR=0
+}
+
+printy(){
+	BUFFER='# '"$BUFFER"
+	(( CURSOR+=2 ))
+}
+
+insert_arith_paren(){
+	if (( NUMERIC < 0 ))
+	then
+		BUFFER="( $BUFFER )"
+		CURSOR=$[CURSOR+2]
+	else
+		LBUFFER+='((  ))'
+		CURSOR=$[CURSOR-3]
+	fi
+}
+insert_test_paren(){
+	if (( NUMERIC < 0 ))
+	then
+		BUFFER="{ $BUFFER }"
+		CURSOR=$[CURSOR+2]
+	else
+		LBUFFER+='[[  ]]'
+		CURSOR=$[CURSOR-3]
+	fi
+}
+
+cmds(){
+	CURSOR_BK=$CURSOR;
+	LBUFFER+=')'
+	zle beginning-of-line;
+	LBUFFER+='$(';
+	zle end-of-line;
+	CURSOR=$[CURSOR_BK+3]
+}
+
+prms(){
+	CURSOR_BK=$CURSOR
+	LBUFFER+='}'
+	zle beginning-of-line
+	LBUFFER+='${'
+	zle end-of-line
+	CURSOR=$[CURSOR_BK+2]
+}
+
+qm_g(){
+	alias '?'="grep --color=auto -aE --"
+	alias '??'="grep --color=auto -aEn --"
+}
+qm_p(){
+	alias "?"="noglob perl"
+	alias '??'="perldoc"
+}
+
+erase_buffer(){
+	BUFFER=
+}
+
+zle-cl(){ clear; zle reset-prompt }
+zle-l(){ echo; ls -bAF --show-control-chars --color=always; echo;echo; zle .reset-prompt }
+zle-ll(){ echo; ls -blAF --show-control-chars --color=always; echo;echo; zle .reset-prompt }
+zle-gitgo(){ git add --all && git commit -a -m ":" && git push; zle .reset-prompt }
+zle-jobs(){ echo; jobs -ld; echo;echo; zle .reset-prompt }
+my-expand() BUFFER=${(e)BUFFER} CURSOR=$#BUFFER
+
+zle -N zt
+zle -N double-quote-line
+zle -N quotes_single
+zle -N quotes_double
+zle -N pair_quotes
+zle -N lone_quotes
+zle -N printy
+zle -N true_home
+zle -N erase_buffer
+zle -N cmds
+zle -N prms
+zle -N qm_g
+zle -N qm_p
+zle -N insert_arith_paren
+zle -N insert_test_paren
+zle -N edit-last-word-as-file
+zle -N zle-cl
+zle -N zle-l
+zle -N zle-ll
+zle -N zle-gitgo
+zle -N zle-jobs
+zle -N my-expand
+
+bindkey '^X^S' edit-command-line
+bindkey '^X^[e' expand-word
+bindkey '' expand-word
+bindkey ' ' globalias
+bindkey '' edit-last-word-as-file
+bindkey 'j' zle-jobs
+
+bindkey 'C' zle-l
+
+bindkey 'G' zle-gitgo
+bindkey 'L' zle-l
+bindkey 'l' zle-ll
+bindkey 'z' zle-jobs
+bindkey ' ' .accept-line
+bindkey '' backward-char
+bindkey 's' backward-word
+bindkey '' forward-char
+bindkey 'd' forward-word
+bindkey '' backward-delete-char
+bindkey 'r' backward-delete-word
+bindkey '' beginning-of-line
+bindkey '^[a' beginning-of-line
+bindkey '^E' my-expand
+#bindkey '^[f' end-of-line
+#bindkey '^f' end-of-line
+
+bindkey "^[s" backward-char
+bindkey "^[d" forward-char
+bindkey "^[e" end-of-line
+
+bindkey "^[S" backward-word
+bindkey "^[D" forward-word
+#bindkey "^[f" quoted-insert
+
+bindkey "" backward-delete-word
+bindkey "w" kill-line
+bindkey "W" kill-region
+bindkey "^[q" zle-cl
+bindkey "^[v" yank
+
+#bindkey '^[r' delete-char
+#bindkey '^[R' delete-word
+bindkey "^q" backward-delete-char
+bindkey "^Q" backward-delete-word
+bindkey "^r" delete-char
+bindkey "^R" delete-word
+
+bindkey "k" describe-key-briefly
+bindkey "K" describe-key-briefly
+
+bindkey "^[r" delete-char
+bindkey "^[R" delete-word
+bindkey "^[q" backward-delete-char
+bindkey "^[Q" backward-delete-word
+
+bindkey -M main " " self-insert
+bindkey "^[[1;5H" beginning-of-buffer-or-history
+bindkey "^[[1;5F" end-of-buffer-or-history
+#bindkey "^[q" push-line-or-edit
+bindkey "^J" push-line-or-edit
+#bindkey '^[q' backward-delete-char
+bindkey '^[f' forward-char
+bindkey '^[A' push-line-or-edit
+bindkey '^[X' quoted-insert
+bindkey '^[Z' undo
+
+#bindkey '^[-' insert_test_paren
+bindkey "^[@" prm_flags
+bindkey "^[#" prm_subscript
+bindkey '^[$' cmds
+bindkey '^[!' prms
+
+bindkey -s "^[\\\\" '|'
+
+bindkey '^[[17~' qm_g
+bindkey '^[[15~' qm_p
+
+bindkey '^[(^[)' insert_arith_paren
+bindkey '^[^]' insert_test_paren
+
+
+bindkey '^["' double-quote-line
+
+bindkey "^k" describe-key-briefly
+bindkey '^[d' set-mark-command
+bindkey '^d' exchange-point-and-mark
+
+#bindkey \' quotes_single
+#bindkey '"' quotes_double
+#bindkey '^[^s' beginning-of-buffer-or-history
+
+
+bindkey '^[OS' pair_quotes
+bindkey '^[OR' lone_quotes
+bindkey '^[^s' true_home
+
+#bindkey '`' quotes_single
+#bindkey '~' quotes_double
+
+bindkey '^[[3;3~' true_home
+bindkey "^[;" printy
+bindkey '^[:' printy
+bindkey '^[`' quotes_single
+bindkey '^[~' quotes_double
+bindkey \^\[\^H erase_buffer
+bindkey '^[[1;4H' true_home
+bindkey "^[-" neg-argument
+
+bindkey '^[[1;4F' zt
+bindkey '^[%' zt
+bindkey '^[[3;4~' erase_buffer
+bindkey -s \`\` '^[`'
+preExecPrint();{ preexec_functions+=(asdf); zle accept-line; preexec_functions[-1]=(); }
+zle -N preExecPrint
+bindkey '^[V' yank-pop
+rm_RBUFFER()RBUFFER=;
+zle -N rm_RBUFFER
+rm_LBUFFER()LBUFFER=;
+zle -N rm_LBUFFER
+bindkey '^[>' rm_RBUFFER
+bindkey '^[<' rm_LBUFFER
+
+slap () {
+	LBUFFER+=$SLAP
+	CURSOR+=$#SLAP
+}
+zle -N slap
+bindkey $'\033'OR slap
+quotes_style () {
+	LBUFFER+=$'$\'\''
+	(( CURSOR-=1 ))
+}
+zle -N quotes_style
+
+# bindkey '`.' quotes_double
+# bindkey '`''' quotes_single
+
+slashes () {
+	LBUFFER+='//'
+	(( CURSOR-=1 ))
+}
+zle -N slashes;
+bindkey '`/' slashes
+bindkey '`' quotes_single
+
+bindkey '^[c' set-mark-command
+bindkey '^[d' forward-char
+bindkey '^d' forward-char
+
+
+insert_alt () {
+	LBUFFER+='^['
+}
+zle -N insert_alt
+#bindkey '`;' insert_alt
+
+bindkey -s '`\' '^['
+
+bindkey '``' describe-key-briefly
+bindkey '`[]' insert_test_paren
+zle -N insert_braces
+bindkey '`=' insert_braces
+
+bindkey '`''' quotes_double
+bindkey '`-' neg-argument
+
+unspace-end-of-line () {
+	BUFFER=${BUFFER%% };
+	zle end-of-line
+}
+zle -N unspace-end-of-line
+
+zle-pwd(){
+	echo;
+	pwd;
+	echo;
+	echo;
+	zle .reset-prompt;
+}
+zle -N zle-pwd
+
+bindkey '^[OF' unspace-end-of-line
+bindkey '`^?' erase_buffer
+
+bindkey '`k' zle-cl
+bindkey '`p' zle-pwd
+bindkey '`l' zle-ll
+
+
+
+
+ qm_g
+bindkey -s '`.' '*'
+insert_alt () {
+	LBUFFER+='^['
+}
+unspace-end-of-line () {
+	BUFFER=${BUFFER%% }
+	zle end-of-line
+}
+zle -N insert_anon_func
+
+bindkey '`90' insert_arith_paren
+bindkey '^[=' insert_anon_func
+
+bindkey -s '`.' '*'
+#bindkey -s '\\`' '^'
+bindkey -s '`]' '^'
+
+insert_brackets () {
+	LBUFFER+='[]'
+	(( CURSOR-=1 ))
+}
+zle -N insert_brackets
+bindkey '`[' insert_brackets
+
+insert_paren () {
+	if (( NUMERIC < 0 ))
+	then
+		LBUFFER+='#'
+	else
+		LBUFFER+='()'
+		(( CURSOR-=1 ))
+	fi
+}
+zle -N insert_paren
+bindkey '`;' insert_paren
+
+dual_spaces () {
+	LBUFFER+='  '
+	(( CURSOR-=1 ))
+}
+zle -N dual_spaces
+bindkey '` ' dual_spaces
+
+pass-bracket () {
+	zle vi-match-bracket
+	zle vi-match-bracket
+	(( CURSOR+=1 ))
+}
+zle -N pass-bracket
+
+bindkey '`^M' quoted-insert
+
+goto-last-dollar () {
+	local T=${LBUFFER%%[^$]##}
+	CURSOR=$#T
+}
+zle -N goto-last-dollar
+bindkey '^[^s' goto-last-dollar
+
+command_braces(){
+	LBUFFER="{ $LBUFFER }"
+	(( CURSOR-=2 ))
+}
+zle -N command_braces
+bindkey '^[^]' command_braces
+
+bindkey '`^[OH' undo
+bindkey '^[[1;3F' unspace-end-of-line
+bindkey '`/' backward-char
+
+END(){
+	if [[ $CURSOR != 0 && $CURSOR != $#BUFFER ]]
+	then
+		zle pass-bracket
+	else
+		zle unspace-end-of-line
+	fi
+}
+zle -N END
+bindkey '^[OF' END
+bindkey '`^[OF' unspace-end-of-line
+
+nano-kill () {
+	if (( REGION_ACTIVE == 1 ))
+	then
+		zle kill-region
+	else
+		zle kill-line
+	fi
+}
+zle -N nano-kill
+bindkey '^[w' nano-kill
+bindkey '^[E' pass-bracket
+
+true_home_erase_buffer(){
+	if (( NUMERIC < 0 ))
+	then
+		CURSOR=0
+	else
+		BUFFER= 
+	fi
+}
+zle -N true_home_erase_buffer
+bindkey '`^?' true_home_erase_buffer
+bindkey -s '^[]' '&'
+bindkey -s '^[`' '~'
+bindkey '^[[1;3H' redo
+#bindkey '`^[OH' undo
+bindkey -s '^[,' '<'
+bindkey -s '^[.' '>'
+bindkey -s '^[/' '?'
+bindkey -s '`,' '$'
+
+bindkey -s '^[`,' '%'
+bindkey -s '^[`.' '@'
+bindkey -s '^[`;' ':'
+bindkey -s '^[`[' '{'
+bindkey -s '^[`]' '}'
+bindkey -s '^[`''' '"'
+bindkey -s '^[`9' '('
+bindkey -s '^[`0' ')'
+bindkey -s '^[`=' '!'
+bindkey -s '^[`/' '#'
+bindkey -s '^[`-' '_'
+bindkey '^[t' up-line-or-beginning-search
+bindkey '^[g' down-line-or-beginning-search
+
+kring(){ (( NUMERIC == 1 ))&&print -r -- $killring||print -r -- $killring[${NUMERIC:-1}] }
+zle -N kring
+bindkey '^[OR' kring
+bindkey '^[OQ' kring
+bindkey '^[OS' fluit
+prm_flags():
+prm_subscript():
+zle -N prm_flags
+zle -N prm_subscript
+
+fancy-ctrl-z () {
+  emulate -LR zsh
+  if [[ $#BUFFER -eq 0 ]]; then
+    bg
+    zle redisplay
+  else
+    zle push-input
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+macro 'a'="alias"
+macro 'ga'="alias -g"
+macro bk=bindkey
+macro bkl="bindkey -L"
+macro b="bindkey"
+macro bd=bod
+macro cfd=cfdisk
+macro ex=exec
+macro e=eval
+macro X=xargs
+macro ag="apt-get"
+macro rl=readlink
+macro M="mv -i"
+macro R="rm -r"
+macro B="bindkey"
+macro L="less"
+macro K="kill -9"
+macro pp='ps -aft'
+macro p='print '
+macro ua=unalias
+macro uf=unfunction
+macro sc=scanf
+#macro v="noglob zmv -nv"
+#macro V="noglob zmv -v"
+macro ts="typeset"
+macro H="head -n"
+macro T="tail -n"
+macro cc=clipcopy
+macro cv=clippaste
+macro ex="explorer"
+macro ws="wslpath"
+#macro W="wslpath"
+#macro WW="wslpath -w"
+macro WS="wslpath -w"
+macro '/:'="wslpath -w"
+macro ':/'="wslpath"
+macro w="which -s"
+macro zml=zmodload
+macro ev=eval
+macro e=echo
+macro P="ps aux"
+macro kk=clear
+macro tt="/dev/tty"
+macro gz=gzip
+macro p7=p7zip
+macro mkx="chmod +x"
+macro hl="highlight "
+macro c=cat
+macro wh="which -s "
+macro so=setopt
+macro ",,."="setopt noextendedglob"
+macro ",."="setopt extendedglob"
+macro ec=exec
+macro xc=exec
+macro cs=clear
+macro S="du -h"
+
+macro wp=wslpath
+macro ww=wslpath
+macro www="wslpath -w"
+macro aa=macro
+macro m=macro
+macro np=notepad
+macro nd="hash -d"
+gmacro gm=gmacro
+gmacro gaa=gmacro
+
+gmacro tor,='*.torrent'
+gmacro pix,='*.(png|jpg|webp|jpeg|avif|jfif)'
+#macro r=read
+macro srt="sort"
+macro sr="sort -h"
+macro rt=return
+#macro W='while [[ $@ ]];'
+macro W='while '
+macro F="for X"
+macro sz="du -hs"
+macro noa='setopt noaliases'
+macro noao='setopt aliases'
+macro j="jobs"
+macro zc=zcompile
+macro sZ=scanz
+macro ',..'="setopt globdots"
+macro ',,..'="setopt noglobdots"
+macro zs=zstyle
+macro cm=chmod
+macro rh="run-help"
+macro x=export
+#macro sl="ln -sb"
+macro zpo=zparseopts
+macro po=zparseopts
+macro pf=printf
+macro md="mkdir -p"
+macro CD="cp -r"
+macro CC="cp -r"
+macro RR="rm -r"
+macro us=unset
+
+macro l,="ls --show-control-chars --color=auto"
+macro sF=scanf
+gmacro sl,="(|.)*(@)"
+gmacro ln,="(|.)*(@)"
+gmacro "aG,"='''[^a-zA-Z]='''
+gmacro vids,="(|.)*.(mp4|mkv|m4a|wmv|avi)"
+macro C="cp -irL"
+gmacro vlc,='/mnt/c/Program\ Files\ (x86)/VideoLAN/VLC'
+macro zn="zle -N"
+macro wg="zle -N"
+macro Z=zle
+macro ZZ="zle -N"
+macro fnc=function
+macro fn=function
+macro df=diff
+macro Rr="rm -r"
+macro cdf=compdef
+macro d=bod
+gmacro 'r,'='$reply'
+gmacro 'R,'='$REPLY'
+gmacro alt,='^[' a,='^['
+macro fs=functions
+gmacro '$^'='$reply'
+macro st="du -hsc"
+macro wd=pwd
+#gmacro '$$'='$R'
+macro D="mkdir -p"
+macro dc=declare
+macro int=integer
+macro sf=shift
+macro Q="kill -9"
+macro ty=type
+macro cf=compdef
+macro bs="bindkey -s"
+gmacro 't,'=/tmp/
+macro da=disable
+macro py=python
+macro fd=find
+macro SS="du -hc"
+macro ds="dirs -v "
+gmacro books,='*.(chm|djvu|epub|html|ini|mobi|pdf|url)'
+
+gmacro p,="*.(png|jpg|webp|jpeg|avif|jfif|gif)"
+gmacro P,="(|.)*.(png|jpg|webp|jpeg|avif|jfif|gif)"
+gmacro v,="*.(mp4|mkv|m4a|wmv|avi)"
+gmacro V,="(|.)*.(mp4|mkv|m4a|wmv|avi)"
+gmacro b,='*.(chm|djvu|epub|html|ini|mobi|pdf|url)'
+gmacro B,='(|.)*.(chm|djvu|epub|html|ini|mobi|pdf|url)'
+macro r=red
+macro at=apt
+macro pr="print -r -- "
+#macro rx="regexp-replace"
+macro lc=local
+macro gl=global
+macro ro=readonly
+macro fl=float
+gmacro "~?"="/usr/share/zsh/help"
+macro r=read
+macro "rxr"="regexp-replace"
+macro shtd=shutdown
+
+macro sl="ln -si"
+macro rr="read -r"
+macro as="alias -s"
+macro cc=clip
+macro pe=perl
+macro pn=potname
+macro A="typeset -A "
+macro cls=clear
+macro MM=mv
+gmacro a,='argv'
+gmacro '$a,'='$argv'
+gmacro A,='ARGV'
+gmacro '$A,'='$ARGV'
+gmacro h,='ZSH_HIGHLIGHT_STYLES'
+gmacro '$h,'='$ZSH_HIGHLIGHT_STYLES'
+
+for X in {1..9};do gmacro "$X,"="/root/myshell/rc/slapf/SLAP$X";done
+macro tc=tarc
+macro mx="chmod +x "
+macro ux="chmod -x "
+macro mn=man
+macro stby="shutdown -h"
+macro stdby="shutdown -h"
+#gmacro zr,='/etc/zsh/alias /etc/zsh/macro /etc/zsh/fnc /etc/zsh/le /etc/zsh/nd /etc/zsh/opt /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshrc /etc/zsh/tmp /etc/zsh/zshenv /etc/zsh/hl'
+macro af="ls -AF --color=auto --quoting-style=shell"
+macro N="zle -N"
+macro psh=powershell
+macro pw=powershell
+macro ed=gedit
+macro ZM="zle -M"
+macro ZN="zle -N"
+
+macro ss="set --"
+macro s="set"
+macro u=unset
+macro wsw="wslpath -w"
+macro std=shutdown
+macro sd=shutdown
+macro mt=mount
+macro ut=umount
+ macro um=umount
+ macro umt=umount
+
+macro k9="kill -9"
+macro mtd=mntdrv
+macro myp=myshup
+macro mup=myshup
+macro WD="cd /mnt/c/Users/barth/Desktop"
+macro pl="print -l -r --"
+#hash -d Y=~/SYMBA hash -d _apt=/nonexistent hash -d backup=/var/backups hash -d bin=/bin hash -d B=/usr/bin hash -d courier=/var/lib/courier hash -d C=~/prog/C hash -d daemon=/usr/sbin hash -d
+#D=~/Documents hash -d Debian-exim=/var/spool/exim4 hash -d dnsmasq=/var/lib/misc hash -d E=/etc hash -d FD=/proc/self/fd hash -d games=/usr/games
+## hash -d GD=~/myshell/rc/linkdir
+## hash -d G=~/myshell
+hash -d gnats=/var/lib/gnats
+hash -d GP=~/myshell/prog
+hash -d GR=~/myshell/rc
+hash -d GS=~/myshell/scripts
+hash -d GZ=~/myshell/rc/etc/zsh
+hash -d I=/dev/stdin
+hash -d irc=/var/run/ircd
+hash -d lightdm=/var/lib/lightdm
+hash -d list=/var/list
+hash -d lp=/var/spool/lpd
+hash -d mail=/var/mail
+hash -d man=/var/cache/man
+hash -d messagebus=/nonexistent
+hash -d N=/dev/null
+hash -d news=/var/spool/news
+hash -d nobody=/nonexistent
+hash -d O=/dev/stout
+hash -d proxy=/bin
+hash -d pulse=/var/run/pulse
+hash -d root=/root
+hash -d rtkit=/proc
+hash -d R=/tmp
+hash -d S=/proc/self
+hash -d sshd=/run/sshd
+hash -d sync=/bin
+hash -d sys=/dev
+hash -d systemd-coredump=/
+hash -d systemd-network=/run/systemd
+hash -d systemd-timesync=/run/systemd
+hash -d R=/tmp
+hash -d usbmux=/var/lib/usbmux
+hash -d uucp=/var/spool/uucp
+hash -d uuidd=/run/uuidd
+hash -d W=~/workspace
+hash -d www-data=/var/www
+hash -d Z=/etc/zsh
+hash -d z=~/.oh-my-zsh
+hash -d ZS=/etc/zsh
+hash -d zT=~/.oh-my-zsh/themes
+hash -d GRB=~/myshell/rc/backup
+hash -d ZHL=~/zsh-syntax-highlighting
+#hash -d DL=~/Downloads
+#hash -d F=~/myshell/F
+hash -d GT=~/myshell/rc/torrents
+#hash -d T=~/myshell/rc/torrents
+hash -d DB=~/Dropbox
+hash -d H=/home
+hash -d P=$HOME/Pictures
+hash -d O=~/books
+hash -d o=~/books
+hash -d D=/mnt/c/Users/barth/Desktop
+hash -d sa=/mnt/c/Users/barth/Downloads/Send\ Anywhere
+hash -d sam=/mnt/c/Users/barth/Downloads/Send\ Anywhere/musiek
+hash -d L=/mnt/c/Users/barth/Links
+hash -d scr=/mnt/c/Users/barth/Pictures/screenshots
+hash -d ahk=/mnt/c/Users/barth/Documents/AHK
+#hash -d SC=/mnt/c/Users/barth/OneDrive/Afbeeldingen/Samsung\ Gallery/DCIM/Screenshots
+hash -d Ssc=/mnt/c/Users/barth/OneDrive/Afbeeldingen/Samsung\ Gallery/DCIM/Screenshots
+hash -d webp=/mnt/c/Users/barth/Links/pics/webp
+hash -d nano=/usr/share/nano
+hash -d Hearthstone=/mnt/c/Users/barth/AppData/Local/Blizzard/Hearthstone
+hash -d X=/dev/null
+hash -d bg=/mnt/c/Users/barth/Pictures/backgrounds
+hash -d LV=/mnt/c/Users/barth/Links/vids
+hash -d LVC=/mnt/c/Users/barth/Links/vids/chix
+hash -d LVV=/mnt/c/Users/barth/Links/vids/vidz
+hash -d DBB=/mnt/c/Users/barth/Links/vids/DBB
+#hash -d DL=/mnt/c/Users/barth/Downloads
+hash -d SA="/mnt/c/Users/barth/Downloads/Send Anywhere"
+## hash -d Q=/mnt/c/Users/barth/Downloads/qbit
+hash -d desktop=/mnt/c/Users/barth/Desktop
+hash -d documents=/mnt/c/Users/barth/Documents
+hash -d videos=/mnt/c/Users/barth/Videos
+hash -d pictures=/mnt/c/Users/barth/Pictures
+hash -d music=/mnt/c/Users/barth/Music
+hash -d books=/mnt/c/Users/barth/Books
+hash -d links=/mnt/c/Users/barth/Links
+
+hash -d my=/usr/share/my
+hash -d MY=/usr/share/my
+hash -d plugins="/root/.oh-my-zsh/custom/plugins"
+hash -d ZCP="/root/.oh-my-zsh/custom/plugins"
+
+hash -d t=/root/myshell/rc/torrents
+#hash -d T=/tmp
+hash -d R=/dev/null
+
+hash -d pix="/mnt/c/Users/barth/Desktop/pix"
+hash -d R="/usr/share/my/OO"
+hash -d SI="/dev/stdin"
+hash -d SO="/dev/stdout"
+hash -d K=/root/books
+hash -d O=/usr/share/my/OO
+hash -d I=/usr/share/my/II
+hash -d s32="/mnt/c/Windows/System32"
+hash -d t=/root/myshell/rc/torrents
+#hash -d T=/tmp
+hash -d R=/dev/null
+hash -d tty="/dev/tty2"
+#hash -d T="/dev/tty2"
+hash -d SK="/root/skrips"
+hash -d SK=/root/myshell/skrips
+## hash -d uszf="/usr/share/zsh/functions"
+hash -d LD=/root/myshell/rc/linkdir
+hash -d GD=/usr/share/my/globdir
+for X in {1..10};do typeset T$X=/dev/tty$X;done
+hash -d q="/mnt/c/Users/barth/Downloads/qbit"
+hash -d G=/root/myshell
+hash -d doc=~/myshell/doc
+hash -d '.z'="/root/.zshrc"
+hash -d ZC=/root/.oh-my-zsh/custom
+hash -d ZP=/root/.oh-my-zsh/plugins
+hash -d GB=/root/myshell/rc/backup
+hash -d mac=/etc/zsh/macro
+hash -d mac=/etc/zsh/macro
+hash -d al=/etc/zsh/alias
+hash -d ali=/etc/zsh/alias
+hash -d WT=/mnt/c/Users/barth/Documents/torrents
+hash -d ZHL="/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+hash -d zdoc=~/doc/zshdoc
+hash -d torrents="/mnt/c/Users/barth/Documents/torrents"
+hash -d cZ=/root/myshell/rc/cleanEtc/zsh
+hash -d optredens=/mnt/c/Users/barth/Videos/optredens
+hash -d zf=/usr/share/zsh/functions
+hash -d trc=/tmp/tmprc
+hash -d mp4=/mnt/c/Users/barth/Desktop/mp4
+hash -d ubin=/usr/bin
+hash -d Q=/mnt/c/Users/barth/Downloads/qbit
+hash -d "zl=/etc/zsh/zlogin"
+hash -d macro=/etc/zsh/macro
+hash -d WD=/mnt/c/Users/barth/Downloads
+hash -d downloads=/mnt/c/Users/barth/Downloads
+hash -d download=/mnt/c/Users/barth/Downloads
+
+hash -d ZS=/root/zshSourceCode/zsh-5.9 ZSC=/root/zshSourceCode/zsh-5.9 zs=/root/zshSourceCode/zsh-5.9 zsc=/root/zshSourceCode/zsh-5.9
+hash -d ZSC=/root/zshSourceCode/zsh-5.9/Src
+hash -d manpages=/usr/share/doc/manpages
+hash -d zhelp=/usr/share/zsh/help
+##hash -d PF="/mnt/c/Program\ Files"
+##hash -d PF86=/Program\ Files\ \(x86\) x86=/Program\ Files\ \(x86\) p86=/Program\ Files\ \(x86\) P86=/Program\ Files\ \(x86\)
+hash -d rx=/root/myshell/rc/regexChar
+hash -d rxc=/root/myshell/rc/regexChar
+
+
+hash -d F=/root/myshell/rc/slapf
+hash -d zhl=/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+hash -d PS1=/etc/zsh/PS1
+
+hash -d ZL=/etc/zsh/zlogin
+hash -d ZA=/etc/zsh/alias
+hash -d ZF=/etc/zsh/fnc
+hash -d ZB=/etc/zsh/le
+hash -d ZD=/etc/zsh/nd
+hash -d ZO=/etc/zsh/opt
+hash -d ZZ=/etc/zsh/zshrc
+hash -d ZM=/etc/zsh/macro
+hash -d ZT=/etc/zsh/tmp
+hash -d ZE=/etc/zsh/zshenv
+
+
+ hash -d sf=/root/myshell/rc/slapf
+ hash -d slp=/root/myshell/rc/slapf
+ #hash -d SF=/root/myshell/rc/slapf
+ hash -d slpf=/root/myshell/rc/slapf
+
+ hash -d F1=/root/myshell/rc/slapf/SLAP1
+ hash -d F2=/root/myshell/rc/slapf/SLAP2
+ hash -d F3=/root/myshell/rc/slapf/SLAP3
+ hash -d F4=/root/myshell/rc/slapf/SLAP4
+ hash -d F5=/root/myshell/rc/slapf/SLAP5
+ hash -d F6=/root/myshell/rc/slapf/SLAP6
+ hash -d F7=/root/myshell/rc/slapf/SLAP7
+ hash -d F8=/root/myshell/rc/slapf/SLAP8
+ hash -d F9=/root/myshell/rc/slapf/SLAP9
+
+ hash -d f1=/root/myshell/rc/slapf/SLAP1
+ hash -d f2=/root/myshell/rc/slapf/SLAP2
+ hash -d f3=/root/myshell/rc/slapf/SLAP3
+ hash -d f4=/root/myshell/rc/slapf/SLAP4
+ hash -d f5=/root/myshell/rc/slapf/SLAP5
+ hash -d f6=/root/myshell/rc/slapf/SLAP6
+ hash -d f7=/root/myshell/rc/slapf/SLAP7
+ hash -d f8=/root/myshell/rc/slapf/SLAP8
+ hash -d f9=/root/myshell/rc/slapf/SLAP9
+
+hash -d LP=/mnt/c/Users/barth/Links/pics
+hash -d GPS=/root/myshell/rc/etc/ps1
+hash -d GPS1=/root/myshell/rc/etc/ps1
+hash -d omz=/root/.oh-my-zsh
+hash -d zhlh=/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
+hash -d hls=/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters
+hash -d V=/tmp/var
+hash -d t1=/tmp/1
+hash -d t2=/tmp/2
+hash -d t3=/tmp/3
+hash -d t4=/tmp/4
+hash -d t5=/tmp/5
+hash -d t6=/tmp/6
+hash -d t7=/tmp/7
+hash -d t8=/tmp/8
+hash -d t9=/tmp/9
+hash -d WV=/mnt/c/Users/barth/Videos
+hash -d WM=/mnt/c/Users/barth/Music
+hash -d f=/usr/share/zsh/functions/Zle
+hash -d d=/mnt/d
+hash -d cE=/root/myshell/rc/cleanEtc
+hash -d ndoc=~/doc/nanodoc
+hash -d WC=/mnt/c/Users/barth/Documents
+hash -d WDC=/mnt/c/Users/barth/Documents
+hash -d WP=/mnt/c/Users/barth/Pictures
+hash -d ZW=/root/myshell/rc/linkdir/.winrc
+hash -d asc=/mnt/c/Users/barth/Documents/AHK/scripts
+hash -d SF=/root/myshell/skrips/shell_functions
+hash -d ds=/mnt/d/Storage
+setopt nointeractivecomments
+setopt globcomplete
+setopt autocd
+setopt autopushd
+setopt nobeep
+setopt braceccl
+setopt noclobber
+setopt completeinword
+setopt extendedhistory
+setopt noflowcontrol
+setopt globstarshort
+setopt histexpiredupsfirst
+unsetopt histignoredups
+setopt histignorespace
+setopt histverify
+setopt incappendhistory
+setopt longlistjobs
+setopt nonomatch
+setopt nullglob
+setopt numericglobsort
+setopt promptsubst
+setopt pushdignoredups
+setopt pushdminus
+setopt rematchpcre
+setopt sharehistory
+setopt nointeractivecomments
+setopt noaliasfuncdef
+unsetopt CASE_GLOB
+setopt glob
+setopt GLOB_DOTS
+unsetopt histignoredups
+
+setopt noglobdots
+setopt histsubstpattern
+setopt histlexwords
+setopt rc_quotes
+setopt nomultifuncdef
+setopt shfileexpansion
+setopt combiningchars
+setopt kshglob
+
+setopt norematchpcre
+setopt nocompletealiases
+setopt printexitvalue
+#setopt menucomplete
+setopt nobadpattern
+setopt extendedglob
+setopt localoptions
+
+#F=/mnt/c/Users/barth/Desktop/temporary/New\ folder
+#W=/mnt/c/Users/barth/Links/pics/webp
+alias zp='$zml_parameter'
+zmlp(){ [[ $zml_parameter ]]|| zml_parameter=(${$(zmodload -lF zsh/parameter)[@]/'+p:'/}) }
+zp=($zml_parameter)
+vf=( Camera iets mp4 opruimen pix Spirit\ Science temporary tiktok vitz )
+hash -d cam=/mnt/c/Users/barth/Desktop/Camera CAM=/mnt/c/Users/barth/Desktop/Camera
+ASB='^[^H'
+asb='^[^H'
+ash='^[[1;4'
+#T=/tmp/zsh2hWVC9
+#H=( 111:array R=( array 'ZSH_HIGHLIGHT_DIRS_BLACKLIST=(' ')' array 'ZSH_HIGHLIGHT_HIGHLIGHTERS=(' main ')' association 'ZSH_HIGHLIGHT_PATTERNS=(' ')' association 'ZSH_HIGHLIGHT_REGEXP=(' ')' 'ZSH_HIGHLIGHT_REVISION=HEAD' association 'ZSH_HIGHLIGHT_STYLES=(' '[arg0]=''fg=green''' '[assign]=none' '[back-dollar-quoted-argument]=''fg=cyan''' '[back-double-quoted-argument]=''fg=cyan''' '[back-quoted-argument]=none' '[back-quoted-argument-delimiter]=''fg=magenta''' '[bracket-error]=''fg=red,bold''' '[bracket-level-1]=''fg=blue,bold''' '[bracket-level-2]=''fg=green,bold''' '[bracket-level-3]=''fg=magenta,bold''' '[bracket-level-4]=''fg=yellow,bold''' '[bracket-level-5]=''fg=cyan,bold''' '[command-substitution]=none' '[command-substitution-delimiter]=''fg=magenta''' '[commandseparator]=none' '[comment]=''fg=black,bold''' '[cursor]=standout' '[cursor-matchingbracket]=standout' '[default]=none' '[dollar-double-quoted-argument]=''fg=cyan''' '[dollar-quoted-argument]=''fg=yellow''' '[double-hyphen-option]=none' '[double-quoted-argument]=''fg=yellow''' '[globbing]=''fg=blue''' '[history-expansion]=''fg=blue''' '[line]=''''' '[named-fd]=none' '[path]=underline' '[path_pathseparator]=''''' '[path_prefix_pathseparator]=''''' '[precommand]=''fg=green,underline''' '[process-substitution]=none' '[process-substitution-delimiter]=''fg=magenta''' '[rc-quote]=''fg=cyan''' '[redirection]=''fg=12''' '[reserved-word]=''fg=yellow''' '[root]=standout' '[single-hyphen-option]=none' '[single-quoted-argument]=''fg=yellow''' '[suffix-alias]=''fg=green,underline''' '[unknown-token]=''fg=red,bold''' ')' 'ZSH_HIGHLIGHT_VERSION=0.7.2-dev' '_ZSH_HIGHLIGHT_PRIOR_BUFFER=''''' integer '_ZSH_HIGHLIGHT_PRIOR_CURSOR=0' array '_zsh_highlight__highlighter_main_cache=(' '''0' 7 'fg=yellow''' '''8' 9 'none''' '''9' 10 'fg=green''' '''11' 35 'none''' '''11' 35 'fg=yellow''' '''36' 37 'none''' '''37' 38 'fg=green''' ')' association '_zsh_highlight_main__command_type_cache=(' '[''$'']=function' '[noglob]=builtin' '[typeset]=reserved' ')' array 'precmd_functions=(' omz_termsupport_precmd _z_precmd _zsh_highlight_main__precmd_hook ')' array 'preexec_functions=(' omz_termsupport_preexec _zsh_highlight_preexec_hook ')' 'zsh_highlight__pat_static_bug=false' 'zshshl=/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting' '' )   152:array V=( array 'ZSH_HIGHLIGHT_DIRS_BLACKLIST=(' ')' array 'ZSH_HIGHLIGHT_HIGHLIGHTERS=(' main ')' association 'ZSH_HIGHLIGHT_PATTERNS=(' ')' association 'ZSH_HIGHLIGHT_REGEXP=(' ')' 'ZSH_HIGHLIGHT_REVISION=HEAD' association 'ZSH_HIGHLIGHT_STYLES=(' '[arg0]=''fg=green''' '[assign]=none' '[back-dollar-quoted-argument]=''fg=cyan''' '[back-double-quoted-argument]=''fg=cyan''' '[back-quoted-argument]=none' '[back-quoted-argument-delimiter]=''fg=magenta''' '[bracket-error]=''fg=red,bold''' '[bracket-level-1]=''fg=blue,bold''' '[bracket-level-2]=''fg=green,bold''' '[bracket-level-3]=''fg=magenta,bold''' '[bracket-level-4]=''fg=yellow,bold''' '[bracket-level-5]=''fg=cyan,bold''' '[command-substitution]=none' '[command-substitution-delimiter]=''fg=magenta''' '[commandseparator]=none' '[comment]=''fg=black,bold''' '[cursor]=standout' '[cursor-matchingbracket]=standout' '[default]=none' '[dollar-double-quoted-argument]=''fg=cyan''' '[dollar-quoted-argument]=''fg=yellow''' '[double-hyphen-option]=none' '[double-quoted-argument]=''fg=yellow''' '[globbing]=''fg=blue''' '[history-expansion]=''fg=blue''' '[line]=''''' '[named-fd]=none' '[path]=underline' '[path_pathseparator]=''''' '[path_prefix_pathseparator]=''''' '[precommand]=''fg=green,underline''' '[process-substitution]=none' '[process-substitution-delimiter]=''fg=magenta''' '[rc-quote]=''fg=cyan''' '[redirection]=''fg=12''' '[reserved-word]=''fg=yellow''' '[root]=standout' '[single-hyphen-option]=none' '[single-quoted-argument]=''fg=yellow''' '[suffix-alias]=''fg=green,underline''' '[unknown-token]=''fg=red,bold''' ')' 'ZSH_HIGHLIGHT_VERSION=0.7.2-dev' '_ZSH_HIGHLIGHT_PRIOR_BUFFER=''''' integer '_ZSH_HIGHLIGHT_PRIOR_CURSOR=0' array '_zsh_highlight__highlighter_main_cache=(' '''0' 7 'fg=yellow''' '''8' 9 'none''' '''9' 10 'fg=green''' '''11' 35 'none''' '''11' 35 'fg=yellow''' '''36' 37 'none''' '''37' 38 'fg=green''' ')' association '_zsh_highlight_main__command_type_cache=(' '[''$'']=function' '[noglob]=builtin' '[typeset]=reserved' ')' array 'precmd_functions=(' omz_termsupport_precmd _z_precmd _zsh_highlight_main__precmd_hook ')' array 'preexec_functions=(' omz_termsupport_preexec _zsh_highlight_preexec_hook ')' 'zsh_highlight__pat_static_bug=false' 'zshshl=/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting' )   161:X='  351:zshshl=/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting'   163:ZLE_LINE_ABORTED='for X in $(typeset |grep --color=auto -aEn -- ''[hH]ighlight|HIGHLIGHT'');# $X$''nn'''   173:array ZSH_HIGHLIGHT_DIRS_BLACKLIST=( )   174:array ZSH_HIGHLIGHT_HIGHLIGHTERS=( main )   175:association ZSH_HIGHLIGHT_PATTERNS=( )   176:association ZSH_HIGHLIGHT_REGEXP=( )   177:ZSH_HIGHLIGHT_REVISION=HEAD   178:association ZSH_HIGHLIGHT_STYLES=( [arg0]='fg=green' [assign]=none [back-dollar-quoted-argument]='fg=cyan' [back-double-quoted-argument]='fg=cyan' [back-quoted-argument]=none [back-quoted-argument-delimiter]='fg=magenta' [bracket-error]='fg=red,bold' [bracket-level-1]='fg=blue,bold' [bracket-level-2]='fg=green,bold' [bracket-level-3]='fg=magenta,bold' [bracket-level-4]='fg=yellow,bold' [bracket-level-5]='fg=cyan,bold' [command-substitution]=none [command-substitution-delimiter]='fg=magenta' [commandseparator]=none [comment]='fg=black,bold' [cursor]=standout [cursor-matchingbracket]=standout [default]=none [dollar-double-quoted-argument]='fg=cyan' [dollar-quoted-argument]='fg=yellow' [double-hyphen-option]=none [double-quoted-argument]='fg=yellow' [globbing]='fg=blue' [history-expansion]='fg=blue' [line]='' [named-fd]=none [path]=underline [path_pathseparator]='' [path_prefix_pathseparator]='' [precommand]='fg=green,underline' [process-substitution]=none [process-substitution-delimiter]='fg=magenta' [rc-quote]='fg=cyan' [redirection]='fg=12' [reserved-word]='fg=yellow' [root]=standout [single-hyphen-option]=none [single-quoted-argument]='fg=yellow' [suffix-alias]='fg=green,underline' [unknown-token]='fg=red,bold' )   179:ZSH_HIGHLIGHT_VERSION=0.7.2-dev   209:_ZSH_HIGHLIGHT_PRIOR_BUFFER=''   210:integer _ZSH_HIGHLIGHT_PRIOR_CURSOR=0   231:array _zsh_highlight__highlighter_main_cache=( '0 7 fg=yellow' '8 9 none' '9 11 fg=green' '12 36 none' '12 36 fg=yellow' '37 38 none' '38 44 fg=green,underline' '45 48 fg=green' '49 52 none' '53 85 none' '53 85 fg=yellow' '86 87 none' '87 88 fg=green' )   232:association _zsh_highlight_main__command_type_cache=( ['$']=function [noglob]=builtin [sed]=command [typeset]=reserved )   325:array precmd_functions=( omz_termsupport_precmd _z_precmd _zsh_highlight_main__precmd_hook )   326:array preexec_functions=( omz_termsupport_preexec _zsh_highlight_preexec_hook )   351:zsh_highlight__pat_static_bug=false   353:zshshl=/root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting)
+
+
+
+testc () {
+	ZSH_HIGHLIGHT_STYLES[default]="fg=${NUMERIC:-9}"
+	print -n -- $NUMERIC >&2
+}
+zle -N testc
+bindkey '\e ' testc
+
+fluit () {
+	zle push-line
+}
+zle -N fluit
+bindkey '^[OQ' fluit
+hash -d sksh=/mnt/c/Users/barth/Links/pics/skimpyShota
+# /etc/zsh/zlogin: system-wide .zlogin file for zsh(1).
+#
+# This file is sourced only for login shells. It
+# should contain commands that should be executed only
+# in login shells. It should be used to set the terminal
+# type and run a series of external commands (fortune,
+# msgs, from, etc.)
+#
+# Global Order: zshenv, zprofile, zshrc, zlogin
+
+[[ -e ~/.config/myshell/login-no-key ]]||pwr l
+dmesg --console-off
+
+function expand-alias() {                                                                                                                                                                                    #
+	zle _expand_alias
+	zle self-insert
+}
+zle -N expand-alias
+
+#AE(){ bindkey -M main ' ' expand-alias }
+#AEo(){ bindkey -M main ' ' self-insert }
+#AEO(){ bindkey -M main ' ' self-insert }
+
+exec 3<>/usr/share/my/II
+exec 4<>/usr/share/my/OO
+
+autoload zmv
+
+for X in {A,F,D,E,R,L,Z,B};do typeset n$X=${$(bod n$X)[-1]};done
+for X in {A,F,D,E,R,L,Z,B};do typeset n$X=${$(bod n$X)[-1]};done
+for X in {A,F,D,E,R,L,Z,B};do typeset n$X=${$(bod N$X)[-1]};done
+for X in {A,F,D,E,R,L,Z,B};do typeset n$X=${$(bod Z$X)[-1]};done
+
+exec 2>$TTY
+
+autoload -Uz bracketed-paste-magic;
+zle -N bracketed-paste bracketed-paste-magic
+
+#source /etc/zsh/le_old
+source /etc/zsh/hl
+
+zmodload zsh/zleparameter
+zmodload zsh/attr
+source /etc/zsh/alias
+#zle qm_g	~doesn't work!~
+
+#(){
+#	alias '?'="grep --color=auto -aEn --"
+#	alias '??'="grep --color=auto -aE --"
+#}
+
+source ~/myshell/skrips/macro
+source /etc/zsh/macro
+
+source ~/myshell/rc/linkdir/backtickBinds
+# /etc/zsh/zlogout: system-wide .zlogout file for zsh(1).
+setopt globcomplete
+setopt nointeractivecomments
+# /etc/zsh/zshenv: system-wide .zshenv file for zsh(1).
+#
+# This file is sourced on all invocations of the shell.
+# If the -f flag is present or if the NO_RCS option is
+# set within this file, all other initialization files
+# are skipped.
+#
+# This file should contain commands to set the command
+# search path, plus other important environment variables.
+# This file should not contain commands that produce
+# output or assume the shell is attached to a tty.
+#
+# Global Order: zshenv, zprofile, zshrc, zlogin
+
+if [[ -z "$PATH" || "$PATH" == "/bin:/usr/bin" ]]
+then
+	export PATH="/usr/local/bin:/usr/bin:/bin:/usr/games"
+fi
+
+#my own tweaks
+
+fortune(){ : }
+export BROWSER=w3m
+export ZSH_DISABLE_COMPFIX='true'
+export ed=micro
+export fnc=/etc/zsh/fnc
+export FNC=/etc/zsh/fnc
+export ZRC=/etc/zsh/zshrc
+export zrc=/etc/zsh/zshrc
+export nd=/etc/zsh/nd
+export ND=/etc/zsh/nd
+export fc=/etc/zsh/fnc
+export FC=/etc/zsh/fnc
+export ALIAS=/etc/zsh/alias
+export alias=/etc/zsh/alias
+export opt=/etc/zsh/opt
+export OPT=/etc/zsh/opt
+export tmp=/etc/zsh/tmp
+export TMP=/etc/zsh/tmp
+export pix=./*.(png|jpg|webp|jpeg|avif|gif)
+export T=/tmp/tmp.JZlerV0ENM
+export duplipix=./*\\(<->\\).(png|jpg|webp|jpeg|avif)
+export dupli=./*\\(<->\\).*
+export setopt extendedglob
+export env=/etc/zsh/zshenv
+export ENV=/etc/zsh/zshenv
+##export histchars[1]=@
+##export histchars='!^#'
+export sourcefiles=(alias fnc nd newuser.zshrc.recommended opt PS1 tmp zlogin zlogout zprofile zshrc)
+export nrc=/root/.nanorc
+export block=/dev/block
+export fd=/dev/fd
+export NANOSYNTAX=sh
+export NSYN=sh
+export I=/dev/stdin
+export O=/dev/stdout
+export II=/usr/share/my/II
+export OO=/usr/share/my/OO
+
+autoload zmv
+
+zshshl="$PWD"
+
+#zml_parameter=(${$(zmodload -lF zsh/parameter)[@]/'+p:'/})
+TTY="/dev/tty"
+
+
+WORDCHARS='{([$'
+dnf=/mnt/c/Users/barth/Desktop/temporary/New\ folder
+
+export OSTYPE=windows
+T=/dev/tty
+KEYTIMEOUT=18
+SLAP=
+shift_tab='^[[Z'
+BACKSPACE='^?'
+BQBS='`^?'
+
+rc=(/etc/zsh/alias /etc/zsh/fnc /etc/zsh/hl /etc/zsh/le /etc/zsh/macro /etc/zsh/nd /etc/zsh/opt /etc/zsh/tmp /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshenv /etc/zsh/zshrc /root/.zshrc /root/myshell/rc/linkdir/.winrc)
+RC=(/etc/zsh/alias /etc/zsh/fnc /etc/zsh/hl /etc/zsh/le /etc/zsh/macro /etc/zsh/nd /etc/zsh/opt /etc/zsh/tmp /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshenv /etc/zsh/zshrc /root/.zshrc /root/myshell/rc/linkdir/.winrc)
+ZF=(/etc/zsh/alias /etc/zsh/fnc /etc/zsh/hl /etc/zsh/le /etc/zsh/macro /etc/zsh/nd /etc/zsh/opt /etc/zsh/tmp /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshenv /etc/zsh/zshrc)
+zf=(/etc/zsh/alias /etc/zsh/fnc /etc/zsh/hl /etc/zsh/le /etc/zsh/macro /etc/zsh/nd /etc/zsh/opt /etc/zsh/tmp /etc/zsh/zlogin /etc/zsh/zlogout /etc/zsh/zshenv /etc/zsh/zshrc)
+END='^[OF'
+HOM='^[OH'
+hond=( '^[OH' '^[OF' )
+#EXE="$(</root/myshell/rc/EXE)"
+#exe=( $(</etc/zsh/exe) )
+S_End='^[[1;2F'
+S_Home='^[[1;2H'
+A_End='^[[1;3F'
+A_Home='^[[1;3H'
+S_E='^[[1;2F'
+S_H='^[[1;2H'
+A_E='^[[1;3F'
+A_H='^[[1;3H'
+# export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/bartcore/myshell/prog:/home/bartcore/myshell/prog:/home/bartcore/myshell/prog:/root/.cargo/bin
+# path+=(/mnt/c/Windows/System32)
+# path+=/opt
+export path=( /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /home/bartcore/myshell/prog /root/.cargo/bin /opt /root/myshell/prog /mnt/c/Windows/System32 "/mnt/c/Program Files" "/Program Files (x86)" )
+grc=( /root/myshell/rc/etc/zsh/alias /root/myshell/rc/etc/zsh/fnc /root/myshell/rc/etc/zsh/hl /root/myshell/rc/etc/zsh/le /root/myshell/rc/etc/zsh/macro /root/myshell/rc/etc/zsh/nd /root/myshell/rc/etc/zsh/opt /root/myshell/rc/etc/zsh/tmp /root/myshell/rc/etc/zsh/zlogin /root/myshell/rc/etc/zsh/zlogout /root/myshell/rc/etc/zsh/zshenv /root/myshell/rc/etc/zsh/zshrc /root/myshell/rc/linkdir/.winrc /root/myshell/rc/linkdir/.zshrc )
+GRC=( /root/myshell/rc/etc/zsh/alias /root/myshell/rc/etc/zsh/fnc /root/myshell/rc/etc/zsh/hl /root/myshell/rc/etc/zsh/le /root/myshell/rc/etc/zsh/macro /root/myshell/rc/etc/zsh/nd /root/myshell/rc/etc/zsh/opt /root/myshell/rc/etc/zsh/tmp /root/myshell/rc/etc/zsh/zlogin /root/myshell/rc/etc/zsh/zlogout /root/myshell/rc/etc/zsh/zshenv /root/myshell/rc/etc/zsh/zshrc /root/myshell/rc/linkdir/.winrc /root/myshell/rc/linkdir/.zshrc )
+Del='^[[3;2~'
+# /etc/zsh/zshrc: system-wide .zshrc file for zsh(1).
+#
+# This file is sourced only for interactive shells. It
+# should contain commands to set up aliases, functions,
+# options, key bindings, etc.
+#
+# Global Order: zshenv, zprofile, zshrc, zlogin
+
+# PAGER="less -KR"
+READNULLCMD=${PAGER:-/usr/bin/pager}
+
+# An array to note missing features to ease diagnosis in case of problems.
+typeset -ga debian_missing_features
+
+if [[ -z "${DEBIAN_PREVENT_KEYBOARD_CHANGES-}" ]] &&
+   [[ "$TERM" != 'emacs' ]]
+then
+
+    typeset -A key
+    key=(
+        BackSpace  "${terminfo[kbs]}"
+        Home       "${terminfo[khome]}"
+        End        "${terminfo[kend]}"
+        Insert     "${terminfo[kich1]}"
+        Delete     "${terminfo[kdch1]}"
+        Up         "${terminfo[kcuu1]}"
+        Down       "${terminfo[kcud1]}"
+        Left       "${terminfo[kcub1]}"
+        Right      "${terminfo[kcuf1]}"
+        PageUp     "${terminfo[kpp]}"
+        PageDown   "${terminfo[knp]}"
+    )
+
+    function bind2maps () {
+        local i sequence widget
+        local -a maps
+
+        while [[ "$1" != "--" ]]; do
+            maps+=( "$1" )
+            shift
+        done
+        shift
+
+        sequence="${key[$1]}"
+        widget="$2"
+
+        [[ -z "$sequence" ]] && return 1
+
+        for i in "${maps[@]}"; do
+            bindkey -M "$i" "$sequence" "$widget"
+        done
+    }
+
+    bind2maps emacs             -- BackSpace   backward-delete-char
+    bind2maps       viins       -- BackSpace   vi-backward-delete-char
+    bind2maps             vicmd -- BackSpace   vi-backward-char
+    bind2maps emacs             -- Home        beginning-of-line
+    bind2maps       viins vicmd -- Home        vi-beginning-of-line
+    bind2maps emacs             -- End         end-of-line
+    bind2maps       viins vicmd -- End         vi-end-of-line
+    bind2maps emacs viins       -- Insert      overwrite-mode
+    bind2maps             vicmd -- Insert      vi-insert
+    bind2maps emacs             -- Delete      delete-char
+    bind2maps       viins vicmd -- Delete      vi-delete-char
+    bind2maps emacs viins vicmd -- Up          up-line-or-history
+    bind2maps emacs viins vicmd -- Down        down-line-or-history
+    bind2maps emacs             -- Left        backward-char
+    bind2maps       viins vicmd -- Left        vi-backward-char
+    bind2maps emacs             -- Right       forward-char
+    bind2maps       viins vicmd -- Right       vi-forward-char
+
+    # Make sure the terminal is in application mode, when zle is
+    # active. Only then are the values from $terminfo valid.
+    if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+        function zle-line-init () {
+            emulate -L zsh
+            printf '%s' ${terminfo[smkx]}
+	}
+        function zle-line-finish () {
+            emulate -L zsh
+            printf '%s' ${terminfo[rmkx]}
+        }
+        zle -N zle-line-init
+        zle -N zle-line-finish
+    else
+        for i in {s,r}mkx; do
+            (( ${+terminfo[$i]} )) || debian_missing_features+=($i)
+        done
+        unset i
+    fi
+
+    unfunction bind2maps
+
+fi # [[ -z "$DEBIAN_PREVENT_KEYBOARD_CHANGES" ]] && [[ "$TERM" != 'emacs' ]]
+
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
+                                           /usr/local/bin  \
+                                           /usr/sbin       \
+                                           /usr/bin        \
+                                           /sbin           \
+                                           /bin            \
+                                           /usr/X11R6/bin
+
+(( ${+aliases[run-help]} )) && unalias run-help
+autoload -Uz run-help
+
+
+
+export PID=$$
+export ed=micro
+export bk=/etc/zsh/bk
+export fnc=/etc/zsh/fnc
+export FNC=/etc/zsh/fnc
+export ZRC=/etc/zsh/zshrc
+export zrc=/etc/zsh/zshrc
+export zlogin=/etc/zsh/zlogin
+export nd=/etc/zsh/nd
+export ND=/etc/zsh/nd
+export fc=/etc/zsh/fnc
+export FC=/etc/zsh/fnc
+export ALIAS=/etc/zsh/alias
+export alias=/etc/zsh/alias
+export opt=/etc/zsh/opt
+export OPT=/etc/zsh/opt
+export tmp=/etc/zsh/tmp
+export TMP=/etc/zsh/tmp
+export pix=./*.(png|jpg|webp|jpeg|avif)
+export T=/tmp/tmp
+
+export dup=./*\\(<->\\).(png|jpg|webp|jpeg|avif)
+
+source /root/myshell/skrips/macro
+source /etc/zsh/macro
+
+source ~/.oh-my-zsh/themes/adben.zsh-theme
+source /etc/zsh/tmp
+#source /etc/zsh/bk
+#source /root/myshell/skrips/macro
+#source /etc/zsh/macro
+
+#function expand-alias() {
+#	zle _expand_alias
+#	zle self-insert
+#}
+#zle -N expand-alias
+#bindkey -M main ' ' expand-alias
+
+
+zmodload zsh/parameter
+zmodload zsh/parameter
+
+
+hash vlc='/mnt/c/Program Files (x86)/VideoLAN/VLC'
+
+#unalias \~
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="random"
+ZSH_THEME="intheloop"
+
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect
+ZSH_THEME_RANDOM_CANDIDATES=()
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(z httpie command-not-found web-search fd thefuck)
+
+source $ZSH/oh-my-zsh.sh
+source ~/myshell/rc/globalias.plugin.zsh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+#Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='emacs'
+else
+  export EDITOR='emacs'
+fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+unalias l
+unalias ls
+unalias ll
+unalias la
+# unalias -
+
+#for e in {1..9};do unalias $e;done &>/dev/null
+
+#unalias ! &>/dev/null
+#alias -g !=print
+#source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+setopt nointeractivecomments
+
+for e in {opt,fnc,nd,PS1,le,alias,bk};do
+    source ~/myshell/rc/etc/zsh/$e;
+done
+
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
+exec 8>&1
+swpk
+
+source /root/myshell/skrips/macro
+source /etc/zsh/macro
+source ~/myshell/rc/linkdir/.winrc
+#source ./space_alias_expand
+source ~/skrips/shell_functions/space_alias_expand
+ZSH_HIGHLIGHT_STYLES[redirection]="fg=12"
+nW(){
+	nano -mi --syntax=sh +${@:-1} ~/myshell/rc/linkdir/.winrc
+}
+\#W(){
+	print $@ >> ~/myshell/rc/linkdir/.winrc
+}
+
+moveBooks(){ M /mnt/c/Users/barth/Desktop/*.(mobi|epub|pdf|djvu|chm) /mnt/c/Users/barth/Books/ }
+moveMusic(){ M /mnt/c/Users/barth/Desktop/*.(mp3|wav|m4a|cue) /mnt/c/Users/barth/Music/ }
+moveTorrents(){ M /mnt/c/Users/barth/Desktop/*.(torrent|Torrent) /mnt/c/Users/barth/Documents/torrents/ }
+movePics(){ M /mnt/c/Users/barth/Desktop/*.(png|jpg|jpeg|gif) /mnt/c/Users/barth/Pictures/ }
+moveAll(){ moveBooks; moveMusic; moveTorrents; movePics }
+
+hash -d D=/mnt/c/Users/barth/Desktop
+hash -d W=/mnt/c/Users/barth
+hash -d C=/mnt/c
+hash -d PF86="/Program Files (x86)"
+hash -d x86="/Program Files (x86)"
+hash -d p86="/Program Files (x86)"
+hash -d P86="/Program Files (x86)"
+hash -d PF="/mnt/c/Program Files"
+##pwr(){ powercfg.exe $@ }
+
+#shutdown(){
+#	/mnt/c/Windows/System32/shutdown.exe $*;
+#}
+
+shutdown(){
+	cd /mnt/c/Users/barth/Desktop
+	local arguments
+	{
+		for X
+		do
+			print -- $X
+		done
+	} | sed -E 's/\b([a-zA-Z]+)\b/\/\1/' | read arguments
+	set -- ${arguments:-"/a"}
+	local shutdown_time
+	local shut
+	{
+		for X
+		do
+			print -- $X
+		done
+	} | grep --color=auto -aE -- '[0-9]+' | read shutdown_time
+	if [[ -n $shutdown_time ]]
+	then
+		shut=" /t $shutdown_time"
+	else
+		shut=""
+	fi
+	set -- ${@//<->/}
+	if [[ -n $@ ]]
+	then
+		set -- ${@//\-/\/}
+	else
+		set -- "/s"
+	fi
+	/mnt/c/Windows/System32/cmd.exe "/C" "shutdown ${*}$shut"
+}
+
+macro tl=tasklist.exe
+macro tk=taskkill.exe
+macro th=taskhostw.exe
+
+kp(){ taskkill.exe "/PID" "$*" }
+pk(){ taskkill.exe "/PID" "$*" }
+wk(){ taskkill.exe "/PID" "$*" }
+
+##pl(){ tl |grep --color=auto -aE -- "^${*}" >&2 |= '//^.*\s+([0-9]+) \w+.*$/\1/' |$ }
+'=.'()mntdrv $@
+'-.'()umount .
+
+cling(){ print -r -- $CUTBUFFER |/mnt/c/Windows/System32/clip.exe }
+zle -N cling
+bindkey '^[OR' cling
+hash -d x86=/mnt/c/Program\ Files\ \(x86\)
+hash -d WMP=/mnt/c/Program\ Files\ \(x86\)/Windows\ Media\ Player
+wmp(){ /mnt/c/Program\ Files\ \(x86\)/Windows\ Media\ Player/wmplayer.exe $@ }

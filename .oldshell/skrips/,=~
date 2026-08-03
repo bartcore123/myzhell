@@ -1,0 +1,10 @@
+#!/bin/zsh -23569BCGJNRXgs
+
+if [[ $PWD != /mnt/c/* ]]
+then
+	cd /mnt/c/Users/barth/Desktop
+fi
+tasklist.exe | grep -anPi -- "$*" | grep -aPo -- '^.*\.[a-zA-Z0-9]+[\s]+[0-9]+' | awk '{ print $NF }' >| /tmp/WIN_PROC_MATCH
+tasklist.exe | grep --color=auto -anPi -- "$*"
+
+

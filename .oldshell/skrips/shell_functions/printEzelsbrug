@@ -1,0 +1,8 @@
+'#?'(){
+	if [[ ${@:/^((-u)|(--update))} ]]
+	then
+		sed -rn '/^[''"]?[#][''"]? ?\(\)/,/^[''"]?[#][?][''"]? ?\(\)/p' ~ZF >| ~Z/printEzelsbrug.txt
+	else
+		cat /etc/zsh/printEzelsbrug.txt
+	fi
+}

@@ -1,0 +1,66 @@
+Valid menu sections are:
+
+	main
+
+The main editor window where text is entered and edited.
+
+	help
+
+The help-viewer menu.
+
+	search
+
+The search menu (AKA whereis).
+
+	replace
+
+The ’search to replace’ menu.
+
+	replacewith
+
+The ’replace with’ menu, which comes up after ’search to replace’.
+
+	yesno
+
+The ’yesno’ menu, where the Yes/No/All/Cancel question is asked.
+
+	gotoline
+
+The ’goto line (and column)’ menu.
+
+	writeout
+
+The ’write file’ menu.
+
+	insert
+
+The ’insert file’ menu.
+
+	browser
+
+The ’file browser’ menu, for selecting a file to be opened or inserted or written to.
+
+	whereisfile
+
+The ’search for a file’ menu in the file browser.
+
+	gotodir
+
+The ’go to directory’ menu in the file browser.
+
+	execute
+
+The menu for inserting the output from an external command, or for filtering the buffer (or the marked region) through an external command, or for executing one of several tools.
+
+	spell
+
+The menu of the integrated spell checker where the user can edit a misspelled word.
+
+	linter
+
+The linter menu, which allows jumping through the linting messages.
+
+	all
+
+A special name that encompasses all menus. For bind it means all menus where the specified function exists; for unbind it means all menus where the specified key exists.
+

@@ -1,0 +1,35 @@
+#!/bin/zsh
+
+typeset -a macros
+macros=()
+
+function macro()
+{
+    alias $1
+    macros+=(${1%%\=*})
+}
+
+
+function gmacro()
+{
+    alias -g $1
+    macros+=(${1%%\=*})
+}
+
+
+function expand-macro()
+{
+    if [[ $LBUFFER =~ "\<(${(j:|:)macros})\$" ]]; then
+        zle _expand_alias
+        zle expand-word
+    fi
+    zle magic-space
+}
+
+zle -N expand-macro
+
+bindkey -M main ' '        expand-macro
+bindkey -M main '^[ '       magic-space     # alt-space to bypass completion
+bindkey -M main '^[^ '       magic-space     # control-alt-space to bypass completion
+bindkey -M isearch " "      magic-space     # normal space during searches
+

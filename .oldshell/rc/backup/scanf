@@ -1,0 +1,1 @@
+scanf(){ for X in $@;{ @ $'                ''============='$X'============='; @ ${${$(noglob grep  --binary-files=text -En ${G:-''} <$X)}:-'             -'} } }

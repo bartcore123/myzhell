@@ -1,0 +1,57 @@
+# /etc/zsh/zlogin: system-wide .zlogin file for zsh(1).
+#
+# This file is sourced only for login shells. It
+# should contain commands that should be executed only
+# in login shells. It should be used to set the terminal
+# type and run a series of external commands (fortune,
+# msgs, from, etc.)
+#
+# Global Order: zshenv, zprofile, zshrc, zlogin
+
+[[ -e ~/.config/myshell/login-no-key ]]||pwr l
+dmesg --console-off
+
+function expand-alias() {                                                                                                                                                                                    #
+	zle _expand_alias
+	zle self-insert
+}
+zle -N expand-alias
+
+#AE(){ bindkey -M main ' ' expand-alias }
+#AEo(){ bindkey -M main ' ' self-insert }
+#AEO(){ bindkey -M main ' ' self-insert }
+
+
+autoload zmv
+
+for X in {A,F,D,E,R,L,Z,B};do typeset n$X=${$(bod n$X)[-1]};done
+for X in {A,F,D,E,R,L,Z,B};do typeset n$X=${$(bod n$X)[-1]};done
+for X in {A,F,D,E,R,L,Z,B};do typeset n$X=${$(bod N$X)[-1]};done
+for X in {A,F,D,E,R,L,Z,B};do typeset n$X=${$(bod Z$X)[-1]};done
+
+exec 2>$TTY
+
+autoload -Uz bracketed-paste-magic;
+zle -N bracketed-paste bracketed-paste-magic
+
+#source /etc/zsh/le_old
+source /etc/zsh/hl
+
+zmodload zsh/zleparameter
+zmodload zsh/attr
+source /etc/zsh/alias
+#zle qm_g	~doesn't work!~
+
+#(){
+#	alias '?'="grep --color=auto -aEn --"
+#	alias '??'="grep --color=auto -aE --"
+#}
+
+source ~/myshell/skrips/macro
+source /etc/zsh/macro
+
+source ~/myshell/rc/linkdir/backtickBinds
+
+#source /etc/zsh/opt
+exec 3>/dev/null
+exec 4>|/tmp/tmp

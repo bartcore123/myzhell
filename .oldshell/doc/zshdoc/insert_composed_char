@@ -1,0 +1,150 @@
+       insert-composed-char
+              This function allows you to compose characters that don't appear on the keyboard to be inserted into the command line.  The command is followed by two keys corresponding to ASCII characters
+              (there  is  no  prompt).  For accented characters, the two keys are a base character followed by a code for the accent, while for other special characters the two characters together form a
+              mnemonic for the character to be inserted.  The two-character codes are a subset of those given by RFC 1345 (see for example http://www.faqs.org/rfcs/rfc1345.html).
+
+              The function may optionally be followed by up to two characters which replace one or both of the characters read from the keyboard; if both characters are supplied, no input is  read.   For
+              example,  insert-composed-char a: can be used within a widget to insert an a with umlaut into the command line.  This has the advantages over use of a literal character that it is more por‐
+              table.
+
+              For best results zsh should have been built with support for multibyte characters (configured with --enable-multibyte); however, the function works  for  the  limited  range  of  characters
+              available in single-byte character sets such as ISO-8859-1.
+
+              The  character is converted into the local representation and inserted into the command line at the cursor position.  (The conversion is done within the shell, using whatever facilities the
+              C library provides.)  With a numeric argument, the character and its code are previewed in the status line
+
+              The function may be run outside zle in which case it prints the character (together with a newline) to standard output.  Input is still read from keystrokes.
+
+              See insert-unicode-char for an alternative way of inserting Unicode characters using their hexadecimal character number.
+
+              The set of accented characters is reasonably complete up to Unicode character U+0180, the set of special characters less so.  However, it is very sporadic from that point.  Adding new char‐
+              acters is easy, however; see the function define-composed-chars.  Please send any additions to zsh-workers@zsh.org.
+
+              The codes for the second character when used to accent the first are as follows.  Note that not every character can take every accent.
+              !      Grave.
+              '      Acute.
+              >      Circumflex.
+              ?      Tilde.  (This is not ~ as RFC 1345 does not assume that character is present on the keyboard.)
+              -      Macron.  (A horizontal bar over the base character.)
+              (      Breve.  (A shallow dish shape over the base character.)
+              .      Dot above the base character, or in the case of i no dot, or in the case of L and l a centered dot.
+              :      Diaeresis (Umlaut).
+              c      Cedilla.
+              _      Underline, however there are currently no underlined characters.
+              /      Stroke through the base character.
+              "      Double acute (only supported on a few letters).
+              ;      Ogonek.  (A little forward facing hook at the bottom right of the character.)
+              <      Caron.  (A little v over the letter.)
+              0      Circle over the base character.
+              2      Hook over the base character.
+              9      Horn over the base character.
+
+              The  most  common characters from the Arabic, Cyrillic, Greek and Hebrew alphabets are available; consult RFC 1345 for the appropriate sequences.  In addition, a set of two letter codes not
+              in RFC 1345 are available for the double-width characters corresponding to ASCII characters from !  to ~ (0x21 to 0x7e) by preceding the character with ^, for example ^A for a  double-width
+              A.
+
+              The following other two-character sequences are understood.
+
+              ASCII characters
+                     These are already present on most keyboards:
+              <(     Left square bracket
+              //     Backslash (solidus)
+              )>     Right square bracket
+              (!     Left brace (curly bracket)
+              !!     Vertical bar (pipe symbol)
+              !)     Right brace (curly bracket)
+              '?     Tilde
+
+              Special letters
+                     Characters found in various variants of the Latin alphabet:
+              ss     Eszett (scharfes S)
+              D-, d- Eth
+              TH, th Thorn
+              kk     Kra
+              'n     'n
+              NG, ng Ng
+              OI, oi Oi
+              yr     yr
+              ED     ezh
+
+              Currency symbols
+              Ct     Cent
+              Pd     Pound sterling (also lira and others)
+              Cu     Currency
+              Ye     Yen
+              Eu     Euro (N.B. not in RFC 1345)
+
+              Punctuation characters
+                     References  to  "right"  quotes indicate the shape (like a 9 rather than 6) rather than their grammatical use.  (For example, a "right" low double quote is used to open quotations in
+                     German.)
+              !I     Inverted exclamation mark
+              BB     Broken vertical bar
+              SE     Section
+              Co     Copyright
+              -a     Spanish feminine ordinal indicator
+              <<     Left guillemet
+              --     Soft hyphen
+              Rg     Registered trade mark
+              PI     Pilcrow (paragraph)
+              -o     Spanish masculine ordinal indicator
+              >>     Right guillemet
+              ?I     Inverted question mark
+              -1     Hyphen
+              -N     En dash
+              -M     Em dash
+              -3     Horizontal bar
+              :3     Vertical ellipsis
+              .3     Horizontal midline ellipsis
+              !2     Double vertical line
+              =2     Double low line
+              '6     Left single quote
+              '9     Right single quote
+              .9     "Right" low quote
+              9'     Reversed "right" quote
+              "6     Left double quote
+              "9     Right double quote
+              :9     "Right" low double quote
+              9"     Reversed "right" double quote
+              /-     Dagger
+              /=     Double dagger
+
+              Mathematical symbols
+              DG     Degree
+              -2, +-, -+
+                     - sign, +/- sign, -/+ sign
+              2S     Superscript 2
+              3S     Superscript 3
+              1S     Superscript 1
+              My     Micro
+              .M     Middle dot
+              14     Quarter
+              12     Half
+              34     Three quarters
+              *X     Multiplication
+              -:     Division
+              %0     Per mille
+              FA, TE, /0
+                     For all, there exists, empty set
+              dP, DE, NB
+                     Partial derivative, delta (increment), del (nabla)
+              (-, -) Element of, contains
+              *P, +Z Product, sum
+              *-, Ob, Sb
+                     Asterisk, ring, bullet
+              RT, 0(, 00
+                     Root sign, proportional to, infinity
+
+              Other symbols
+              cS, cH, cD, cC
+                     Card suits: spades, hearts, diamonds, clubs
+              Md, M8, M2, Mb, Mx, MX
+                     Musical notation: crotchet (quarter note), quaver (eighth note), semiquavers (sixteenth notes), flag sign, natural sign, sharp sign
+              Fm, Ml Female, male
+
+              Accents on their own
+              '>     Circumflex (same as caret, ^)
+              '!     Grave (same as backtick, `)
+              ',     Cedilla
+              ':     Diaeresis (Umlaut)
+              'm     Macron
+              ''     Acute

@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+if [[ $PWD != /mnt/c/* ]]
+then
+	cd /mnt/c/Users/barth/Desktop
+fi
+
+WIN_PROC_MATCH=( $(</tmp/WIN_PROC_MATCH) )
+
+while [[ -n $@ ]]
+do
+	taskkill.exe /PID ${${${${@:/^(@)}:+"1,-1"}:-${WIN_PROC_MATCH:+${WIN_PROC_MATCH[$1]}}}:-$1}
+	shift
+done
+

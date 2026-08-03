@@ -1,0 +1,29 @@
+  Globbing character classes:
+  
+[:alnum:]
+  The character is alphanumeric
+[:alpha:]
+  The character is alphabetic
+[:ascii:]
+  The character is 7-bit, i.e. is a single-byte character without the top bit
+  set.
+[:blank:]
+  The character is a blank character
+[:cntrl:]
+  The character is a control character
+[:digit:]
+  The character is a decimal digit
+[:graph:]
+  The character is a printable character other than whitespace
+[:lower:]
+  The character is a lowercase letter
+[:print:]
+  The character is printable
+[:punct:]
+  The character is printable but neither alphanumeric nor whitespace
+[:space:]
+  The character is whitespace
+[:upper:]
+  The character is an uppercase letter
+[:xdigit:]
+  The character is a hexadecimal digit

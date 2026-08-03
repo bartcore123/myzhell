@@ -1,0 +1,2 @@
+ZSH_HIGHLIGHT_STYLES[commandseparator]=fg=magenta
+ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=yellow,bold

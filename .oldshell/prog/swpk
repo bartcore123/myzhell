@@ -1,0 +1,16 @@
+#!/usr/bin/zsh
+
+[[ $OSTYPE == windows ]]&& return 1;
+
+[[ $@ ]]||exec $0 h m c l s;
+
+h()setkeycodes 'e05d' 42;
+m()setkeycodes '0x1d' 1;
+c()setkeycodes 'e047' 1;
+l()setkeycodes '0x3a' 29;
+s()setkeycodes '0x36' 102;
+a(){ for X in h m c l s; $X };
+
+for X; $X;
+
+return 0;

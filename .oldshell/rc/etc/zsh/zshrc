@@ -1,0 +1,155 @@
+# /etc/zsh/zshrc: system-wide .zshrc file for zsh(1).
+#
+# This file is sourced only for interactive shells. It
+# should contain commands to set up aliases, functions,
+# options, key bindings, etc.
+#
+# Global Order: zshenv, zprofile, zshrc, zlogin
+
+# PAGER="less -KR"
+READNULLCMD=${PAGER:-/usr/bin/pager}
+
+# An array to note missing features to ease diagnosis in case of problems.
+typeset -ga debian_missing_features
+
+if [[ -z "${DEBIAN_PREVENT_KEYBOARD_CHANGES-}" ]] &&
+   [[ "$TERM" != 'emacs' ]]
+then
+
+    typeset -A key
+    key=(
+        BackSpace  "${terminfo[kbs]}"
+        Home       "${terminfo[khome]}"
+        End        "${terminfo[kend]}"
+        Insert     "${terminfo[kich1]}"
+        Delete     "${terminfo[kdch1]}"
+        Up         "${terminfo[kcuu1]}"
+        Down       "${terminfo[kcud1]}"
+        Left       "${terminfo[kcub1]}"
+        Right      "${terminfo[kcuf1]}"
+        PageUp     "${terminfo[kpp]}"
+        PageDown   "${terminfo[knp]}"
+    )
+
+    function bind2maps () {
+        local i sequence widget
+        local -a maps
+
+        while [[ "$1" != "--" ]]; do
+            maps+=( "$1" )
+            shift
+        done
+        shift
+
+        sequence="${key[$1]}"
+        widget="$2"
+
+        [[ -z "$sequence" ]] && return 1
+
+        for i in "${maps[@]}"; do
+            bindkey -M "$i" "$sequence" "$widget"
+        done
+    }
+
+    bind2maps emacs             -- BackSpace   backward-delete-char
+    bind2maps       viins       -- BackSpace   vi-backward-delete-char
+    bind2maps             vicmd -- BackSpace   vi-backward-char
+    bind2maps emacs             -- Home        beginning-of-line
+    bind2maps       viins vicmd -- Home        vi-beginning-of-line
+    bind2maps emacs             -- End         end-of-line
+    bind2maps       viins vicmd -- End         vi-end-of-line
+    bind2maps emacs viins       -- Insert      overwrite-mode
+    bind2maps             vicmd -- Insert      vi-insert
+    bind2maps emacs             -- Delete      delete-char
+    bind2maps       viins vicmd -- Delete      vi-delete-char
+    bind2maps emacs viins vicmd -- Up          up-line-or-history
+    bind2maps emacs viins vicmd -- Down        down-line-or-history
+    bind2maps emacs             -- Left        backward-char
+    bind2maps       viins vicmd -- Left        vi-backward-char
+    bind2maps emacs             -- Right       forward-char
+    bind2maps       viins vicmd -- Right       vi-forward-char
+
+    # Make sure the terminal is in application mode, when zle is
+    # active. Only then are the values from $terminfo valid.
+    if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+        function zle-line-init () {
+            emulate -L zsh
+            printf '%s' ${terminfo[smkx]}
+	}
+        function zle-line-finish () {
+            emulate -L zsh
+            printf '%s' ${terminfo[rmkx]}
+        }
+        zle -N zle-line-init
+        zle -N zle-line-finish
+    else
+        for i in {s,r}mkx; do
+            (( ${+terminfo[$i]} )) || debian_missing_features+=($i)
+        done
+        unset i
+    fi
+
+    unfunction bind2maps
+
+fi # [[ -z "$DEBIAN_PREVENT_KEYBOARD_CHANGES" ]] && [[ "$TERM" != 'emacs' ]]
+
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
+                                           /usr/local/bin  \
+                                           /usr/sbin       \
+                                           /usr/bin        \
+                                           /sbin           \
+                                           /bin            \
+                                           /usr/X11R6/bin
+
+(( ${+aliases[run-help]} )) && unalias run-help
+autoload -Uz run-help
+
+
+
+export PID=$$
+export ed=micro
+export bk=/etc/zsh/bk
+export fnc=/etc/zsh/fnc
+export FNC=/etc/zsh/fnc
+export ZRC=/etc/zsh/zshrc
+export zrc=/etc/zsh/zshrc
+export zlogin=/etc/zsh/zlogin
+export nd=/etc/zsh/nd
+export ND=/etc/zsh/nd
+export fc=/etc/zsh/fnc
+export FC=/etc/zsh/fnc
+export ALIAS=/etc/zsh/alias
+export alias=/etc/zsh/alias
+export opt=/etc/zsh/opt
+export OPT=/etc/zsh/opt
+export tmp=/etc/zsh/tmp
+export TMP=/etc/zsh/tmp
+export pix=./*.(png|jpg|webp|jpeg|avif)
+export T=/tmp/tmp
+
+export dup=./*\\(<->\\).(png|jpg|webp|jpeg|avif)
+
+source ~/myshell/skrips/macro
+source /etc/zsh/macro
+
+source ~/.oh-my-zsh/themes/adben.zsh-theme
+source /etc/zsh/tmp
+#source /etc/zsh/bk
+#source ~/myshell/skrips/macro
+#source /etc/zsh/macro
+
+#function expand-alias() {
+#	zle _expand_alias
+#	zle self-insert
+#}
+#zle -N expand-alias
+#bindkey -M main ' ' expand-alias
+
+
+zmodload zsh/parameter
+zmodload zsh/parameter
+
+
+hash vlc='/run/media/barth/Windows-SSDProgram Files (x86)/VideoLAN/VLC'
+
+#unalias \~
