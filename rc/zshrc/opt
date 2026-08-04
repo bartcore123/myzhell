@@ -4,3 +4,4 @@ setopt noclobber
 setopt rcquotes
 setopt extendedglob
 setopt nochaselinks
+setopt nonomatch

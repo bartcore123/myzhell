@@ -45,3 +45,9 @@ kill-region-or-rbuffer () {
 	[[ $MARK == 0 ]] && zle kill-line || zle kill-region
 }
 zle -N kill-region-or-rbuffer
+
+prinsert () {
+	[[ $LBUFFER[1,5] == print ]] || LBUFFER="print -r -- $LBUFFER" 
+}
+zle -N prinsert
+
