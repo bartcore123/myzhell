@@ -1,5 +1,4 @@
 alias '#'='\#'
-alias %=jobs
 alias ,='ls -AF'
 alias ,,='ls -AlFh'
 alias ,.='dirs -v'
