@@ -9,3 +9,9 @@ umacro () {
 	macros=(${macros//${(j:|:)~@}}) 
 	unalias $@
 }
+nz () {
+	{
+		sed -r '/'"$*"'/{F;=;p};d' ~Z/*
+	} | $
+	nano "$r[1]:$r[2]"
+}

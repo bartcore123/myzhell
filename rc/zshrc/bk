@@ -215,3 +215,4 @@ bindkey "\`^?" erase_buffer
 bindkey -R "a"-"~" self-insert
 bindkey "^?" backward-delete-char
 bindkey -R "\M-^@"-"\M-^?" self-insert
+bindkey '`[' prinsert

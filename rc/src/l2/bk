@@ -89,8 +89,6 @@ bindkey "^[6" digit-argument
 bindkey "^[7" digit-argument
 bindkey "^[8" digit-argument
 bindkey "^[9" digit-argument
-bindkey "^[:" printy
-bindkey "^[;" printy
 bindkey "^[<" rm_LBUFFER
 bindkey "^[=" insert_anon_func
 bindkey "^[>" rm_RBUFFER
