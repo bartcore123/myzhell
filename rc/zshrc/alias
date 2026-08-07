@@ -1,4 +1,6 @@
 alias '#'='\#'
+alias '#!'=wl-paste
+alias '#$'=wl-copy
 alias ,='ls -AF'
 alias ,,='ls -AlFh'
 alias ,.='dirs -v'

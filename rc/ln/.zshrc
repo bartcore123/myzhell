@@ -121,7 +121,7 @@ done
 
 
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 #source ~M/rc/bracket-suggest.zsh
