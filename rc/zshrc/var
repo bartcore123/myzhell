@@ -3,3 +3,4 @@ export READNULLCMD='rless'
 export PATH=/opt/skrips:$PATH
 CUI=/home/barth/ComfyUI
 path+=(/home/barth/.local/bin)
+PAGER=rless
