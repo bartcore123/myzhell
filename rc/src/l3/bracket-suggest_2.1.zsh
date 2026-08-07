@@ -1,0 +1,1 @@
+../../.claude/bracket-suggest_2.1.zsh
