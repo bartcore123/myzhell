@@ -14,7 +14,7 @@ cd ~
 
 [[ .zshrc ]] && mv .zshrc .zshrc.omz.bak
 
-ln -s ~rc/.nanorc
-ln -s ~rc/.zshrc
+ln -s ./myshell/rc/ln/.nanorc
+ln -s ./myshell/rc/ln/.zshrc
 
 source .zshrc
