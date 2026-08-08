@@ -108,6 +108,7 @@ macro k=clear
 macro k9='kill -9'
 macro kd='sudo keyd'
 macro kk=clear
+macro kl=kill
 macro l,='ls --show-control-chars --color=auto'
 macro lc=local
 gmacro ln,='(|.)*(@)'

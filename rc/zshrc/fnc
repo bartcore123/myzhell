@@ -98,3 +98,6 @@ cldt () {
 f () {
 	dolphin $@ 2>| ~/.logs/Dolphin_$RANDOM &
 }
+rmdup () {
+	rm "${(f)$(fdupes -f ${@:-.})}"
+}
