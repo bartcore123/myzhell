@@ -72,6 +72,7 @@ hash -d saned=/
 hash -d sddm=/var/lib/sddm
 hash -d sk=~/myshell/rc/skrips
 hash -d src=~/myshell/rc/src
+hash -d steam=~/.local/share/Steam/steamapps/common
 hash -d systemd-coredump=/
 hash -d systemd-imds=/
 hash -d systemd-journal-remote=/

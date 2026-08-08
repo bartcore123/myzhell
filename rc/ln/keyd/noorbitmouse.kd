@@ -7,7 +7,7 @@ f24=macro(C-tab)
 f23=macro(C-S-tab)
 f22=macro(M-tab)
 
-capslock=kpenter
+capslock=enter
 `=delete
 rightalt=`
 
