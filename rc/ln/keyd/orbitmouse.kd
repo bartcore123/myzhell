@@ -21,10 +21,10 @@ w=up
 s=down
 a=left
 d=right
-q=home
+f=home
 e=end
 r=delete
-f=backspace
+q=backspace
 capslock=f6
 
 [shift+orbit]

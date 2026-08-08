@@ -17,10 +17,10 @@ w=up
 s=down
 a=left
 d=right
-q=home
+q=backspace
 e=end
 r=delete
-f=backspace
+f=home
 capslock=f6
 
 [shift+orbit]
