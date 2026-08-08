@@ -6,3 +6,4 @@ setopt extendedglob
 setopt nochaselinks
 setopt nonomatch
 setopt nobeep
+setopt nocaseglob

@@ -76,7 +76,7 @@ bindkey "^[\$" cmds
 bindkey "^[%" zt
 bindkey "^['" quote-line
 bindkey "^[(^[)" insert_arith_paren
-bindkey "^[," menu-complete
+bindkey "^[," prinsert
 bindkey "^[-" neg-argument
 bindkey -s "^[." "%"
 bindkey -s "^[/" "@"
@@ -97,7 +97,7 @@ bindkey "^[=" insert_anon_func
 bindkey "^[>" rm_RBUFFER
 bindkey "^[?" which-command
 bindkey "^[@" insert_arith_paren
-bindkey "^[A" backward-word
+bindkey "^[A" push-line-or-edit
 bindkey "^[B" backward-word
 bindkey "^[C" zle-l
 bindkey "^[D" forward-word
@@ -119,7 +119,7 @@ bindkey "^[OS" pair_quotes
 bindkey "^[P" history-search-backward
 bindkey "^[Q" backward-delete-word
 bindkey "^[R" delete-word
-bindkey "^[S" forward-word
+bindkey "^[S" backward-word
 bindkey "^[T" transpose-words
 bindkey "^[U" up-case-word
 bindkey "^[V" yank-pop
