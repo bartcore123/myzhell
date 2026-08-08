@@ -5,3 +5,4 @@ setopt rcquotes
 setopt extendedglob
 setopt nochaselinks
 setopt nonomatch
+setopt nobeep

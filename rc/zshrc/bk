@@ -97,7 +97,7 @@ bindkey "^[=" insert_anon_func
 bindkey "^[>" rm_RBUFFER
 bindkey "^[?" which-command
 bindkey "^[@" insert_arith_paren
-bindkey "^[A" push-line-or-edit
+bindkey "^[A" backward-word
 bindkey "^[B" backward-word
 bindkey "^[C" zle-l
 bindkey "^[D" forward-word
@@ -119,7 +119,7 @@ bindkey "^[OS" pair_quotes
 bindkey "^[P" history-search-backward
 bindkey "^[Q" backward-delete-word
 bindkey "^[R" delete-word
-bindkey "^[S" backward-word
+bindkey "^[S" forward-word
 bindkey "^[T" transpose-words
 bindkey "^[U" up-case-word
 bindkey "^[V" yank-pop
@@ -202,7 +202,7 @@ bindkey -s "\`/" "\$"
 bindkey "\`90" insert_arith_paren
 bindkey -s "\`;" "("
 bindkey "\`=" insert_braces
-bindkey -s "\`[" "%"
+bindkey "\`[" prinsert
 bindkey "\`[;" insert_mathy_paren
 bindkey "\`[]" insert_test_paren
 bindkey -s "\`\\\\" "^["
@@ -215,4 +215,3 @@ bindkey "\`^?" erase_buffer
 bindkey -R "a"-"~" self-insert
 bindkey "^?" backward-delete-char
 bindkey -R "\M-^@"-"\M-^?" self-insert
-bindkey '`[' prinsert
