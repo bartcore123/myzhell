@@ -5,3 +5,4 @@ CUI=/home/barth/ComfyUI
 path+=(/home/barth/.local/bin)
 PAGER=rless
 PROTONPATH=/home/barth/.local/share/Steam/compatibilitytools.d/GE-Proton11-3
+SSE=/home/barth/.local/share/Steam/steamapps/compatdata/2848430351/pfx/drive_c/GOG\ Games/Skyrim\ Anniversary\ Edition
