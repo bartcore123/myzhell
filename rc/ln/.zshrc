@@ -106,8 +106,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+setopt extendedglob
 
-for X in  ~/myshell/rc/src/l1/*  ~/myshell/rc/src/l2/*  ~/myshell/rc/src/l3/* ~/myshell/rc/zshrc/*;
+for X in  ~/myshell/rc/src/l1/(*~*.bak)  ~/myshell/rc/src/l2/(*~*.bak)  ~/myshell/rc/src/l3/(*~*.bak) ~/myshell/rc/zshrc/(*~*.bak);
 do
 	if [[ $X[-1] != \~ ]];
 	then
