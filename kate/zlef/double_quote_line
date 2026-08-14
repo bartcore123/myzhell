@@ -1,0 +1,5 @@
+double_quote_line(){
+	BUFFER="\"${BUFFER//(#b)([\"\\])/\\$match[1]}\""
+	CURSOR=$#BUFFER
+}
+zle -N double_quote_line

@@ -7,10 +7,10 @@ bindkey "^F" forward-char
 bindkey "^G" send-break
 bindkey "^H" backward-delete-word
 bindkey "^I" expand-or-complete
-bindkey "^J" push-line-or-edit
+bindkey "^J" .zsh-no-ps2
 bindkey "^K" describe-key-briefly
 bindkey "^L" clear-screen
-bindkey "^M" accept-line
+bindkey "^M" .zsh-no-ps2
 bindkey "^N" down-line-or-history
 bindkey "^O" accept-line-and-down-history
 bindkey "^P" up-line-or-history
@@ -70,7 +70,7 @@ bindkey "^[^]" command_braces
 bindkey "^[^_" copy-prev-word
 bindkey "^[ " magic-space
 bindkey "^[!" prms
-bindkey "^[\"" double-quote-line
+bindkey "^[\"" double_quote_line
 bindkey "^[#" insert_test_paren
 bindkey "^[\$" cmds
 bindkey "^[%" zt
