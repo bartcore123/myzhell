@@ -214,3 +214,4 @@ macro zml=zmodload
 macro zn='zle -N'
 macro zpo=zparseopts
 macro zs=zstyle
+macro zx='7z x'
