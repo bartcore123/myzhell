@@ -111,6 +111,7 @@ macro kd='sudo keyd'
 macro kk=clear
 macro l,='ls --show-control-chars --color=auto'
 macro lc=local
+macro lk=loadkeys
 gmacro ln,='(|.)*(@)'
 macro m=macro
 macro md='mkdir -p'

@@ -3,5 +3,5 @@
 cd ${"$(realpath $0)":h}
 
 cd ../ln
-ln -sf ./keyd/${${${(M)@##[-][os]}:+orbitmouse.kd}:-noorbitmouse.kd} ./default.conf \
+ln -sf ./keyd/${${${(M)@##(|[-])[os]}:+orbitmouse.kd}:-noorbitmouse.kd} ./default.conf \
 && sudo keyd reload
