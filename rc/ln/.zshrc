@@ -124,10 +124,9 @@ done
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+for X in  ~/myshell/rc/src/l4/*; source $X
 
 #source ~M/rc/bracket-suggest.zsh
 #naks
 
 source /home/barth/.zsh-no-ps2/zsh-no-ps2.plugin.zsh
-ZSH_HIGHLIGHT_STYLES[redirection]='fg=cyan'
-ZSH_HIGHLIGHT_STYLES[assign]='fg=cyan'
