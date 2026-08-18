@@ -129,3 +129,5 @@ source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #naks
 
 source /home/barth/.zsh-no-ps2/zsh-no-ps2.plugin.zsh
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[assign]='fg=cyan'
