@@ -1,0 +1,108 @@
+# ── custom highlighter: unquoted $…, ${…}, $(…), $(( … )) ───────────────────
+
+_zsh_highlight_highlighter_unquoted_dollar_predicate() {
+  _zsh_highlight_buffer_modified
+}
+
+_zsh_highlight_highlighter_unquoted_dollar_paint() {
+  local buf=$BUFFER len=${#BUFFER}
+  local -i i=1 in_single=0 in_double=0 depth start end
+  local c
+
+  while (( i <= len )); do
+    c=$buf[i]
+
+    # ── $'…' / '…' ───────────────────────────────────────────────────────────
+    if (( in_single )); then
+      [[ $c == "'" ]] && in_single=0
+      (( i++ )); continue
+    fi
+
+    # ── "…" ──────────────────────────────────────────────────────────────────
+    if (( in_double )); then
+      case $c in
+        '\\') (( i += 2 )) ;;
+        '"')  in_double=0; (( i++ )) ;;
+        '$')
+          # skip past the expansion — main highlighter already colours these
+          (( i++ ))
+          if [[ $buf[i] == '{' ]]; then
+            depth=1; (( i++ ))
+            while (( i <= len && depth > 0 )); do
+              [[ $buf[i] == '{' ]] && (( depth++ ))
+              [[ $buf[i] == '}' ]] && (( depth-- ))
+              (( i++ ))
+            done
+          elif [[ $buf[i] == '(' ]]; then
+            depth=1; (( i++ ))
+            while (( i <= len && depth > 0 )); do
+              [[ $buf[i] == '(' ]] && (( depth++ ))
+              [[ $buf[i] == ')' ]] && (( depth-- ))
+              (( i++ ))
+            done
+          elif [[ $buf[i] == [[:alnum:]_] ]]; then
+            while (( i <= len )) && [[ $buf[i] == [[:alnum:]_] ]]; do (( i++ )); done
+          else
+            (( i++ ))   # $? $$ $! etc.
+          fi ;;
+        *) (( i++ )) ;;
+      esac
+      continue
+    fi
+
+    # ── unquoted ─────────────────────────────────────────────────────────────
+    case $c in
+      "'") in_single=1; (( i++ )) ;;
+      '"') in_double=1; (( i++ )) ;;
+
+      '$')
+        if [[ $buf[i+1] == "'" ]]; then
+          # $'…' ANSI-C quoting — content is like single-quoted
+          (( i += 2 ))
+          while (( i <= len )); do
+            if   [[ $buf[i] == '\\' ]]; then (( i += 2 ))
+            elif [[ $buf[i] == "'" ]]; then   (( i++ )); break
+            else (( i++ ))
+            fi
+          done
+
+        else
+          start=$(( i - 1 ))    # 0-indexed, exclusive-end convention
+          (( i++ ))
+
+          if [[ $buf[i] == '{' ]]; then
+            depth=1; (( i++ ))
+            while (( i <= len && depth > 0 )); do
+              [[ $buf[i] == '{' ]] && (( depth++ ))
+              [[ $buf[i] == '}' ]] && (( depth-- ))
+              (( i++ ))
+            done
+
+          elif [[ $buf[i] == '(' ]]; then
+            depth=1; (( i++ ))
+            while (( i <= len && depth > 0 )); do
+              [[ $buf[i] == '(' ]] && (( depth++ ))
+              [[ $buf[i] == ')' ]] && (( depth-- ))
+              (( i++ ))
+            done
+
+          elif [[ $buf[i] == [[:alnum:]_] ]]; then
+            while (( i <= len )) && [[ $buf[i] == [[:alnum:]_] ]]; do (( i++ )); done
+
+          elif [[ $buf[i] == [$*@#?!\-0-9] ]]; then
+            (( i++ ))   # single-char special: $? $$ $! $- …
+
+          fi   # bare $ with nothing valid → end == start+1, guard below skips it
+
+          end=$(( i - 1 ))
+          (( end > start + 1 )) && _zsh_highlight_add_highlight $start $end unquoted-dollar
+        fi ;;
+
+      '\\') (( i += 2 )) ;;
+      *)    (( i++ )) ;;
+    esac
+  done
+}
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(unquoted_dollar)
+ZSH_HIGHLIGHT_STYLES[unquoted-dollar]='fg=cyan'
