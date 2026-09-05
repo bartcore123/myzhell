@@ -73,6 +73,7 @@ hash -d pcscd=/
 hash -d plasmalogin=/var/lib/plasmalogin
 hash -d polkitd=/
 hash -d rc=~/myshell/rc
+hash -d rdr2sfe=~/Documents/software/rdr2_savefile_editor/Red_Dead_Redemption_Save_Editor
 hash -d root=/root
 hash -d rpc=/var/lib/rpcbind
 hash -d rpcuser=/var/lib/nfs
