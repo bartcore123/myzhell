@@ -195,6 +195,7 @@ macro ut=umount
 macro ux='chmod -x '
 macro v='zmv -wn'
 gmacro v,='(|.)*.(mp4|mkv|m4a|wmv|avi)'
+macro vc=vlc
 gmacro vids,='(|.)*.(mp4|mkv|m4a|wmv|avi)'
 gmacro vlc,='/mnt/c/Program\ Files\ (x86)/VideoLAN/VLC'
 macro w='which -s'
