@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# deb-install — install a .deb package on CachyOS/Arch via debtap
+set -euo pipefail
+
+RED='\033[0;31m'; GRN='\033[0;32m'; YLW='\033[1;33m'; NC='\033[0m'
+die()  { printf "${RED}[err]${NC} %s\n" "$*" >&2; exit 1; }
+info() { printf "${GRN} :: ${NC} %s\n" "$*"; }
+warn() { printf "${YLW}[!] ${NC} %s\n" "$*"; }
+
+# ── args ──────────────────────────────────────────────────────────────────────
+[[ $# -ne 1 ]]    && die "usage: $(basename "$0") <package.deb>"
+[[ -f $1 ]]       || die "file not found: $1"
+[[ $1 == *.deb ]] || die "not a .deb file: $1"
+DEB=$(realpath "$1")
+
+# ── ensure debtap ─────────────────────────────────────────────────────────────
+if ! command -v debtap &>/dev/null; then
+    info "debtap not found — installing from AUR..."
+    if command -v paru &>/dev/null; then
+        paru -S --noconfirm debtap
+    elif command -v yay &>/dev/null; then
+        yay -S --noconfirm debtap
+    else
+        die "no AUR helper found (paru/yay). install debtap manually: paru -S debtap"
+    fi
+fi
+
+# ── sync debtap DB if missing or stale (>7 days) ─────────────────────────────
+DEBTAP_DB="/usr/share/debtap/all-packages"
+if [[ ! -f $DEBTAP_DB ]] || \
+   [[ $(( $(date +%s) - $(stat -c %Y "$DEBTAP_DB") )) -gt 604800 ]]; then
+    info "syncing debtap database..."
+    sudo debtap -u
+fi
+
+# ── convert ───────────────────────────────────────────────────────────────────
+WORKDIR=$(mktemp -d)
+trap 'rm -rf "$WORKDIR"' EXIT
+
+cp "$DEB" "$WORKDIR/"
+cd "$WORKDIR"
+
+info "converting $(basename "$DEB")..."
+debtap -q "$(basename "$DEB")"
+
+PKG=$(find "$WORKDIR" -maxdepth 1 -name '*.pkg.tar.*' | head -1)
+[[ -z $PKG ]] && die "conversion failed — no .pkg.tar.* produced"
+
+# ── install ───────────────────────────────────────────────────────────────────
+info "installing $(basename "$PKG")..."
+sudo pacman -U "$PKG"
+
+info "done."

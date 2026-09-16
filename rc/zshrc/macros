@@ -81,6 +81,7 @@ macro da=disable
 macro dc=declare
 macro df='diff -a'
 macro ds='dirs -v '
+macro dt=debtap
 macro e=echo
 macro ec=exec
 macro ed=gedit
