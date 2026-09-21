@@ -82,6 +82,7 @@ hash -d saned=/
 hash -d sddm=/var/lib/sddm
 hash -d sk=~/myshell/rc/skrips
 hash -d src=~/myshell/rc/src
+hash -d ssd=/run/media/barth/22350987-5d98-46dd-814d-e0baef9d0c69
 hash -d steam=~/.local/share/Steam/steamapps/common
 hash -d systemd-coredump=/
 hash -d systemd-imds=/
