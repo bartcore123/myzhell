@@ -104,3 +104,6 @@ rmdup () {
 sweep () {
 	rm ./(*~*old*)/**/(*\~|*.bak)
 }
+f () {
+	dolphin $@
+}

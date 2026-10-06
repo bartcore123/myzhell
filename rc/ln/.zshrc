@@ -131,3 +131,5 @@ for X in  ~/myshell/rc/src/l4/*; source $X
 
 source /home/barth/.zsh-no-ps2/zsh-no-ps2.plugin.zsh
 SSE=/home/barth/Games/Heroic/Prefixes/SSE/drive_c/GOG\ Games/Skyrim\ Anniversary\ Edition
+
+source $HOME/myshell/rc/aux/CH

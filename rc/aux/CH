@@ -1,0 +1,22 @@
+# ~ / . terminal_chars
+# Currencies
+export CH_EURO=$'\u20AC'      # €
+export CH_CENT=$'\u00A2'      # ¢
+export CH_POUND=$'\u00A3'     # £
+export CH_YEN=$'\u00A5'       # ¥
+
+# Math & Symbols
+export CH_DEGREE=$'\u00B0'    # °
+export CH_PLUSMINUS=$'\u00B1' # ±
+export CH_MICRO=$'\u00B5'     # µ
+export CH_SECTION=$'\u00A7'   # §
+export CH_BULLET=$'\u2022'    # •
+
+# Geometric Shapes & UI Elements
+export CH_CHECK=$'\u2713'     # ✓
+export CH_CROSS=$'\u2717'     # ✗
+export CH_ARROW_R=$'\u2192'   # →
+export CH_ARROW_L=$'\u2190'   # ←
+export CH_BLOCK=$'\u2588'     # █
+export CH_SMILE=$'\u263A'     # ☺
+

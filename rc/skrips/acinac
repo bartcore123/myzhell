@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+MOD="${@:/(0|off|\-0|\-o|\-\-off)/}"*
+
+if [[ ${(M)@:/(0|off|\-0|\-o|\-\-off)} || $0 == inac ]]
+    then
+        mv $MOD $MOD.inac
+    else
+        mv ${MOD}* ${MOD//.inac/}
+    fi
+
+
