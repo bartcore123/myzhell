@@ -90,8 +90,8 @@ bindkey "^[6" digit-argument
 bindkey "^[7" digit-argument
 bindkey "^[8" digit-argument
 bindkey "^[9" digit-argument
-bindkey "^[:" printy
-bindkey -s "^[;" ")"
+bindkey "^[:" prinsert
+bindkey "^[;" prinsert
 bindkey "^[<" rm_LBUFFER
 bindkey "^[=" insert_anon_func
 bindkey "^[>" rm_RBUFFER
@@ -189,7 +189,7 @@ bindkey "^[^?" backward-kill-word
 bindkey "^_" undo
 bindkey " " expand-macro
 bindkey -R "!"-"_" self-insert
-bindkey "\`" quoted-insert
+bindkey "\`" quotes_double
 bindkey "\`^M" quoted-insert
 bindkey "\`^[OF" pass-bracket
 bindkey "\`^[OH" undo
@@ -202,7 +202,7 @@ bindkey -s "\`/" "\$"
 bindkey "\`90" insert_arith_paren
 bindkey -s "\`;" "("
 bindkey "\`=" insert_braces
-bindkey "\`[" prinsert
+bindkey -s "\`[" ")"
 bindkey "\`[;" insert_mathy_paren
 bindkey "\`[]" insert_test_paren
 bindkey -s "\`\\\\" "^["

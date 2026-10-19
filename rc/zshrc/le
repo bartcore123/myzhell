@@ -51,3 +51,9 @@ prinsert () {
 }
 zle -N prinsert
 
+
+quotes_double () {
+	LBUFFER+=\'\' 
+	CURSOR=$[CURSOR-1] 
+}
+zle -N quotes_double
