@@ -1,7 +1,7 @@
 alias '#'='\#'
 alias '#!'=wl-paste
 alias '#$'=wl-copy
-alias ,='ls -AF'
+alias ,='ls -Ad'
 alias ,,='ls -AlFh'
 alias ,,,='ls -dAhl --'
 alias ,,.='ls -dAh --'
@@ -345,7 +345,7 @@ alias jctl='journalctl -p 3 -xb'
 alias jo=journalctl
 alias jou='journalctl -b -1'
 alias jour='journalctl -b -1 -e'
-alias k=clear
+alias k=kate
 alias k9='kill -9'
 alias kd='sudo keyd'
 alias kk=clear
