@@ -62,9 +62,6 @@ _ () {
 	[[ -n $@ ]] && set $@ || clear
 }
 
-rmdup () {
-	rm $(fdupes -f ${@:-\.})
-}
 dup () {
 	fdupes -f ${@:-\.}
 }
@@ -98,12 +95,12 @@ cldt () {
 f () {
 	dolphin $@ 2>| ~/.logs/Dolphin_$RANDOM &
 }
-rmdup () {
-	rm "${(f)$(fdupes -f ${@:-.})}"
-}
 sweep () {
 	rm ./(*~*old*)/**/(*\~|*.bak)
 }
 f () {
 	dolphin $@
+}
+rmdup () {
+	rm -v "${(f)$(fdupes -f ${@:-.})}"
 }
